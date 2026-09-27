@@ -1,0 +1,46 @@
+{
+  "title": "Terms and Conditions",
+  "description": "By applying to be a tutor with Tutor Vista, you agree to the following terms:",
+  "terms": [
+    {
+      "id": 1,
+      "text": "Pay 60% of the first month's salary as a service charge after your first month's salary. If canceled after one month, you must pay 30% of the first month's received salary."
+    },
+    {
+      "id": 2,
+      "text": "Understand all the requirements of the tuition thoroughly before taking the tuition. Take permission from your home before applying. Contact the guardian as soon as possible and inform us. Keep us updated via Facebook, WhatsApp or call 01329266008 for emergencies."
+    },
+    {
+      "id": 3,
+      "text": "You must attend the first meeting in proper time with utmost sincerity and try to confirm the tuition. Let us know the update after finishing the meeting. If for any reason you cannot attend the first meeting then you must inform us and the guardian beforehand."
+    },
+    {
+      "id": 4,
+      "text": "We suggest that Female teachers should not go alone in the first meeting. They should take somebody with them for security."
+    },
+    {
+      "id": 5,
+      "text": "You must re-confirm the number of weekly classes and salary in the first meeting. You must provide 2 demo class for every tuition. Your salary will be counted from the 3rd class."
+    },
+    {
+      "id": 6,
+      "text": "If you face any issues after starting tuition, you must inform us. If the tuition is canceled before or after the first month, please notify us so we can assign another teacher to the guardian."
+    },
+    {
+      "id": 7,
+      "text": "The service charge must be paid after receiving the first month's salary. Any delay in payment will result in an immediate ban from the page, without exception."
+    }
+  ],
+  "paymentInfo": {
+    "title": "Important Payment & Rules:",
+    "contactNumber": "01329266008",
+    "bkashNogod": "01823693969",
+    "rules": [
+      "Before sending the service charge or for any queries please call 01329266008",
+      "If you have any issues with paying our service charge, or if you fail to pay it on time, or refuse to pay it, we will be compelled to take the strictest action against you. In this case, we will post on all public groups using your Facebook ID with a 'fraud alert' caption.",
+      "We will continue to keep in touch with the guardians even after providing tuition. Therefore, if you do anything inappropriate, we will be compelled to file a complaint with the guardians against you."
+    ]
+  },
+  "conclusion": "Finally, If you are honest in your dealings with us and conduct yourself well, we will extend our fullest cooperation to you. You will be given the contact number of the guardian if you agree with all our terms and conditions.",
+  "organization": "Tutor Vista"
+}

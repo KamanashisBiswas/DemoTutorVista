@@ -1,0 +1,1314 @@
+{
+  "divisions": [
+    {
+      "division": {
+        "name_en": "Dhaka",
+        "name_bn": "ঢাকা"
+      },
+      "districts": [
+        {
+          "name_en": "Dhaka Sadar",
+          "name_bn": "ঢাকা সদর",
+          "thanas": [
+            {
+              "name_en": "Adabor Thana",
+              "name_bn": "আদাবর থানা",
+              "areas": [
+                {
+                  "name_en": "Adabar",
+                  "name_bn": "আদাবর"
+                },
+                {
+                  "name_en": "Shekhertek",
+                  "name_bn": "শেখেরটেক"
+                },
+                {
+                  "name_en": "Mohammadia Housing",
+                  "name_bn": "মোহাম্মদিয়া হাউজিং"
+                },
+                {
+                  "name_en": "Nobodoy Housing",
+                  "name_bn": "নবোদয় হাউজিং"
+                }
+              ]
+            },
+            {
+              "name_en": "Airport Thana",
+              "name_bn": "বিমানবন্দর থানা",
+              "areas": [
+                {
+                  "name_en": "Airport Area",
+                  "name_bn": "বিমানবন্দর এলাকা"
+                },
+                {
+                  "name_en": "Ashkona",
+                  "name_bn": "আশকোনা"
+                },
+                {
+                  "name_en": "Dakshinkhan",
+                  "name_bn": "দক্ষিণখান"
+                },
+                {
+                  "name_en": "Kawla",
+                  "name_bn": "কাওলা"
+                }
+              ]
+            },
+            {
+              "name_en": "Airport Railway Thana",
+              "name_bn": "বিমানবন্দর রেলওয়ে থানা",
+              "areas": [
+                {
+                  "name_en": "Airport Railway Station Area",
+                  "name_bn": "বিমানবন্দর রেলওয়ে স্টেশন এলাকা"
+                }
+              ]
+            },
+            {
+              "name_en": "Badda Thana",
+              "name_bn": "বাড্ডা থানা",
+              "areas": [
+                {
+                  "name_en": "Badda",
+                  "name_bn": "বাড্ডা"
+                },
+                {
+                  "name_en": "Merul Badda",
+                  "name_bn": "মেরুল বাড্ডা"
+                },
+                {
+                  "name_en": "Satarkul",
+                  "name_bn": "সাতারকুল"
+                },
+                {
+                  "name_en": "Shahjadpur",
+                  "name_bn": "শাহজাদপুর"
+                }
+              ]
+            },
+            {
+              "name_en": "Badda West Thana",
+              "name_bn": "বাড্ডা পশ্চিম থানা",
+              "areas": [
+                {
+                  "name_en": "Gudaraghat",
+                  "name_bn": "গুদারাঘাট"
+                },
+                {
+                  "name_en": "West Badda",
+                  "name_bn": "পশ্চিম বাড্ডা"
+                }
+              ]
+            },
+            {
+              "name_en": "Banani Thana",
+              "name_bn": "বনানী থানা",
+              "areas": [
+                {
+                  "name_en": "Banani",
+                  "name_bn": "বনানী"
+                },
+                {
+                  "name_en": "Chairman Bari",
+                  "name_bn": "চেয়ারম্যান বাড়ি"
+                },
+                {
+                  "name_en": "Kakoli",
+                  "name_bn": "কাকলী"
+                },
+                {
+                  "name_en": "Kamal Ataturk Avenue",
+                  "name_bn": "কামাল আতাতুর্ক এভিনিউ"
+                }
+              ]
+            },
+            {
+              "name_en": "Bangshal Thana",
+              "name_bn": "বংশাল থানা",
+              "areas": [
+                {
+                  "name_en": "Bangshal",
+                  "name_bn": "বংশাল"
+                },
+                {
+                  "name_en": "Kazi Alauddin Road",
+                  "name_bn": "কাজী আলাউদ্দিন রোড"
+                },
+                {
+                  "name_en": "Siddique Bazar",
+                  "name_bn": "সিদ্দিক বাজার"
+                }
+              ]
+            },
+            {
+              "name_en": "Bhashantek Thana",
+              "name_bn": "ভাষানটেক থানা",
+              "areas": [
+                {
+                  "name_en": "Bhashantek",
+                  "name_bn": "ভাষানটেক"
+                },
+                {
+                  "name_en": "ECB Chattar",
+                  "name_bn": "ইসিবি চত্বর"
+                },
+                {
+                  "name_en": "Matikata",
+                  "name_bn": "মাটিকাটা"
+                }
+              ]
+            },
+            {
+              "name_en": "Bosila Thana",
+              "name_bn": "বসিলা থানা",
+              "areas": [
+                {
+                  "name_en": "Bosila",
+                  "name_bn": "বসিলা"
+                },
+                {
+                  "name_en": "Washpur",
+                  "name_bn": "ওয়াশপুর"
+                }
+              ]
+            },
+            {
+              "name_en": "Cantonment Thana",
+              "name_bn": "ক্যান্টনমেন্ট থানা",
+              "areas": [
+                {
+                  "name_en": "Dhaka Cantonment",
+                  "name_bn": "ঢাকা ক্যান্টনমেন্ট"
+                },
+                {
+                  "name_en": "Manikdi",
+                  "name_bn": "মানিকদী"
+                },
+                {
+                  "name_en": "Matikata",
+                  "name_bn": "মাটিকাটা"
+                }
+              ]
+            },
+            {
+              "name_en": "Chawkbazar Model Thana",
+              "name_bn": "চকবাজার মডেল থানা",
+              "areas": [
+                {
+                  "name_en": "Begumbazar",
+                  "name_bn": "বেগমবাজার"
+                },
+                {
+                  "name_en": "Chawkbazar",
+                  "name_bn": "চকবাজার"
+                },
+                {
+                  "name_en": "Urdu Road",
+                  "name_bn": "উর্দু রোড"
+                }
+              ]
+            },
+            {
+              "name_en": "Dakshinkhan Thana",
+              "name_bn": "দক্ষিণখান থানা",
+              "areas": [
+                {
+                  "name_en": "Dakshinkhan",
+                  "name_bn": "দক্ষিণখান"
+                },
+                {
+                  "name_en": "Faydabad",
+                  "name_bn": "ফায়দাবাদ"
+                },
+                {
+                  "name_en": "Gawair",
+                  "name_bn": "গাওয়াইর"
+                },
+                {
+                  "name_en": "Mollar Tek",
+                  "name_bn": "মোল্লারটেক"
+                }
+              ]
+            },
+            {
+              "name_en": "Dakshin Keraniganj Thana",
+              "name_bn": "দক্ষিণ কেরানীগঞ্জ থানা",
+              "areas": [
+                {
+                  "name_en": "Kadamtali",
+                  "name_bn": "কদমতলী"
+                },
+                {
+                  "name_en": "Shubhadya",
+                  "name_bn": "শুভাঢ্যা"
+                }
+              ]
+            },
+            {
+              "name_en": "Darussalam Thana",
+              "name_bn": "দারুস সালাম থানা",
+              "areas": [
+                {
+                  "name_en": "Darussalam",
+                  "name_bn": "দারুস সালাম"
+                },
+                {
+                  "name_en": "Gabtoli",
+                  "name_bn": "গাবতলী"
+                },
+                {
+                  "name_en": "Kallyanpur",
+                  "name_bn": "কল্যাণপুর"
+                },
+                {
+                  "name_en": "Technical More",
+                  "name_bn": "টেকনিক্যাল মোড়"
+                }
+              ]
+            },
+            {
+              "name_en": "Demra Thana",
+              "name_bn": "ডেমরা থানা",
+              "areas": [
+                {
+                  "name_en": "Demra",
+                  "name_bn": "ডেমরা"
+                },
+                {
+                  "name_en": "Konapara",
+                  "name_bn": "কোণাপাড়া"
+                },
+                {
+                  "name_en": "Sarulia",
+                  "name_bn": "সারুলিয়া"
+                },
+                {
+                  "name_en": "Staff Quarter",
+                  "name_bn": "স্টাফ কোয়ার্টার"
+                }
+              ]
+            },
+            {
+              "name_en": "Dhanmondi Thana",
+              "name_bn": "ধানমন্ডি থানা",
+              "areas": [
+                {
+                  "name_en": "Dhanmondi",
+                  "name_bn": "ধানমন্ডি"
+                },
+                {
+                  "name_en": "Jhigatola",
+                  "name_bn": "জিগাতলা"
+                },
+                {
+                  "name_en": "Rayer Bazar",
+                  "name_bn": "রায়েরবাজার"
+                },
+                {
+                  "name_en": "Satmasjid Road",
+                  "name_bn": "সাতমসজিদ রোড"
+                }
+              ]
+            },
+            {
+              "name_en": "Gulshan Thana",
+              "name_bn": "গুলশান থানা",
+              "areas": [
+                {
+                  "name_en": "Gulshan 1",
+                  "name_bn": "গুলশান ১"
+                },
+                {
+                  "name_en": "Gulshan 2",
+                  "name_bn": "গুলশান ২"
+                },
+                {
+                  "name_en": "Baridhara Diplomatic Zone",
+                  "name_bn": "বারিধারা ডিপ্লোমেটিক জোন"
+                },
+                {
+                  "name_en": "Mohakhali",
+                  "name_bn": "মহাখালী"
+                },
+                {
+                  "name_en": "Niketan",
+                  "name_bn": "নিকেতন"
+                },
+                {
+                  "name_en": "Baridhara DOHS",
+                  "name_bn": "বারিধারা ডিওএইচএস"
+                },
+                {
+                  "name_en": "Baridhara",
+                  "name_bn": "বারিধারা"
+                }
+              ]
+            },
+            {
+              "name_en": "Gendaria Thana",
+              "name_bn": "গেন্ডারিয়া থানা",
+              "areas": [
+                {
+                  "name_en": "Dhupkhola",
+                  "name_bn": "ঢুপখোলা"
+                },
+                {
+                  "name_en": "Murgitola",
+                  "name_bn": "মুরগিটোলা"
+                }
+              ]
+            },
+            {
+              "name_en": "Hatirjheel Thana",
+              "name_bn": "হাতিরঝিল থানা",
+              "areas": [
+                {
+                  "name_en": "Hatirjheel Area",
+                  "name_bn": "হাতিরঝিল এলাকা"
+                },
+                {
+                  "name_en": "Madhubag",
+                  "name_bn": "মধুবাগ"
+                },
+                {
+                  "name_en": "Ulon Road",
+                  "name_bn": "উলন রোড"
+                },
+                {
+                  "name_en": "Mohanogor Project Area",
+                  "name_bn": "মহানগর প্রোজেক্ট এরিয়া"
+                },
+                {
+                  "name_en": "Mirbag",
+                  "name_bn": "মিরবাগ"
+                },
+                {
+                  "name_en": "Nayatola",
+                  "name_bn": "নয়াতলা"
+                }
+              ]
+            },
+            {
+              "name_en": "Hazaribagh Thana",
+              "name_bn": "হাজারীবাগ থানা",
+              "areas": [
+                {
+                  "name_en": "Gajmahal",
+                  "name_bn": "গজমহল"
+                },
+                {
+                  "name_en": "Hazaribagh",
+                  "name_bn": "হাজারীবাগ"
+                },
+                {
+                  "name_en": "Tannery Mor",
+                  "name_bn": "ট্যানারি মোড়"
+                }
+              ]
+            },
+            {
+              "name_en": "Hemayetpur Thana",
+              "name_bn": "হেমায়েতপুর থানা",
+              "areas": [
+                {
+                  "name_en": "Hemayetpur",
+                  "name_bn": "হেমায়েতপুর"
+                },
+                {
+                  "name_en": "Polashbari",
+                  "name_bn": "পলাশবাড়ী"
+                },
+                {
+                  "name_en": "Jhawkura",
+                  "name_bn": "ঝাউকুরা"
+                },
+                {
+                  "name_en": "Bagmara",
+                  "name_bn": "বাগমারা"
+                }
+              ]
+            },
+            {
+              "name_en": "Jatrabari Thana",
+              "name_bn": "যাত্রাবাড়ী থানা",
+              "areas": [
+                {
+                  "name_en": "Matuail",
+                  "name_bn": "মাতুয়াইল"
+                },
+                {
+                  "name_en": "Jatrabari",
+                  "name_bn": "যাত্রাবাড়ী"
+                },
+                {
+                  "name_en": "Sayedabad",
+                  "name_bn": "সায়েদাবাদ"
+                }
+              ]
+            },
+            {
+              "name_en": "Kalabagan Thana",
+              "name_bn": "কলাবাগান থানা",
+              "areas": [
+                {
+                  "name_en": "Kalabagan",
+                  "name_bn": "কলাবাগান"
+                },
+                {
+                  "name_en": "Lake Circus",
+                  "name_bn": "লেক সার্কাস"
+                }
+              ]
+            },
+            {
+              "name_en": "Kafrul Thana",
+              "name_bn": "কাফরুল থানা",
+              "areas": [
+                {
+                  "name_en": "Agargaon",
+                  "name_bn": "আগারগাঁও"
+                },
+                {
+                  "name_en": "Kafrul",
+                  "name_bn": "কাফরুল"
+                }
+              ]
+            },
+            {
+              "name_en": "Kadamtali Thana",
+              "name_bn": "কদমতলী থানা",
+              "areas": [
+                {
+                  "name_en": "Jurain",
+                  "name_bn": "জুরাইন"
+                },
+                {
+                  "name_en": "Kadamtali",
+                  "name_bn": "কদমতলী"
+                },
+                {
+                  "name_en": "Shyampur",
+                  "name_bn": "শ্যামপুর"
+                }
+              ]
+            },
+            {
+              "name_en": "Kamrangirchar Thana",
+              "name_bn": "কামরাঙ্গীরচর থানা",
+              "areas": [
+                {
+                  "name_en": "Kamrangirchar",
+                  "name_bn": "কামরাঙ্গীরচর"
+                },
+                {
+                  "name_en": "Rasulpur",
+                  "name_bn": "রসুলপুর"
+                },
+                {
+                  "name_en": "Sileti Bazar",
+                  "name_bn": "সিলেটিবাজার"
+                }
+              ]
+            },
+            {
+              "name_en": "Keraniganj Model Thana",
+              "name_bn": "কেরানীগঞ্জ মডেল থানা",
+              "areas": [
+                {
+                  "name_en": "Keraniganj Model Thana",
+                  "name_bn": "কেরানীগঞ্জ মডেল থানা"
+                }
+              ]
+            },
+            {
+              "name_en": "Kadamtali Thana",
+              "name_bn": "কদমতলী থানা",
+              "areas": [
+                {
+                  "name_en": "Shonir Akhra",
+                  "name_bn": "শনির আখড়া"
+                }
+              ]
+            },
+            {
+              "name_en": "Khilgaon Thana",
+              "name_bn": "খিলগাঁও থানা",
+              "areas": [
+                {
+                  "name_en": "Basabo",
+                  "name_bn": "বাসাবো"
+                },
+                {
+                  "name_en": "Goran",
+                  "name_bn": "গোরান"
+                },
+                {
+                  "name_en": "Khilgaon",
+                  "name_bn": "খিলগাঁও"
+                },
+                {
+                  "name_en": "Sipahibag",
+                  "name_bn": "সিপাহীবাগ"
+                }
+              ]
+            },
+            {
+              "name_en": "Khilkhet Thana",
+              "name_bn": "খিলখেত থানা",
+              "areas": [
+                {
+                  "name_en": "Dakkhinkhan Part",
+                  "name_bn": "দক্ষিণখান অংশ"
+                },
+                {
+                  "name_en": "Dumni",
+                  "name_bn": "দুমনি"
+                },
+                {
+                  "name_en": "Lake City",
+                  "name_bn": "লেক সিটি"
+                }
+              ]
+            },
+            {
+              "name_en": "Lalbagh Thana",
+              "name_bn": "লালবাগ থানা",
+              "areas": [
+                {
+                  "name_en": "Azimpur",
+                  "name_bn": "আজিমপুর"
+                },
+                {
+                  "name_en": "Imperial Gate",
+                  "name_bn": "ইম্পিরিয়াল গেইট"
+                },
+                {
+                  "name_en": "Lalbagh",
+                  "name_bn": "লালবাগ"
+                },
+                {
+                  "name_en": "Killar Mor",
+                  "name_bn": "কিল্লারমোড়"
+                }
+              ]
+            },
+            {
+              "name_en": "Motijheel Thana",
+              "name_bn": "মতিঝিল থানা",
+              "areas": [
+                {
+                  "name_en": "Arambagh",
+                  "name_bn": "আরামবাগ"
+                },
+                {
+                  "name_en": "Dilkusha",
+                  "name_bn": "দিলকুশা"
+                },
+                {
+                  "name_en": "Fakirapool",
+                  "name_bn": "ফকিরেরপুল"
+                },
+                {
+                  "name_en": "Kamalapur",
+                  "name_bn": "কমলাপুর"
+                }
+              ]
+            },
+            {
+              "name_en": "Mohammadpur Thana",
+              "name_bn": "মোহাম্মদপুর থানা",
+              "areas": [
+                {
+                  "name_en": "Mohammadpur",
+                  "name_bn": "মোহাম্মদপুর"
+                },
+                {
+                  "name_en": "Ring Road",
+                  "name_bn": "রিং রোড"
+                },
+                {
+                  "name_en": "Shyamoli",
+                  "name_bn": "শ্যামলী"
+                },
+                {
+                  "name_en": "Tajmahal Road",
+                  "name_bn": "তাজমহল রোড"
+                }
+              ]
+            },
+            {
+              "name_en": "Mirpur Model Thana",
+              "name_bn": "মিরপুর মডেল থানা",
+              "areas": [
+                {
+                  "name_en": "Mirpur 1",
+                  "name_bn": "মিরপুর ১"
+                },
+                {
+                  "name_en": "Mirpur 2",
+                  "name_bn": "মিরপুর ২"
+                },
+                {
+                  "name_en": "Mirpur 3",
+                  "name_bn": "মিরপুর ৩"
+                },
+                {
+                  "name_en": "Mirpur 4",
+                  "name_bn": "মিরপুর ৪"
+                },
+                {
+                  "name_en": "Mirpur 5",
+                  "name_bn": "মিরপুর ৫"
+                },
+                {
+                  "name_en": "Mirpur 6",
+                  "name_bn": "মিরপুর ৬"
+                },
+                {
+                  "name_en": "Mirpur 7",
+                  "name_bn": "মিরপুর ৭"
+                },
+                {
+                  "name_en": "Mirpur 8",
+                  "name_bn": "মিরপুর ৮"
+                },
+                {
+                  "name_en": "Mirpur 9",
+                  "name_bn": "মিরপুর ৯"
+                },
+                {
+                  "name_en": "Mirpur 10",
+                  "name_bn": "মিরপুর ১০"
+                },
+                {
+                  "name_en": "Mirpur 11",
+                  "name_bn": "মিরপুর ১১"
+                },
+                {
+                  "name_en": "Shah Ali",
+                  "name_bn": "শাহ আলী"
+                }
+              ]
+            },
+            {
+              "name_en": "Mirpur Thana",
+              "name_bn": "মিরপুর থানা",
+              "areas": [
+                {
+                  "name_en": "Shewrapara",
+                  "name_bn": "শেওড়াপাড়া"
+                },
+                {
+                  "name_en": "Kazipara",
+                  "name_bn": "কাজীপাড়া"
+                },
+                {
+                  "name_en": "Pirerbag",
+                  "name_bn": "পীরেরবাগ"
+                },
+                {
+                  "name_en": "Taltola",
+                  "name_bn": "তালতলা"
+                },
+                {
+                  "name_en": "Ibrahimpur",
+                  "name_bn": "ইব্রাহিমপুর"
+                },
+                {
+                  "name_en": "Benaroshi Palli",
+                  "name_bn": "বেনারশী পল্লী"
+                }
+              ]
+            },
+            {
+              "name_en": "Mugda Thana",
+              "name_bn": "মুগদা থানা",
+              "areas": [
+                {
+                  "name_en": "Mugda",
+                  "name_bn": "মুগদা"
+                },
+                {
+                  "name_en": "Manda",
+                  "name_bn": "মাণ্ডা"
+                },
+                {
+                  "name_en": "Sabujbagh",
+                  "name_bn": "সবুজবাগ"
+                }
+              ]
+            },
+            {
+              "name_en": "Paltan Model Thana",
+              "name_bn": "পল্টন মডেল থানা",
+              "areas": [
+                {
+                  "name_en": "Bijoynagar",
+                  "name_bn": "বিজয়নগর"
+                },
+                {
+                  "name_en": "Nayapaltan",
+                  "name_bn": "নয়াপল্টন"
+                },
+                {
+                  "name_en": "Paltan",
+                  "name_bn": "পল্টন"
+                },
+                {
+                  "name_en": "Topkhana Road",
+                  "name_bn": "তোপখানা রোড"
+                }
+              ]
+            },
+            {
+              "name_en": "Pallabi Thana",
+              "name_bn": "পল্লবী থানা",
+              "areas": [
+                {
+                  "name_en": "Kalshi",
+                  "name_bn": "কালশী"
+                },
+                {
+                  "name_en": "Mirpur 12",
+                  "name_bn": "মিরপুর ১২"
+                },
+                {
+                  "name_en": "Pallabi",
+                  "name_bn": "পল্লবী"
+                },
+                {
+                  "name_en": "Rupnagar",
+                  "name_bn": "রূপনগর"
+                }
+              ]
+            },
+            {
+              "name_en": "Ramna Thana",
+              "name_bn": "রমনা থানা",
+              "areas": [
+                {
+                  "name_en": "Bailey Road",
+                  "name_bn": "বেইলি রোড"
+                },
+                {
+                  "name_en": "Eskaton",
+                  "name_bn": "ইস্কাটন"
+                },
+                {
+                  "name_en": "Kakrail",
+                  "name_bn": "কাকরাইল"
+                },
+                {
+                  "name_en": "Ramna",
+                  "name_bn": "রমনা"
+                },
+                {
+                  "name_en": "Sidheswari",
+                  "name_bn": "সিদ্ধেশ্বরী"
+                }
+              ]
+            },
+            {
+              "name_en": "Rampura Thana",
+              "name_bn": "রামপুরা থানা",
+              "areas": [
+                {
+                  "name_en": "Aftabnagar",
+                  "name_bn": "আফতাবনগর"
+                },
+                {
+                  "name_en": "Banashree",
+                  "name_bn": "বনশ্রী"
+                },
+                {
+                  "name_en": "Rampura",
+                  "name_bn": "রামপুরা"
+                },
+                {
+                  "name_en": "Ulon",
+                  "name_bn": "উলন"
+                }
+              ]
+            },
+            {
+              "name_en": "Rupnagar Thana",
+              "name_bn": "রূপনগর থানা",
+              "areas": [
+                {
+                  "name_en": "Duari Para",
+                  "name_bn": "দুয়ারীপাড়া"
+                },
+                {
+                  "name_en": "Rupnagar",
+                  "name_bn": "রূপনগর"
+                }
+              ]
+            },
+            {
+              "name_en": "Sabujbagh Thana",
+              "name_bn": "সবুজবাগ থানা",
+              "areas": [
+                {
+                  "name_en": "Bashabo",
+                  "name_bn": "বাসাবো"
+                },
+                {
+                  "name_en": "Sabujbagh",
+                  "name_bn": "সবুজবাগ"
+                },
+                {
+                  "name_en": "Kadamtala",
+                  "name_bn": "কদমতলা"
+                }
+              ]
+            },
+            {
+              "name_en": "South Keraniganj Thana",
+              "name_bn": "দক্ষিণ কেরানীগঞ্জ থানা",
+              "areas": [
+                {
+                  "name_en": "South Keraniganj Thana",
+                  "name_bn": "দক্ষিণ কেরানীগঞ্জ থানা"
+                }
+              ]
+            },
+            {
+              "name_en": "Savar Thana",
+              "name_bn": "সাভার থানা",
+              "areas": [
+                {
+                  "name_en": "Savar",
+                  "name_bn": "সাভার"
+                },
+                {
+                  "name_en": "Birulia",
+                  "name_bn": "বিরুলিয়া"
+                },
+                {
+                  "name_en": "Bongao",
+                  "name_bn": "বনগাঁও"
+                },
+                {
+                  "name_en": "Tentuljhara",
+                  "name_bn": "তেঁতুলঝোড়া"
+                },
+                {
+                  "name_en": "Savar Municipality",
+                  "name_bn": "সাভার পৌরসভা"
+                },
+                {
+                  "name_en": "Chandra",
+                  "name_bn": "চন্দ্রা"
+                },
+                {
+                  "name_en": "Shibpur",
+                  "name_bn": "শিবপুর"
+                },
+                {
+                  "name_en": "Hemayetpur",
+                  "name_bn": "হেমায়েতপুর"
+                },
+                {
+                  "name_en": "Fulbaria",
+                  "name_bn": "ফুলবাড়িয়া"
+                },
+                {
+                  "name_en": "Savar Bazar",
+                  "name_bn": "সাভার বাজার"
+                },
+                {
+                  "name_en": "Savar Bus Stand",
+                  "name_bn": "সাভার বাস স্ট্যান্ড"
+                },
+                {
+                  "name_en": "Savar",
+                  "name_bn": "সাভার"
+                },
+                {
+                  "name_en": "Savar Cantonment",
+                  "name_bn": "সাভার ক্যান্টনমেন্ট"
+                }
+              ]
+            },
+            {
+              "name_en": "Shah Ali Thana",
+              "name_bn": "শাহ আলী থানা",
+              "areas": [
+                {
+                  "name_en": "Mazar Road",
+                  "name_bn": "মাজার রোড"
+                },
+                {
+                  "name_en": "Mirpur 1",
+                  "name_bn": "মিরপুর ১"
+                },
+                {
+                  "name_en": "Shah Ali",
+                  "name_bn": "শাহ আলী"
+                }
+              ]
+            },
+            {
+              "name_en": "Shahbagh Thana",
+              "name_bn": "শাহবাগ থানা",
+              "areas": [
+                {
+                  "name_en": "BSMMU",
+                  "name_bn": "বঙ্গবন্ধু শেখ মুজিব মেডিকেল বিশ্ববিদ্যালয়"
+                },
+                {
+                  "name_en": "Dhaka University Area",
+                  "name_bn": "ঢাকা বিশ্ববিদ্যালয় এলাকা"
+                },
+                {
+                  "name_en": "High Court Area",
+                  "name_bn": "হাইকোর্ট এলাকা"
+                },
+                {
+                  "name_en": "Shahbagh",
+                  "name_bn": "শাহবাগ"
+                }
+              ]
+            },
+            {
+              "name_en": "Shahjahanpur Thana",
+              "name_bn": "শাহজাহানপুর থানা",
+              "areas": [
+                {
+                  "name_en": "Basabo",
+                  "name_bn": "বাসাবো"
+                },
+                {
+                  "name_en": "Khilgaon",
+                  "name_bn": "খিলগাঁও"
+                },
+                {
+                  "name_en": "Rajarbagh",
+                  "name_bn": "রাজারবাগ"
+                },
+                {
+                  "name_en": "Shantinagar",
+                  "name_bn": "শান্তিনগর"
+                },
+                {
+                  "name_en": "Shahjahanpur",
+                  "name_bn": "শাহজাহানপুর"
+                }
+              ]
+            },
+            {
+              "name_en": "Shyampur Thana",
+              "name_bn": "শ্যামপুর থানা",
+              "areas": [
+                {
+                  "name_en": "Shyampur-Kadamtoli",
+                  "name_bn": "শ্যামপুর-কদমতলী"
+                },
+                {
+                  "name_en": "Dhaka-Match",
+                  "name_bn": "ঢাকা-ম্যাচ"
+                },
+                {
+                  "name_en": "Notun-Kadamtoli",
+                  "name_bn": "নতুন-কদমতলী"
+                },
+                {
+                  "name_en": "Bagan Bari Bagicha",
+                  "name_bn": "বাগান বাড়ি বাগিচা"
+                },
+                {
+                  "name_en": "Nama Shyampur",
+                  "name_bn": "নামা শ্যামপুর"
+                },
+                {
+                  "name_en": "Ali Bohor",
+                  "name_bn": "আলি বোহার"
+                },
+                {
+                  "name_en": "Purbo Kadamtoli",
+                  "name_bn": "পূর্ব কদমতলী"
+                },
+                {
+                  "name_en": "Meraznagar",
+                  "name_bn": "মেরাজনগর"
+                }
+              ]
+            },
+            {
+              "name_en": "Sutrapur Thana",
+              "name_bn": "সূত্রাপুর থানা",
+              "areas": [
+                {
+                  "name_en": "Banglabazar",
+                  "name_bn": "বাংলাবাজার"
+                },
+                {
+                  "name_en": "Gendaria",
+                  "name_bn": "গেন্ডারিয়া"
+                },
+                {
+                  "name_en": "Lakshmibazar",
+                  "name_bn": "লক্ষ্মীবাজার"
+                },
+                {
+                  "name_en": "Sutrapur",
+                  "name_bn": "সূত্রাপুর"
+                }
+              ]
+            },
+            {
+              "name_en": "Tejgaon Thana",
+              "name_bn": "তেজগাঁও থানা",
+              "areas": [
+                {
+                  "name_en": "Farmgate",
+                  "name_bn": "ফার্মগেট"
+                },
+                {
+                  "name_en": "Kawran Bazar",
+                  "name_bn": "কারওয়ান বাজার"
+                },
+                {
+                  "name_en": "Tejkunipara",
+                  "name_bn": "তেজকুনিপাড়া"
+                },
+                {
+                  "name_en": "Tejgaon",
+                  "name_bn": "তেজগাঁও"
+                }
+              ]
+            },
+            {
+              "name_en": "Tejgaon Industrial Area Thana",
+              "name_bn": "তেজগাঁও শিল্পাঞ্চল থানা",
+              "areas": [
+                {
+                  "name_en": "Begunbari",
+                  "name_bn": "বেগুনবাড়ী"
+                },
+                {
+                  "name_en": "Kunipara",
+                  "name_bn": "কুনিপাড়া"
+                },
+                {
+                  "name_en": "Tejgaon Industrial Area",
+                  "name_bn": "তেজগাঁও শিল্পাঞ্চল"
+                }
+              ]
+            },
+            {
+              "name_en": "Tejgaon Railway Thana",
+              "name_bn": "তেজগাঁও রেলওয়ে থানা",
+              "areas": [
+                {
+                  "name_en": "Tejgaon Railway Station Area",
+                  "name_bn": "তেজগাঁও রেলওয়ে স্টেশন এলাকা"
+                }
+              ]
+            },
+            {
+              "name_en": "Turag Thana",
+              "name_bn": "তুরাগ থানা",
+              "areas": [
+                {
+                  "name_en": "Diabari",
+                  "name_bn": "দিয়াবাড়ী"
+                },
+                {
+                  "name_en": "Kamarpara",
+                  "name_bn": "কামারপাড়া"
+                },
+                {
+                  "name_en": "Turag",
+                  "name_bn": "তুরাগ"
+                }
+              ]
+            },
+            {
+              "name_en": "Uttar Khan Thana",
+              "name_bn": "উত্তরখান থানা",
+              "areas": [
+                {
+                  "name_en": "Masterbari",
+                  "name_bn": "মাস্টারবাড়ী"
+                },
+                {
+                  "name_en": "Mazar",
+                  "name_bn": "মাজার"
+                },
+                {
+                  "name_en": "Uttar Khan",
+                  "name_bn": "উত্তরখান"
+                }
+              ]
+            },
+            {
+              "name_en": "Uttara East Thana",
+              "name_bn": "উত্তরা পূর্ব থানা",
+              "areas": [
+                {
+                  "name_en": "Jashimuddin Road",
+                  "name_bn": "জসীমউদ্দীন রোড"
+                },
+                {
+                  "name_en": "Uttara Sector 1",
+                  "name_bn": "উত্তরা সেক্টর ১"
+                },
+                {
+                  "name_en": "Uttara Sector 2",
+                  "name_bn": "উত্তরা সেক্টর ২"
+                },
+                {
+                  "name_en": "Uttara Sector 3",
+                  "name_bn": "উত্তরা সেক্টর ৩"
+                },
+                {
+                  "name_en": "Uttara Sector 4",
+                  "name_bn": "উত্তরা সেক্টর ৪"
+                },
+                {
+                  "name_en": "Uttara Sector 5",
+                  "name_bn": "উত্তরা সেক্টর ৫"
+                },
+                {
+                  "name_en": "Uttara Sector 6",
+                  "name_bn": "উত্তরা সেক্টর ৬"
+                },
+                {
+                  "name_en": "Sector 8",
+                  "name_bn": "সেক্টর ৮"
+                }
+              ]
+            },
+            {
+              "name_en": "Uttara West Thana",
+              "name_bn": "উত্তরা পশ্চিম থানা",
+              "areas": [
+                {
+                  "name_en": "Sector 1",
+                  "name_bn": "সেক্টর ১"
+                },
+                {
+                  "name_en": "Sector 3",
+                  "name_bn": "সেক্টর ৩"
+                },
+                {
+                  "name_en": "Sector 5",
+                  "name_bn": "সেক্টর ৫"
+                },
+                {
+                  "name_en": "Sector 7",
+                  "name_bn": "সেক্টর ৭"
+                },
+                {
+                  "name_en": "Sector 9",
+                  "name_bn": "সেক্টর ৯"
+                },
+                {
+                  "name_en": "Sector 10",
+                  "name_bn": "সেক্টর ১০"
+                },
+                {
+                  "name_en": "Sector 11",
+                  "name_bn": "সেক্টর ১১"
+                },
+                {
+                  "name_en": "Sector 12",
+                  "name_bn": "সেক্টর ১২"
+                },
+                {
+                  "name_en": "Sector 13",
+                  "name_bn": "সেক্টর ১৩"
+                },
+                {
+                  "name_en": "Sector 14",
+                  "name_bn": "সেক্টর ১৪"
+                },
+                {
+                  "name_en": "Sector 15",
+                  "name_bn": "সেক্টর ১৫"
+                },
+                {
+                  "name_en": "Sector 16",
+                  "name_bn": "সেক্টর ১৬"
+                },
+                {
+                  "name_en": "Sector 17",
+                  "name_bn": "সেক্টর ১৭"
+                },
+                {
+                  "name_en": "Sector 18",
+                  "name_bn": "সেক্টর ১৮"
+                }
+              ]
+            },
+            {
+              "name_en": "Vatara Thana",
+              "name_bn": "ভাটারা থানা",
+              "areas": [
+                {
+                  "name_en": "Bashundhara R/A",
+                  "name_bn": "বসুন্ধরা আবাসিক এলাকা"
+                },
+                {
+                  "name_en": "Jamuna Future Park Area",
+                  "name_bn": "যমুনা ফিউচার পার্ক"
+                },
+                {
+                  "name_en": "Sayeed Nagar",
+                  "name_bn": "সাঈদ নগর"
+                },
+                {
+                  "name_en": "Solmaid",
+                  "name_bn": "সোলমাইদ"
+                },
+                {
+                  "name_en": "Nurerchala",
+                  "name_bn": "নূরেরচালা"
+                },
+                {
+                  "name_en": "Khilbarirtek",
+                  "name_bn": "খিলবাড়ীটেক"
+                },
+                {
+                  "name_en": "Kalachandpur",
+                  "name_bn": "কালাচাঁদপুর"
+                },
+                {
+                  "name_en": "Kuril",
+                  "name_bn": "কুরিল"
+                },
+                {
+                  "name_en": "Vatara",
+                  "name_bn": "ভাটারা"
+                }
+              ]
+            },
+            {
+              "name_en": "Wari Thana",
+              "name_bn": "ওয়ারী থানা",
+              "areas": [
+                {
+                  "name_en": "Farashganj",
+                  "name_bn": "ফরাশগঞ্জ"
+                },
+                {
+                  "name_en": "Hatkhola",
+                  "name_bn": "হাটখোলা"
+                },
+                {
+                  "name_en": "Narinda",
+                  "name_bn": "নারিন্দা"
+                },
+                {
+                  "name_en": "Wari",
+                  "name_bn": "ওয়ারী"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

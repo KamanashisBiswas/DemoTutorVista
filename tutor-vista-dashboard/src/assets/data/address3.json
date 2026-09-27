@@ -1,0 +1,3289 @@
+{
+  "divisions": [
+    {
+      "division": {
+        "bn_name": "ঢাকা",
+        "en_name": "Dhaka"
+      },
+      "districts": [
+        {
+          "bn_name": "ঢাকা",
+          "en_name": "Dhaka District",
+          "upazilas": [
+            {
+              "bn_name": "ধামরাই",
+              "en_name": "Dhamrai",
+              "unions": [
+                { "bn_name": "চৌহাট", "en_name": "Chowhat" },
+                { "bn_name": "আমতা", "en_name": "Amta" },
+                { "bn_name": "বালিয়া", "en_name": "Balia" },
+                { "bn_name": "যাদবপুর", "en_name": "Jadabpur" },
+                { "bn_name": "বাইশাকান্দা", "en_name": "Baishakanda" },
+                { "bn_name": "কুশুরা", "en_name": "Kushura" },
+                { "bn_name": "গাংগুটিয়া", "en_name": "Gangutia" },
+                { "bn_name": "সানোড়া", "en_name": "Sanora" },
+                { "bn_name": "সুতিপাড়া", "en_name": "Sutipara" },
+                { "bn_name": "সোমভাগ", "en_name": "Sombhag" },
+                { "bn_name": "ভারারিয়া", "en_name": "Bhararia" },
+                { "bn_name": "ধামরাই", "en_name": "Dhamrai" },
+                { "bn_name": "কুল্লা", "en_name": "Kulla" },
+                { "bn_name": "রোয়াইল", "en_name": "Rowail" },
+                { "bn_name": "নান্নার", "en_name": "Nannar" },
+                { "bn_name": "সুয়াপুর", "en_name": "Suapur" }
+              ]
+            },
+            {
+              "bn_name": "দোহার",
+              "en_name": "Dohar",
+              "unions": [
+                { "bn_name": "নয়াবাড়ী", "en_name": "Nayabari" },
+                { "bn_name": "কুসুমহাটি", "en_name": "Kusumhati" },
+                { "bn_name": "রাইপাড়া", "en_name": "Raipara" },
+                { "bn_name": "সুতারপাড়া", "en_name": "Sutarpara" },
+                { "bn_name": "নারিশা", "en_name": "Narisha" },
+                { "bn_name": "মুকসুদপুর", "en_name": "Muksudpur" },
+                { "bn_name": "মাহমুদপুর", "en_name": "Mahmudpur" },
+                { "bn_name": "বিলাসপুর", "en_name": "Bilaspur" }
+              ]
+            },
+            {
+              "bn_name": "কেরানীগঞ্জ",
+              "en_name": "Keraniganj",
+              "unions": [
+                { "bn_name": "কলাতিয়া", "en_name": "Kalatia" },
+                { "bn_name": "তারানগর", "en_name": "Taranagar" },
+                { "bn_name": "রোহিতপুর", "en_name": "Rohitpur" },
+                { "bn_name": "শাক্তা", "en_name": "Shakta" },
+                { "bn_name": "কালিন্দী", "en_name": "Kalindi" },
+                { "bn_name": "জিনজিরা", "en_name": "Jinjira" },
+                { "bn_name": "শুভাঢ্যা", "en_name": "Subhadda" },
+                { "bn_name": "তেঘরিয়া", "en_name": "Tegharia" },
+                { "bn_name": "কোন্ডা", "en_name": "Konda" },
+                { "bn_name": "হযরতপুর", "en_name": "Hazratpur" },
+                { "bn_name": "আগানগর", "en_name": "Aganagar" },
+                { "bn_name": "বাস্তা", "en_name": "Basta" }
+              ]
+            },
+            {
+              "bn_name": "নবাবগঞ্জ",
+              "en_name": "Nawabganj",
+              "unions": [
+                { "bn_name": "শিকারীপাড়া", "en_name": "Shikaripara" },
+                { "bn_name": "জয়কৃষ্ণপুর", "en_name": "Joykrishnapur" },
+                { "bn_name": "বারুয়াখালী", "en_name": "Baruakhali" },
+                { "bn_name": "নয়নশ্রী", "en_name": "Nayansree" },
+                { "bn_name": "বান্দুরা", "en_name": "Bandura" },
+                { "bn_name": "যন্ত্রাইল", "en_name": "Jantrail" },
+                { "bn_name": "শোল্লা", "en_name": "Sholla" },
+                { "bn_name": "কলাকোপা", "en_name": "Kalakopa" },
+                { "bn_name": "বক্সনগর", "en_name": "Bakshanagar" },
+                { "bn_name": "কৈলাইল", "en_name": "Kailail" },
+                { "bn_name": "আগলা", "en_name": "Agla" },
+                { "bn_name": "গালিমপুর", "en_name": "Galimpur" },
+                { "bn_name": "চূড়াইন", "en_name": "Churain" },
+                { "bn_name": "বাহ্রা", "en_name": "Bahra" }
+              ]
+            },
+            {
+              "bn_name": "সাভার",
+              "en_name": "Savar",
+              "unions": [
+                { "bn_name": "শিমুলিয়া", "en_name": "Shimulia" },
+                { "bn_name": "ধামসোনা", "en_name": "Dhamsona" },
+                { "bn_name": "পাথালিয়া", "en_name": "Pathalia" },
+                { "bn_name": "ইয়ারপুর", "en_name": "Yearpur" },
+                { "bn_name": "আশুলিয়া", "en_name": "Ashulia" },
+                { "bn_name": "বিরুলিয়া", "en_name": "Birulia" },
+                { "bn_name": "সাভার", "en_name": "Savar" },
+                { "bn_name": "তেঁতুলঝোড়া", "en_name": "Tetuljhora" },
+                { "bn_name": "বনগাঁও", "en_name": "Bongaon" },
+                { "bn_name": "আমিনবাজার", "en_name": "Aminbazar" },
+                { "bn_name": "কাউন্দিয়া", "en_name": "Kaundia" },
+                { "bn_name": "ভাকুর্তা", "en_name": "Bhakurta" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "ফরিদপুর",
+          "en_name": "Faridpur District",
+          "upazilas": [
+            {
+              "bn_name": "আলফাডাঙ্গা",
+              "en_name": "Alfadanga",
+              "unions": [
+                { "bn_name": "বুড়াইচ", "en_name": "Buraich" },
+                { "bn_name": "গোপালপুর", "en_name": "Gopalpur" },
+                { "bn_name": "আলফাডাঙ্গা", "en_name": "Alfadanga" },
+                { "bn_name": "টগরবন্দ", "en_name": "Tagarbanda" },
+                { "bn_name": "বানা", "en_name": "Bana" },
+                { "bn_name": "পাঁচুড়িয়া", "en_name": "Panchuria" }
+              ]
+            },
+            {
+              "bn_name": "ভাঙ্গা",
+              "en_name": "Bhanga",
+              "unions": [
+                { "bn_name": "ঘারুয়া", "en_name": "Gharua" },
+                { "bn_name": "চুমুরদী", "en_name": "Chumurdi" },
+                { "bn_name": "কালামৃধা", "en_name": "Kalamridha" },
+                { "bn_name": "আজিমনগর", "en_name": "Azimnagar" },
+                { "bn_name": "তুজারপুর", "en_name": "Tujarpur" },
+                { "bn_name": "হামিরদী", "en_name": "Hamirdi" },
+                { "bn_name": "নুরুল্লাগঞ্জ", "en_name": "Nurullaganj" },
+                { "bn_name": "মানিকদহ", "en_name": "Manikdah" },
+                { "bn_name": "কাউলিবেড়া", "en_name": "Kaulibera" },
+                { "bn_name": "নাছিরাবাদ", "en_name": "Nasirabad" },
+                { "bn_name": "চান্দ্রা", "en_name": "Chandra" },
+                { "bn_name": "আলগী", "en_name": "Algi" }
+              ]
+            },
+            {
+              "bn_name": "বোয়ালমারী",
+              "en_name": "Boalmari",
+              "unions": [
+                { "bn_name": "ঘোষপুর", "en_name": "Ghoshpur" },
+                { "bn_name": "সাতৈর", "en_name": "Satoir" },
+                { "bn_name": "শেখর", "en_name": "Shekhar" },
+                { "bn_name": "চতুল", "en_name": "Chatul" },
+                { "bn_name": "পরমেশ্বরদী", "en_name": "Parameswardi" },
+                { "bn_name": "রূপাপাত", "en_name": "Rupapat" },
+                { "bn_name": "ময়না", "en_name": "Moyna" },
+                { "bn_name": "বোয়ালমারী", "en_name": "Boalmari" },
+                { "bn_name": "দাদপুর", "en_name": "Dadpur" },
+                { "bn_name": "গুনবহা", "en_name": "Gunbaha" }
+              ]
+            },
+            {
+              "bn_name": "চরভদ্রাসন",
+              "en_name": "Charbhadrasan",
+              "unions": [
+                { "bn_name": "চরভদ্রাসন", "en_name": "Charbhadrasan" },
+                { "bn_name": "চরহরিরামপুর", "en_name": "Charharirampur" },
+                { "bn_name": "চরঝাউকান্দা", "en_name": "Charjhaukanda" },
+                { "bn_name": "গাজীরটেক", "en_name": "Gazirtek" }
+              ]
+            },
+            {
+              "bn_name": "ফরিদপুর সদর",
+              "en_name": "Faridpur Sadar",
+              "unions": [
+                { "bn_name": "ঈশানগোপালপুর", "en_name": "Ishangopalpur" },
+                { "bn_name": "কানাইপুর", "en_name": "Kanaipur" },
+                { "bn_name": "কৃষ্ণনগর", "en_name": "Krishnanagar" },
+                { "bn_name": "কৈজুরী", "en_name": "Kaijuri" },
+                { "bn_name": "গেরদা", "en_name": "Gerda" },
+                { "bn_name": "অম্বিকাপুর", "en_name": "Ambikapur" },
+                { "bn_name": "চাঁদপুর", "en_name": "Chandpur" },
+                { "bn_name": "ডিক্রিরচর", "en_name": "Decreerchar" },
+                { "bn_name": "মাচ্চর", "en_name": "Machchar" },
+                { "bn_name": "নর্থচ্যানেল", "en_name": "Northchannel" },
+                { "bn_name": "আলিয়াবাদ", "en_name": "Aliabad" },
+                { "bn_name": "চরমাধবদিয়া", "en_name": "Charmadhabdia" }
+              ]
+            },
+            {
+              "bn_name": "মধুখালী",
+              "en_name": "Madukhali",
+              "unions": [
+                { "bn_name": "বাগাট", "en_name": "Bagat" },
+                { "bn_name": "কামারখালী", "en_name": "Kamarkhali" },
+                { "bn_name": "আড়পাড়া", "en_name": "Arpara" },
+                { "bn_name": "ডুমাইন", "en_name": "Dumain" },
+                { "bn_name": "মেগচামী", "en_name": "Megchami" },
+                { "bn_name": "রায়পুর", "en_name": "Raipur" },
+                { "bn_name": "জাহাপুর", "en_name": "Jahapur" },
+                { "bn_name": "গাজনা", "en_name": "Gazna" },
+                { "bn_name": "কোড়কদী", "en_name": "Korokdi" },
+                { "bn_name": "নওপাড়া", "en_name": "Naopara" }
+              ]
+            },
+            {
+              "bn_name": "নগরকান্দা",
+              "en_name": "Nagarkanda",
+              "unions": [
+                { "bn_name": "চরযশোরদী", "en_name": "Charyashordi" },
+                { "bn_name": "পুরাপাড়া", "en_name": "Purapara" },
+                { "bn_name": "রামনগর", "en_name": "Ramnagar" },
+                { "bn_name": "কাইচাইল", "en_name": "Kaichail" },
+                { "bn_name": "তালমা", "en_name": "Talma" },
+                { "bn_name": "ফুলসুতি", "en_name": "Phulsuti" },
+                { "bn_name": "ডাঙ্গী", "en_name": "Dangi" },
+                {
+                  "bn_name": "কোদালিয়া শহীদনগর",
+                  "en_name": "Kodalia Shahidnagar"
+                },
+                { "bn_name": "লস্করদিয়া", "en_name": "Laskardia" }
+              ]
+            },
+            {
+              "bn_name": "সদরপুর",
+              "en_name": "Sadarpur",
+              "unions": [
+                { "bn_name": "সদরপুর", "en_name": "Sadarpur" },
+                { "bn_name": "আকটেরচর", "en_name": "Akoterchar" },
+                { "bn_name": "ভাষানচর", "en_name": "Bhasanchar" },
+                { "bn_name": "চরবিষ্ণুপুর", "en_name": "Charbishnupur" },
+                { "bn_name": "চরনাসিরপুর", "en_name": "Charnasirpur" },
+                { "bn_name": "কৃষ্ণপুর", "en_name": "Krishnapur" },
+                { "bn_name": "ঢেউখালী", "en_name": "Dheukhali" },
+                { "bn_name": "নারিকেলবাড়িয়া", "en_name": "Narikelbaria" },
+                { "bn_name": "চরমানাইর", "en_name": "Charmanair" }
+              ]
+            },
+            {
+              "bn_name": "সালথা",
+              "en_name": "Saltha",
+              "unions": [
+                { "bn_name": "ভাওয়াল", "en_name": "Bhawal" },
+                { "bn_name": "সোনাপুর", "en_name": "Sonapur" },
+                { "bn_name": "যদুনন্দী", "en_name": "Jadunandi" },
+                { "bn_name": "আটঘর", "en_name": "Atghar" },
+                { "bn_name": "গট্টি", "en_name": "Gatti" },
+                { "bn_name": "মাঝারদিয়া", "en_name": "Majhardia" },
+                { "bn_name": "রামকান্তপুর", "en_name": "Ramkantapur" },
+                { "bn_name": "বল্লভদী", "en_name": "Ballabhdi" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "গাজীপুর",
+          "en_name": "Gazipur District",
+          "upazilas": [
+            {
+              "bn_name": "গাজীপুর সদর",
+              "en_name": "Gazipur Sadar",
+              "unions": [
+                { "bn_name": "মির্জাপুর", "en_name": "Mirzapur" },
+                { "bn_name": "ভাওয়াল গড়", "en_name": "Bhawal Gar" },
+                { "bn_name": "পিরুজালী", "en_name": "Pirujali" },
+                { "bn_name": "বাড়ীয়া", "en_name": "Baria" }
+              ]
+            },
+            {
+              "bn_name": "কালীগঞ্জ",
+              "en_name": "Kaliganj",
+              "unions": [
+                { "bn_name": "তুমুলিয়া", "en_name": "Tumulia" },
+                { "bn_name": "বক্তারপুর", "en_name": "Baktarpur" },
+                { "bn_name": "জাঙ্গালিয়া", "en_name": "Jangalia" },
+                { "bn_name": "বাহাদুরসাদী", "en_name": "Bahadursadi" },
+                { "bn_name": "জামালপুর", "en_name": "Jamalpur" },
+                { "bn_name": "মোক্তারপুর", "en_name": "Moktarpur" },
+                { "bn_name": "নাগরী", "en_name": "Nagari" }
+              ]
+            },
+            {
+              "bn_name": "কাপাসিয়া",
+              "en_name": "Kapasia",
+              "unions": [
+                { "bn_name": "সিংহশ্রী", "en_name": "Sinhasree" },
+                { "bn_name": "রায়েদ", "en_name": "Rayed" },
+                { "bn_name": "টোক", "en_name": "Toke" },
+                { "bn_name": "বারিষাব", "en_name": "Barishab" },
+                { "bn_name": "কড়িহাতা", "en_name": "Karihata" },
+                { "bn_name": "ঘাঘটিয়া", "en_name": "Ghaghotia" },
+                { "bn_name": "তরগাঁও", "en_name": "Targaon" },
+                { "bn_name": "কাপাসিয়া", "en_name": "Kapasia" },
+                { "bn_name": "চাঁদপুর", "en_name": "Chandpur" },
+                { "bn_name": "দূর্গাপুর", "en_name": "Durgapur" },
+                { "bn_name": "সন্মানিয়া", "en_name": "Sanmania" }
+              ]
+            },
+            {
+              "bn_name": "শ্রীপুর",
+              "en_name": "Sreepur",
+              "unions": [
+                { "bn_name": "মাওনা", "en_name": "Mawna" },
+                { "bn_name": "গাজীপুর", "en_name": "Gazipur" },
+                { "bn_name": "তেলিহাটী", "en_name": "Telihati" },
+                { "bn_name": "কাওরাইদ", "en_name": "Kaoraid" },
+                { "bn_name": "বরমী", "en_name": "Barmi" },
+                { "bn_name": "গোসিংগা", "en_name": "Gosinga" },
+                { "bn_name": "রাজাবাড়ী", "en_name": "Rajabari" },
+                { "bn_name": "প্রহলাদপুর", "en_name": "Prohladpur" }
+              ]
+            },
+            {
+              "bn_name": "কালিয়াকৈর",
+              "en_name": "Kaliakair",
+              "unions": [
+                { "bn_name": "ফুলবাড়ীয়া", "en_name": "Fulbaria" },
+                { "bn_name": "চাপাইর", "en_name": "Chapair" },
+                { "bn_name": "বোয়ালী", "en_name": "Boali" },
+                { "bn_name": "মৌচাক", "en_name": "Mouchak" },
+                { "bn_name": "শ্রীফলতলী", "en_name": "Srifaltali" },
+                { "bn_name": "আটাবহ", "en_name": "Atabah" },
+                { "bn_name": "মধ্যপাড়া", "en_name": "Mddhyapara" },
+                { "bn_name": "সূত্রাপুর", "en_name": "Sutrapur" },
+                { "bn_name": "ঢালজোড়া", "en_name": "Dhaljora" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "গোপালগঞ্জ",
+          "en_name": "Gopalganj District",
+          "upazilas": [
+            {
+              "bn_name": "গোপালগঞ্জ সদর",
+              "en_name": "Gopalganj Sadar",
+              "unions": [
+                { "bn_name": "জালালাবাদ", "en_name": "Jalalabad" },
+                { "bn_name": "বৌলতলী", "en_name": "Baultali" },
+                { "bn_name": "শুকতাইল", "en_name": "Suktail" },
+                { "bn_name": "চন্দ্রদিঘলিয়া", "en_name": "Chandradighalia" },
+                { "bn_name": "গোপীনাথপুর", "en_name": "Gopinathpur" },
+                { "bn_name": "পাইককান্দি", "en_name": "Paikkandi" },
+                { "bn_name": "উরফি", "en_name": "Urfi" },
+                { "bn_name": "লতিফপুর", "en_name": "Latifpur" },
+                { "bn_name": "সাতপাড়", "en_name": "Satpar" },
+                { "bn_name": "সাহাপুর", "en_name": "Sahapur" },
+                { "bn_name": "হরিদাসপুর", "en_name": "Haridaspur" },
+                { "bn_name": "উলপুর", "en_name": "Ulpur" },
+                { "bn_name": "নিজড়া", "en_name": "Nijra" },
+                { "bn_name": "করপাড়া", "en_name": "Karpara" },
+                { "bn_name": "দুর্গাপুর", "en_name": "Durgapur" },
+                { "bn_name": "রঘুনাথপুর", "en_name": "Raghunathpur" },
+                { "bn_name": "মাঝিগাতী", "en_name": "Majhigati" },
+                { "bn_name": "কাজুলিয়া", "en_name": "Kajulia" },
+                { "bn_name": "গোবরা", "en_name": "Gobra" },
+                { "bn_name": "বোড়াশী", "en_name": "Borashi" },
+                { "bn_name": "বেদগ্রাম", "en_name": "Bedgram" }
+              ]
+            },
+            {
+              "bn_name": "কাশিয়ানী",
+              "en_name": "Kashiani",
+              "unions": [
+                { "bn_name": "কাশিয়ানী", "en_name": "Kashiani" },
+                { "bn_name": "হাতিয়াড়া", "en_name": "Hatiara" },
+                { "bn_name": "ফুকরা", "en_name": "Fukra" },
+                { "bn_name": "নিজামকান্দি", "en_name": "Nizamkandi" },
+                { "bn_name": "সাজাইল", "en_name": "Sajail" },
+                { "bn_name": "মাহমুদপুর", "en_name": "Mahmudpur" },
+                { "bn_name": "ওড়াকান্দি", "en_name": "Orakandi" },
+                { "bn_name": "বেথুড়ী", "en_name": "Bethuri" },
+                { "bn_name": "পুইশুর", "en_name": "Puishur" },
+                { "bn_name": "রাতইল", "en_name": "Ratoil" },
+                { "bn_name": "পারুলিয়া", "en_name": "Parulia" },
+                { "bn_name": "সিংগা", "en_name": "Singa" },
+                { "bn_name": "মহেশপুর", "en_name": "Maheshpur" },
+                { "bn_name": "রাজপাট", "en_name": "Rajpat" }
+              ]
+            },
+            {
+              "bn_name": "কোটালীপাড়া",
+              "en_name": "Kotalipara",
+              "unions": [
+                { "bn_name": "আমতলী", "en_name": "Amtali" },
+                { "bn_name": "কুশলা", "en_name": "Kushla" },
+                { "bn_name": "কান্দি", "en_name": "Kandi" },
+                { "bn_name": "সাদুল্লাপুর", "en_name": "Sadullapur" },
+                { "bn_name": "কলাবাড়ী", "en_name": "Kalabari" },
+                { "bn_name": "রাধাগঞ্জ", "en_name": "Radhaganj" },
+                { "bn_name": "হিরণ", "en_name": "Hiron" },
+                { "bn_name": "পিঞ্জুরী", "en_name": "Pinjuri" },
+                { "bn_name": "বান্ধাবাড়ী", "en_name": "Bandhabari" },
+                { "bn_name": "শুয়াগ্রাম", "en_name": "Suagram" }
+              ]
+            },
+            {
+              "bn_name": "মুকসুদপুর",
+              "en_name": "Muksudpur",
+              "unions": [
+                { "bn_name": "পশারগাতী", "en_name": "Pashargati" },
+                { "bn_name": "গোবিন্দপুর", "en_name": "Gobindapur" },
+                { "bn_name": "খান্দারপাড়", "en_name": "Khandarpar" },
+                { "bn_name": "বহুগ্রাম", "en_name": "Bahugram" },
+                { "bn_name": "বাঁশবাড়ীয়া", "en_name": "Banshbaria" },
+                { "bn_name": "ভাবড়াশুর", "en_name": "Bhabrashur" },
+                { "bn_name": "মহারাজপুর", "en_name": "Maharajpur" },
+                { "bn_name": "বাটিকামারী", "en_name": "Batikamari" },
+                { "bn_name": "দিগনগর", "en_name": "Dignagar" },
+                { "bn_name": "রাঘদী", "en_name": "Raghdi" },
+                { "bn_name": "মোচনা", "en_name": "Mochna" },
+                { "bn_name": "উজানী", "en_name": "Ujani" },
+                { "bn_name": "গোহালা", "en_name": "Gohala" },
+                { "bn_name": "ননীক্ষীর", "en_name": "Nanikshir" },
+                { "bn_name": "জলিরপাড়", "en_name": "Jalirpar" },
+                { "bn_name": "কাসালিয়া", "en_name": "Kasalia" }
+              ]
+            },
+            {
+              "bn_name": "টুঙ্গিপাড়া",
+              "en_name": "Tungipara",
+              "unions": [
+                { "bn_name": "পাটগাতী", "en_name": "Patgati" },
+                { "bn_name": "ডুমুরিয়া", "en_name": "Dumuria" },
+                { "bn_name": "গোপালপুর", "en_name": "Gopalpur" },
+                { "bn_name": "কুশলী", "en_name": "Kushli" },
+                { "bn_name": "বর্ণী", "en_name": "Borni" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "কিশোরগঞ্জ",
+          "en_name": "Kishoreganj District",
+          "upazilas": [
+            {
+              "bn_name": "অষ্টগ্রাম",
+              "en_name": "Austagram",
+              "unions": [
+                { "bn_name": "অষ্টগ্রাম সদর", "en_name": "Austagram Sadar" },
+                { "bn_name": "কাস্তুল", "en_name": "Kastul" },
+                { "bn_name": "আদমপুর", "en_name": "Adampur" },
+                { "bn_name": "বাংগালপাড়া", "en_name": "Bangalpara" },
+                { "bn_name": "দেওঘর", "en_name": "Deoghar" },
+                { "bn_name": "কলমা", "en_name": "Kalma" },
+                { "bn_name": "আব্দুল্লাপুর", "en_name": "Abdullahpur" },
+                { "bn_name": "পূর্ব অষ্টগ্রাম", "en_name": "Purba Austagram" }
+              ]
+            },
+            {
+              "bn_name": "বাজিতপুর",
+              "en_name": "Bajitpur",
+              "unions": [
+                { "bn_name": "বাজিতপুর", "en_name": "Bajitpur" },
+                { "bn_name": "হিলচিয়া", "en_name": "Hilchia" },
+                { "bn_name": "দিলালপুর", "en_name": "Dilalpur" },
+                { "bn_name": "সরারচর", "en_name": "Sararchar" },
+                { "bn_name": "পিরিজপুর", "en_name": "Pirijpur" },
+                { "bn_name": "মাইজচর", "en_name": "Maizchar" },
+                { "bn_name": "হুমাইপুর", "en_name": "Humaipur" },
+                { "bn_name": "গাজীরচর", "en_name": "Gazirchar" },
+                { "bn_name": "কৈলাগ", "en_name": "Kailag" },
+                { "bn_name": "হালিমপুর", "en_name": "Halimpur" },
+                { "bn_name": "দিঘীরপাড়", "en_name": "Dighirpar" }
+              ]
+            },
+            {
+              "bn_name": "ভৈরব",
+              "en_name": "Bhairab",
+              "unions": [
+                { "bn_name": "সাদেকপুর", "en_name": "Sadekpur" },
+                { "bn_name": "আগানগর", "en_name": "Aganagar" },
+                { "bn_name": "শিমুলকান্দি", "en_name": "Shimulkandi" },
+                { "bn_name": "গজারিয়া", "en_name": "Gazaria" },
+                { "bn_name": "কালিকাপ্রসাদ", "en_name": "Kalikaprasad" },
+                { "bn_name": "শিবপুর", "en_name": "Shibpur" },
+                { "bn_name": "শ্রীনগর", "en_name": "Sreenagar" }
+              ]
+            },
+            {
+              "bn_name": "হোসেনপুর",
+              "en_name": "Hossainpur",
+              "unions": [
+                { "bn_name": "গোবিন্দপুর", "en_name": "Gobindapur" },
+                { "bn_name": "সিদলা", "en_name": "Sidla" },
+                { "bn_name": "জিনারী", "en_name": "Jinari" },
+                { "bn_name": "আড়াইবাড়ীয়া", "en_name": "Araibaria" },
+                { "bn_name": "শাহেদল", "en_name": "Shahedal" },
+                { "bn_name": "পুমদী", "en_name": "Pumdi" }
+              ]
+            },
+            {
+              "bn_name": "ইটনা",
+              "en_name": "Itna",
+              "unions": [
+                { "bn_name": "ইটনা", "en_name": "Itna" },
+                { "bn_name": "এলংজুরী", "en_name": "Elongjuri" },
+                { "bn_name": "চৌগাংগা", "en_name": "Chauganga" },
+                { "bn_name": "বড়িবাড়ী", "en_name": "Baribari" },
+                { "bn_name": "ধনপুর", "en_name": "Dhanpur" },
+                { "bn_name": "জয়সিদ্ধি", "en_name": "Joysiddhi" },
+                { "bn_name": "মৃগা", "en_name": "Mriga" },
+                { "bn_name": "বাদলা", "en_name": "Badla" },
+                { "bn_name": "রায়টুটি", "en_name": "Raituti" }
+              ]
+            },
+            {
+              "bn_name": "করিমগঞ্জ",
+              "en_name": "Karimganj",
+              "unions": [
+                { "bn_name": "করিমগঞ্জ", "en_name": "Karimganj" },
+                { "bn_name": "কাদিরজঙ্গল", "en_name": "Kadirjangal" },
+                { "bn_name": "গুজাদিয়া", "en_name": "Gujadia" },
+                { "bn_name": "জয়কা", "en_name": "Joyka" },
+                { "bn_name": "দেহুন্দা", "en_name": "Dehunda" },
+                { "bn_name": "সুতারপাড়া", "en_name": "Sutarpara" },
+                { "bn_name": "গুণধর", "en_name": "Gunodhar" },
+                { "bn_name": "কিরাটন", "en_name": "Kiraton" },
+                { "bn_name": "বারঘড়িয়া", "en_name": "Baragharia" },
+                { "bn_name": "নিয়ামতপুর", "en_name": "Niyamatpur" },
+                { "bn_name": "জাফরাবাদ", "en_name": "Zafarabad" }
+              ]
+            },
+            {
+              "bn_name": "কটিয়াদী",
+              "en_name": "Katiadi",
+              "unions": [
+                { "bn_name": "কটিয়াদী", "en_name": "Katiadi" },
+                { "bn_name": "বনগ্রাম", "en_name": "Bangram" },
+                { "bn_name": "চান্দপুর", "en_name": "Chandpur" },
+                { "bn_name": "করগাঁও", "en_name": "Kargaon" },
+                { "bn_name": "লোহাজুরী", "en_name": "Lohajuri" },
+                { "bn_name": "মুমুরদিয়া", "en_name": "Mumurdia" },
+                { "bn_name": "সহশ্রাম ধুলদিয়া", "en_name": "Sahasram Dhuldia" },
+                { "bn_name": "আচমিতা", "en_name": "Achmita" },
+                { "bn_name": "জালালপুর", "en_name": "Jalalpur" }
+              ]
+            },
+            {
+              "bn_name": "কিশোরগঞ্জ সদর",
+              "en_name": "Kishoreganj Sadar",
+              "unions": [
+                { "bn_name": "রশিদাবাদ", "en_name": "Rashidabad" },
+                { "bn_name": "লতিবাবাদ", "en_name": "Latibabad" },
+                { "bn_name": "মাইজখাপন", "en_name": "Maizkhapan" },
+                { "bn_name": "মহিনন্দ", "en_name": "Mahinanda" },
+                { "bn_name": "যশোদল", "en_name": "Joshodal" },
+                { "bn_name": "বৌলাই", "en_name": "Boulai" },
+                { "bn_name": "বিন্নাটি", "en_name": "Binnati" },
+                { "bn_name": "মারিয়া", "en_name": "Maria" },
+                { "bn_name": "চৌদ্দশত", "en_name": "Chauddashata" },
+                { "bn_name": "কর্শাকড়িয়াইল", "en_name": "Korshakoriail" },
+                { "bn_name": "দানাপাটুলী", "en_name": "Danapatuli" }
+              ]
+            },
+            {
+              "bn_name": "কুলিয়ারচর",
+              "en_name": "Kuliarchar",
+              "unions": [
+                { "bn_name": "উছমানপুর", "en_name": "Usmanpur" },
+                { "bn_name": "ছয়সূতী", "en_name": "Chhoysuti" },
+                { "bn_name": "সালুয়া", "en_name": "Salua" },
+                {
+                  "bn_name": "গোবরিয়া আব্দুল্লাহপুর",
+                  "en_name": "Gobaria Abdullahpur"
+                },
+                { "bn_name": "রামদী", "en_name": "Ramdi" },
+                { "bn_name": "ফরিদপুর", "en_name": "Faridpur" }
+              ]
+            },
+            {
+              "bn_name": "মিঠামইন",
+              "en_name": "Mithamain",
+              "unions": [
+                { "bn_name": "মিঠামইন", "en_name": "Mithamain" },
+                { "bn_name": "ঘাগড়া", "en_name": "Ghagra" },
+                { "bn_name": "ঢাকী", "en_name": "Dhaki" },
+                { "bn_name": "গোপদীঘি", "en_name": "Gopdighi" },
+                { "bn_name": "কেওয়ারজোড়", "en_name": "Kewarjore" },
+                { "bn_name": "কাটখাল", "en_name": "Katkhal" },
+                { "bn_name": "বৈরাটি", "en_name": "Bairati" }
+              ]
+            },
+            {
+              "bn_name": "নিকলী",
+              "en_name": "Nikli",
+              "unions": [
+                { "bn_name": "নিকলী", "en_name": "Nikli" },
+                { "bn_name": "দামপাড়া", "en_name": "Dampara" },
+                { "bn_name": "কারপাশা", "en_name": "Karpasha" },
+                { "bn_name": "সিংপুর", "en_name": "Singpur" },
+                { "bn_name": "জারইতলা", "en_name": "Jaroitola" },
+                { "bn_name": "গুরুই", "en_name": "Gurui" },
+                { "bn_name": "ছাতিরচর", "en_name": "Chhatirchar" }
+              ]
+            },
+            {
+              "bn_name": "পাকুন্দিয়া",
+              "en_name": "Pakundia",
+              "unions": [
+                { "bn_name": "জাঙ্গালিয়া", "en_name": "Jangalia" },
+                { "bn_name": "চন্ডিপাশা", "en_name": "Chandipasha" },
+                { "bn_name": "নারান্দী", "en_name": "Narandi" },
+                { "bn_name": "বুরুদিয়া", "en_name": "Burudia" },
+                { "bn_name": "পাটুয়াভাঙ্গা", "en_name": "Patuabhanga" },
+                { "bn_name": "হোসেন্দী", "en_name": "Hosendi" },
+                { "bn_name": "এগারসিন্দুর", "en_name": "Egarosindur" },
+                { "bn_name": "সুখিয়া", "en_name": "Sukhia" },
+                { "bn_name": "চরফরাদী", "en_name": "Charfaradi" }
+              ]
+            },
+            {
+              "bn_name": "তাড়াইল",
+              "en_name": "Tarail",
+              "unions": [
+                { "bn_name": "তাড়াইল-সাচাইল", "en_name": "Tarail-Sachail" },
+                { "bn_name": "তালজাঙ্গা", "en_name": "Taljanga" },
+                { "bn_name": "রাউতি", "en_name": "Rauti" },
+                { "bn_name": "ধলা", "en_name": "Dhala" },
+                { "bn_name": "জাওয়ার", "en_name": "Jawar" },
+                { "bn_name": "দামিহা", "en_name": "Damiha" },
+                { "bn_name": "দিগদাইড়", "en_name": "Digdair" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "মাদারীপুর",
+          "en_name": "Madaripur District",
+          "upazilas": [
+            {
+              "bn_name": "কালকিনি",
+              "en_name": "Kalkini",
+              "unions": [
+                { "bn_name": "শিকারমঙ্গল", "en_name": "Shikarmangal" },
+                { "bn_name": "বাঁশগাড়ী", "en_name": "Banshgari" },
+                { "bn_name": "আলিনগর", "en_name": "Alinagar" },
+                { "bn_name": "নবগ্রাম", "en_name": "Nabagram" },
+                { "bn_name": "সাহেবরামপুর", "en_name": "Sahebrampur" },
+                { "bn_name": "কয়ারিয়া", "en_name": "Koyaria" },
+                { "bn_name": "বালিগ্রাম", "en_name": "Baligram" },
+                { "bn_name": "ডাসার", "en_name": "Dasar" },
+                { "bn_name": "গোপালপুর", "en_name": "Gopalpur" },
+                { "bn_name": "এনায়েতনগর", "en_name": "Enayetnagar" },
+                { "bn_name": "সিডিখান", "en_name": "CD-Khan" },
+                { "bn_name": "রমজানপুর", "en_name": "Ramjanpur" },
+                { "bn_name": "লক্ষীপুর", "en_name": "Laxmipur" }
+              ]
+            },
+            {
+              "bn_name": "মাদারীপুর সদর",
+              "en_name": "Madaripur Sadar",
+              "unions": [
+                { "bn_name": "বাহাদুরপুর", "en_name": "Bahadurpur" },
+                { "bn_name": "ছিলারচর", "en_name": "Chilar-char" },
+                { "bn_name": "দুধখালী", "en_name": "Dudkhali" },
+                { "bn_name": "ঘটমাঝি", "en_name": "Ghatmajhi" },
+                { "bn_name": "ঝাউদী", "en_name": "Jhaudi" },
+                { "bn_name": "কালিকাপুর", "en_name": "Kalikapur" },
+                { "bn_name": "কেন্দুয়া", "en_name": "Kendua" },
+                { "bn_name": "খোয়াজপুর", "en_name": "Khoajpur" },
+                { "bn_name": "কুনিয়া", "en_name": "Kunia" },
+                { "bn_name": "মস্তফাপুর", "en_name": "Mostafapur" },
+                { "bn_name": "পাঁচখোলা", "en_name": "Panchkhola" },
+                { "bn_name": "পেয়ারপুর", "en_name": "Pearpur" },
+                { "bn_name": "রাস্তি", "en_name": "Rasti" },
+                { "bn_name": "শিরখাড়া", "en_name": "Sirkhar" },
+                { "bn_name": "ধুরাইল", "en_name": "Dhurail" }
+              ]
+            },
+            {
+              "bn_name": "রাজৈর",
+              "en_name": "Rajoir",
+              "unions": [
+                { "bn_name": "পাইকপাড়া", "en_name": "Paikpara" },
+                { "bn_name": "আমগ্রাম", "en_name": "Amgram" },
+                { "bn_name": "বদরপাশা", "en_name": "Badarpasha" },
+                { "bn_name": "কদমবাড়ী", "en_name": "Kadambari" },
+                { "bn_name": "কবিরাজপুর", "en_name": "Kabirajpur" },
+                { "bn_name": "হোসেনপুর", "en_name": "Hossainpur" },
+                { "bn_name": "ইশিবপুর", "en_name": "Ishibpur" },
+                { "bn_name": "বাজিতপুর", "en_name": "Bajitpur" },
+                { "bn_name": "টেকেরহাট", "en_name": "Tekerhat" },
+                { "bn_name": "খালিয়া", "en_name": "Khalia" }
+              ]
+            },
+            {
+              "bn_name": "শিবচর",
+              "en_name": "Shibchar",
+              "unions": [
+                { "bn_name": "শিবচর", "en_name": "Shibchar" },
+                { "bn_name": "দ্বিতীয়খন্ড", "en_name": "Dwitiyakhanda" },
+                { "bn_name": "কাদিরপুর", "en_name": "Kadirpur" },
+                { "bn_name": "পাঁচ্চর", "en_name": "Panchar" },
+                { "bn_name": "মাদবরেরচর", "en_name": "Madbarerchar" },
+                { "bn_name": "বন্দরখোলা", "en_name": "Bandarkhola" },
+                { "bn_name": "কাঁঠালবাড়ী", "en_name": "Kathalbari" },
+                { "bn_name": "সন্ন্যাসীরচর", "en_name": "Sannyasirchar" },
+                { "bn_name": "বাঁশকান্দি", "en_name": "Banshkandi" },
+                { "bn_name": "বহেরাতলা উত্তর", "en_name": "Baheratala North" },
+                { "bn_name": "বহেরাতলা দক্ষিণ", "en_name": "Baheratala South" },
+                { "bn_name": "উমেদপুর", "en_name": "Umedpur" },
+                { "bn_name": "ভান্ডারীকান্দি", "en_name": "Bhandarikandi" },
+                { "bn_name": "দত্তপাড়া", "en_name": "Dattapara" },
+                { "bn_name": "শিরুয়াইল", "en_name": "Shiruail" },
+                { "bn_name": "নিলখী", "en_name": "Nilakhi" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "মানিকগঞ্জ",
+          "en_name": "Manikganj District",
+          "upazilas": [
+            {
+              "bn_name": "দৌলতপুর",
+              "en_name": "Daulatpur",
+              "unions": [
+                { "bn_name": "বাচামারা", "en_name": "Bachamara" },
+                { "bn_name": "বাঘুটিয়া", "en_name": "Baghutia" },
+                { "bn_name": "চরকাটারী", "en_name": "Charkatari" },
+                { "bn_name": "কলিয়া", "en_name": "Kalia" },
+                { "bn_name": "খলশী", "en_name": "Khalshi" },
+                { "bn_name": "চকমিরপুর", "en_name": "Chakmirpur" },
+                { "bn_name": "ধামশ্বর", "en_name": "Dhamswar" },
+                { "bn_name": "জিয়নপুর", "en_name": "Jionpur" }
+              ]
+            },
+            {
+              "bn_name": "ঘিওর",
+              "en_name": "Ghior",
+              "unions": [
+                { "bn_name": "বানিয়াজুরী", "en_name": "Baniajuri" },
+                { "bn_name": "ঘিওর", "en_name": "Ghior" },
+                { "bn_name": "পয়লা", "en_name": "Poyla" },
+                { "bn_name": "নালী", "en_name": "Nali" },
+                { "bn_name": "বালিয়াখোড়া", "en_name": "Baliakhora" },
+                { "bn_name": "বড়টিয়া", "en_name": "Baratia" },
+                { "bn_name": "সিংজুরী", "en_name": "Singjuri" }
+              ]
+            },
+            {
+              "bn_name": "হরিরামপুর",
+              "en_name": "Harirampur",
+              "unions": [
+                { "bn_name": "চালা", "en_name": "Chala" },
+                { "bn_name": "রামকৃষ্ণপুর", "en_name": "Ramkrishnapur" },
+                { "bn_name": "হারুকান্দি", "en_name": "Harukandi" },
+                { "bn_name": "বয়রা", "en_name": "Boyra" },
+                { "bn_name": "বলড়া", "en_name": "Balara" },
+                { "bn_name": "গোপীনাথপুর", "en_name": "Gopinathpur" },
+                { "bn_name": "ধূলশুড়া", "en_name": "Dhulshura" },
+                { "bn_name": "গালা", "en_name": "Gala" },
+                { "bn_name": "কাঞ্চনপুর", "en_name": "Kanchanpur" },
+                { "bn_name": "লেছড়াগঞ্জ", "en_name": "Lechraganj" },
+                { "bn_name": "বাল্লা", "en_name": "Balla" },
+                { "bn_name": "আটিগ্রাম", "en_name": "Atigram" },
+                { "bn_name": "সুতালড়ী", "en_name": "Sutalori" }
+              ]
+            },
+            {
+              "bn_name": "মানিকগঞ্জ সদর",
+              "en_name": "Manikganj Sadar",
+              "unions": [
+                { "bn_name": "বেতিলা-মিতরা", "en_name": "Betila-Mitra" },
+                { "bn_name": "হাটিপাড়া", "en_name": "Hatipara" },
+                { "bn_name": "ভাড়ারিয়া", "en_name": "Bhararia" },
+                { "bn_name": "নবগ্রাম", "en_name": "Nabagram" },
+                { "bn_name": "কৃষ্ণপুর", "en_name": "Krishnapur" },
+                { "bn_name": "পুটাইল", "en_name": "Putail" },
+                { "bn_name": "দিঘী", "en_name": "Dighi" },
+                { "bn_name": "গড়পাড়া", "en_name": "Garpara" },
+                { "bn_name": "আটিগ্রাম", "en_name": "Atigram" },
+                { "bn_name": "জাগীর", "en_name": "Jagir" }
+              ]
+            },
+            {
+              "bn_name": "সাটুরিয়া",
+              "en_name": "Saturia",
+              "unions": [
+                { "bn_name": "বরাইদ", "en_name": "Baraid" },
+                { "bn_name": "দিঘুলিয়া", "en_name": "Dighulia" },
+                { "bn_name": "দরগ্রাম", "en_name": "Dargram" },
+                { "bn_name": "সাটুরিয়া", "en_name": "Saturia" },
+                { "bn_name": "হরগজ", "en_name": "Hargaj" },
+                { "bn_name": "ফুকুরহাটি", "en_name": "Fukurhati" },
+                { "bn_name": "ধানকোড়া", "en_name": "Dhankora" },
+                { "bn_name": "তিল্লী", "en_name": "Tilli" },
+                { "bn_name": "বালিয়াটি", "en_name": "Baliati" }
+              ]
+            },
+            {
+              "bn_name": "শিবালয়",
+              "en_name": "Shibaloy",
+              "unions": [
+                { "bn_name": "শিবালয়", "en_name": "Shibaloy" },
+                { "bn_name": "তেওতা", "en_name": "Teota" },
+                { "bn_name": "উথলী", "en_name": "Uthali" },
+                { "bn_name": "শিমুলিয়া", "en_name": "Shimulia" },
+                { "bn_name": "মহাদেবপুর", "en_name": "Mahadebpur" },
+                { "bn_name": "আরুয়া", "en_name": "Arua" },
+                { "bn_name": "উলাইল", "en_name": "Ulail" }
+              ]
+            },
+            {
+              "bn_name": "সিঙ্গাইর",
+              "en_name": "Singair",
+              "unions": [
+                { "bn_name": "বায়রা", "en_name": "Bayra" },
+                { "bn_name": "চান্দহর", "en_name": "Chandahar" },
+                { "bn_name": "চারিগ্রাম", "en_name": "Charigram" },
+                { "bn_name": "ধল্লা", "en_name": "Dhalla" },
+                { "bn_name": "জামশা", "en_name": "Jamsha" },
+                { "bn_name": "জয়মন্টপ", "en_name": "Joymontop" },
+                { "bn_name": "সায়েস্তা", "en_name": "Shayesta" },
+                { "bn_name": "সিঙ্গাইর", "en_name": "Singair" },
+                { "bn_name": "তালেবপুর", "en_name": "Talebpur" },
+                { "bn_name": "বলধারা", "en_name": "Baldhara" },
+                { "bn_name": "জার্মিত্তা", "en_name": "Jarmitta" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "মুন্সিগঞ্জ",
+          "en_name": "Munshiganj District",
+          "upazilas": [
+            {
+              "bn_name": "গজারিয়া",
+              "en_name": "Gazaria",
+              "unions": [
+                { "bn_name": "গজারিয়া", "en_name": "Gazaria" },
+                { "bn_name": "টেঙ্গারচর", "en_name": "Tengarchar" },
+                { "bn_name": "ভবেরচর", "en_name": "Bhaberchar" },
+                { "bn_name": "বালুয়াকান্দি", "en_name": "Baluakandi" },
+                { "bn_name": "ইমামপুর", "en_name": "Imampur" },
+                { "bn_name": "হোসেন্দী", "en_name": "Hosendi" },
+                { "bn_name": "গুয়াগাছিয়া", "en_name": "Guagachhia" },
+                { "bn_name": "বাউশিয়া", "en_name": "Baushia" }
+              ]
+            },
+            {
+              "bn_name": "লৌহজং",
+              "en_name": "Louhajong",
+              "unions": [
+                { "bn_name": "লৌহজং-তেউটিয়া", "en_name": "Louhajong-Teotia" },
+                { "bn_name": "বেজগাঁও", "en_name": "Bejgaon" },
+                { "bn_name": "বৌলতলী", "en_name": "Baultali" },
+                { "bn_name": "গাঁওদিয়া", "en_name": "Gaodia" },
+                { "bn_name": "হলদিয়া", "en_name": "Haldia" },
+                { "bn_name": "কনকসার", "en_name": "Kanaksar" },
+                { "bn_name": "কুমারভোগ", "en_name": "Kumarbhog" },
+                { "bn_name": "খিদিরপাড়া", "en_name": "Khidirpara" },
+                { "bn_name": "মেদিনীমন্ডল", "en_name": "Medinimandal" },
+                { "bn_name": "কলমা", "en_name": "Kalma" }
+              ]
+            },
+            {
+              "bn_name": "মুন্সিগঞ্জ সদর",
+              "en_name": "Munshiganj Sadar",
+              "unions": [
+                { "bn_name": "বাংলাবাজার", "en_name": "Banglabazar" },
+                { "bn_name": "বজ্রযোগিনী", "en_name": "Bajrayogini" },
+                { "bn_name": "চরকেওয়ার", "en_name": "Charkewar" },
+                { "bn_name": "মহাকালী", "en_name": "Mahakali" },
+                { "bn_name": "মোল্লাকান্দি", "en_name": "Mollakandi" },
+                { "bn_name": "পঞ্চসার", "en_name": "Panchasar" },
+                { "bn_name": "রামপাল", "en_name": "Rampal" },
+                { "bn_name": "আধারা", "en_name": "Adhara" },
+                { "bn_name": "শিলই", "en_name": "Shilai" }
+              ]
+            },
+            {
+              "bn_name": "সিরাজদিখান",
+              "en_name": "Sirajdikhan",
+              "unions": [
+                { "bn_name": "বাসাইল", "en_name": "Basail" },
+                { "bn_name": "চিত্রকোট", "en_name": "Chitrakot" },
+                { "bn_name": "ইছাপুরা", "en_name": "Ichhapura" },
+                { "bn_name": "জৈনসার", "en_name": "Jainsar" },
+                { "bn_name": "কোলা", "en_name": "Kola" },
+                { "bn_name": "লতব্দী", "en_name": "Latabdi" },
+                { "bn_name": "মধ্যপাড়া", "en_name": "Madhyapara" },
+                { "bn_name": "মালখানগর", "en_name": "Malkhanagar" },
+                { "bn_name": "রশুনিয়া", "en_name": "Rasunia" },
+                { "bn_name": "শেখরনগর", "en_name": "Shekharnagar" },
+                { "bn_name": "বালুচর", "en_name": "Baluchar" },
+                { "bn_name": "বয়রাগাদী", "en_name": "Boyragadi" },
+                { "bn_name": "রাজানগর", "en_name": "Rajanagar" },
+                { "bn_name": "কেয়াইন", "en_name": "Keyain" }
+              ]
+            },
+            {
+              "bn_name": "শ্রীনগর",
+              "en_name": "Sreenagar",
+              "unions": [
+                { "bn_name": "শ্রীনগর", "en_name": "Sreenagar" },
+                { "bn_name": "ভাগ্যকুল", "en_name": "Bhagyakul" },
+                { "bn_name": "বাড়িখাল", "en_name": "Barikhal" },
+                { "bn_name": "বীরতারা", "en_name": "Birtara" },
+                { "bn_name": "হাঁসাড়া", "en_name": "Hansara" },
+                { "bn_name": "কুকুটিয়া", "en_name": "Kukutia" },
+                { "bn_name": "রাঢ়িখাল", "en_name": "Rarhikhal" },
+                { "bn_name": "শ্যামসিদ্ধি", "en_name": "Shyamsiddhi" },
+                { "bn_name": "ষোলঘর", "en_name": "Shologhar" },
+                { "bn_name": "তন্তর", "en_name": "Tantor" },
+                { "bn_name": "পাটাভোগ", "en_name": "Patabhog" },
+                { "bn_name": "কোলাপাড়া", "en_name": "Kolapara" },
+                { "bn_name": "বাঘড়া", "en_name": "Baghra" },
+                { "bn_name": "আড়িয়াল", "en_name": "Arial" }
+              ]
+            },
+            {
+              "bn_name": "টংগিবাড়ী",
+              "en_name": "Tongibari",
+              "unions": [
+                { "bn_name": "আব্দুল্লাপুর", "en_name": "Abdullahpur" },
+                { "bn_name": "আড়িয়ল", "en_name": "Arial" },
+                { "bn_name": "ধীপুর", "en_name": "Dhipur" },
+                { "bn_name": "বালিগাঁও", "en_name": "Baligaon" },
+                { "bn_name": "বেতকা", "en_name": "Betka" },
+                { "bn_name": "দিঘীরপাড়", "en_name": "Dighirpar" },
+                { "bn_name": "হাসাইল-বানারী", "en_name": "Hashail-Banari" },
+                { "bn_name": "কামারখাড়া", "en_name": "Kamarkhara" },
+                { "bn_name": "যশলং", "en_name": "Jashalong" },
+                {
+                  "bn_name": "সোনারং-টংগিবাড়ী",
+                  "en_name": "Sonarang-Tongibari"
+                },
+                { "bn_name": "আউটশাহী", "en_name": "Autshahi" },
+                {
+                  "bn_name": "কাঠাদিয়া-শিমুলিয়া",
+                  "en_name": "Kathadia-Shimulia"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "নারায়ণগঞ্জ",
+          "en_name": "Narayanganj District",
+          "upazilas": [
+            {
+              "bn_name": "আড়াইহাজার",
+              "en_name": "Araihazar",
+              "unions": [
+                { "bn_name": "সাতগ্রাম", "en_name": "Satgram" },
+                { "bn_name": "দুপ্তারা", "en_name": "Duptara" },
+                { "bn_name": "ব্রাহ্মন্দী", "en_name": "Brahmandi" },
+                { "bn_name": "ফতেপুর", "en_name": "Fatehpur" },
+                { "bn_name": "বিশনন্দী", "en_name": "Bishnandi" },
+                { "bn_name": "মাহমুদপুর", "en_name": "Mahmudpur" },
+                { "bn_name": "উড়িয়া", "en_name": "Uria" },
+                { "bn_name": "কালাপাহাড়িয়া", "en_name": "Kalapaharia" },
+                { "bn_name": "খাগকান্দা", "en_name": "Khagkanda" },
+                { "bn_name": "হাইজাদী", "en_name": "Haijadi" }
+              ]
+            },
+            {
+              "bn_name": "বন্দর",
+              "en_name": "Bandar",
+              "unions": [
+                { "bn_name": "বন্দর", "en_name": "Bandar" },
+                { "bn_name": "কলাগাছিয়া", "en_name": "Kalagachhia" },
+                { "bn_name": "মুছাপুর", "en_name": "Musapur" },
+                { "bn_name": "ধামগড়", "en_name": "Dhamgar" },
+                { "bn_name": "মদনপুর", "en_name": "Madanpur" }
+              ]
+            },
+            {
+              "bn_name": "নারায়ণগঞ্জ সদর",
+              "en_name": "Narayanganj Sadar",
+              "unions": [
+                { "bn_name": "আলীরটেক", "en_name": "Alirtek" },
+                { "bn_name": "বক্তাবলী", "en_name": "Boktaboli" },
+                { "bn_name": "এনায়েতনগর", "en_name": "Enayetnagar" },
+                { "bn_name": "গোগনগর", "en_name": "Gognagar" },
+                { "bn_name": "কাশীপুর", "en_name": "Kashipur" },
+                { "bn_name": "কুতুবপুর", "en_name": "Kutubpur" }
+              ]
+            },
+            {
+              "bn_name": "রূপগঞ্জ",
+              "en_name": "Rupganj",
+              "unions": [
+                { "bn_name": "রূপগঞ্জ", "en_name": "Rupganj" },
+                { "bn_name": "ভোলাব", "en_name": "Bholab" },
+                { "bn_name": "মুড়াপাড়া", "en_name": "Murapara" },
+                { "bn_name": "দাউদপুর", "en_name": "Daudpur" },
+                { "bn_name": "কায়েতপাড়া", "en_name": "Kayetpara" },
+                { "bn_name": "ভুলতা", "en_name": "Bhulta" },
+                { "bn_name": "গোলাকান্দাইল", "en_name": "Golakandail" }
+              ]
+            },
+            {
+              "bn_name": "সোনারগাঁও",
+              "en_name": "Sonargaon",
+              "unions": [
+                { "bn_name": "সনমান্দী", "en_name": "Sanmandi" },
+                { "bn_name": "সাদিপুর", "en_name": "Sadipur" },
+                { "bn_name": "জামপুর", "en_name": "Jampur" },
+                { "bn_name": "পিরোজপুর", "en_name": "Pirojpur" },
+                { "bn_name": "শম্ভুপুরা", "en_name": "Shambhupura" },
+                { "bn_name": "মোগরাপাড়া", "en_name": "Mograpara" },
+                { "bn_name": "বৈদ্যেরবাজার", "en_name": "Baidyerbazar" },
+                { "bn_name": "বারদী", "en_name": "Bardi" },
+                { "bn_name": "নোয়াগাঁও", "en_name": "Noagaon" },
+                { "bn_name": "কাঁচপুর", "en_name": "Kanchpur" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "নরসিংদী",
+          "en_name": "Narsingdi District",
+          "upazilas": [
+            {
+              "bn_name": "বেলাব",
+              "en_name": "Belabo",
+              "unions": [
+                { "bn_name": "বেলাব", "en_name": "Belabo" },
+                { "bn_name": "আমলাব", "en_name": "Amlab" },
+                { "bn_name": "চরউজিলাব", "en_name": "Charuzilab" },
+                { "bn_name": "বাজনাব", "en_name": "Bajnaba" },
+                { "bn_name": "বিন্নাবাইদ", "en_name": "Binnabaid" },
+                { "bn_name": "নারায়ণপুর", "en_name": "Narayanpur" },
+                { "bn_name": "পাটুলী", "en_name": "Patuli" },
+                { "bn_name": "সল্লাবাদ", "en_name": "Sallabad" }
+              ]
+            },
+            {
+              "bn_name": "মনোহরদী",
+              "en_name": "Monohardi",
+              "unions": [
+                { "bn_name": "চালাকচর", "en_name": "Chalakchar" },
+                { "bn_name": "বড়চাপা", "en_name": "Barachapa" },
+                { "bn_name": "চন্দনবাড়ী", "en_name": "Chandanbari" },
+                { "bn_name": "দৌলতপুর", "en_name": "Daulatpur" },
+                { "bn_name": "একদুয়ারিা", "en_name": "Ekduaria" },
+                { "bn_name": "গোতাশিয়া", "en_name": "Gotashia" },
+                { "bn_name": "হররদিয়া", "en_name": "Horordia" },
+                { "bn_name": "কৃষ্ণপুর", "en_name": "Krishnapur" },
+                { "bn_name": "কাচিকাটা", "en_name": "Kachikata" },
+                { "bn_name": "লেবুতলা", "en_name": "Lebutala" },
+                { "bn_name": "শুকুন্দী", "en_name": "Shukundi" },
+                { "bn_name": "চরমান্দালিয়া", "en_name": "Charman-dalia" }
+              ]
+            },
+            {
+              "bn_name": "নরসিংদী সদর",
+              "en_name": "Narsingdi Sadar",
+              "unions": [
+                { "bn_name": "আলোকবালী", "en_name": "Alokbali" },
+                { "bn_name": "আমদিয়া", "en_name": "Amdia" },
+                { "bn_name": "চিনিশপুর", "en_name": "Chinishpur" },
+                { "bn_name": "হাজীপুর", "en_name": "Hajipur" },
+                { "bn_name": "করিমপুর", "en_name": "Karimpur" },
+                { "bn_name": "কাঠালিয়া", "en_name": "Kathalia" },
+                { "bn_name": "মেহেরপাড়া", "en_name": "Meherpara" },
+                { "bn_name": "নজরপুর", "en_name": "Nazarpur" },
+                { "bn_name": "পাঁচদোনা", "en_name": "Panchdona" },
+                { "bn_name": "পাইকারচর", "en_name": "Paikarchar" },
+                { "bn_name": "শীলমান্দী", "en_name": "Shilmandi" },
+                { "bn_name": "চরদিঘলদী", "en_name": "Chardighaldi" },
+                { "bn_name": "মহিষাশুড়া", "en_name": "Mahishashura" }
+              ]
+            },
+            {
+              "bn_name": "পলাশ",
+              "en_name": "Palash",
+              "unions": [
+                { "bn_name": "চরসিন্দুর", "en_name": "Charsindur" },
+                { "bn_name": "ডাঙ্গা", "en_name": "Danga" },
+                { "bn_name": "গজারিয়া", "en_name": "Gazaria" },
+                { "bn_name": "জিনারদী", "en_name": "Jinardi" }
+              ]
+            },
+            {
+              "bn_name": "রায়পুরা",
+              "en_name": "Raipura",
+              "unions": [
+                { "bn_name": "আদিয়াবাদ", "en_name": "Adiabad" },
+                { "bn_name": "অলিপুরা", "en_name": "Alipura" },
+                { "bn_name": "আমিরগঞ্জ", "en_name": "Amirganj" },
+                { "bn_name": "বাঁশগাড়ী", "en_name": "Banshgari" },
+                { "bn_name": "চান্দেরকান্দি", "en_name": "Chanderkandi" },
+                { "bn_name": "চর আড়ালিয়া", "en_name": "Chararalia" },
+                { "bn_name": "চর মধুুয়া", "en_name": "Charmadhua" },
+                { "bn_name": "চরসুবুদ্ধি", "en_name": "Charsubuddhi" },
+                { "bn_name": "চানপুর", "en_name": "Chanpur" },
+                { "bn_name": "দৌলতকান্দি", "en_name": "Daulatkandi" },
+                { "bn_name": "হাইরমারা", "en_name": "Hairmara" },
+                { "bn_name": "মরজাল", "en_name": "Morjal" },
+                { "bn_name": "মহেশপুর", "en_name": "Maheshpur" },
+                { "bn_name": "মির্জানগর", "en_name": "Mirzanagar" },
+                { "bn_name": "মির্জাপুর", "en_name": "Mirzapur" },
+                { "bn_name": "মুছাপুর", "en_name": "Musapur" },
+                { "bn_name": "নিলক্ষা", "en_name": "Nilakhya" },
+                { "bn_name": "পাহারচাঁনপুর", "en_name": "Paharchanpur" },
+                { "bn_name": "পলাশতলী", "en_name": "Palash-tali" },
+                { "bn_name": "রায়পুরা", "en_name": "Raipura" },
+                { "bn_name": "শ্রীরামপুর", "en_name": "Sreerampur" },
+                { "bn_name": "উত্তর বাখরনগর", "en_name": "Uttar Bakharnagar" },
+                { "bn_name": "রাধানগর", "en_name": "Radhanagar" },
+                { "bn_name": "পাড়াতলী", "en_name": "Paratali" }
+              ]
+            },
+            {
+              "bn_name": "শিবপুর",
+              "en_name": "Shibpur",
+              "unions": [
+                { "bn_name": "শিবপুর", "en_name": "Shibpur" },
+                { "bn_name": "পুটিয়া", "en_name": "Putia" },
+                { "bn_name": "সাধারচর", "en_name": "Sadhar-char" },
+                { "bn_name": "মাছিমপুর", "en_name": "Machimpur" },
+                { "bn_name": "জয়নগর", "en_name": "Joynagar" },
+                { "bn_name": "বাঘাব", "en_name": "Baghaba" },
+                { "bn_name": "যোশর", "en_name": "Joshor" },
+                { "bn_name": "দুলালপুর", "en_name": "Dulalpur" },
+                { "bn_name": "চক্রধা", "en_name": "Chakradha" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "রাজবাড়ী",
+          "en_name": "Rajbari District",
+          "upazilas": [
+            {
+              "bn_name": "বালিয়াকান্দি",
+              "en_name": "Baliakandi",
+              "unions": [
+                { "bn_name": "বহরপুর", "en_name": "Baharpur" },
+                { "bn_name": "জামালপুর", "en_name": "Jamalpur" },
+                { "bn_name": "ইসলামপুর", "en_name": "Islampur" },
+                { "bn_name": "জঙ্গল", "en_name": "Jangal" },
+                { "bn_name": "নবাবপুর", "en_name": "Nababpur" },
+                { "bn_name": "নারুয়া", "en_name": "Narua" },
+                { "bn_name": "বালিয়াকান্দি", "en_name": "Baliakandi" }
+              ]
+            },
+            {
+              "bn_name": "গোয়ালন্দ",
+              "en_name": "Goalanda",
+              "unions": [
+                { "bn_name": "ছোটভাকলা", "en_name": "Chotobhakla" },
+                { "bn_name": "দৌলতদিয়া", "en_name": "Daulatdia" },
+                { "bn_name": "দেবগ্রাম", "en_name": "Debgram" },
+                { "bn_name": "উজানচর", "en_name": "Ujanchar" }
+              ]
+            },
+            {
+              "bn_name": "পাংশা",
+              "en_name": "Pangsha",
+              "unions": [
+                { "bn_name": "বাহাদুরপুর", "en_name": "Bahadurpur" },
+                { "bn_name": "হাবাসপুর", "en_name": "Habaspur" },
+                { "bn_name": "যশাই", "en_name": "Jashai" },
+                { "bn_name": "কলিমহর", "en_name": "Kalimahar" },
+                { "bn_name": "কসবামাজাইল", "en_name": "Kasbamajail" },
+                { "bn_name": "মাছপাড়া", "en_name": "Machhpara" },
+                { "bn_name": "মৌরাট", "en_name": "Maurat" },
+                { "bn_name": "পাট্টা", "en_name": "Patta" },
+                { "bn_name": "সরিষা", "en_name": "Sarisha" },
+                { "bn_name": "বাবুপাড়া", "en_name": "Babupara" }
+              ]
+            },
+            {
+              "bn_name": "রাজবাড়ী সদর",
+              "en_name": "Rajbari Sadar",
+              "unions": [
+                { "bn_name": "মিজানপুর", "en_name": "Mizanpur" },
+                { "bn_name": "খানগঞ্জ", "en_name": "Khanganj" },
+                { "bn_name": "পাঁচুরিয়া", "en_name": "Panchuria" },
+                { "bn_name": "শহীদওহাবপুর", "en_name": "Shahidwahabpur" },
+                { "bn_name": "সুলতানপুর", "en_name": "Sultanpur" },
+                { "bn_name": "রামকান্তপুর", "en_name": "Ramkantapur" },
+                { "bn_name": "বসন্তপুর", "en_name": "Basantapur" },
+                { "bn_name": "দাদশী", "en_name": "Dadshi" },
+                { "bn_name": "বরাট", "en_name": "Barat" },
+                { "bn_name": "মূলঘর", "en_name": "Mulghar" },
+                { "bn_name": "বানীবহ", "en_name": "Banibaha" },
+                { "bn_name": "খানখানাপুর", "en_name": "Khankhanapur" },
+                { "bn_name": "চন্দনী", "en_name": "Chandani" },
+                { "bn_name": "আলীপুর", "en_name": "Alipur" }
+              ]
+            },
+            {
+              "bn_name": "কালুখালী",
+              "en_name": "Kalukhali",
+              "unions": [
+                { "bn_name": "রতনদিয়া", "en_name": "Ratandia" },
+                { "bn_name": "কালিকাপুর", "en_name": "Kalikapur" },
+                { "bn_name": "মাঝবাড়ী", "en_name": "Majhbari" },
+                { "bn_name": "মদাপুর", "en_name": "Madapur" },
+                { "bn_name": "বোয়ালিয়া", "en_name": "Boalia" },
+                { "bn_name": "মৃগী", "en_name": "Mrigi" },
+                { "bn_name": "সাওরাইল", "en_name": "Sao-rail" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "শরীয়তপুর",
+          "en_name": "Shariatpur District",
+          "upazilas": [
+            {
+              "bn_name": "ভেদরগঞ্জ",
+              "en_name": "Bhedarganj",
+              "unions": [
+                { "bn_name": "ছয়গাঁও", "en_name": "Chhaygaon" },
+                { "bn_name": "সখিপুর", "en_name": "Sakhipur" },
+                { "bn_name": "রামভদ্রপুর", "en_name": "Rambhadrapur" },
+                { "bn_name": "মহিষার", "en_name": "Mahishar" },
+                { "bn_name": "ডিএমখালি", "en_name": "DM-Khali" },
+                { "bn_name": "চরভাগা", "en_name": "Charbhaga" },
+                { "bn_name": "চরসেনসাস", "en_name": "Charsensus" },
+                { "bn_name": "তারাবুনিয়া", "en_name": "Tarabunia" },
+                { "bn_name": "উত্তর তারাবুনিয়া", "en_name": "Uttar Tarabunia" },
+                { "bn_name": "কঁচিকাটা", "en_name": "Kanchikata" },
+                { "bn_name": "আরশিনগর", "en_name": "Arshinagar" },
+                { "bn_name": "নারায়নপুর", "en_name": "Narayanpur" },
+                {
+                  "bn_name": "দক্ষিন তারাবুনিয়া",
+                  "en_name": "Dakhin Tarabunia"
+                }
+              ]
+            },
+            {
+              "bn_name": "ডামুড্যা",
+              "en_name": "Damudya",
+              "unions": [
+                { "bn_name": "সিড্যা", "en_name": "Sidya" },
+                { "bn_name": "দারুল আমান", "en_name": "Darul Aman" },
+                { "bn_name": "ধানকাঠি", "en_name": "Dhankathi" },
+                { "bn_name": "ইসলামপুর", "en_name": "Islampur" },
+                { "bn_name": "কনেশ্বর", "en_name": "Kaneshwar" },
+                { "bn_name": "পূর্ব ডামুড্যা", "en_name": "Purba Damudya" },
+                { "bn_name": "শিধলকুড়া", "en_name": "Shidhal-kura" }
+              ]
+            },
+            {
+              "bn_name": "গোসাইরহাট",
+              "en_name": "Gosairhat",
+              "unions": [
+                { "bn_name": "গোসাইরহাট", "en_name": "Gosairhat" },
+                { "bn_name": "নাগেরপাড়া", "en_name": "Nagerpara" },
+                { "bn_name": "সামন্তসার", "en_name": "Samantasar" },
+                { "bn_name": "আলাওলপুর", "en_name": "Alaolpur" },
+                { "bn_name": "নলমুড়ি", "en_name": "Nalmuri" },
+                { "bn_name": "কোদালপুর", "en_name": "Kodalpur" },
+                { "bn_name": "ইদিলপুর", "en_name": "Idilpur" },
+                { "bn_name": "কুচাইপট্টি", "en_name": "Kuchaipatti" }
+              ]
+            },
+            {
+              "bn_name": "নড়িয়া",
+              "en_name": "Naria",
+              "unions": [
+                { "bn_name": "ভোজেশ্বর", "en_name": "Bhojeshwar" },
+                { "bn_name": "রাজনগর", "en_name": "Rajnagar" },
+                { "bn_name": "নশাসন", "en_name": "Nashasan" },
+                { "bn_name": "মোক্তারেরচর", "en_name": "Moktarerchar" },
+                { "bn_name": "চামটা", "en_name": "Chamta" },
+                { "bn_name": "ভূমখাড়া", "en_name": "Bhumkhara" },
+                { "bn_name": "জপসা", "en_name": "Japsa" },
+                { "bn_name": "ফতেজঙ্গপুর", "en_name": "Fatehjangpur" },
+                { "bn_name": "ডিঙ্গামানিক", "en_name": "Dingamanik" },
+                { "bn_name": "ঘড়িসার", "en_name": "Gharishar" },
+                { "bn_name": "নওপাড়া", "en_name": "Naopara" },
+                { "bn_name": "কেদারপুর", "en_name": "Kedarpur" },
+                { "bn_name": "চরআত্রা", "en_name": "Charatra" },
+                { "bn_name": "বিঝারী", "en_name": "Bijhari" }
+              ]
+            },
+            {
+              "bn_name": "শরীয়তপুর সদর",
+              "en_name": "Shariatpur Sadar",
+              "unions": [
+                { "bn_name": "পালং", "en_name": "Palong" },
+                { "bn_name": "তুলাসার", "en_name": "Tulasar" },
+                { "bn_name": "রুদ্রকর", "en_name": "Rudrakar" },
+                { "bn_name": "আংগারিয়া", "en_name": "Angaria" },
+                { "bn_name": "চিতলিয়া", "en_name": "Chitalia" },
+                { "bn_name": "মাহমুদপুর", "en_name": "Mahmudpur" },
+                { "bn_name": "বিনোদপুর", "en_name": "Binodpur" },
+                { "bn_name": "চন্দ্রপুর", "en_name": "Chandrapur" },
+                { "bn_name": "ডোমসুর", "en_name": "Domsur" },
+                { "bn_name": "শৌলপাড়া", "en_name": "Shaulpara" }
+              ]
+            },
+            {
+              "bn_name": "জাজিরা",
+              "en_name": "Zajira",
+              "unions": [
+                { "bn_name": "জাজিরা", "en_name": "Jazira" },
+                { "bn_name": "মূলনা", "en_name": "Mulna" },
+                { "bn_name": "বড়কান্দি", "en_name": "Barakandi" },
+                { "bn_name": "বিলাসপুর", "en_name": "Bilaspur" },
+                { "bn_name": "কুন্ডেরচর", "en_name": "Kunderchar" },
+                { "bn_name": "পালেরচর", "en_name": "Palerchar" },
+                { "bn_name": "পূর্ব নাওডোবা", "en_name": "Purba Naodoba" },
+                { "bn_name": "বড়গোপালপুর", "en_name": "Baragopalpur" },
+                { "bn_name": "সেনেরচর", "en_name": "Senerchar" },
+                { "bn_name": "জয়নগর", "en_name": "Joynagar" },
+                { "bn_name": "নাওডোবা", "en_name": "Naodoba" },
+                { "bn_name": "বিকেনগর", "en_name": "Bikenagar" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "টাঙ্গাইল",
+          "en_name": "Tangail District",
+          "upazilas": [
+            {
+              "bn_name": "বাসাইল",
+              "en_name": "Basail",
+              "unions": [
+                { "bn_name": "বাসাইল", "en_name": "Basail" },
+                { "bn_name": "ফুলকী", "en_name": "Fulki" },
+                { "bn_name": "হাবলা", "en_name": "Habla" },
+                { "bn_name": "কাঞ্চনপুর", "en_name": "Kanchanpur" },
+                { "bn_name": "কাউলজানী", "en_name": "Kauljani" },
+                { "bn_name": "কাশিল", "en_name": "Kashil" }
+              ]
+            },
+            {
+              "bn_name": "ভূঞাপুর",
+              "en_name": "Bhuapur",
+              "unions": [
+                { "bn_name": "ভূঞাপুর", "en_name": "Bhuapur" },
+                { "bn_name": "অর্জুনা", "en_name": "Arjuna" },
+                { "bn_name": "অলোয়া", "en_name": "Aloa" },
+                { "bn_name": "গাবসারা", "en_name": "Gabsara" },
+                { "bn_name": "গোবিন্দাসী", "en_name": "Gobindasi" },
+                { "bn_name": "নিকরাইল", "en_name": "Nikrail" }
+              ]
+            },
+            {
+              "bn_name": "দেলদুয়ার",
+              "en_name": "Delduar",
+              "unions": [
+                { "bn_name": "দেলদুয়ার", "en_name": "Delduar" },
+                { "bn_name": "আটিয়া", "en_name": "Atia" },
+                { "bn_name": "ডুবাইল", "en_name": "Dubail" },
+                { "bn_name": "দেউলী", "en_name": "Deuli" },
+                { "bn_name": "এলাসিন", "en_name": "Elasin" },
+                { "bn_name": "ফাজিলহাটী", "en_name": "Fazilhati" },
+                { "bn_name": "লাউহাটী", "en_name": "Lauhati" },
+                { "bn_name": "পাথরাইল", "en_name": "Pathrail" }
+              ]
+            },
+            {
+              "bn_name": "ঘাটাইল",
+              "en_name": "Ghatail",
+              "unions": [
+                { "bn_name": "ঘাটাইল", "en_name": "Ghatail" },
+                { "bn_name": "দেউলাবাড়ী", "en_name": "Deulabari" },
+                { "bn_name": "দেওপাড়া", "en_name": "Deopara" },
+                { "bn_name": "দিগলকান্দি", "en_name": "Dighalkandi" },
+                { "bn_name": "দিগড়", "en_name": "Digar" },
+                { "bn_name": "আনেহলা", "en_name": "Anehola" },
+                { "bn_name": "জামুরিয়া", "en_name": "Jamuria" },
+                { "bn_name": "লোকেরপাড়া", "en_name": "Lokerpara" },
+                { "bn_name": "রসুলপুর", "en_name": "Rasulpur" },
+                { "bn_name": "সন্ধানপুর", "en_name": "Sandhanpur" },
+                { "bn_name": "সংগ্রামপুর", "en_name": "Sangrampur" }
+              ]
+            },
+            {
+              "bn_name": "গোপালপুর",
+              "en_name": "Gopalpur",
+              "unions": [
+                { "bn_name": "আলমনগর", "en_name": "Almanagar" },
+                { "bn_name": "ধোপাকান্দি", "en_name": "Dhopakandi" },
+                { "bn_name": "হাদিরা", "en_name": "Hadira" },
+                { "bn_name": "হেমনগর", "en_name": "Hemnagar" },
+                { "bn_name": "ঝাওয়াইল", "en_name": "Jhawail" },
+                { "bn_name": "মির্জাপুর", "en_name": "Mirzapur" },
+                { "bn_name": "নগদাশিমলা", "en_name": "Nagdashimla" }
+              ]
+            },
+            {
+              "bn_name": "কালিহাতী",
+              "en_name": "Kalihati",
+              "unions": [
+                { "bn_name": "বাংড়া", "en_name": "Bangra" },
+                { "bn_name": "বীরবাসিন্দা", "en_name": "Birbasinda" },
+                { "bn_name": "দশকিয়া", "en_name": "Dashakia" },
+                { "bn_name": "দুর্গাপুর", "en_name": "Durgapur" },
+                { "bn_name": "গোহালিয়াবাড়ী", "en_name": "Gohaliabari" },
+                { "bn_name": "কোকডহড়া", "en_name": "Kokdahara" },
+                { "bn_name": "নাগবাড়ী", "en_name": "Nagbari" },
+                { "bn_name": "নারান্দিয়া", "en_name": "Narandia" },
+                { "bn_name": "পাইকড়া", "en_name": "Paikara" },
+                { "bn_name": "পারখী", "en_name": "Parkhi" },
+                { "bn_name": "সল্লা", "en_name": "Salla" },
+                { "bn_name": "সহদেবপুর", "en_name": "Sahadebpur" }
+              ]
+            },
+            {
+              "bn_name": "মির্জাপুর",
+              "en_name": "Mirzapur",
+              "unions": [
+                { "bn_name": "মির্জাপুর", "en_name": "Mirzapur" },
+                { "bn_name": "মহেড়া", "en_name": "Mahera" },
+                { "bn_name": "ফতেপুর", "en_name": "Fatehpur" },
+                { "bn_name": "জামুর্কী", "en_name": "Jamurki" },
+                { "bn_name": "বানাইল", "en_name": "Banail" },
+                { "bn_name": "আনাইতারা", "en_name": "Anaitara" },
+                { "bn_name": "ভাওড়া", "en_name": "Bhaora" },
+                { "bn_name": "বহুরিয়া", "en_name": "Bahuria" },
+                { "bn_name": "গোড়াই", "en_name": "Gorai" },
+                { "bn_name": "লতিফপুর", "en_name": "Latifpur" },
+                { "bn_name": "তরফপুর", "en_name": "Tarafpur" },
+                { "bn_name": "আজগানা", "en_name": "Azgana" },
+                { "bn_name": "বাঁশতৈল", "en_name": "Banshtail" },
+                { "bn_name": "ওয়ার্শী", "en_name": "Warshi" }
+              ]
+            },
+            {
+              "bn_name": "মধুপুর",
+              "en_name": "Madhupur",
+              "unions": [
+                { "bn_name": "আলোকদিয়া", "en_name": "Alokdia" },
+                { "bn_name": "আউশনারা", "en_name": "Aushnara" },
+                { "bn_name": "আরণখোলা", "en_name": "Arankhola" },
+                { "bn_name": "গোলাবাড়ী", "en_name": "Golabari" },
+                { "bn_name": "কুড়ালিয়া", "en_name": "Kuralia" },
+                { "bn_name": "মহিষমারা", "en_name": "Mahishmara" },
+                { "bn_name": "শোলাকুড়ী", "en_name": "Sholakuri" }
+              ]
+            },
+            {
+              "bn_name": "নাগরপুর",
+              "en_name": "Nagarpur",
+              "unions": [
+                { "bn_name": "নাগরপুর", "en_name": "Nagarpur" },
+                { "bn_name": "ভারড়া", "en_name": "Bharra" },
+                { "bn_name": "সহবতপুর", "en_name": "Sahabatpur" },
+                { "bn_name": "গয়হাটা", "en_name": "Gayhata" },
+                { "bn_name": "বেকড়াআটগ্রাম", "en_name": "Bekraatgram" },
+                { "bn_name": "সলিমাবাদ", "en_name": "Salimabad" },
+                { "bn_name": "মোকনা", "en_name": "Mokna" },
+                { "bn_name": "পাকুটিয়া", "en_name": "Pakutia" },
+                { "bn_name": "দপ্তিয়র", "en_name": "Daptiyar" },
+                { "bn_name": "ধুবড়িয়া", "en_name": "Dhubria" },
+                { "bn_name": "মামুদনগর", "en_name": "Mamudnagar" },
+                { "bn_name": "ভাদ্রা", "en_name": "Bhadra" }
+              ]
+            },
+            {
+              "bn_name": "সখিপুর",
+              "en_name": "Sakhipur",
+              "unions": [
+                { "bn_name": "বহুরিয়া", "en_name": "Bahuria" },
+                { "bn_name": "বহেড়াতৈল", "en_name": "Baheratoil" },
+                { "bn_name": "দ্বারিয়াপুর", "en_name": "Dariapur" },
+                { "bn_name": "গজারিয়া", "en_name": "Gazaria" },
+                { "bn_name": "হাতীবান্ধা", "en_name": "Hatibandha" },
+                { "bn_name": "কাকড়াজান", "en_name": "Kakrajan" },
+                { "bn_name": "কালিয়া", "en_name": "Kalia" },
+                { "bn_name": "যাদবপুর", "en_name": "Jadabpur" }
+              ]
+            },
+            {
+              "bn_name": "টাঙ্গাইল সদর",
+              "en_name": "Tangail Sadar",
+              "unions": [
+                { "bn_name": "করটিয়া", "en_name": "Karatia" },
+                { "bn_name": "ঘারিন্দা", "en_name": "Gharinda" },
+                { "bn_name": "গালা", "en_name": "Gala" },
+                { "bn_name": "পোড়াবাড়ী", "en_name": "Porabari" },
+                { "bn_name": "সিলিমপুর", "en_name": "Silimpur" },
+                { "bn_name": "কাকুয়া", "en_name": "Kakua" },
+                { "bn_name": "কাতুলী", "en_name": "Katuli" },
+                { "bn_name": "মগড়া", "en_name": "Magra" },
+                { "bn_name": "মাহামুদনগর", "en_name": "Mahmudnagar" },
+                { "bn_name": "হুগড়া", "en_name": "Hugra" },
+                { "bn_name": "দাইন্যা", "en_name": "Dainya" },
+                { "bn_name": "বাঘিল", "en_name": "Baghil" }
+              ]
+            },
+            {
+              "bn_name": "ধনবাড়ী",
+              "en_name": "Dhanbari",
+              "unions": [
+                { "bn_name": "বানিয়াজান", "en_name": "Baniajan" },
+                { "bn_name": "ধোপাখালী", "en_name": "Dhopakhali" },
+                { "bn_name": "মুশুদ্দি", "en_name": "Mushuddi" },
+                { "bn_name": "পাইস্কা", "en_name": "Paiska" },
+                { "bn_name": "বীরতারা", "en_name": "Birtara" },
+                { "bn_name": "যদুনাথপুর", "en_name": "Jadunathpur" },
+                { "bn_name": "বালিয়া", "en_name": "Balia" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "division": {
+        "bn_name": "চট্টগ্রাম",
+        "en_name": "Chattogram"
+      },
+      "districts": [
+        {
+          "bn_name": "বান্দরবান",
+          "en_name": "Bandarban District",
+          "upazilas": [
+            {
+              "bn_name": "আলীকদম",
+              "en_name": "Alikadam",
+              "unions": [
+                { "bn_name": "আলীকদম", "en_name": "Alikadam" },
+                { "bn_name": "চৈক্ষ্যং", "en_name": "Chaikshyong" },
+                { "bn_name": "নয়াপাড়া", "en_name": "Nayapara" },
+                { "bn_name": "কুরুকপাতা", "en_name": "Kurukpata" }
+              ]
+            },
+            {
+              "bn_name": "বান্দরবান সদর",
+              "en_name": "Bandarban Sadar",
+              "unions": [
+                { "bn_name": "বান্দরবান সদর", "en_name": "Bandarban Sadar" },
+                { "bn_name": "রাজবিলা", "en_name": "Rajbila" },
+                { "bn_name": "সুয়ালক", "en_name": "Suwalok" },
+                { "bn_name": "কুহালং", "en_name": "Kuhalong" },
+                { "bn_name": "টংকাবতী", "en_name": "Tankabati" }
+              ]
+            },
+            {
+              "bn_name": "লামা",
+              "en_name": "Lama",
+              "unions": [
+                { "bn_name": "লামা", "en_name": "Lama" },
+                { "bn_name": "আজিজনগর", "en_name": "Aziznagar" },
+                { "bn_name": "ফাঁসিয়াখালী", "en_name": "Fasiakhali" },
+                { "bn_name": "গজালিয়া", "en_name": "Gazalia" },
+                { "bn_name": "রূপসীপাড়া", "en_name": "Rupsipara" },
+                { "bn_name": "সরই", "en_name": "Sarai" }
+              ]
+            },
+            {
+              "bn_name": "নাইক্ষ্যংছড়ি",
+              "en_name": "Naikhongchhari",
+              "unions": [
+                { "bn_name": "নাইক্ষ্যংছড়ি", "en_name": "Naikhongchhari" },
+                { "bn_name": "ঘুমধুম", "en_name": "Ghumdhum" },
+                { "bn_name": "বাইশারী", "en_name": "Baishari" },
+                { "bn_name": "দোছড়ি", "en_name": "Dochhari" },
+                { "bn_name": "সোনাইছড়ি", "en_name": "Sonachhari" }
+              ]
+            },
+            {
+              "bn_name": "রোয়াংছড়ি",
+              "en_name": "Rowangchhari",
+              "unions": [
+                { "bn_name": "রোয়াংছড়ি", "en_name": "Rowangchhari" },
+                { "bn_name": "আলেক্ষ্যং", "en_name": "Alekhyang" },
+                { "bn_name": "তারাছা", "en_name": "Tarachha" },
+                { "bn_name": "নোয়াপতং", "en_name": "Noapatang" }
+              ]
+            },
+            {
+              "bn_name": "রুমা",
+              "en_name": "Ruma",
+              "unions": [
+                { "bn_name": "রুমা", "en_name": "Ruma" },
+                { "bn_name": "পাইন্দু", "en_name": "Paindu" },
+                { "bn_name": "গ্যালেংগ্যা", "en_name": "Galenggya" },
+                { "bn_name": "রেমাক্রীপ্রাংসা", "en_name": "Remakriprangsa" }
+              ]
+            },
+            {
+              "bn_name": "থানচি",
+              "en_name": "Thanchi",
+              "unions": [
+                { "bn_name": "থানচি", "en_name": "Thanchi" },
+                { "bn_name": "বলিপাড়া", "en_name": "Balipara" },
+                { "bn_name": "তিন্দু", "en_name": "Tindu" },
+                { "bn_name": "রেমাক্রী", "en_name": "Remakri" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "ব্রাহ্মণবাড়িয়া",
+          "en_name": "Brahmanbaria District",
+          "upazilas": [
+            {
+              "bn_name": "আখাউড়া",
+              "en_name": "Akhaura",
+              "unions": [
+                { "bn_name": "আখাউড়া (উত্তর)", "en_name": "Akhaura (North)" },
+                { "bn_name": "আখাউড়া (দক্ষিণ)", "en_name": "Akhaura (South)" },
+                { "bn_name": "মনিয়ন্দ", "en_name": "Monionda" },
+                { "bn_name": "মোগড়া", "en_name": "Mogra" },
+                { "bn_name": "ধরখার", "en_name": "Dharkhar" }
+              ]
+            },
+            {
+              "bn_name": "আশুগঞ্জ",
+              "en_name": "Ashuganj",
+              "unions": [
+                { "bn_name": "আশুগঞ্জ সদর", "en_name": "Ashuganj Sadar" },
+                { "bn_name": "চর চারতলা", "en_name": "Char Chartala" },
+                { "bn_name": "দুর্গাপুর", "en_name": "Durgapur" },
+                { "bn_name": "তালশহর (পশ্চিম)", "en_name": "Talshahar (West)" },
+                { "bn_name": "আড়াইসিধা", "en_name": "Araishidha" },
+                { "bn_name": "শরীফপুর", "en_name": "Sharifpur" },
+                { "bn_name": "লালপুর", "en_name": "Lalpur" },
+                { "bn_name": "তারুয়া", "en_name": "Tarua" }
+              ]
+            },
+            {
+              "bn_name": "বাঞ্ছারামপুর",
+              "en_name": "Bancharampur",
+              "unions": [
+                { "bn_name": "তেজখালী", "en_name": "Tejkhali" },
+                { "bn_name": "পাহাড়ীয়াকান্দি", "en_name": "Pahariakandi" },
+                { "bn_name": "দরিকান্দি", "en_name": "Darika_ndi" },
+                { "bn_name": "সোনারামপুর", "en_name": "Sonarampur" },
+                { "bn_name": "দরিয়াদৌলত", "en_name": "Dariadaulat" },
+                {
+                  "bn_name": "ছয়ফুল্লাকান্দি (পশ্চিম)",
+                  "en_name": "Saifullakandi (West)"
+                },
+                {
+                  "bn_name": "ছয়ফুল্লাকান্দি (পূর্ব)",
+                  "en_name": "Saifullakandi (East)"
+                },
+                { "bn_name": "ফরদাবাদ", "en_name": "Fardabad" },
+                { "bn_name": "রূপসদী", "en_name": "Rupsadi" },
+                { "bn_name": "আইয়ুবপুর", "en_name": "Ayubpur" },
+                { "bn_name": "বাঞ্ছারামপুর", "en_name": "Bancharampur" },
+                { "bn_name": "উজানচর (পূর্ব)", "en_name": "Ujanchar (East)" },
+                { "bn_name": "ছলিমাবাদ", "en_name": "Salimabad" }
+              ]
+            },
+            {
+              "bn_name": "বিজয়নগর",
+              "en_name": "Bijoynagar",
+              "unions": [
+                { "bn_name": "বুধন্তি", "en_name": "Budhanti" },
+                { "bn_name": "চান্দুরা", "en_name": "Chandura" },
+                {
+                  "bn_name": "ইছাপুরা (উত্তর)",
+                  "en_name": "Ichhapura (North)"
+                },
+                {
+                  "bn_name": "ইছাপুরা (দক্ষিণ)",
+                  "en_name": "Ichhapura (South)"
+                },
+                { "bn_name": "চম্পকনগর", "en_name": "Champaknagar" },
+                { "bn_name": "হরষপুর", "en_name": "Harashpur" },
+                { "bn_name": "পত্তন", "en_name": "Pattan" },
+                { "bn_name": "সিংগারবিল", "en_name": "Singarbil" },
+                { "bn_name": "বিষ্ণুপুর", "en_name": "Bishnupur" },
+                { "bn_name": "পাহাড়পুর", "en_name": "Paharpur" }
+              ]
+            },
+            {
+              "bn_name": "ব্রাহ্মণবাড়িয়া সদর",
+              "en_name": "Brahmanbaria Sadar",
+              "unions": [
+                { "bn_name": "মজলিশপুর", "en_name": "Majlishpur" },
+                { "bn_name": "বুধল", "en_name": "Budhal" },
+                { "bn_name": "সুহিলপুর", "en_name": "Suhilpur" },
+                { "bn_name": "তালশহর (পূর্ব)", "en_name": "Talshahar (East)" },
+                { "bn_name": "নাটাই (উত্তর)", "en_name": "Natai (North)" },
+                { "bn_name": "নাটাই (দক্ষিণ)", "en_name": "Natai (South)" },
+                { "bn_name": "রামরাইল", "en_name": "Ramrail" },
+                { "bn_name": "সুলতানপুর", "en_name": "Sultanpur" },
+                { "bn_name": "বাসুদেব", "en_name": "Basudeb" },
+                { "bn_name": "মাছিহাতা", "en_name": "Machihata" },
+                { "bn_name": "সাদেকপুর", "en_name": "Sadekpur" }
+              ]
+            },
+            {
+              "bn_name": "কসবা",
+              "en_name": "Kasba",
+              "unions": [
+                { "bn_name": "মূলগ্রাম", "en_name": "Mulgram" },
+                { "bn_name": "মেহারী", "en_name": "Mehari" },
+                { "bn_name": "বাদৈর", "en_name": "Badair" },
+                { "bn_name": "খাড়েরা", "en_name": "Kharera" },
+                { "bn_name": "বিনাউটি", "en_name": "Binauti" },
+                { "bn_name": "গোপীনাথপুর", "en_name": "Gopinathpur" },
+                { "bn_name": "কসবা (পশ্চিম)", "en_name": "Kasba (West)" },
+                { "bn_name": "কুটি", "en_name": "Kuti" },
+                { "bn_name": "কায়েমপুর", "en_name": "Kayempur" },
+                { "bn_name": "বয়েক", "en_name": "Bayek" }
+              ]
+            },
+            {
+              "bn_name": "নবীনগর",
+              "en_name": "Nabinagar",
+              "unions": [
+                { "bn_name": "বড়াই্ল", "en_name": "Barail" },
+                { "bn_name": "বীরগাঁও", "en_name": "Birgaon" },
+                { "bn_name": "কৃষ্ণনগর", "en_name": "Krishnanagar" },
+                { "bn_name": "নাটঘর", "en_name": "Natghar" },
+                { "bn_name": "বিদ্যাকুট", "en_name": "Bidyakut" },
+                { "bn_name": "নবীনগর (পূর্ব)", "en_name": "Nabinagar (East)" },
+                { "bn_name": "নবীনগর (পশ্চিম)", "en_name": "Nabinagar (West)" },
+                { "bn_name": "কাইতলা (উত্তর)", "en_name": "Kaitola (North)" },
+                { "bn_name": "কাইতলা (দক্ষিণ)", "en_name": "Kaitola (South)" },
+                { "bn_name": "বিটঘর", "en_name": "Bitghar" },
+                { "bn_name": "শিবপুর", "en_name": "Shibpur" },
+                { "bn_name": "শ্রীরামপুর", "en_name": "Sreerampur" },
+                { "bn_name": "রসুল্লাবাদ", "en_name": "Rasullabad" },
+                { "bn_name": "লাউরফতেপুর", "en_name": "Laurfatehpur" },
+                { "bn_name": "জিনোদপুর", "en_name": "Jinodpur" },
+                { "bn_name": "ইব্রাহিমপুর", "en_name": "Ibrahimpur" },
+                { "bn_name": "সাতমোড়া", "en_name": "Satmora" },
+                { "bn_name": "শ্যামগ্রাম", "en_name": "Shyamgram" },
+                { "bn_name": "রতনপুর", "en_name": "Ratanpur" },
+                { "bn_name": "বড়িকান্দি", "en_name": "Barikandi" },
+                { "bn_name": "ছলিমগঞ্জ", "en_name": "Salimganj" }
+              ]
+            },
+            {
+              "bn_name": "নাসিরনগর",
+              "en_name": "Nasirnagar",
+              "unions": [
+                { "bn_name": "চাতলপাড়", "en_name": "Chatalpar" },
+                { "bn_name": "ভলাকুট", "en_name": "Bhalakut" },
+                { "bn_name": "কুন্ডা", "en_name": "Kunda" },
+                { "bn_name": "গোয়ালনগর", "en_name": "Goalnagar" },
+                { "bn_name": "নাসিরনগর", "en_name": "Nasirnagar" },
+                { "bn_name": "বুড়িশ্বর", "en_name": "Burishwar" },
+                { "bn_name": "ফান্দাউক", "en_name": "Fandauk" },
+                { "bn_name": "গুনিয়াউক", "en_name": "Guniauk" },
+                { "bn_name": "চাপরতলা", "en_name": "Chapratola" },
+                { "bn_name": "গোকর্ণ", "en_name": "Gokarna" },
+                { "bn_name": "পূর্বভাগ", "en_name": "Purbabhag" },
+                { "bn_name": "হরিপুর", "en_name": "Haripur" },
+                { "bn_name": "আশুরাইল", "en_name": "Ashurail" }
+              ]
+            },
+            {
+              "bn_name": "সরাইল",
+              "en_name": "Sarail",
+              "unions": [
+                { "bn_name": "অরুয়াইল", "en_name": "Aruail" },
+                { "bn_name": "পাকশিমুল", "en_name": "Pakshimul" },
+                { "bn_name": "চুণ্টা", "en_name": "Chunta" },
+                { "bn_name": "কালিকচ্ছ", "en_name": "Kalikachha" },
+                {
+                  "bn_name": "পানিশ্বর (পূর্ব)",
+                  "en_name": "Panishwar (East)"
+                },
+                {
+                  "bn_name": "পানিশ্বর (পশ্চিম)",
+                  "en_name": "Panishwar (West)"
+                },
+                { "bn_name": "সরাইল", "en_name": "Sarail" },
+                { "bn_name": "নোয়াগাঁও", "en_name": "Noagaon" },
+                { "bn_name": "শাহজাদাপুর", "en_name": "Shahjadapur" },
+                { "bn_name": "শাহবাজপুর", "en_name": "Shahbazpur" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "চাঁদপুর",
+          "en_name": "Chandpur District",
+          "upazilas": [
+            {
+              "bn_name": "চাঁদপুর সদর",
+              "en_name": "Chandpur Sadar",
+              "unions": [
+                { "bn_name": "বিষ্ণুপুর", "en_name": "Bishnupur" },
+                { "bn_name": "আশিকাটি", "en_name": "Ashikati" },
+                { "bn_name": "কল্যাণপুর", "en_name": "Kalyanpur" },
+                { "bn_name": "শাহ্‌মাহমুদপুর", "en_name": "Shahmahmudpur" },
+                { "bn_name": "রামপুর", "en_name": "Rampur" },
+                { "bn_name": "মৈশাদী", "en_name": "Maishadi" },
+                { "bn_name": "তরপুরচন্ডী", "en_name": "Tarpur-chandi" },
+                { "bn_name": "বাগাদী", "en_name": "Bagadi" },
+                { "bn_name": "বালিয়া", "en_name": "Balia" },
+                { "bn_name": "লক্ষ্মীপুর মডেল", "en_name": "Laxmipur Model" },
+                { "bn_name": "চান্দ্রা", "en_name": "Chandra" },
+                { "bn_name": "হানারচর", "en_name": "Hanarchar" },
+                { "bn_name": "ইব্রাহিমপুর", "en_name": "Ibrahimpur" },
+                { "bn_name": "রাজরাজেশ্বর", "en_name": "Rajrajeshwar" }
+              ]
+            },
+            {
+              "bn_name": "ফরিদগঞ্জ",
+              "en_name": "Faridganj",
+              "unions": [
+                {
+                  "bn_name": "বালিথুবা (পশ্চিম)",
+                  "en_name": "Balithuba (West)"
+                },
+                {
+                  "bn_name": "বালিথুবা (পূর্ব)",
+                  "en_name": "Balithuba (East)"
+                },
+                { "bn_name": "সুবিদপুর (পূর্ব)", "en_name": "Subidpur (East)" },
+                {
+                  "bn_name": "সুবিদপুর (পশ্চিম)",
+                  "en_name": "Subidpur (West)"
+                },
+                { "bn_name": "গুপ্টি (পূর্ব)", "en_name": "Gupti (East)" },
+                { "bn_name": "গুপ্টি (পশ্চিম)", "en_name": "Gupti (West)" },
+                {
+                  "bn_name": "পাইকপাড়া (উত্তর)",
+                  "en_name": "Paikpara (North)"
+                },
+                {
+                  "bn_name": "পাইকপাড়া (দক্ষিণ)",
+                  "en_name": "Paikpara (South)"
+                },
+                {
+                  "bn_name": "গোবিন্দপুর (উত্তর)",
+                  "en_name": "Gobindapur (North)"
+                },
+                {
+                  "bn_name": "গোবিন্দপুর (দক্ষিণ)",
+                  "en_name": "Gobindapur (South)"
+                },
+                { "bn_name": "রূপসা (উত্তর)", "en_name": "Rupsa (North)" },
+                { "bn_name": "রূপসা (দক্ষিণ)", "en_name": "Rupsa (South)" },
+                {
+                  "bn_name": "চরদুঃখিয়া (পূর্ব)",
+                  "en_name": "Chardukhia (East)"
+                },
+                {
+                  "bn_name": "চরদুঃখিয়া (পশ্চিম)",
+                  "en_name": "Chardukhia (West)"
+                },
+                {
+                  "bn_name": "১৫ নং ফরিদগঞ্জ (দক্ষিণ)",
+                  "en_name": "15 no Faridganj (South)"
+                }
+              ]
+            },
+            {
+              "bn_name": "হাইমচর",
+              "en_name": "Haimchar",
+              "unions": [
+                {
+                  "bn_name": "আলগী দুর্গাপুর (উত্তর)",
+                  "en_name": "Algi Durgapur (North)"
+                },
+                {
+                  "bn_name": "আলগী দুর্গাপুর (দক্ষিণ)",
+                  "en_name": "Algi Durgapur (South)"
+                },
+                { "bn_name": "নীলকমল", "en_name": "Nilkamal" },
+                { "bn_name": "হাইমচর", "en_name": "Haimchar" },
+                { "bn_name": "চরভৈরবী", "en_name": "Charbhairabi" },
+                { "bn_name": "গাজীপুর", "en_name": "Gazipur" }
+              ]
+            },
+            {
+              "bn_name": "হাজীগঞ্জ",
+              "en_name": "Hajiganj",
+              "unions": [
+                {
+                  "bn_name": "রাজারগাঁও (উত্তর)",
+                  "en_name": "Rajargaon (North)"
+                },
+                { "bn_name": "বাকিলা", "en_name": "Bakila" },
+                { "bn_name": "কালচোঁ (উত্তর)", "en_name": "Kalchon (North)" },
+                { "bn_name": "কালচোঁ (দক্ষিণ)", "en_name": "Kalchon (South)" },
+                { "bn_name": "হাজীগঞ্জ", "en_name": "Hajiganj" },
+                { "bn_name": "বড়কুল (পূর্ব)", "en_name": "Barkul (East)" },
+                { "bn_name": "বড়কুল (পশ্চিম)", "en_name": "Barkul (West)" },
+                { "bn_name": "হাটিলা (পূর্ব)", "en_name": "Hatila (East)" },
+                { "bn_name": "হাটিলা (পশ্চিম)", "en_name": "Hatila (West)" },
+                {
+                  "bn_name": "গন্ধর্ব্যপুর (উত্তর)",
+                  "en_name": "Gandharbbyapur (North)"
+                },
+                {
+                  "bn_name": "গন্ধর্ব্যপুর (দক্ষিণ)",
+                  "en_name": "Gandharbbyapur (South)"
+                },
+                { "bn_name": "দ্বাদশ গ্রাম", "en_name": "Dwadash Gram" }
+              ]
+            },
+            {
+              "bn_name": "কচুয়া",
+              "en_name": "Kachua",
+              "unions": [
+                { "bn_name": "সাচার", "en_name": "Sachar" },
+                { "bn_name": "বিতারা", "en_name": "Bitara" },
+                { "bn_name": "পালাখাল মডেল", "en_name": "Palakhal Model" },
+                {
+                  "bn_name": "সহদেবপুর (পশ্চিম)",
+                  "en_name": "Sahadebpur (West)"
+                },
+                { "bn_name": "কচুয়া (উত্তর)", "en_name": "Kachua (North)" },
+                { "bn_name": "কচুয়া (দক্ষিণ)", "en_name": "Kachua (South)" },
+                { "bn_name": "গোহট (উত্তর)", "en_name": "Gohat (North)" },
+                { "bn_name": "গোহট (দক্ষিণ)", "en_name": "Gohat (South)" },
+                { "bn_name": "কড়ইয়া", "en_name": "Koroia" },
+                { "bn_name": "আশ্রাফপুর", "en_name": "Ashrafpur" },
+                { "bn_name": "কাদলা", "en_name": "Kadla" },
+                { "bn_name": "পাথৈর", "en_name": "Pathoir" }
+              ]
+            },
+            {
+              "bn_name": "মতলব উত্তর",
+              "en_name": "Matlab North",
+              "unions": [
+                { "bn_name": "ষাটনল", "en_name": "Shatnol" },
+                { "bn_name": "বাগানবাড়ী", "en_name": "Baganbari" },
+                { "bn_name": "সাদুল্লাপুর", "en_name": "Sadullapur" },
+                { "bn_name": "দুর্গাপুর", "en_name": "Durgapur" },
+                { "bn_name": "কলাকান্দা", "en_name": "Kalakanda" },
+                { "bn_name": "মোহনপুর", "en_name": "Mohanpur" },
+                { "bn_name": "এখলাশপুর", "en_name": "Ekhlashpur" },
+                { "bn_name": "জহিরাবাদ", "en_name": "Jahirabad" },
+                { "bn_name": "ফতেপুর (পূর্ব)", "en_name": "Fatehpur (East)" },
+                { "bn_name": "ফতেপুর (পশ্চিম)", "en_name": "Fatehpur (West)" },
+                { "bn_name": "ফরাজীকান্দি", "en_name": "Farajikandi" },
+                { "bn_name": "ইসলামাবাদ", "en_name": "Islamabad" },
+                { "bn_name": "সুলতানাবাদ", "en_name": "Sultanabad" },
+                { "bn_name": "গজরা", "en_name": "Gazra" }
+              ]
+            },
+            {
+              "bn_name": "মতলব দক্ষিণ",
+              "en_name": "Matlab South",
+              "unions": [
+                {
+                  "bn_name": "নায়েরগাঁও (উত্তর)",
+                  "en_name": "Nayergaon (North)"
+                },
+                {
+                  "bn_name": "নায়েরগাঁও (দক্ষিণ)",
+                  "en_name": "Nayergaon (South)"
+                },
+                { "bn_name": "খাদেরগাঁও", "en_name": "Khadergaon" },
+                { "bn_name": "উপাদী (উত্তর)", "en_name": "Upadi (North)" },
+                { "bn_name": "উপাদী (দক্ষিণ)", "en_name": "Upadi (South)" },
+                { "bn_name": "মতলব", "en_name": "Matlab" }
+              ]
+            },
+            {
+              "bn_name": "শাহরাস্তি",
+              "en_name": "Shahrasti",
+              "unions": [
+                { "bn_name": "চিতোষী (পূর্ব)", "en_name": "Chitoshi (East)" },
+                { "bn_name": "চিতোষী (পশ্চিম)", "en_name": "Chitoshi (West)" },
+                { "bn_name": "রায়শ্রী (উত্তর)", "en_name": "Roysree (North)" },
+                {
+                  "bn_name": "রায়শ্রী (দক্ষিণ)",
+                  "en_name": "Roysree (South)"
+                },
+                {
+                  "bn_name": "সূচীপাড়া (উত্তর)",
+                  "en_name": "Suchipara (North)"
+                },
+                {
+                  "bn_name": "সূচীপাড়া (দক্ষিণ)",
+                  "en_name": "Suchipara (South)"
+                },
+                { "bn_name": "মেহের (উত্তর)", "en_name": "Meher (North)" },
+                { "bn_name": "মেহের (দক্ষিণ)", "en_name": "Meher (South)" },
+                { "bn_name": "টামটা (উত্তর)", "en_name": "Tamta (North)" },
+                { "bn_name": "টামটা (দক্ষিণ)", "en_name": "Tamta (South)" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "চট্টগ্রাম",
+          "en_name": "Chattogram District",
+          "upazilas": [
+            {
+              "bn_name": "আনোয়ারা",
+              "en_name": "Anwara",
+              "unions": [
+                { "bn_name": "বৈরাগ", "en_name": "Bairag" },
+                { "bn_name": "বারশত", "en_name": "Barashat" },
+                { "bn_name": "রায়পুর", "en_name": "Raipur" },
+                { "bn_name": "বটতলী", "en_name": "Battali" },
+                { "bn_name": "বরুমছড়া", "en_name": "Barumchhara" },
+                { "bn_name": "বারখাইন", "en_name": "Barkhain" },
+                { "bn_name": "আনোয়ারা", "en_name": "Anwara" },
+                { "bn_name": "চাতরী", "en_name": "Chatari" },
+                { "bn_name": "পরৈকোড়া", "en_name": "Paraikora" },
+                { "bn_name": "হাইলধর", "en_name": "Haildhar" },
+                { "bn_name": "জুঁইদন্ডী", "en_name": "Juidandi" }
+              ]
+            },
+            {
+              "bn_name": "বাঁশখালী",
+              "en_name": "Banshkhali",
+              "unions": [
+                { "bn_name": "পুকুরিয়া", "en_name": "Pukuria" },
+                { "bn_name": "খানখানাবাদ", "en_name": "Khankhanabad" },
+                { "bn_name": "বাহারছড়া", "en_name": "Baharchhara" },
+                { "bn_name": "কাথরিয়া", "en_name": "Katharia" },
+                { "bn_name": "সরল", "en_name": "Saral" },
+                { "bn_name": "শীলকূপ", "en_name": "Shilkup" },
+                { "bn_name": "গন্ডামারা", "en_name": "Gandamara" },
+                { "bn_name": "সাধনপুর", "en_name": "Sadhanpur" },
+                { "bn_name": "পুঁইছড়ি", "en_name": "Puichhari" },
+                { "bn_name": "ছনুয়া", "en_name": "Chhanua" },
+                { "bn_name": "শেখেরখীল", "en_name": "Shekherkhil" },
+                { "bn_name": "চাম্বল", "en_name": "Chambal" },
+                { "bn_name": "কালীপুর", "en_name": "Kalipur" },
+                { "bn_name": "বৈলছড়ি", "en_name": "Bailchhari" }
+              ]
+            },
+            {
+              "bn_name": "বোয়ালখালী",
+              "en_name": "Boalkhali",
+              "unions": [
+                { "bn_name": "কধুরখীল", "en_name": "Kadhurkhil" },
+                { "bn_name": "পশ্চিম গোমদন্ডী", "en_name": "Paschim Gomdandi" },
+                { "bn_name": "পূর্ব গোমদন্ডী", "en_name": "Purba Gomdandi" },
+                { "bn_name": "শাকপুরা", "en_name": "Shakpura" },
+                { "bn_name": "সারোয়াতলী", "en_name": "Saroatali" },
+                { "bn_name": "পোপাদিয়া", "en_name": "Popadia" },
+                { "bn_name": "চরণদ্বীপ", "en_name": "Charandwip" },
+                { "bn_name": "আমুচিয়া", "en_name": "Amuchia" },
+                { "bn_name": "আহল্লা করলডেঙ্গা", "en_name": "Ahla Karaldenga" },
+                {
+                  "bn_name": "শ্রীপুর-খরন্দীপ",
+                  "en_name": "Sreepur-Kharandwip"
+                }
+              ]
+            },
+            {
+              "bn_name": "চন্দনাইশ",
+              "en_name": "Chandanaish",
+              "unions": [
+                { "bn_name": "কাঞ্চনাবাদ", "en_name": "Kanchanabad" },
+                { "bn_name": "জোয়ারা", "en_name": "Joara" },
+                { "bn_name": "বরকল", "en_name": "Barkal" },
+                { "bn_name": "বরমা", "en_name": "Barama" },
+                { "bn_name": "বৈলতলী", "en_name": "Bailtali" },
+                { "bn_name": "হাশিমপুর", "en_name": "Hashimpur" },
+                { "bn_name": "ধোপাছড়ি", "en_name": "Dhopachhari" },
+                { "bn_name": "সাতবাড়িয়া", "en_name": "Satbaria" }
+              ]
+            },
+            {
+              "bn_name": "ফটিকছড়ি",
+              "en_name": "Fatikchhari",
+              "unions": [
+                { "bn_name": "ধর্মপুর", "en_name": "Dharmapur" },
+                { "bn_name": "সমিতিরহাট", "en_name": "Samitirhat" },
+                { "bn_name": "বাগানবাজার", "en_name": "Baganbazar" },
+                { "bn_name": "দাঁতমারা", "en_name": "Datmara" },
+                { "bn_name": "নারায়ণহাট", "en_name": "Narayanhat" },
+                { "bn_name": "হারুয়ালছড়ি", "en_name": "Harualchhari" },
+                { "bn_name": "পাইন্দং", "en_name": "Paindong" },
+                { "bn_name": "কাঞ্চননগর", "en_name": "Kanchanagar" },
+                { "bn_name": "লেলাং", "en_name": "Lelang" },
+                { "bn_name": "রোসাংগিরী", "en_name": "Roshangiri" },
+                { "bn_name": "বক্তপুর", "en_name": "Bokhtpur" },
+                { "bn_name": "জাফতনগর", "en_name": "Jaftnagar" },
+                { "bn_name": "আব্দুল্লাপুর", "en_name": "Abdullapur" },
+                { "bn_name": "ভূজপুর", "en_name": "Bhujpur" },
+                { "bn_name": "সুন্দরপুর", "en_name": "Sundarpur" },
+                { "bn_name": "ধুরুং", "en_name": "Dhurung" },
+                { "bn_name": "নানুপুর", "en_name": "Nanupur" },
+                { "bn_name": "সুয়াবিল", "en_name": "Suabil" }
+              ]
+            },
+            {
+              "bn_name": "হাটহাজারী",
+              "en_name": "Hathazari",
+              "unions": [
+                { "bn_name": "ফরহাদাবাদ", "en_name": "Farhadabad" },
+                { "bn_name": "ধলই", "en_name": "Dhalai" },
+                { "bn_name": "মির্জাপুর", "en_name": "Mirzapur" },
+                { "bn_name": "গুমানমর্দ্দন", "en_name": "Gumanmardan" },
+                { "bn_name": "নাঙ্গলমোড়া", "en_name": "Nangalmora" },
+                { "bn_name": "ছিপাতলী", "en_name": "Chhipatali" },
+                { "bn_name": "মেখল", "en_name": "Mekhal" },
+                { "bn_name": "গড়দুয়ারা", "en_name": "Garduara" },
+                { "bn_name": "উত্তর মাদার্শা", "en_name": "Uttar Madarsha" },
+                { "bn_name": "ফতেপুর", "en_name": "Fatehpur" },
+                { "bn_name": "চিকনদন্ডী", "en_name": "Chikandandi" },
+                { "bn_name": "দক্ষিণ মাদার্শা", "en_name": "Dakshin Madarsha" },
+                { "bn_name": "শিকারপুর", "en_name": "Shikarpur" },
+                { "bn_name": "বুড়িশ্চর", "en_name": "Burirchar" }
+              ]
+            },
+            {
+              "bn_name": "লোহাগাড়া",
+              "en_name": "Lohagara",
+              "unions": [
+                { "bn_name": "আমিরাবাদ", "en_name": "Amirabad" },
+                { "bn_name": "পদুয়া", "en_name": "Padua" },
+                { "bn_name": "বড়হাতিয়া", "en_name": "Barahatia" },
+                { "bn_name": "চরম্বা", "en_name": "Charamba" },
+                { "bn_name": "কলাউজান", "en_name": "Kalauzan" },
+                { "bn_name": "লোহাগাড়া", "en_name": "Lohagara" },
+                { "bn_name": "পুটিবিলা", "en_name": "Putibila" },
+                { "bn_name": "চুনতি", "en_name": "Chunati" },
+                { "bn_name": "আধুনগর", "en_name": "Adhunagar" }
+              ]
+            },
+            {
+              "bn_name": "মীরসরাই",
+              "en_name": "Mirsarai",
+              "unions": [
+                { "bn_name": "করেরহাট", "en_name": "Karerhat" },
+                { "bn_name": "হিঙ্গুলী", "en_name": "Hinguli" },
+                { "bn_name": "জোরারগঞ্জ", "en_name": "Jorarganj" },
+                { "bn_name": "ধুম", "en_name": "Dhum" },
+                { "bn_name": "ওসমানপুর", "en_name": "Osmanpur" },
+                { "bn_name": "ইছাখালী", "en_name": "Ichhakhali" },
+                { "bn_name": "কাটাছড়া", "en_name": "Katachhara" },
+                { "bn_name": "দুর্গাপুর", "en_name": "Durgapur" },
+                { "bn_name": "মীরসরাই", "en_name": "Mirsarai" },
+                { "bn_name": "মিঠানালা", "en_name": "Mithanala" },
+                { "bn_name": "মঘাদিয়া", "en_name": "Maghadia" },
+                { "bn_name": "খৈয়াছড়া", "en_name": "Khaiyachhara" },
+                { "bn_name": "মায়ানী", "en_name": "Mayani" },
+                { "bn_name": "হাইতকান্দি", "en_name": "Haitkandi" },
+                { "bn_name": "ওয়াহেদপুর", "en_name": "Wahedpur" },
+                { "bn_name": "সাহেরখালী", "en_name": "Saherkhali" }
+              ]
+            },
+            {
+              "bn_name": "পটিয়া",
+              "en_name": "Patiya",
+              "unions": [
+                { "bn_name": "আশিয়া", "en_name": "Ashia" },
+                { "bn_name": "কাশিয়াইশ", "en_name": "Kashiash" },
+                { "bn_name": "কেলিশহর", "en_name": "Kelishahar" },
+                { "bn_name": "খরনা", "en_name": "Kharana" },
+                { "bn_name": "কোলাগাঁও", "en_name": "Kolagaon" },
+                { "bn_name": "জঙ্গলখাইন", "en_name": "Jangalkhain" },
+                { "bn_name": "জিরি", "en_name": "Jiri" },
+                { "bn_name": "জুলধা", "en_name": "Juldha" },
+                { "bn_name": "ধলঘাট", "en_name": "Dhalghat" },
+                { "bn_name": "বড়লিয়া", "en_name": "Baralia" },
+                { "bn_name": "বড় উঠান", "en_name": "Bara Uthan" },
+                { "bn_name": "ভাটিখাইন", "en_name": "Bhatikhain" },
+                { "bn_name": "হাবিলাসদ্বীপ", "en_name": "Habilasdwip" },
+                { "bn_name": "হাইদগাঁও", "en_name": "Haidgaon" },
+                { "bn_name": "কচুয়াই", "en_name": "Kachuai" },
+                { "bn_name": "ছনহরা", "en_name": "Chanhara" },
+                { "bn_name": "শোভনদন্ডী", "en_name": "Shobhandandi" },
+                { "bn_name": "দক্ষিণ ভূর্ষি", "en_name": "Dakshin Bhurshi" },
+                { "bn_name": "কুসুমপুরা", "en_name": "Kusumpura" }
+              ]
+            },
+            {
+              "bn_name": "রাঙ্গুনিয়া",
+              "en_name": "Rangunia",
+              "unions": [
+                { "bn_name": "রাজানগর", "en_name": "Rajanagar" },
+                { "bn_name": "হোসনাবাদ", "en_name": "Hosnabad" },
+                { "bn_name": "পারুয়া", "en_name": "Parua" },
+                { "bn_name": "পোমরা", "en_name": "Pomra" },
+                { "bn_name": "বেতাগী", "en_name": "Betagi" },
+                { "bn_name": "সরফভাটা", "en_name": "Sarapbhata" },
+                { "bn_name": "শিলক", "en_name": "Shilak" },
+                { "bn_name": "চন্দ্রঘোনা", "en_name": "Chandraghona" },
+                { "bn_name": "মরিয়মনগর", "en_name": "Mariyamnagar" },
+                { "bn_name": "পদুয়া", "en_name": "Padua" },
+                { "bn_name": "কোদালা", "en_name": "Kodala" },
+                { "bn_name": "ইসলামপুর", "en_name": "Islampur" },
+                { "bn_name": "দক্ষিণ রাজানগর", "en_name": "Dakshin Rajanagar" },
+                { "bn_name": "লালানগর", "en_name": "Lalanagar" },
+                {
+                  "bn_name": "স্বনির্ভর রাঙ্গুনিয়া",
+                  "en_name": "Swanirvar Rangunia"
+                }
+              ]
+            },
+            {
+              "bn_name": "রাউজান",
+              "en_name": "Raozan",
+              "unions": [
+                { "bn_name": "রাউজান", "en_name": "Raozan" },
+                { "bn_name": "বিনাজুরী", "en_name": "Binajuri" },
+                { "bn_name": "চিকদাইর", "en_name": "Chikdair" },
+                { "bn_name": "ডাবুয়া", "en_name": "Dabua" },
+                { "bn_name": "হলদিয়া", "en_name": "Haldia" },
+                { "bn_name": "গহিরা", "en_name": "Gahira" },
+                { "bn_name": "কদলপুর", "en_name": "Kadalpur" },
+                { "bn_name": "নোয়াপাড়া", "en_name": "Noapara" },
+                { "bn_name": "পাহাড়তলী", "en_name": "Pahartali" },
+                { "bn_name": "পূর্বগুজরা", "en_name": "Purbagujra" },
+                { "bn_name": "পশ্চিমগুজরা", "en_name": "Paschimgujra" },
+                { "bn_name": "উরকিরচর", "en_name": "Urkirchar" },
+                { "bn_name": "বাগোয়ান", "en_name": "Bagowan" },
+                { "bn_name": "নোয়াজিশপুর", "en_name": "Noajishpur" }
+              ]
+            },
+            {
+              "bn_name": "সন্দ্বীপ",
+              "en_name": "Sandwip",
+              "unions": [
+                { "bn_name": "আমানউল্ল্যা", "en_name": "Amanullah" },
+                { "bn_name": "আজিমপুর", "en_name": "Azimpur" },
+                { "bn_name": "বাউরিয়া", "en_name": "Bauria" },
+                { "bn_name": "গাছুয়া", "en_name": "Gachhua" },
+                { "bn_name": "হারামিয়া", "en_name": "Haramia" },
+                { "bn_name": "হরিশপুর", "en_name": "Harishpur" },
+                { "bn_name": "কালাপানিয়া", "en_name": "Kalapania" },
+                { "bn_name": "মগধরা", "en_name": "Magdhara" },
+                { "bn_name": "মাইটভাঙ্গা", "en_name": "Maitbhanga" },
+                { "bn_name": "মুছাপুর", "en_name": "Musapur" },
+                { "bn_name": "রহমতপুর", "en_name": "Rahmatpur" },
+                { "bn_name": "সন্তোষপুর", "en_name": "Santoshpur" },
+                { "bn_name": "সারিকাইত", "en_name": "Sarikait" },
+                { "bn_name": "উড়িরচর", "en_name": "Urirchar" }
+              ]
+            },
+            {
+              "bn_name": "সাতকানিয়া",
+              "en_name": "Satkania",
+              "unions": [
+                { "bn_name": "আমিলাইশ", "en_name": "Amilaish" },
+                { "bn_name": "এওচিয়া", "en_name": "Eochia" },
+                { "bn_name": "বাজালিয়া", "en_name": "Bazalia" },
+                { "bn_name": "ছদাহা", "en_name": "Chhadaha" },
+                { "bn_name": "চরতী", "en_name": "Charati" },
+                { "bn_name": "ধর্মপুর", "en_name": "Dharmapur" },
+                { "bn_name": "ঢেমশা", "en_name": "Dhemsha" },
+                { "bn_name": "সোনাকানিয়া", "en_name": "Sonakania" },
+                { "bn_name": "কাঞ্চনা", "en_name": "Kanchana" },
+                { "bn_name": "কেঁওচিয়া", "en_name": "Keochia" },
+                { "bn_name": "খাগরিয়া", "en_name": "Khagaria" },
+                { "bn_name": "কালিয়াইশ", "en_name": "Kaliaish" },
+                { "bn_name": "মাদার্শা", "en_name": "Madarsha" },
+                { "bn_name": "নলুয়া", "en_name": "Nalua" },
+                { "bn_name": "পুরানগড়", "en_name": "Purangarh" },
+                { "bn_name": "সাতকানিয়া", "en_name": "Satkania" },
+                { "bn_name": "পশ্চিম ঢেমশা", "en_name": "Paschim Dhemsha" }
+              ]
+            },
+            {
+              "bn_name": "সীতাকুণ্ড",
+              "en_name": "Sitakunda",
+              "unions": [
+                { "bn_name": "বাঁশবাড়ীয়া", "en_name": "Banshbaria" },
+                { "bn_name": "বারৈয়াঢালা", "en_name": "Baraiadhala" },
+                { "bn_name": "ভাটিয়ারী", "en_name": "Bhatiari" },
+                { "bn_name": "কুমিরা", "en_name": "Kumira" },
+                { "bn_name": "মুরাদপুর", "en_name": "Muradpur" },
+                { "bn_name": "সলিমপুর", "en_name": "Salimpur" },
+                { "bn_name": "সোনাইছড়ি", "en_name": "Sonaichhari" },
+                { "bn_name": "সৈয়দপুর", "en_name": "Syedpur" },
+                { "bn_name": "সীতাকুণ্ড", "en_name": "Sitakunda" },
+                { "bn_name": "বাড়বকুন্ড", "en_name": "Barabkunda" }
+              ]
+            },
+            {
+              "bn_name": "কর্ণফুলী",
+              "en_name": "Karnaphuli",
+              "unions": [
+                { "bn_name": "চরলক্ষ্যা", "en_name": "Charlakshya" },
+                { "bn_name": "চরপাথরঘাটা", "en_name": "Charpatharghata" },
+                { "bn_name": "জুলধা", "en_name": "Juldha" },
+                { "bn_name": "বড়উঠান", "en_name": "Barauthan" },
+                { "bn_name": "শিকলবাহা", "en_name": "Shikalbaha" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "কুমিল্লা",
+          "en_name": "Cumilla District",
+          "upazilas": [
+            {
+              "bn_name": "বরুড়া",
+              "en_name": "Barura",
+              "unions": [
+                { "bn_name": "আদ্রা", "en_name": "Adra" },
+                { "bn_name": "ভবানীপুর", "en_name": "Bhabanipur" },
+                { "bn_name": "খোশবাস (উত্তর)", "en_name": "Khoshbas (North)" },
+                { "bn_name": "খোশবাস (দক্ষিণ)", "en_name": "Khoshbas (South)" },
+                { "bn_name": "ঝলম", "en_name": "Jalam" },
+                { "bn_name": "চিতড্ডা", "en_name": "Chitodda" },
+                { "bn_name": "শাকপুর", "en_name": "Shakpur" },
+                { "bn_name": "ভাউকসার", "en_name": "Bhauksar" },
+                {
+                  "bn_name": "শীলমুড়ী (উত্তর)",
+                  "en_name": "Shilmuri (North)"
+                },
+                {
+                  "bn_name": "শীলমুড়ী (দক্ষিণ)",
+                  "en_name": "Shilmuri (South)"
+                },
+                { "bn_name": "আড্ডা", "en_name": "Adda" },
+                { "bn_name": "আগানগর", "en_name": "Aganagar" },
+                { "bn_name": "পয়ালগাছা", "en_name": "Payalgachha" },
+                { "bn_name": "একবাড়িয়া", "en_name": "Ekbaria" },
+                { "bn_name": "লক্ষ্মীপুর", "en_name": "Laxmipur" }
+              ]
+            },
+            {
+              "bn_name": "ব্রাহ্মণপাড়া",
+              "en_name": "Brahmanpara",
+              "unions": [
+                { "bn_name": "মাধবপুর", "en_name": "Madhabpur" },
+                { "bn_name": "শিদলাই", "en_name": "Shidlai" },
+                { "bn_name": "চান্দলা", "en_name": "Chandla" },
+                { "bn_name": "শশীদল", "en_name": "Shashidal" },
+                { "bn_name": "দুলালপুর", "en_name": "Dulalpur" },
+                {
+                  "bn_name": "ব্রাহ্মণপাড়া সদর",
+                  "en_name": "Brahmanpara Sadar"
+                },
+                { "bn_name": "সাহেবাবাদ", "en_name": "Sahebabad" },
+                { "bn_name": "মালাপাড়া", "en_name": "Malapara" }
+              ]
+            },
+            {
+              "bn_name": "বুড়িচং",
+              "en_name": "Burichang",
+              "unions": [
+                { "bn_name": "রাজাপুর", "en_name": "Rajapur" },
+                { "bn_name": "বাকশীমূল", "en_name": "Bakshimul" },
+                { "bn_name": "বুড়িচং সদর", "en_name": "Burichang Sadar" },
+                { "bn_name": "ষোলনল", "en_name": "Sholonal" },
+                { "bn_name": "পীরযাত্রাপুর", "en_name": "Pirjatrapur" },
+                { "bn_name": "ময়নামতি", "en_name": "Moynamoti" },
+                { "bn_name": "মোকাম", "en_name": "Mokam" },
+                { "bn_name": "ভারেল্লা (উত্তর)", "en_name": "Varella (North)" },
+                { "bn_name": "ভারেল্লা (দক্ষিণ)", "en_name": "Varella (South)" }
+              ]
+            },
+            {
+              "bn_name": "চান্দিনা",
+              "en_name": "Chandina",
+              "unions": [
+                { "bn_name": "শুহিলপুর", "en_name": "Suhilpur" },
+                { "bn_name": "বাথাঘাসী", "en_name": "Bataghashi" },
+                { "bn_name": "মাধাইয়া", "en_name": "Madhaiya" },
+                { "bn_name": "মহিচাইল", "en_name": "Mohichail" },
+                { "bn_name": "কেরণখাল", "en_name": "Keranokhal" },
+                { "bn_name": "বাড়েরা", "en_name": "Barera" },
+                { "bn_name": "এতবারপুর", "en_name": "Etbarpur" },
+                { "bn_name": "বরকইট", "en_name": "Barkoit" },
+                { "bn_name": "মাইজখার", "en_name": "Maizkhar" },
+                { "bn_name": "গল্লাই", "en_name": "Gallai" },
+                { "bn_name": "দোল্লাই নবাবপুর", "en_name": "Dollai Nababpur" },
+                { "bn_name": "বড়করই", "en_name": "Barakarai" },
+                { "bn_name": "জোয়াগ", "en_name": "Joag" }
+              ]
+            },
+            {
+              "bn_name": "চৌদ্দগ্রাম",
+              "en_name": "Chauddagram",
+              "unions": [
+                { "bn_name": "কাশিনগর", "en_name": "Kashinagar" },
+                { "bn_name": "উজিরপুর (পূর্ব)", "en_name": "Ujirpur (East)" },
+                { "bn_name": "কালিকাপুর", "en_name": "Kalikapur" },
+                { "bn_name": "শ্রীপুর", "en_name": "Sreepur" },
+                { "bn_name": "শুভপুর", "en_name": "Shubhapur" },
+                { "bn_name": "ঘোলপাশা", "en_name": "Gholpasha" },
+                { "bn_name": "মুন্সীরহাট", "en_name": "Munshirhat" },
+                { "bn_name": "কনকাপৈত", "en_name": "Konkapoit" },
+                { "bn_name": "বাতিসা", "en_name": "Batisa" },
+                { "bn_name": "চিওড়া", "en_name": "Chiora" },
+                { "bn_name": "গুণবতী", "en_name": "Gunabati" },
+                { "bn_name": "জগন্নাথদীঘি", "en_name": "Jagannathdighi" },
+                { "bn_name": "আলকরা", "en_name": "Alkara" }
+              ]
+            },
+            {
+              "bn_name": "কুমিল্লা আদর্শ সদর",
+              "en_name": "Cumilla Adarsha Sadar",
+              "unions": [
+                { "bn_name": "কালিরবাজার", "en_name": "Kalirbazar" },
+                {
+                  "bn_name": "দুর্গাপুর (উত্তর)",
+                  "en_name": "Durgapur (North)"
+                },
+                {
+                  "bn_name": "দুর্গাপুর (দক্ষিণ)",
+                  "en_name": "Durgapur (South)"
+                },
+                { "bn_name": "আমড়াতলী", "en_name": "Amratoli" },
+                { "bn_name": "পাঁচথুবী", "en_name": "Panchthubi" },
+                { "bn_name": "জগন্নাথপুর", "en_name": "Jagannathpur" }
+              ]
+            },
+            {
+              "bn_name": "কুমিল্লা সদর দক্ষিণ",
+              "en_name": "Cumilla Sadar Dakshin",
+              "unions": [
+                { "bn_name": "বারপাড়া", "en_name": "Baropara" },
+                { "bn_name": "চৌয়ারা", "en_name": "Chouara" },
+                { "bn_name": "গলিয়ারা (উত্তর)", "en_name": "Goliara (North)" },
+                {
+                  "bn_name": "গলিয়ারা (দক্ষিণ)",
+                  "en_name": "Goliara (South)"
+                },
+                { "bn_name": "জোড়কানন (পূর্ব)", "en_name": "Jorkanon (East)" },
+                {
+                  "bn_name": "জোড়কানন (পশ্চিম)",
+                  "en_name": "Jorkanon (West)"
+                },
+                { "bn_name": "বিজয়পুর", "en_name": "Bijoypur" }
+              ]
+            },
+            {
+              "bn_name": "দাউদকান্দি",
+              "en_name": "Daudkandi",
+              "unions": [
+                {
+                  "bn_name": "দাউদকান্দি (উত্তর)",
+                  "en_name": "Daudkandi (North)"
+                },
+                { "bn_name": "দৌলতপুর", "en_name": "Daulatpur" },
+                {
+                  "bn_name": "ইলিয়টগঞ্জ (দক্ষিণ)",
+                  "en_name": "Elliotganj (South)"
+                },
+                { "bn_name": "জিংলাতলী", "en_name": "Jinglatoli" },
+                { "bn_name": "সুন্দরপুর", "en_name": "Sundarpur" },
+                { "bn_name": "মারুকা", "en_name": "Maruka" },
+                {
+                  "bn_name": "মোহাম্মদপুর (পশ্চিম)",
+                  "en_name": "Mohammadpur (West)"
+                },
+                { "bn_name": "গোয়ালমারী", "en_name": "Goalmari" },
+                {
+                  "bn_name": "পাঁচগাছিয়া (পশ্চিম)",
+                  "en_name": "Panchgachhia (West)"
+                },
+                { "bn_name": "বারপাড়া", "en_name": "Baropara" },
+                { "bn_name": "মালিগাঁও", "en_name": "Maligaon" },
+                { "bn_name": "গৌরীপুর", "en_name": "Gouripur" },
+                { "bn_name": "পদুয়া", "en_name": "Padua" },
+                { "bn_name": "বিটেশ্বর", "en_name": "Biteshwar" }
+              ]
+            },
+            {
+              "bn_name": "দেবিদ্বার",
+              "en_name": "Debidwar",
+              "unions": [
+                { "bn_name": "বড়শালঘর", "en_name": "Barashalghar" },
+                { "bn_name": "ইউসুফপুর", "en_name": "Yusufpur" },
+                { "bn_name": "রসুলপুর", "en_name": "Rasulpur" },
+                { "bn_name": "সুবিল", "en_name": "Subil" },
+                { "bn_name": "ফতেহাবাদ", "en_name": "Fatehabad" },
+                { "bn_name": "এলাহাবাদ", "en_name": "Elahabad" },
+                { "bn_name": "জাফরগঞ্জ", "en_name": "Zafarganj" },
+                {
+                  "bn_name": "গুনাইঘর (উত্তর)",
+                  "en_name": "Gunaighar (North)"
+                },
+                {
+                  "bn_name": "গুনাইঘর (দক্ষিণ)",
+                  "en_name": "Gunaighar (South)"
+                },
+                { "bn_name": "রাজামেহার", "en_name": "Rajameher" },
+                { "bn_name": "ভানী", "en_name": "Vani" },
+                { "bn_name": "ধামতী", "en_name": "Dhamti" },
+                { "bn_name": "সুলতানপুর", "en_name": "Sultanpur" },
+                { "bn_name": "মোহনপুর", "en_name": "Mohanpur" },
+                { "bn_name": "বড়কামতা", "en_name": "Borkamta" }
+              ]
+            },
+            {
+              "bn_name": "হোমনা",
+              "en_name": "Homna",
+              "unions": [
+                { "bn_name": "মাথাভাঙ্গা", "en_name": "Mathabhanga" },
+                { "bn_name": "ঘাগুটিয়া", "en_name": "Ghagutia" },
+                { "bn_name": "আছাদপুর", "en_name": "Asadpur" },
+                { "bn_name": "চান্দারচর", "en_name": "Chanderchar" },
+                { "bn_name": "নিলখী", "en_name": "Nilakhi" },
+                { "bn_name": "ঘারমোড়া", "en_name": "Gharmora" },
+                { "bn_name": "জয়পুর", "en_name": "Joypur" },
+                { "bn_name": "দুলালপুর", "en_name": "Dulalpur" },
+                { "bn_name": "ভাষানিয়া", "en_name": "Bhasania" }
+              ]
+            },
+            {
+              "bn_name": "লাকসাম",
+              "en_name": "Laksam",
+              "unions": [
+                { "bn_name": "বাকই", "en_name": "Bakoi" },
+                {
+                  "bn_name": "মুদাফফরগঞ্জ (উত্তর)",
+                  "en_name": "Mudaffargonj (North)"
+                },
+                {
+                  "bn_name": "মুদাফফরগঞ্জ (দক্ষিণ)",
+                  "en_name": "Mudaffargonj (South)"
+                },
+                { "bn_name": "কান্দিরপাড়", "en_name": "Kandirpar" },
+                { "bn_name": "গোবিন্দপুর", "en_name": "Gobindapur" },
+                { "bn_name": "উত্তরদা", "en_name": "Uttarda" },
+                { "bn_name": "আজগরা", "en_name": "Azgora" },
+                { "bn_name": "লাকসাম (পূর্ব)", "en_name": "Laksam (East)" }
+              ]
+            },
+            {
+              "bn_name": "লালমাই",
+              "en_name": "Lalmai",
+              "unions": [
+                { "bn_name": "বাগমারা (উত্তর)", "en_name": "Bagmara (North)" },
+                { "bn_name": "বাগমারা (দক্ষিণ)", "en_name": "Bagmara (South)" },
+                { "bn_name": "ভুলইন (উত্তর)", "en_name": "Bhuloin (North)" },
+                { "bn_name": "ভুলইন (দক্ষিণ)", "en_name": "Bhuloin (South)" },
+                { "bn_name": "পেরুল (উত্তর)", "en_name": "Perul (North)" },
+                { "bn_name": "পেরুল (দক্ষিণ)", "en_name": "Perul (South)" },
+                { "bn_name": "বেলঘর (উত্তর)", "en_name": "Belghar (North)" },
+                { "bn_name": "বেলঘর (দক্ষিণ)", "en_name": "Belghar (South)" },
+                { "bn_name": "বাকই উত্তর", "en_name": "Bakoi Uttar" }
+              ]
+            },
+            {
+              "bn_name": "মেঘনা",
+              "en_name": "Meghna",
+              "unions": [
+                { "bn_name": "চালিভাঙ্গা", "en_name": "Chalibhanga" },
+                { "bn_name": "মানিকারচর", "en_name": "Manikarchar" },
+                { "bn_name": "রাধানগর", "en_name": "Radhanagar" },
+                { "bn_name": "লুটেরচর", "en_name": "Luterchar" },
+                { "bn_name": "গোবিন্দপুর", "en_name": "Gobindapur" },
+                { "bn_name": "বড়কান্দা", "en_name": "Borokanda" },
+                { "bn_name": "ভাওরখোলা", "en_name": "Bhaorkhola" }
+              ]
+            },
+            {
+              "bn_name": "মনোহরগঞ্জ",
+              "en_name": "Monohorgonj",
+              "unions": [
+                { "bn_name": "বাইশগাঁও", "en_name": "Baishgaon" },
+                { "bn_name": "সরসপুর", "en_name": "Saraspur" },
+                { "bn_name": "হাসনাবাদ", "en_name": "Hasnabad" },
+                { "bn_name": "ঝলম (উত্তর)", "en_name": "Jalam (North)" },
+                { "bn_name": "ঝলম (দক্ষিণ)", "en_name": "Jalam (South)" },
+                { "bn_name": "মৈশাতুয়া", "en_name": "Moishatua" },
+                { "bn_name": "লক্ষণপুর", "en_name": "Lakkhanpur" },
+                { "bn_name": "খিলা", "en_name": "Khila" },
+                { "bn_name": "উত্তর হাওলা", "en_name": "Uttar Hawla" },
+                { "bn_name": "নাথেরপেটুয়া", "en_name": "Natherpetua" },
+                { "bn_name": "বিপুলাসার", "en_name": "Bipulasar" }
+              ]
+            },
+            {
+              "bn_name": "মুরাদনগর",
+              "en_name": "Muradnagar",
+              "unions": [
+                { "bn_name": "শ্রীকাইল", "en_name": "Sreekail" },
+                { "bn_name": "আকুবপুর", "en_name": "Akubpur" },
+                { "bn_name": "আন্দিকোট", "en_name": "Andikot" },
+                {
+                  "bn_name": "পূর্বধইর (পূর্ব)",
+                  "en_name": "Purbadhair (East)"
+                },
+                {
+                  "bn_name": "পূর্বধইর (পশ্চিম)",
+                  "en_name": "Purbadhair (West)"
+                },
+                { "bn_name": "বাঙ্গরা (পূর্ব)", "en_name": "Bangra (East)" },
+                { "bn_name": "বাঙ্গরা (পশ্চিম)", "en_name": "Bangra (West)" },
+                { "bn_name": "চাপিতলা", "en_name": "Chapitala" },
+                { "bn_name": "কামাল্লা", "en_name": "Kamalla" },
+                { "bn_name": "যাত্রাপুর", "en_name": "Jatrapur" },
+                {
+                  "bn_name": "রামচন্দ্রপুর (উত্তর)",
+                  "en_name": "Ramchandrapur (North)"
+                },
+                {
+                  "bn_name": "রামচন্দ্রপুর (দক্ষিণ)",
+                  "en_name": "Ramchandrapur (South)"
+                },
+                { "bn_name": "মুরাদনগর", "en_name": "Muradnagar" },
+                { "bn_name": "নবীপুর (পূর্ব)", "en_name": "Nabipur (East)" },
+                { "bn_name": "নবীপুর (পশ্চিম)", "en_name": "Nabipur (West)" },
+                { "bn_name": "ধামঘর", "en_name": "Dhamghar" },
+                { "bn_name": "জাহাপুর", "en_name": "Jahapur" },
+                { "bn_name": "ছালিয়াকান্দি", "en_name": "Chhaliakandi" },
+                { "bn_name": "দারোরা", "en_name": "Darora" },
+                { "bn_name": "পাহাড়পুর", "en_name": "Paharpur" },
+                { "bn_name": "বাবুটিপাড়া", "en_name": "Babutipara" },
+                { "bn_name": "টনকী", "en_name": "Tonki" }
+              ]
+            },
+            {
+              "bn_name": "নাঙ্গলকোট",
+              "en_name": "Nangalkot",
+              "unions": [
+                { "bn_name": "বাঙ্গড্ডা", "en_name": "Bangadda" },
+                { "bn_name": "পেরিয়া", "en_name": "Peria" },
+                { "bn_name": "রায়কোট", "en_name": "Raykot" },
+                { "bn_name": "মৌকারা", "en_name": "Mokara" },
+                { "bn_name": "মক্রবপুর", "en_name": "Mokrabpur" },
+                { "bn_name": "আদ্রা (উত্তর)", "en_name": "Adra (North)" },
+                { "bn_name": "আদ্রা (দক্ষিণ)", "en_name": "Adra (South)" },
+                { "bn_name": "জোড্ডা (পূর্ব)", "en_name": "Jodda (East)" },
+                { "bn_name": "জোড্ডা (পশ্চিম)", "en_name": "Jodda (West)" },
+                { "bn_name": "ঢালুয়া", "en_name": "Dhalua" },
+                { "bn_name": "দৌলখাঁড়", "en_name": "Daulkhar" },
+                { "bn_name": "বক্সগঞ্জ", "en_name": "Boxgonj" },
+                { "bn_name": "সাতবাড়িয়া", "en_name": "Satbaria" },
+                { "bn_name": "হেসাখাল", "en_name": "Heshakhal" }
+              ]
+            },
+            {
+              "bn_name": "তিতাস",
+              "en_name": "Titas",
+              "unions": [
+                { "bn_name": "সাতানী", "en_name": "Satani" },
+                { "bn_name": "জগতপুর", "en_name": "Jagatpur" },
+                { "bn_name": "বলরামপুর", "en_name": "Balarampur" },
+                { "bn_name": "কড়িকান্দি", "en_name": "Karikandi" },
+                { "bn_name": "কলাকান্দি", "en_name": "Kalakandi" },
+                { "bn_name": "ভিটিকান্দি", "en_name": "Vitikandi" },
+                { "bn_name": "নারান্দিয়া", "en_name": "Narandia" },
+                { "bn_name": "জিয়ারকান্দি", "en_name": "Jiyarkandi" },
+                { "bn_name": "মজিদপুর", "en_name": "Majidpur" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "কক্সবাজার",
+          "en_name": "Cox's Bazar District",
+          "upazilas": [
+            {
+              "bn_name": "চকরিয়া",
+              "en_name": "Chakaria",
+              "unions": [
+                { "bn_name": "কাকারা", "en_name": "Kakara" },
+                { "bn_name": "কৈয়ারবিল", "en_name": "Kaiarbil" },
+                { "bn_name": "কোনাখালী", "en_name": "Konakhali" },
+                { "bn_name": "খুটাখালী", "en_name": "Khutakhali" },
+                { "bn_name": "ডুলাহাজারা", "en_name": "Dulahazara" },
+                { "bn_name": "ঢেমুশিয়া", "en_name": "Dhemushia" },
+                { "bn_name": "হারবাং", "en_name": "Harbang" },
+                { "bn_name": "লক্ষ্যারচর", "en_name": "Lakhyarchar" },
+                { "bn_name": "সাহারবিল", "en_name": "Saharbil" },
+                { "bn_name": "চিরিঙ্গা", "en_name": "Chiringa" },
+                { "bn_name": "ফাঁসিয়াখালী", "en_name": "Fasiakhali" },
+                { "bn_name": "বমুবিলছড়ি", "en_name": "Bamobilchhari" },
+                { "bn_name": "বরইতলী", "en_name": "Baraitali" },
+                { "bn_name": "ভেওলা মানিকচর", "en_name": "Bheola Manikchar" },
+                {
+                  "bn_name": "পশ্চিম বড় ভেওলা",
+                  "en_name": "Paschim Bara Bheola"
+                },
+                { "bn_name": "পূর্ব বড় ভেওলা", "en_name": "Purba Bara Bheola" },
+                {
+                  "bn_name": "সুরাজপুর-মানিকপুর",
+                  "en_name": "Surajpur-Manikpur"
+                }
+              ]
+            },
+            {
+              "bn_name": "কক্সবাজার সদর",
+              "en_name": "Cox's Bazar Sadar",
+              "unions": [
+                { "bn_name": "চৌফলদন্ডী", "en_name": "Chauphaldandi" },
+                { "bn_name": "ঈদগাঁও", "en_name": "Eidgaon" },
+                { "bn_name": "ইসলামাবাদ", "en_name": "Islamabad" },
+                { "bn_name": "জালালাবাদ", "en_name": "Jalalabad" },
+                { "bn_name": "খুরুশকুল", "en_name": "Khurushkul" },
+                { "bn_name": "পিএমখালী", "en_name": "PMKhali" },
+                { "bn_name": "ভারুয়াখালী", "en_name": "Bharuakhali" },
+                { "bn_name": "পাতলি", "en_name": "Patli" },
+                { "bn_name": "ঝিলংজা", "en_name": "Jhilongja" }
+              ]
+            },
+            {
+              "bn_name": "কুতুবদিয়া",
+              "en_name": "Kutubdia",
+              "unions": [
+                { "bn_name": "আলী আকবর ডেইল", "en_name": "Ali Akbar Deil" },
+                { "bn_name": "বড়ঘোপ", "en_name": "Baraghop" },
+                { "bn_name": "দক্ষিণধুরং", "en_name": "Dakshindhurung" },
+                { "bn_name": "কৈয়ারবিল", "en_name": "Kaiarbil" },
+                { "bn_name": "লেমশীখালী", "en_name": "Lemshikhali" },
+                { "bn_name": "উত্তরধুরং", "en_name": "Uttardhurung" }
+              ]
+            },
+            {
+              "bn_name": "মহেশখালী",
+              "en_name": "Moheshkhali",
+              "unions": [
+                { "bn_name": "বড়মহেশখালী", "en_name": "Baramoheshkhali" },
+                { "bn_name": "ছোটমহেশখালী", "en_name": "Chhotamoheshkhali" },
+                { "bn_name": "ধলঘাটা", "en_name": "Dhalghata" },
+                { "bn_name": "হোয়ানক", "en_name": "Hoanak" },
+                { "bn_name": "কালারমারছড়া", "en_name": "Kalarmarchhara" },
+                { "bn_name": "কুতুবজোম", "en_name": "Kutubjomm" },
+                { "bn_name": "মাতারবাড়ী", "en_name": "Matarbari" },
+                { "bn_name": "শাপলাপুর", "en_name": "Shaplapur" }
+              ]
+            },
+            {
+              "bn_name": "পেকুয়া",
+              "en_name": "Pekua",
+              "unions": [
+                { "bn_name": "পেকুয়া", "en_name": "Pekua" },
+                { "bn_name": "মগনামা", "en_name": "Magnama" },
+                { "bn_name": "রাজাখালী", "en_name": "Rajakhali" },
+                { "bn_name": "শীলখালী", "en_name": "Shilkhali" },
+                { "bn_name": "উজানটিয়া", "en_name": "Ujantia" },
+                { "bn_name": "টৈটং", "en_name": "Taitong" },
+                { "bn_name": "বারবাকিয়া", "en_name": "Barabakia" }
+              ]
+            },
+            {
+              "bn_name": "রামু",
+              "en_name": "Ramu",
+              "unions": [
+                { "bn_name": "চাকমারকুল", "en_name": "Chakmarkul" },
+                { "bn_name": "ফতেখাঁরকুল", "en_name": "Fatekharkul" },
+                { "bn_name": "গর্জনিয়া", "en_name": "Garjania" },
+                { "bn_name": "ঈদগড়", "en_name": "Eidgar" },
+                { "bn_name": "জোয়ারিয়ানালা", "en_name": "Joarianala" },
+                { "bn_name": "কচ্ছপিয়া", "en_name": "Kachhapia" },
+                { "bn_name": "কাউয়ারখোপ", "en_name": "Kauarkhop" },
+                { "bn_name": "খুনিয়াপালং", "en_name": "Khuniapalong" },
+                {
+                  "bn_name": "দক্ষিণ মিঠাছড়ি",
+                  "en_name": "Dakshin Mithachhari"
+                },
+                { "bn_name": "রাজারকুল", "en_name": "Rajarkul" },
+                { "bn_name": "রশিদনগর", "en_name": "Rashidnagar" }
+              ]
+            },
+            {
+              "bn_name": "টেকনাফ",
+              "en_name": "Teknaf",
+              "unions": [
+                { "bn_name": "বাহারছড়া", "en_name": "Baharchhara" },
+                { "bn_name": "হ্নীলা", "en_name": "Hnila" },
+                { "bn_name": "হোয়াইক্যং", "en_name": "Whykong" },
+                { "bn_name": "সাবরাং", "en_name": "Sabrang" },
+                { "bn_name": "সেন্টমার্টিন", "en_name": "Saintmartin" },
+                { "bn_name": "টেকনাফ", "en_name": "Teknaf" }
+              ]
+            },
+            {
+              "bn_name": "উখিয়া",
+              "en_name": "Ukhia",
+              "unions": [
+                { "bn_name": "হলদিয়াপালং", "en_name": "Haldiyapalong" },
+                { "bn_name": "জালিয়াপালং", "en_name": "Jaliapalong" },
+                { "bn_name": "পালংখালী", "en_name": "Palongkhali" },
+                { "bn_name": "রাজাপালং", "en_name": "Rajapalong" },
+                { "bn_name": "রত্নাপালং", "en_name": "Ratnapalong" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "ফেনী",
+          "en_name": "Feni District",
+          "upazilas": [
+            {
+              "bn_name": "ছাগলনাইয়া",
+              "en_name": "Chhagalnaiya",
+              "unions": [
+                { "bn_name": "ছাগলনাইয়া", "en_name": "Chhagalnaiya" },
+                { "bn_name": "মহামায়া", "en_name": "Mohamaya" },
+                { "bn_name": "পাঠাননগর", "en_name": "Pathannagar" },
+                { "bn_name": "রাধানগর", "en_name": "Radhanagar" },
+                { "bn_name": "শুভপুর", "en_name": "Shubhapur" }
+              ]
+            },
+            {
+              "bn_name": "দাগনভূঞা",
+              "en_name": "Daganbhuiyan",
+              "unions": [
+                { "bn_name": "দাগনভূঞা", "en_name": "Daganbhuiyan" },
+                { "bn_name": "জায়লস্কর", "en_name": "Jaylaskar" },
+                { "bn_name": "মাতুভূঁঞা", "en_name": "Matubhuiyan" },
+                { "bn_name": "পূর্বচন্দ্রপুর", "en_name": "Purbachandrapur" },
+                { "bn_name": "রাজাপুর", "en_name": "Rajapur" },
+                { "bn_name": "সিন্দুরপুর", "en_name": "Sindurpur" },
+                { "bn_name": "ইয়াকুবপুর", "en_name": "Yakubpur" },
+                { "bn_name": "রামনগর", "en_name": "Ramnagar" }
+              ]
+            },
+            {
+              "bn_name": "ফেনী সদর",
+              "en_name": "Feni Sadar",
+              "unions": [
+                { "bn_name": "বালিগাঁও", "en_name": "Baligaon" },
+                { "bn_name": "ছনুয়া", "en_name": "Chhanua" },
+                { "bn_name": "ধলিয়া", "en_name": "Dhalia" },
+                { "bn_name": "পাঁচগাছিয়া", "en_name": "Panchgachia" },
+                { "bn_name": "ফাজিলপুর", "en_name": "Fazilpur" },
+                { "bn_name": "কালিদহ", "en_name": "Kalidah" },
+                { "bn_name": "ফরহাদনগর", "en_name": "Farhadnagar" },
+                { "bn_name": "কাজিরবাগ", "en_name": "Kazirbag" },
+                { "bn_name": "লেমুয়া", "en_name": "Lemua" },
+                { "bn_name": "মোটবী", "en_name": "Motobi" },
+                { "bn_name": "শর্শদি", "en_name": "Sharsadi" },
+                { "bn_name": "ধর্মপুর", "en_name": "Dharmapur" }
+              ]
+            },
+            {
+              "bn_name": "ফুলগাজী",
+              "en_name": "Fulgazi",
+              "unions": [
+                { "bn_name": "আমজাদহাট", "en_name": "Amjadhat" },
+                { "bn_name": "দরবারপুর", "en_name": "Darbarpur" },
+                { "bn_name": "ফুলগাজী", "en_name": "Fulgazi" },
+                { "bn_name": "জিএমহাট", "en_name": "GMhat" },
+                { "bn_name": "মুন্সিরহাট", "en_name": "Munshirhat" },
+                { "bn_name": "আনন্দপুর", "en_name": "Anandapur" }
+              ]
+            },
+            {
+              "bn_name": "পরশুরাম",
+              "en_name": "Parshuram",
+              "unions": [
+                { "bn_name": "চিথলিয়া", "en_name": "Chithalia" },
+                { "bn_name": "বক্সমাহমুদ", "en_name": "Boxmahmud" },
+                { "bn_name": "মির্জানগর", "en_name": "Mirzanagar" }
+              ]
+            },
+            {
+              "bn_name": "সোনাগাজী",
+              "en_name": "Sonagazi",
+              "unions": [
+                { "bn_name": "আমিরাবাদ", "en_name": "Amirabad" },
+                { "bn_name": "বগাদানা", "en_name": "Bogadana" },
+                { "bn_name": "চরচান্দিয়া", "en_name": "Charchandia" },
+                { "bn_name": "চরদরবেশ", "en_name": "Chardarbesh" },
+                { "bn_name": "চরমজলিশপুর", "en_name": "Charmajalishpur" },
+                { "bn_name": "মঙ্গলকান্দি", "en_name": "Mangalkandi" },
+                { "bn_name": "মতিগঞ্জ", "en_name": "Motiganj" },
+                { "bn_name": "নবাবপুর", "en_name": "Nababpur" },
+                { "bn_name": "সোনাগাজী", "en_name": "Sonagazi" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "খাগড়াছড়ি",
+          "en_name": "Khagrachhari District",
+          "upazilas": [
+            {
+              "bn_name": "দীঘিনালা",
+              "en_name": "Dighinala",
+              "unions": [
+                { "bn_name": "দীঘিনালা", "en_name": "Dighinala" },
+                { "bn_name": "কবাখালী", "en_name": "Kabakhali" },
+                { "bn_name": "মেরুং", "en_name": "Merung" },
+                { "bn_name": "বোয়ালখালী", "en_name": "Boalkhali" },
+                { "bn_name": "বাবুছড়া", "en_name": "Babuchhara" }
+              ]
+            },
+            {
+              "bn_name": "খাগড়াছড়ি সদর",
+              "en_name": "Khagrachhari Sadar",
+              "unions": [
+                { "bn_name": "খাগড়াছড়ি", "en_name": "Khagrachhari" },
+                { "bn_name": "গোলাবাড়ী", "en_name": "Golabari" },
+                { "bn_name": "কমলছড়ি", "en_name": "Kamalchhari" },
+                { "bn_name": "পেরাছড়া", "en_name": "Perachhara" },
+                { "bn_name": "ভাইবোনছড়া", "en_name": "Bhaibonchhara" }
+              ]
+            },
+            {
+              "bn_name": "লক্ষ্মীছড়ি",
+              "en_name": "Lakshmichhari",
+              "unions": [
+                { "bn_name": "লক্ষ্মীছড়ি", "en_name": "Lakshmichhari" },
+                { "bn_name": "দুল্যাতলী", "en_name": "Dulyatali" },
+                { "bn_name": "বর্মাছড়ি", "en_name": "Barmachhari" }
+              ]
+            },
+            {
+              "bn_name": "মহালছড়ি",
+              "en_name": "Mahalchhari",
+              "unions": [
+                { "bn_name": "মহালছড়ি", "en_name": "Mahalchhari" },
+                { "bn_name": "মুবাছড়ি", "en_name": "Mubachhari" },
+                { "bn_name": "ক্যায়াংঘাট", "en_name": "Kayangghat" },
+                { "bn_name": "মাইসছড়ি", "en_name": "Maischhari" },
+                { "bn_name": "সিন্দুকছড়ি", "en_name": "Sindukchhari" }
+              ]
+            },
+            {
+              "bn_name": "মানিকছড়ি",
+              "en_name": "Manikchhari",
+              "unions": [
+                { "bn_name": "মানিকছড়ি", "en_name": "Manikchhari" },
+                { "bn_name": "বাটনাতলী", "en_name": "Batnatali" },
+                { "bn_name": "তিনটহরী", "en_name": "Tintahari" }
+              ]
+            },
+            {
+              "bn_name": "মাটিরাঙ্গা",
+              "en_name": "Matiranga",
+              "unions": [
+                { "bn_name": "মাটিরাঙ্গা", "en_name": "Matiranga" },
+                { "bn_name": "তবলছড়ি", "en_name": "Tabalchhari" },
+                { "bn_name": "বর্ণাল", "en_name": "Barnal" },
+                { "bn_name": "গুইমারা", "en_name": "Guimara" },
+                { "bn_name": "তাইন্দং", "en_name": "Taindong" },
+                { "bn_name": "আমতলী", "en_name": "Amtali" },
+                { "bn_name": "বড়নাল", "en_name": "Boro-nal" }
+              ]
+            },
+            {
+              "bn_name": "পানছড়ি",
+              "en_name": "Panchhari",
+              "unions": [
+                { "bn_name": "পানছড়ি", "en_name": "Panchhari" },
+                { "bn_name": "লোগাং", "en_name": "Logang" },
+                { "bn_name": "চেঙ্গী", "en_name": "Chengi" },
+                { "bn_name": "লতিবান", "en_name": "Latiban" },
+                { "bn_name": "উল্টাছড়ি", "en_name": "Ultachhari" }
+              ]
+            },
+            {
+              "bn_name": "রামগড়",
+              "en_name": "Ramgarh",
+              "unions": [
+                { "bn_name": "রামগড়", "en_name": "Ramgarh" },
+                { "bn_name": "পাতাছড়া", "en_name": "Patachhara" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "লক্ষ্মীপুর",
+          "en_name": "Lakshmipur District",
+          "upazilas": [
+            {
+              "bn_name": "লক্ষ্মীপুর সদর",
+              "en_name": "Lakshmipur Sadar",
+              "unions": [
+                { "bn_name": "উত্তর হামছাদী", "en_name": "Uttar Hamsadi" },
+                { "bn_name": "দক্ষিণ হামছাদী", "en_name": "Dakshin Hamsadi" },
+                { "bn_name": "দালাল বাজার", "en_name": "Dalal Bazar" },
+                { "bn_name": "চররুহিতা", "en_name": "Charruhita" },
+                { "bn_name": "পার্বতীনগর", "en_name": "Parbatinagar" },
+                { "bn_name": "বাঙ্গাঁখা", "en_name": "Bangakha" },
+                { "bn_name": "দত্তপাড়া", "en_name": "Dattapara" },
+                { "bn_name": "বশিকপুর", "en_name": "Bashikpur" },
+                { "bn_name": "টুমচর", "en_name": "Tumchar" },
+                { "bn_name": "হাজিরপাড়া", "en_name": "Hajirpara" },
+                { "bn_name": "চরশাহী", "en_name": "Charshahi" },
+                { "bn_name": "দিঘলী", "en_name": "Dighali" },
+                { "bn_name": "মান্দারী", "en_name": "Mandari" },
+                { "bn_name": "লাহারকান্দি", "en_name": "Laharkandi" },
+                { "bn_name": "কুশাখালী", "en_name": "Kushakhali" },
+                { "bn_name": "চন্দ্রগঞ্জ", "en_name": "Chandragonj" }
+              ]
+            },
+            {
+              "bn_name": "রামগঞ্জ",
+              "en_name": "Ramganj",
+              "unions": [
+                { "bn_name": "কাঞ্চনপুর", "en_name": "Kanchanpur" },
+                { "bn_name": "নোয়াগাঁও", "en_name": "Noagaon" },
+                { "bn_name": "ভাদুর", "en_name": "Bhadur" },
+                { "bn_name": "ইছাপুর", "en_name": "Ichhapur" },
+                { "bn_name": "চন্ডিপুর", "en_name": "Chandipur" },
+                { "bn_name": "লামচর", "en_name": "Lamchar" },
+                { "bn_name": "দরবেশপুর", "en_name": "Darbeshpur" },
+                { "bn_name": "করপাড়া", "en_name": "Karpara" },
+                { "bn_name": "ভোলাকোট", "en_name": "Bholakot" },
+                { "bn_name": "ভাটরা", "en_name": "Bhatra" }
+              ]
+            },
+            {
+              "bn_name": "রামগতি",
+              "en_name": "Ramgati",
+              "unions": [
+                { "bn_name": "চরবাদাম", "en_name": "Charbadam" },
+                { "bn_name": "চরপোড়াগাছা", "en_name": "Charporagachha" },
+                { "bn_name": "চররমিজ", "en_name": "Charramiz" },
+                { "bn_name": "চরগাজী", "en_name": "Chargazi" },
+                { "bn_name": "চরআলগী", "en_name": "Charalgi" },
+                { "bn_name": "বড়খেড়ী", "en_name": "Borokheri" },
+                { "bn_name": "চরআব্দুল্লাহ", "en_name": "Charabdullah" },
+                { "bn_name": "আলেকজান্ডার", "en_name": "Alexandar" }
+              ]
+            },
+            {
+              "bn_name": "রায়পুর",
+              "en_name": "Raipur",
+              "unions": [
+                { "bn_name": "উত্তর চরআবাবিল", "en_name": "Uttar Charababil" },
+                { "bn_name": "উত্তর চরবংশী", "en_name": "Uttar Charbangshi" },
+                { "bn_name": "চরমোহনা", "en_name": "Char Mohona" },
+                { "bn_name": "সোনাপুর", "en_name": "Sonapur" },
+                { "bn_name": "চরপাতা", "en_name": "Charpata" },
+                { "bn_name": "কেরোয়া", "en_name": "Keroa" },
+                { "bn_name": "বামনী", "en_name": "Bamni" },
+                {
+                  "bn_name": "দক্ষিণ চরবংশী",
+                  "en_name": "Dakshin Charbangshi"
+                },
+                {
+                  "bn_name": "দক্ষিণ চরআবাবিল",
+                  "en_name": "Dakshin Charababil"
+                },
+                { "bn_name": "রায়পুর", "en_name": "Raipur" }
+              ]
+            },
+            {
+              "bn_name": "কমলনগর",
+              "en_name": "Komolnagar",
+              "unions": [
+                { "bn_name": "চর কালকিনি", "en_name": "Charkalkini" },
+                { "bn_name": "সাহেবের হাট", "en_name": "Saheberhat" },
+                { "bn_name": "চর লরেন্স", "en_name": "Char Lawrence" },
+                { "bn_name": "চর মার্টিন", "en_name": "Char Martin" },
+                { "bn_name": "পাটওয়ারীর হাট", "en_name": "Patwarirhat" },
+                { "bn_name": "তোরাবগঞ্জ", "en_name": "Torabganj" },
+                { "bn_name": "হাজিরহাট", "en_name": "Hajirhat" },
+                { "bn_name": "চর কাদিরা", "en_name": "Char Kadira" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "নোয়াখালী",
+          "en_name": "Noakhali District",
+          "upazilas": [
+            {
+              "bn_name": "বেগমগঞ্জ",
+              "en_name": "Begumganj",
+              "unions": [
+                { "bn_name": "আমানউল্যাপুর", "en_name": "Amanullapur" },
+                { "bn_name": "গোপালপুর", "en_name": "Gopalpur" },
+                { "bn_name": "জিরতলী", "en_name": "Jirtali" },
+                { "bn_name": "আলাইয়ারপুর", "en_name": "Alaiyarpur" },
+                { "bn_name": "ছয়ানী", "en_name": "Chayani" },
+                { "bn_name": "রাজগঞ্জ", "en_name": "Rajganj" },
+                { "bn_name": "একলাশপুর", "en_name": "Eklashpur" },
+                { "bn_name": "বেগমগঞ্জ", "en_name": "Begumganj" },
+                { "bn_name": "মিরওয়ারিশপুর", "en_name": "Mirwarishpur" },
+                { "bn_name": "নরোত্তমপুর", "en_name": "Narottampur" },
+                { "bn_name": "দুর্গাপুর", "en_name": "Durgapur" },
+                { "bn_name": "কুতুবপুর", "en_name": "Kutubpur" },
+                { "bn_name": "রসুলপুর", "en_name": "Rasulpur" },
+                { "bn_name": "হাজীপুর", "en_name": "Hajipur" },
+                { "bn_name": "শরীফপুর", "en_name": "Sharifpur" },
+                { "bn_name": "কাদিরপুর", "en_name": "Kadirpur" }
+              ]
+            },
+            {
+              "bn_name": "চাটখিল",
+              "en_name": "Chatkhil",
+              "unions": [
+                { "bn_name": "সাহাপুর", "en_name": "Sahapur" },
+                { "bn_name": "রামনারায়নপুর", "en_name": "Ramnarayanpur" },
+                { "bn_name": "পরকোট", "en_name": "Parakot" },
+                { "bn_name": "বদলকোট", "en_name": "Badalkot" },
+                { "bn_name": "মোহাম্মদপুর", "en_name": "Mohammadpur" },
+                { "bn_name": "পাঁচগাঁও", "en_name": "Panchgaon" },
+                {
+                  "bn_name": "হাটপুকুরিয়া ঘাটলাবাগ",
+                  "en_name": "Hatpukuria Ghatlabag"
+                },
+                { "bn_name": "নোয়াখলা", "en_name": "Noakhala" },
+                { "bn_name": "খিলপাড়া", "en_name": "Khilpara" }
+              ]
+            },
+            {
+              "bn_name": "কোম্পানীগঞ্জ",
+              "en_name": "Companiganj",
+              "unions": [
+                { "bn_name": "সিরাজপুর", "en_name": "Sirajpur" },
+                { "bn_name": "চরপার্বতী", "en_name": "Charparbati" },
+                { "bn_name": "চরহাজারী", "en_name": "Charhazari" },
+                { "bn_name": "চরকাঁকড়া", "en_name": "Charkakra" },
+                { "bn_name": "চরফকিরা", "en_name": "Charfakira" },
+                { "bn_name": "রামপুর", "en_name": "Rampur" },
+                { "bn_name": "মুছাপুর", "en_name": "Musapur" },
+                { "bn_name": "চরএলাহী", "en_name": "Charelahi" }
+              ]
+            },
+            {
+              "bn_name": "হাতিয়া",
+              "en_name": "Hatiya",
+              "unions": [
+                { "bn_name": "চরঈশ্বর", "en_name": "Char Ishwar" },
+                { "bn_name": "চরকিং", "en_name": "Char King" },
+                { "bn_name": "তমরদ্দি", "en_name": "Tamaraddi" },
+                { "bn_name": "সোনাদিয়া", "en_name": "Sonadia" },
+                { "bn_name": "বুড়িরচর", "en_name": "Burirchar" },
+                { "bn_name": "জাহাজমারা", "en_name": "Jahajmara" },
+                { "bn_name": "নিঝুমদ্বীপ", "en_name": "Nijhumdwip" },
+                { "bn_name": "নলচিরা", "en_name": "Nalchira" },
+                { "bn_name": "সুখচর", "en_name": "Sukhchar" },
+                { "bn_name": "চানন্দী", "en_name": "Chanondi" },
+                { "bn_name": "হরনী", "en_name": "Horoni" }
+              ]
+            },
+            {
+              "bn_name": "কবিরহাট",
+              "en_name": "Kabirhat",
+              "unions": [
+                { "bn_name": "নরোত্তমপুর", "en_name": "Narottampur" },
+                { "bn_name": "সুন্দলপুর", "en_name": "Sundalpur" },
+                { "bn_name": "ধানসিঁড়ি", "en_name": "Dhansiri" },
+                { "bn_name": "ঘোষবাগ", "en_name": "Ghoshbag" },
+                { "bn_name": "চাপ্রাশিরহাট", "en_name": "Chaprashirhat" },
+                { "bn_name": "ধানশালিক", "en_name": "Dhanshalik" },
+                { "bn_name": "বাটইয়া", "en_name": "Bataiya" }
+              ]
+            },
+            {
+              "bn_name": "সেনবাগ",
+              "en_name": "Senbag",
+              "unions": [
+                { "bn_name": "অর্জুনতলা", "en_name": "Arjuntala" },
+                { "bn_name": "বীজবাগ", "en_name": "Bijbag" },
+                { "bn_name": "ছাতারপাইয়া", "en_name": "Chhatarpaiya" },
+                { "bn_name": "ডমুরুয়া", "en_name": "Damurua" },
+                { "bn_name": "কাদরা", "en_name": "Kadra" },
+                { "bn_name": "কাবিলপুর", "en_name": "Kabilpur" },
+                { "bn_name": "কেশারপাড়", "en_name": "Keshopar" },
+                { "bn_name": "মোহাম্মদপুর", "en_name": "Mohammadpur" },
+                { "bn_name": "নবীপুর", "en_name": "Nabipur" }
+              ]
+            },
+            {
+              "bn_name": "সুবর্ণচর",
+              "en_name": "Subarnachar",
+              "unions": [
+                { "bn_name": "চরজব্বর", "en_name": "Charjabbar" },
+                { "bn_name": "চরবাটা", "en_name": "Charbata" },
+                { "bn_name": "চরক্লার্ক", "en_name": "Charklark" },
+                { "bn_name": "চরওয়াপদা", "en_name": "Charwapda" },
+                { "bn_name": "চরজুবলী", "en_name": "Charjubilee" },
+                { "bn_name": "চরআমানউল্যা", "en_name": "Charamanullah" },
+                { "bn_name": "পূর্বচরবাটা", "en_name": "Purbachar Bata" },
+                { "bn_name": "মোহাম্মদপুর", "en_name": "Mohammadpur" }
+              ]
+            },
+            {
+              "bn_name": "সোনাইমুড়ী",
+              "en_name": "Sonaimuri",
+              "unions": [
+                { "bn_name": "আমিশাপাড়া", "en_name": "Amishapara" },
+                { "bn_name": "বজরা", "en_name": "Bajra" },
+                { "bn_name": "বারগাঁও", "en_name": "Baragaon" },
+                { "bn_name": "চাষীরহাট", "en_name": "Chashirhat" },
+                { "bn_name": "দেহটি", "en_name": "Deoti" },
+                { "bn_name": "জয়াগ", "en_name": "Joyag" },
+                { "bn_name": "নদনা", "en_name": "Nadana" },
+                { "bn_name": "নাটেশ্বর", "en_name": "Nateshwar" },
+                { "bn_name": "সোনাপুর", "en_name": "Sonapur" },
+                { "bn_name": "অম্বরনগর", "en_name": "Ambarnagar" }
+              ]
+            },
+            {
+              "bn_name": "নোয়াখালী সদর",
+              "en_name": "Noakhali Sadar",
+              "unions": [
+                { "bn_name": "চরমটুয়া", "en_name": "Char Matua" },
+                { "bn_name": "দাদপুর", "en_name": "Dadpur" },
+                { "bn_name": "নোয়ান্নই", "en_name": "Noannoi" },
+                { "bn_name": "কাদির হানিফ", "en_name": "Kadir Hanif" },
+                { "bn_name": "বিনোদপুর", "en_name": "Binodpur" },
+                { "bn_name": "নোয়াখালী", "en_name": "Noakhali" },
+                { "bn_name": "ধর্মপুর", "en_name": "Dharmapur" },
+                { "bn_name": "এওজবালিয়া", "en_name": "Ewazbalia" },
+                { "bn_name": "কালাদরপ", "en_name": "Kaladarap" },
+                { "bn_name": "অশ্বদিয়া", "en_name": "Ashwadia" },
+                { "bn_name": "নিয়াজপুর", "en_name": "Niazpur" },
+                { "bn_name": "পূর্ব চরমটুয়া", "en_name": "Purba Char Matua" },
+                { "bn_name": "আন্ডারচর", "en_name": "Andarchar" }
+              ]
+            }
+          ]
+        },
+        {
+          "bn_name": "রাঙ্গামাটি",
+          "en_name": "Rangamati District",
+          "upazilas": [
+            {
+              "bn_name": "বাঘাইছড়ি",
+              "en_name": "Baghaichhari",
+              "unions": [
+                { "bn_name": "বাঘাইছড়ি", "en_name": "Baghaichhari" },
+                { "bn_name": "সারোয়াতলী", "en_name": "Saroatali" },
+                { "bn_name": "রূপকারী", "en_name": "Rupakari" },
+                { "bn_name": "বঙ্গলতলী", "en_name": "Bangaltali" },
+                { "bn_name": "খেদারমারা", "en_name": "Khedarmara" },
+                { "bn_name": "মারিশ্যা", "en_name": "Marishya" },
+                { "bn_name": "সাজেক", "en_name": "Sajek" }
+              ]
+            },
+            {
+              "bn_name": "বরকল",
+              "en_name": "Barkal",
+              "unions": [
+                { "bn_name": "বরকল", "en_name": "Barkal" },
+                { "bn_name": "আইমাছড়া", "en_name": "Aimachhara" },
+                { "bn_name": "ভূষণছড়া", "en_name": "Bhushanchhara" },
+                { "bn_name": "বড়হরিণা", "en_name": "Baraharina" },
+                { "bn_name": "শুভলং", "en_name": "Subhalang" }
+              ]
+            },
+            {
+              "bn_name": "কাপ্তাই",
+              "en_name": "Kaptai",
+              "unions": [
+                { "bn_name": "কাপ্তাই", "en_name": "Kaptai" },
+                { "bn_name": "চন্দ্রঘোনা", "en_name": "Chandraghona" },
+                { "bn_name": "চিৎমরম", "en_name": "Chitmarm" },
+                { "bn_name": "রাইখালী", "en_name": "Raikhali" },
+                { "bn_name": "ওয়াগ্গা", "en_name": "Wagga" }
+              ]
+            },
+            {
+              "bn_name": "জুরাছড়ি",
+              "en_name": "Juraichhari",
+              "unions": [
+                { "bn_name": "জুরাছড়ি", "en_name": "Juraichhari" },
+                { "bn_name": "বনযোগীছড়া", "en_name": "Banjogichhara" },
+                { "bn_name": "দুমদুম্যা", "en_name": "Dumdumya" },
+                { "bn_name": "মৈদং", "en_name": "Moidong" }
+              ]
+            },
+            {
+              "bn_name": "কাউখালী",
+              "en_name": "Kaukhali",
+              "unions": [
+                { "bn_name": "বেতবুনিয়া", "en_name": "Betbunia" },
+                { "bn_name": "ফটিকছড়ি", "en_name": "Fatikchhari" },
+                { "bn_name": "ঘাগড়া", "en_name": "Ghagra" },
+                { "bn_name": "কলমপতি", "en_name": "Kalampati" }
+              ]
+            },
+            {
+              "bn_name": "লংগদু",
+              "en_name": "Langadu",
+              "unions": [
+                { "bn_name": "লংগদু", "en_name": "Langadu" },
+                { "bn_name": "আটারকছড়া", "en_name": "Atarakchhara" },
+                { "bn_name": "ভাসাইন্যাদম", "en_name": "Bhasainyadam" },
+                { "bn_name": "বগাচতর", "en_name": "Bogachatar" },
+                { "bn_name": "গুলশাখালী", "en_name": "Gulshakhali" },
+                { "bn_name": "কালাপাকুজ্জ্যা", "en_name": "Kalapakujjya" },
+                { "bn_name": "মাইনীমুখ", "en_name": "Mainimukh" }
+              ]
+            },
+            {
+              "bn_name": "নানিয়ারচর",
+              "en_name": "Naniarchar",
+              "unions": [
+                { "bn_name": "নানিয়ারচর", "en_name": "Naniarchar" },
+                { "bn_name": "বুড়িঘাট", "en_name": "Burighat" },
+                { "bn_name": "সাবেক্ষ্যং", "en_name": "Sabekkhong" },
+                { "bn_name": "ঘিলাছড়ি", "en_name": "Ghilachhari" }
+              ]
+            },
+            {
+              "bn_name": "রাজস্থলী",
+              "en_name": "Rajasthali",
+              "unions": [
+                { "bn_name": "রাজস্থলী", "en_name": "Rajasthali" },
+                { "bn_name": "গাইন্দ্যা", "en_name": "Gaindya" },
+                { "bn_name": "বাঙালহালিয়া", "en_name": "Bangalhalia" }
+              ]
+            },
+            {
+              "bn_name": "রাঙ্গামাটি সদর",
+              "en_name": "Rangamati Sadar",
+              "unions": [
+                { "bn_name": "জীবতলী", "en_name": "Jibtali" },
+                { "bn_name": "মগবান", "en_name": "Magban" },
+                { "bn_name": "সাপছড়ি", "en_name": "Sapchhari" },
+                { "bn_name": "কুতুকছড়ি", "en_name": "Kutukchhari" },
+                { "bn_name": "বন্দুকভাঙ্গা", "en_name": "Bandukbhanga" },
+                { "bn_name": "বালুখালী", "en_name": "Balukhali" }
+              ]
+            },
+            {
+              "bn_name": "বিলাইছড়ি",
+              "en_name": "Belaichhari",
+              "unions": [
+                { "bn_name": "বিলাইছড়ি", "en_name": "Belaichhari" },
+                { "bn_name": "কেংড়াছড়ি", "en_name": "Kengrachhari" },
+                { "bn_name": "ফারুয়া", "en_name": "Farua" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

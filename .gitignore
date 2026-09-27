@@ -1,0 +1,60 @@
+# ===============================
+# 🌐 Global Ignore Rules
+# ===============================
+
+# Node.js dependencies
+**/node_modules/
+
+# Build outputs
+**/dist/
+**/build/
+**/dist.zip
+
+# Environment files
+**/.env
+**/.env.*
+
+# Vercel config (optional - ignore if using GitHub integration)
+**/.vercel
+
+# Log files
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE folders
+.vscode/
+.idea/
+
+# Optional: Package manager lock files (uncomment if you want to ignore)
+# **/package-lock.json
+# **/yarn.lock
+# **/pnpm-lock.yaml
+
+# ===============================
+# 📦 Project-Specific Ignores (optional clarity)
+# ===============================
+
+# Cosmetics Dashboard
+Tutor-Vista-Client/node_modules/
+Tutor-Vista-Client/dist/
+Tutor-Vista-Client/.env
+Tutor-Vista-Client/.vercel
+
+# Cosmetics Backend
+Cosmetices-Backend/node_modules/
+Cosmetices-Backend/.env
+Cosmetices-Backend/.vercel
+Cosmetices-Backend/uploads
+
+# Cosmetics Website
+Cosmetices-Website/node_modules/
+Cosmetices-Website/dist/
+Cosmetices-Website/.env
+Cosmetices-Website/.vercel
+.vercel
