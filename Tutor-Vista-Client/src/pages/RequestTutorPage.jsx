@@ -346,17 +346,22 @@ const RequestTutorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 py-6 sm:py-12 font-dmsans">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-20 xl:px-40 2xl:px-80">
+    <div className="min-h-screen bg-[#F7F8FB] text-[#1A1D29] py-8 sm:py-12 font-sans">
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <RequestTutorHeader />
 
         <form
           onSubmit={handleSubmit}
-          className="bg-[#C1D7FC] rounded-2xl shadow-xl p-6 md:p-8 lg:p-12 animate-fade-in-up"
+          className="bg-white rounded-lg shadow-card border border-[#E4E6EE] p-6 sm:p-10"
         >
-          <h2 className="text-2xl font-semibold text-gray-800 mb-8 text-center">
-            Student Information
-          </h2>
+          <div className="mb-6 pb-4 border-b border-[#E4E6EE]">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#1A1D29]">
+              Request a Tutor
+            </h2>
+            <p className="text-xs sm:text-sm text-[#5B5F73] mt-1">
+              Please provide the student requirements below. We'll match you with verified tutors.
+            </p>
+          </div>
 
           <StudentInfoForm
             formData={formData}
@@ -390,42 +395,59 @@ const RequestTutorPage = () => {
             areas={areas}
           />
 
-          <div className="space-y-6">
+          <div className="pt-4 space-y-6">
             <div className="flex items-start">
               <input
                 type="checkbox"
+                id="agreeTermsCheckbox"
                 checked={formData.agreeTerms}
                 onChange={(e) =>
                   handleInputChange("agreeTerms", e.target.checked)
                 }
-                className={`mt-1 w-4 h-4 ${
+                className={`mt-0.5 w-4 h-4 rounded text-[#3730E0] focus:ring-[#3730E0] ${
                   fieldErrors.agreeTerms
-                    ? "text-red-600 border-red-500 focus:ring-red-500"
-                    : "text-blue-600 border-gray-300 focus:ring-blue-500"
-                } rounded`}
+                    ? "border-[#DC2626]"
+                    : "border-[#E4E6EE]"
+                }`}
               />
               <label
-                className={`ml-3 text-sm font-medium ${
-                  fieldErrors.agreeTerms ? "text-red-600" : "text-gray-700"
+                htmlFor="agreeTermsCheckbox"
+                className={`ml-2.5 text-xs sm:text-sm cursor-pointer select-none ${
+                  fieldErrors.agreeTerms ? "text-[#DC2626] font-medium" : "text-[#5B5F73]"
                 }`}
               >
-                I agree to the terms and conditions and privacy policy.
+                I agree to the{" "}
+                <a href="/terms-and-condition" target="_blank" rel="noopener noreferrer" className="text-[#3730E0] underline font-medium">
+                  Terms & Conditions
+                </a>{" "}
+                and{" "}
+                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#3730E0] underline font-medium">
+                  Privacy Policy
+                </a>
+                .
               </label>
             </div>
             {fieldErrors.agreeTerms && (
-              <p className="text-sm text-red-600 mt-1">
+              <p className="text-xs text-[#DC2626] -mt-4">
                 {fieldErrors.agreeTerms}
               </p>
             )}
-            <div className="text-center">
-              <Button type="submit" disabled={loading}>
-                {loading ? "Submitting..." : "Submit Request"}
+
+            <div className="text-center pt-2">
+              <Button
+                type="submit"
+                variant="primary"
+                size="lg"
+                disabled={loading}
+                isLoading={loading}
+                className="w-full sm:w-auto px-10"
+              >
+                {loading ? "Submitting..." : "Submit Tuition Request"}
               </Button>
             </div>
           </div>
         </form>
       </div>
-      <style>{`@keyframes fade-in-down{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}@keyframes fade-in-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.animate-fade-in-down{animation:fade-in-down .6s ease-out}.animate-fade-in-up{animation:fade-in-up .8s ease-out}`}</style>
     </div>
   );
 };

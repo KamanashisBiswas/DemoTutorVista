@@ -14,8 +14,8 @@ export const SelectField = ({
   fieldRefs,
 }) => (
   <div>
-    <label className="block text-sm font-medium text-gray-700 mb-2">
-      {label} {required && <span className="text-red-500">*</span>}
+    <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
+      {label} {required && <span className="text-[#DC2626]">*</span>}
     </label>
     <div className="relative">
       <select
@@ -23,16 +23,16 @@ export const SelectField = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
-        className={`w-full px-4 py-3 border ${
-          error ? "border-red-500" : "border-gray-300"
-        } rounded-lg appearance-none bg-white transition-all duration-200 ${
+        className={`w-full px-3.5 py-2.5 text-xs sm:text-sm border ${
+          error ? "border-[#DC2626]" : "border-[#E4E6EE]"
+        } rounded-sm appearance-none bg-white text-[#1A1D29] transition-all duration-150 ${
           error
-            ? "focus:border-red-500 focus:ring-2 focus:ring-red-200"
-            : "focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+            ? "focus:border-[#DC2626] focus:ring-2 focus:ring-[#DC2626]/15"
+            : "focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15"
         } ${
           disabled
-            ? "bg-gray-100 cursor-not-allowed text-gray-500"
-            : "hover:border-gray-300"
+            ? "bg-[#F7F8FB] cursor-not-allowed text-[#5B5F73]/60"
+            : "hover:border-[#CBD5E1] cursor-pointer"
         }`}
       >
         <option value="">
@@ -44,8 +44,8 @@ export const SelectField = ({
           </option>
         ))}
       </select>
-      <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+      <ChevronDown className="absolute right-3.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#5B5F73] pointer-events-none" />
     </div>
-    {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+    {error && <p className="mt-1 text-xs text-[#DC2626]">{error}</p>}
   </div>
 );

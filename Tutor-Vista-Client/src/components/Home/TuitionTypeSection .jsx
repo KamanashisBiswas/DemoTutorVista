@@ -1,138 +1,137 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Home, Laptop, Users, Check, ArrowRight } from "lucide-react";
+import CommonSectionHeading from "../Common/CommonSectionHeading";
+import { Card } from "../ui/Card";
+import { Button } from "../ui/Button";
 
 import homeTutoringImage from "../../assets/Home/Image/home-tutor.svg";
 import onlineTutoringImage from "../../assets/Home/Image/online-tutor.svg";
 import groupTutoringImage from "../../assets/Home/Image/group-tutor.svg";
-import CommonSectionHeading from "../Common/CommonSectionHeading";
 
 const TuitionTypeSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        ease: "easeOut",
-      },
+  const types = [
+    {
+      id: "home",
+      icon: Home,
+      title: "Home Tutoring",
+      badge: "Most Popular",
+      badgeColor: "bg-[#EEEDFD] text-[#3730E0] border-[#DDD9FC]",
+      image: homeTutoringImage,
+      desc: "One-on-one personalized learning at the comfort of your own home with dedicated attention.",
+      features: [
+        "In-person mentor supervision",
+        "Individual pace & customized lesson plans",
+        "Convenient schedule matching guardian needs",
+      ],
+      link: "/request-tutor?type=home",
     },
-  };
-
-  // A more subtle and smooth animation: fade in and scale up
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "tween",
-        ease: "circOut",
-        duration: 0.8,
-      },
+    {
+      id: "online",
+      icon: Laptop,
+      title: "Online Tutoring",
+      badge: "Flexible & Global",
+      badgeColor: "bg-[#F0FDFA] text-[#0EA5A0] border-[#CCFBF1]",
+      image: onlineTutoringImage,
+      desc: "Interactive live digital classes via Zoom / Google Meet with top national subject experts.",
+      features: [
+        "Access teachers from anywhere in Bangladesh",
+        "Digital screen sharing & session recordings",
+        "Economical with zero travel time",
+      ],
+      link: "/request-tutor?type=online",
     },
-  };
+    {
+      id: "group",
+      icon: Users,
+      title: "Group Tutoring",
+      badge: "Collaborative",
+      badgeColor: "bg-[#FFFBEB] text-[#D97706] border-[#FDE68A]",
+      image: groupTutoringImage,
+      desc: "Small-batch collaborative sessions where peers learn together under expert guidance.",
+      features: [
+        "Cost-effective shared tuition fees",
+        "Healthy peer discussion & mock tests",
+        "Ideal for SSC / HSC syllabus batch coverage",
+      ],
+      link: "/request-tutor?type=group",
+    },
+  ];
 
   return (
-    <section className="py-14 md:py-20 bg-white overflow-hidden">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 font-dmsans">
-        {/* Section Title */}
-        <div className="text-center mb-10 md:mb-16">
-          <CommonSectionHeading title="Tuition" highlight="Type" />
-          <p className="mt-4 max-w-2xl mx-auto text-gray-600">
-            Choose the learning style that best fits your needs. We offer
-            flexible options for every student.
-          </p>
+    <section className="py-16 sm:py-20 bg-[#F7F8FB]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <CommonSectionHeading
+          badge="LEARNING FORMATS"
+          title="Flexible Tuition Modes"
+          highlight="For Every Need"
+          subtitle="Whether you prefer face-to-face home tutoring or flexible interactive online classes, we provide verified educators tailored to your learning style."
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {types.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Card
+                key={item.id}
+                hoverable
+                className="bg-white border-[#E4E6EE] p-6 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Card Header & Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-sm bg-[#EEEDFD] text-[#3730E0] flex items-center justify-center">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border ${item.badgeColor}`}
+                    >
+                      {item.badge}
+                    </span>
+                  </div>
+
+                  {/* Illustration Container */}
+                  <div className="h-40 w-full flex items-center justify-center p-3 mb-4 bg-[#F7F8FB] rounded-md">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+
+                  {/* Title & Desc */}
+                  <h3 className="text-lg font-bold text-[#1A1D29] mb-2 tracking-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-[#5B5F73] leading-relaxed mb-4">
+                    {item.desc}
+                  </p>
+
+                  {/* Feature checklist */}
+                  <ul className="space-y-2 mb-6">
+                    {item.features.map((feat, fIdx) => (
+                      <li
+                        key={fIdx}
+                        className="flex items-start gap-2 text-xs text-[#1A1D29]"
+                      >
+                        <Check className="w-3.5 h-3.5 text-[#16A34A] shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-4 border-t border-[#E4E6EE]">
+                  <Link to={item.link}>
+                    <Button variant="secondary" size="sm" fullWidth iconRight={ArrowRight}>
+                      Choose {item.title}
+                    </Button>
+                  </Link>
+                </div>
+              </Card>
+            );
+          })}
         </div>
-
-        {/* Cards Grid - Responsive and Centered */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {/* Home Tutoring Card */}
-          <motion.div
-            className="bg-gradient-to-br from-purple-100 via-purple-50 to-purple-100 rounded-3xl p-6 sm:p-8 group hover:shadow-2xl hover:shadow-purple-200/50 transition-all duration-300 hover:-translate-y-2 w-full border border-purple-200/50"
-            variants={cardVariants}
-          >
-            {/* Image Container */}
-            <div className="mb-6 sm:mb-8 flex justify-center">
-              <div className="w-full h-48 sm:h-56 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
-                <img
-                  src={homeTutoringImage}
-                  alt="Home Tutoring Illustration"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-                Home Tutoring
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Personalized one-on-one learning at home for better academic
-                support.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Online Tutoring Card */}
-          <motion.div
-            className="bg-gradient-to-br from-cyan-100 via-cyan-50 to-cyan-100 rounded-3xl p-6 sm:p-8 group hover:shadow-2xl hover:shadow-cyan-200/50 transition-all duration-300 hover:-translate-y-2 w-full border border-cyan-200/50"
-            variants={cardVariants}
-          >
-            {/* Image Container */}
-            <div className="mb-6 sm:mb-8 flex justify-center">
-              <div className="w-full h-48 sm:h-56 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
-                <img
-                  src={onlineTutoringImage}
-                  alt="Online Tutoring Illustration"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-                Online Tutoring
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Flexible virtual lessons providing personalized education
-                anytime, anywhere.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Group Tutoring Card */}
-          <motion.div
-            className="bg-gradient-to-br from-green-100 via-green-50 to-green-100 rounded-3xl p-6 sm:p-8 group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 w-full border border-green-200/50"
-            variants={cardVariants}
-          >
-            <div className="mb-6 sm:mb-8 flex justify-center">
-              <div className="w-full h-48 sm:h-56 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
-                <img
-                  src={groupTutoringImage}
-                  alt="Group Tutoring Illustration"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-                Group Tutoring
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
-                Collaborative sessions where students learn and grow together
-                effectively.
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

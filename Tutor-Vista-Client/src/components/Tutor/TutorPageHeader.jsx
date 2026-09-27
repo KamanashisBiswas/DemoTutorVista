@@ -1,20 +1,16 @@
 import React from "react";
-import { motion } from "framer-motion";
 import CommonSectionHeading from "../Common/CommonSectionHeading";
 
-const TutorPageHeader = () => {
+const TutorPageHeader = ({ totalTutors = 0 }) => {
   return (
-    <motion.div
-      className="text-center mb-12"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <CommonSectionHeading title="All" highlight="Available Tutors" />
-      <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-        Find the perfect tutor from our extensive network of qualified educators
-      </p>
-    </motion.div>
+    <div className="text-center pt-8 pb-4">
+      <CommonSectionHeading
+        badge="ALL INSTRUCTORS"
+        title="Browse Verified"
+        highlight="Tutors"
+        subtitle={`Discover ${totalTutors ? totalTutors.toLocaleString() + "+" : "5,000+"} qualified, background-checked home and online tutors across all divisions.`}
+      />
+    </div>
   );
 };
 

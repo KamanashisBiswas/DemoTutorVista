@@ -333,49 +333,48 @@ const TuitionRequestPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 font-dmsans py-12">
+    <div className="min-h-screen bg-[#F7F8FB] text-[#1A1D29]">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans">
         <TuitionRequestHeader />
 
         {/* Tabs for Dhaka, Chattogram, Khulna, and Sylhet */}
-        <div className="flex justify-center mb-8 mt-12">
-          <div className="inline-flex items-center gap-1 bg-white rounded-full p-1.5 sm:p-2 shadow-lg border-2 border-gray-200 relative">
+        <div className="flex justify-center mb-8 mt-8">
+          <div className="inline-flex items-center gap-1 bg-white rounded-full p-1.5 shadow-sm border border-[#E4E6EE] relative">
             {["Dhaka", "Chattogram", "Khulna", "Sylhet"].map((city) => {
               const isActive = activeTab === city;
               const label = `${city} Tuitions`;
 
               return (
-                <motion.button
+                <button
                   key={city}
+                  type="button"
                   onClick={() => {
                     setActiveTab(city);
                     setCurrentPage(1);
                     clearAllFilters();
                   }}
-                  className={`relative px-3 py-2 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 min-w-[70px] sm:min-w-[120px] ${
+                  className={`relative px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-blue-600 text-white shadow-lg"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                      ? "bg-[#3730E0] text-white shadow-xs"
+                      : "text-[#5B5F73] hover:text-[#1A1D29] hover:bg-[#F7F8FB]"
                   }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   {/* Map Pin Icon Animation - Above Button */}
                   <AnimatePresence>
                     {isActive && (
                       <motion.div
-                        className="absolute left-[40%] -translate-x-1/2 -translate-y-1/2 -top-9 z-50"
-                        initial={{ y: 30, opacity: 0, scale: 0.3 }}
+                        className="absolute left-1/2 -translate-x-1/2 -top-7 z-20 pointer-events-none"
+                        initial={{ y: 8, opacity: 0, scale: 0.6 }}
                         animate={{ y: 0, opacity: 1, scale: 1 }}
-                        exit={{ y: 20, opacity: 0, scale: 0.3 }}
+                        exit={{ y: 4, opacity: 0, scale: 0.6 }}
                         transition={{
                           type: "spring",
-                          stiffness: 500,
+                          stiffness: 400,
                           damping: 25,
                         }}
                       >
                         <MapPinned
-                          className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600"
+                          className="w-5 h-5 text-[#3730E0]"
                           fill="currentColor"
                           strokeWidth={0}
                         />
@@ -384,7 +383,7 @@ const TuitionRequestPage = () => {
                   </AnimatePresence>
 
                   <span className="relative z-10">{label}</span>
-                </motion.button>
+                </button>
               );
             })}
           </div>

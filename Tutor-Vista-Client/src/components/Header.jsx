@@ -1,255 +1,190 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, BellRing } from "lucide-react";
-import { Link, NavLink } from "react-router-dom";
+import { Menu, X, Sparkles, PhoneCall, GraduationCap, ChevronRight } from "lucide-react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../assets/Logo/Logo.svg";
 import Marquee from "react-fast-marquee";
+import { Button } from "./ui/Button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
+  const location = useLocation();
 
-  // // Load chat widget script
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-  //   script.id = "contactus-jssdk";
-  //   script.src =
-  //     "https://api.theanychat.com/widget/5f17dab6-101c-3d46-b167-a7fcdd1eb01a?r=" +
-  //     encodeURIComponent(window.location);
-
-  //   // Check if script is already loaded
-  //   if (!document.getElementById("contactus-jssdk")) {
-  //     const firstScript = document.getElementsByTagName("script")[0];
-  //     firstScript.parentNode.insertBefore(script, firstScript);
-  //   }
-
-  //   // Cleanup function
-  //   return () => {
-  //     const existingScript = document.getElementById("contactus-jssdk");
-  //     if (existingScript) {
-  //       existingScript.remove();
-  //     }
-  //   };
-  // }, []);
-
-  // Load Chatwoot chat widget script
+  // Close mobile drawer on route navigation
   useEffect(() => {
-    // Check if already loaded
-    if (window.chatwootSDK) {
-      return;
-    }
-
-    // Load Chatwoot chat widget
-    const BASE_URL = "https://app.unichat.com.bd";
-    const g = document.createElement("script");
-    g.src = BASE_URL + "/packs/js/sdk.js";
-    g.async = true;
-    g.onload = function () {
-      if (window.chatwootSDK) {
-        window.chatwootSDK.run({
-          websiteToken: "HcgNFvHYigZwFBA5FcqwGGjh",
-          baseUrl: BASE_URL,
-        });
-      }
-    };
-    g.onerror = function () {
-      console.error("Failed to load Chatwoot chat widget");
-    };
-    document.head.appendChild(g);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleLinkClick = (linkName) => {
-    setActiveLink(linkName);
-  };
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About US", path: "/about" },
+    { name: "Find Tutors", path: "/tutors" },
+    { name: "Tuition Jobs", path: "/tuition-jobs" },
     { name: "Request Tutor", path: "/request-tutor" },
-    { name: "Apply Tutor", path: "/apply-tutor" },
+    { name: "Apply as Tutor", path: "/apply-tutor" },
+    { name: "About Us", path: "/about" },
+    { name: "Founder's Message", path: "/founder-message" },
     { name: "Contact", path: "/contact" },
-    { name: "Founder’s Message", path: "/founder-message" },
   ];
 
   return (
-    <>
-      {/* Move entire header to be sticky, including marquee */}
-      <header className="sticky top-0 z-50 font-dmsans">
-        {/* Marquee section now inside header */}
-        <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white py-1.5 relative overflow-hidden shadow-md">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCAzLjk5LTEuNzUgNC0zLjk4di0uMDJtMC0xMGMwLTIuMjEtMS43OS00LTQtNHMtNCAxLjc5LTQgNCAxLjc5IDQgNCA0IDMuOTktMS43NSA0LTMuOTh2LS4wMiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
-          <div className="flex items-center">
-            <div className="hidden md:flex items-center space-x-2 px-4 border-r border-blue-400 mr-4">
-              <BellRing className="h-5 w-5 animate-pulse text-yellow-300" />
-              <span className="font-semibold whitespace-nowrap">
-                SPECIAL OFFER
-              </span>
-            </div>
-            <Marquee
-              gradient={false}
-              speed={50}
-              pauseOnHover={true}
-              className="text-sm md:text-base font-medium"
-            >
-              <div className="flex items-center space-x-8">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E4E6EE] shadow-xs">
+      {/* Top Announcement Bar */}
+      <div className="bg-[#3730E0] text-white py-1.5 px-4 text-xs font-medium">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-2 shrink-0 pr-4">
+            <span className="inline-flex items-center gap-1 bg-[#2D24C4] px-2 py-0.5 rounded-full text-[11px] font-semibold text-[#F5A524]">
+              <Sparkles className="h-3 w-3" />
+              <span>OFFER</span>
+            </span>
+          </div>
+
+          <div className="flex-1 overflow-hidden">
+            <Marquee gradient={false} speed={45} pauseOnHover={true}>
+              <div className="flex items-center space-x-12 pr-12 text-xs">
                 <span>
-                  🔥{" "}
-                  <b>
-                    Refer a tutor for any tuition and get 10% as referral bonus
-                    after service charge (T&C applicable)
-                  </b>
+                  🎓 Verified & Expert Tutors available in Dhaka, Chittagong & all major divisions.
+                </span>
+                <span>
+                  ✨ Refer a qualified tutor or student and earn up to 10% referral bonus!
+                </span>
+                <span>
+                  📞 Free Guardian Consultation & Free Demo Class Guarantee!
                 </span>
               </div>
             </Marquee>
           </div>
-        </div>
 
-        {/* Main navigation section */}
-        <div className="bg-white shadow-sm">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-            <div className="flex items-center justify-between h-16 relative">
-              {/* Logo */}
-              <Link
-                to="/"
-                className="flex items-center space-x-2 flex-shrink-0"
-              >
-                <img
-                  src={Logo}
-                  alt="Tutor Vista Logo"
-                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"
-                />
-                <span className="text-lg sm:text-xl font-bold text-gray-800">
-                  Tutor Vista
-                </span>
-              </Link>
-
-              {/* Desktop Navigation - Properly Centered */}
-              <nav className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2">
-                <div className="flex items-center space-x-8">
-                  {navItems.map((item, index) => (
-                    <NavLink
-                      key={index}
-                      to={item.path}
-                      onClick={() => handleLinkClick(item.name)}
-                      className={({ isActive }) =>
-                        `px-3 py-2 text-base font-medium transition duration-200 whitespace-nowrap ${
-                          isActive
-                            ? "text-blue-600 font-semibold"
-                            : "text-gray-700 hover:text-blue-600"
-                        }`
-                      }
-                    >
-                      {item.name}
-                    </NavLink>
-                  ))}
-                </div>
-              </nav>
-
-              {/* Empty div for balance (optional) */}
-              <div className="hidden lg:block w-32"></div>
-
-              {/* Mobile menu button */}
-              <div className="lg:hidden">
-                <button
-                  onClick={toggleMenu}
-                  className="p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition"
-                  aria-expanded={isMenuOpen}
-                >
-                  <span className="sr-only">Toggle menu</span>
-                  {isMenuOpen ? (
-                    <X className="h-6 w-6" />
-                  ) : (
-                    <Menu className="h-6 w-6" />
-                  )}
-                </button>
-              </div>
-            </div>
+          <div className="hidden lg:flex items-center gap-2 pl-4 border-l border-white/20 text-xs">
+            <PhoneCall className="w-3 h-3 text-[#F5A524]" />
+            <span className="text-white/90">Helpline:</span>
+            <span className="font-semibold text-white">01700-000000</span>
           </div>
         </div>
+      </div>
 
-        {/* Mobile menu stays the same... */}
-        <div
-          className={`lg:hidden fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-200 shadow-lg transform transition-transform duration-300 z-50 ${
-            isMenuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          <div className="flex items-center justify-between px-4 h-16 border-b border-gray-200">
-            <div className="flex items-center space-x-2">
-              <img
-                src={Logo}
-                alt="Tutor Vista Logo"
-                className="w-8 h-8 object-contain"
-              />
-              <span className="text-lg font-bold text-gray-800">
-                Tutor Vista
-              </span>
-            </div>
-            <button
-              onClick={toggleMenu}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none"
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
-          <div className="px-4 py-4 space-y-2">
-            {navItems.map((item, index) => (
+      {/* Main Navbar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-18">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2.5 shrink-0 py-2">
+            <img
+              src={Logo}
+              alt="TutorVista"
+              className="h-9 w-auto object-contain transition-transform duration-200 hover:scale-105"
+            />
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <nav className="hidden xl:flex items-center space-x-1">
+            {navItems.map((item) => (
               <NavLink
-                key={index}
+                key={item.path}
                 to={item.path}
-                onClick={() => handleLinkClick(item.name)}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
+                  `px-3 py-2 text-sm font-medium rounded-md transition-all duration-150 ${
                     isActive
-                      ? "text-blue-600 bg-blue-50 font-semibold"
-                      : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                      ? "text-[#3730E0] bg-[#EEEDFD] font-semibold"
+                      : "text-[#1A1D29] hover:text-[#3730E0] hover:bg-[#F7F8FB]"
                   }`
                 }
               >
                 {item.name}
               </NavLink>
             ))}
-            {/* Only mobile: Additional Links */}
-            <NavLink
-              to="/tutors"
-              onClick={() => handleLinkClick("Available Tutor")}
-              className={({ isActive }) =>
-                `block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
-                  isActive
-                    ? "text-blue-600 bg-blue-50 font-semibold"
-                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
-                }`
-              }
+          </nav>
+
+          {/* Right Header CTAs */}
+          <div className="hidden lg:flex items-center space-x-3">
+            <Link to="/request-tutor">
+              <Button variant="primary" size="md" iconRight={ChevronRight}>
+                Request a Tutor
+              </Button>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Trigger */}
+          <div className="xl:hidden flex items-center space-x-2">
+            <Link to="/request-tutor" className="sm:inline-block hidden">
+              <Button variant="primary" size="sm">
+                Request Tutor
+              </Button>
+            </Link>
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-md text-[#1A1D29] hover:text-[#3730E0] hover:bg-[#F7F8FB] focus:outline-none focus:ring-2 focus:ring-[#3730E0]/20 transition"
+              aria-label="Toggle Navigation Menu"
             >
-              Available Tutor
-            </NavLink>
-            <NavLink
-              to="/tuition-jobs"
-              onClick={() => handleLinkClick("Available Tuition")}
-              className={({ isActive }) =>
-                `block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
-                  isActive
-                    ? "text-blue-600 bg-blue-50 font-semibold"
-                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
-                }`
-              }
-            >
-              Available Tuition
-            </NavLink>
+              {isMenuOpen ? (
+                <X className="h-6 w-6 text-[#DC2626]" />
+              ) : (
+                <Menu className="h-6 w-6 text-[#1A1D29]" />
+              )}
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Backdrop */}
-        {isMenuOpen && (
+      {/* Mobile Menu Drawer */}
+      {isMenuOpen && (
+        <div className="xl:hidden fixed inset-0 top-[102px] z-50 flex">
+          {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-30 z-40 lg:hidden"
-            onClick={toggleMenu}
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
+            onClick={() => setIsMenuOpen(false)}
           />
-        )}
-      </header>
-    </>
+
+          {/* Drawer content */}
+          <div className="relative w-4/5 max-w-sm bg-white h-full shadow-2xl flex flex-col justify-between p-6 overflow-y-auto animate-slide-up">
+            <div className="space-y-1">
+              <div className="pb-3 mb-3 border-b border-[#E4E6EE] flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#5B5F73]">
+                  Navigation Menu
+                </span>
+                <span className="text-xs text-[#0EA5A0] font-medium flex items-center gap-1">
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  Verified Platform
+                </span>
+              </div>
+
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `flex items-center justify-between px-3.5 py-2.5 rounded-md text-sm font-medium transition-all ${
+                      isActive
+                        ? "text-[#3730E0] bg-[#EEEDFD] font-semibold"
+                        : "text-[#1A1D29] hover:text-[#3730E0] hover:bg-[#F7F8FB]"
+                    }`
+                  }
+                >
+                  <span>{item.name}</span>
+                  <ChevronRight className="w-4 h-4 text-[#5B5F73]/50" />
+                </NavLink>
+              ))}
+            </div>
+
+            {/* Mobile Drawer Bottom Actions */}
+            <div className="pt-6 border-t border-[#E4E6EE] space-y-2.5">
+              <Link to="/request-tutor" className="block w-full">
+                <Button variant="primary" size="md" fullWidth>
+                  Request a Tutor
+                </Button>
+              </Link>
+              <Link to="/apply-tutor" className="block w-full">
+                <Button variant="secondary" size="md" fullWidth>
+                  Apply as a Tutor
+                </Button>
+              </Link>
+              <div className="p-3 bg-[#F7F8FB] rounded-md text-center mt-3">
+                <p className="text-xs text-[#5B5F73]">Need immediate assistance?</p>
+                <p className="text-xs font-bold text-[#3730E0] mt-0.5">📞 01700-000000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 

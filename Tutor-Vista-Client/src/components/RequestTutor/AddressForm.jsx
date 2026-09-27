@@ -13,16 +13,17 @@ const AddressForm = ({
   areas,
 }) => {
   return (
-    <div className="mb-8">
-      <div className="flex items-center space-x-3 mb-6">
-        <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
-          <MapPin className="w-4 h-4 text-white" />
+    <div className="mb-8 pb-8 border-b border-[#E4E6EE]">
+      <div className="flex items-center space-x-3 mb-5">
+        <div className="w-8 h-8 bg-[#EEEDFD] text-[#3730E0] rounded-sm flex items-center justify-center">
+          <MapPin className="w-4 h-4" />
         </div>
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">
-          Address
-        </h2>
+        <h3 className="text-base sm:text-lg font-bold text-[#1A1D29]">
+          Location & Address
+        </h3>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
         <SelectField
           label="Division"
           value={formData.division}
@@ -71,22 +72,23 @@ const AddressForm = ({
           fieldRefs={fieldRefs}
         />
       </div>
+
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Detailed Address <span className="text-red-500">*</span>
+        <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
+          Detailed Street / House Address <span className="text-[#DC2626]">*</span>
         </label>
         <textarea
           ref={fieldRefs.address}
-          rows={4}
-          placeholder="Enter detailed address"
+          rows={3}
+          placeholder="House #, Road #, Sector / Block, Flat details..."
           value={formData.address}
           onChange={(e) => handleInputChange("address", e.target.value)}
-          className={`w-full px-4 py-3 border ${
-            fieldErrors.address ? "border-red-500" : "border-gray-300"
-          } rounded-lg transition-all duration-200 hover:border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 resize-vertical`}
+          className={`w-full px-3.5 py-2.5 text-xs sm:text-sm border ${
+            fieldErrors.address ? "border-[#DC2626]" : "border-[#E4E6EE]"
+          } rounded-sm transition-all duration-150 text-[#1A1D29] placeholder-[#5B5F73]/50 focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 resize-vertical`}
         />
         {fieldErrors.address && (
-          <p className="mt-1 text-sm text-red-600">{fieldErrors.address}</p>
+          <p className="mt-1 text-xs text-[#DC2626]">{fieldErrors.address}</p>
         )}
       </div>
     </div>

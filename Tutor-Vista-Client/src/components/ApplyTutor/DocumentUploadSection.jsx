@@ -6,6 +6,7 @@ import {
   GraduationCap,
   Shield,
   CreditCard,
+  CheckCircle2,
 } from "lucide-react";
 import Button from "../Common/Button";
 
@@ -29,83 +30,79 @@ const ImageUploadField = ({
   return (
     <div>
       <div className="flex items-center space-x-2 mb-2">
-        <Icon className="w-4 h-4 text-gray-600" />
-        <label className="block text-sm font-medium text-gray-700">
-          {label} {!isOptional && <span className="text-red-500">*</span>}
+        <Icon className="w-4 h-4 text-[#5B5F73]" />
+        <label className="block text-xs font-semibold text-[#1A1D29]">
+          {label} {!isOptional && <span className="text-[#DC2626]">*</span>}
         </label>
       </div>
+
       {compressing ? (
-        <div className="border-2 border-dashed border-blue-200 rounded-xl p-8 text-center bg-blue-50/50 flex items-center justify-center aspect-video">
-          <div className="flex flex-col items-center space-y-3">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
-            <p className="text-md font-semibold text-gray-700">
+        <div className="border border-dashed border-[#3730E0]/30 rounded-md p-6 text-center bg-[#EEEDFD]/30 flex items-center justify-center aspect-video">
+          <div className="flex flex-col items-center space-y-2">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#3730E0]"></div>
+            <p className="text-xs font-semibold text-[#1A1D29]">
               Compressing Image...
             </p>
-            <p className="text-xs text-gray-500">
-              Please wait, this may take a moment.
+            <p className="text-[11px] text-[#5B5F73]">
+              Optimizing size for quick upload
             </p>
           </div>
         </div>
       ) : preview && currentFile ? (
-        <div className="relative group border-2 border-blue-200 rounded-xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300">
-          <div className="aspect-video w-full bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center relative overflow-hidden">
+        <div className="relative group border border-[#E4E6EE] rounded-md overflow-hidden bg-white shadow-xs">
+          <div className="aspect-video w-full bg-[#F7F8FB] flex items-center justify-center relative overflow-hidden">
             <img
               src={preview}
               alt="Preview"
-              className="max-w-full max-h-full object-contain rounded-lg shadow-sm"
+              className="max-w-full max-h-full object-contain"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-3">
-                <button
-                  type="button"
-                  onClick={() => removeImage(field)}
-                  className="bg-red-500 bg-opacity-90 hover:bg-opacity-100 text-white p-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-200"
-                >
-                  <Trash2 className="w-5 h-5" />
-                </button>
-              </div>
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={() => removeImage(field)}
+                className="bg-[#DC2626] text-white p-2.5 rounded-full shadow-sm hover:scale-105 transition-transform cursor-pointer"
+                title="Remove image"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => document.getElementById(field).click()}
+                className="bg-[#3730E0] text-white p-2.5 rounded-full shadow-sm hover:scale-105 transition-transform cursor-pointer"
+                title="Change image"
+              >
+                <Upload className="w-4 h-4" />
+              </button>
             </div>
           </div>
-          <div className="p-4 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border-t border-blue-100">
-            <p className="text-sm font-semibold text-gray-800 truncate mb-1">
+          <div className="px-3.5 py-2 bg-white border-t border-[#E4E6EE] flex items-center justify-between text-xs">
+            <p className="font-semibold text-[#1A1D29] truncate max-w-[180px]">
               {currentFile.name}
             </p>
-            <p className="text-xs text-gray-500">
-              {(currentFile.size / 1024 / 1024).toFixed(2)} MB • Image
-            </p>
+            <span className="text-[11px] text-[#5B5F73]">
+              {(currentFile.size / 1024 / 1024).toFixed(2)} MB
+            </span>
           </div>
-          <Button
-            type="button"
-            onClick={() => document.getElementById(field).click()}
-            className="absolute top-3 right-3 !p-2 !rounded-full !bg-blue-500 hover:!bg-blue-600 !shadow-lg transform hover:!scale-110 !transition-all !duration-200 opacity-0 group-hover:!opacity-100"
-          >
-            <Upload className="w-4 h-4" />
-          </Button>
         </div>
       ) : (
         <div
+          onClick={() => document.getElementById(field).click()}
           className={`border-2 border-dashed ${
-            fieldErrors[field] ? "border-red-300" : "border-blue-200"
-          } rounded-xl p-8 text-center hover:border-blue-300 transition-all duration-300 bg-gradient-to-br from-blue-50/30 via-indigo-50/30 to-purple-50/30 hover:from-blue-50/50 hover:via-indigo-50/50 hover:to-purple-50/50 group`}
+            fieldErrors[field] ? "border-[#DC2626]" : "border-[#E4E6EE]"
+          } rounded-md p-6 text-center hover:border-[#3730E0] hover:bg-[#EEEDFD]/20 transition-all cursor-pointer bg-[#F7F8FB] group`}
         >
-          <div className="space-y-4">
+          <div className="space-y-2">
+            <div className="w-10 h-10 mx-auto rounded-full bg-white shadow-xs border border-[#E4E6EE] flex items-center justify-center text-[#5B5F73] group-hover:text-[#3730E0] transition-colors">
+              <Upload className="w-4 h-4" />
+            </div>
             <div>
-              <p className="text-lg font-semibold text-gray-700 mb-2">
-                Drop your image here
+              <p className="text-xs font-semibold text-[#1A1D29]">
+                Click or drag image to upload
               </p>
-              <p className="text-sm text-gray-500 mb-1">
-                PNG, JPG, JPEG, GIF up to 3MB
-              </p>
-              <p className="text-xs text-gray-400">
-                Click to browse or drag and drop
+              <p className="text-[11px] text-[#5B5F73] mt-0.5">
+                PNG, JPG, or JPEG up to 15MB
               </p>
             </div>
-            <Button
-              onClick={() => document.getElementById(field).click()}
-              className="!px-8 !py-3 !rounded-xl !text-sm !shadow-none hover:!shadow-lg transform hover:scale-105 transition-all"
-            >
-              Upload Image
-            </Button>
           </div>
         </div>
       )}
@@ -116,7 +113,7 @@ const ImageUploadField = ({
         className="hidden"
         onChange={(e) => handleFileUpload(field, e.target.files[0])}
       />
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-1 text-xs text-[#DC2626]">{error}</p>}
     </div>
   );
 };
@@ -133,11 +130,21 @@ const DocumentUploadSection = ({
 }) => {
   return (
     <>
-      <div className="mb-8 sm:mb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* Education Document Upload */}
+      <div className="mb-8 pb-8 border-b border-[#E4E6EE]">
+        <div className="flex items-center space-x-3 mb-5">
+          <div className="w-8 h-8 bg-[#EEEDFD] text-[#3730E0] rounded-sm flex items-center justify-center">
+            <GraduationCap className="w-4 h-4" />
+          </div>
+          <h3 className="text-base sm:text-lg font-bold text-[#1A1D29]">
+            Documents & Photos
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <ImageUploadField
             field="profileImage"
-            label="Upload Your Image (Optional)"
+            label="Upload Tutor Profile Photo (Optional)"
             icon={User}
             error={fieldErrors.profileImage}
             fileData={fileData}
@@ -150,7 +157,7 @@ const DocumentUploadSection = ({
           />
           <ImageUploadField
             field="educationDocument"
-            label="Upload Last Certificate/StudentCard"
+            label="Upload Last Certificate / Student ID Card"
             icon={GraduationCap}
             error={fieldErrors.educationDocument}
             fileData={fileData}
@@ -163,21 +170,23 @@ const DocumentUploadSection = ({
         </div>
       </div>
 
-      <div className="mb-8 sm:mb-12">
-        <div className="flex items-center space-x-3 mb-6">
-          <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
-            <Shield className="w-4 h-4 text-white" />
+      {/* Identity Verification */}
+      <div className="mb-8 pb-8 border-b border-[#E4E6EE]">
+        <div className="flex items-center space-x-3 mb-5">
+          <div className="w-8 h-8 bg-[#EEEDFD] text-[#3730E0] rounded-sm flex items-center justify-center">
+            <Shield className="w-4 h-4" />
           </div>
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">
+          <h3 className="text-base sm:text-lg font-bold text-[#1A1D29]">
             Identity Verification
-          </h2>
+          </h3>
         </div>
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            Select Document Type <span className="text-red-500">*</span>
+
+        <div className="mb-5">
+          <label className="block text-xs font-semibold text-[#1A1D29] mb-2">
+            Select Verification Document Type <span className="text-[#DC2626]">*</span>
           </label>
-          <div className="flex space-x-6">
-            <label className="flex items-center">
+          <div className="flex gap-4 sm:gap-6">
+            <label className="inline-flex items-center gap-2 cursor-pointer">
               <input
                 type="radio"
                 name="documentType"
@@ -191,13 +200,13 @@ const DocumentUploadSection = ({
                     birthCertificate: null,
                   }));
                 }}
-                className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                className="w-4 h-4 text-[#3730E0] border-[#E4E6EE] focus:ring-[#3730E0]"
               />
-              <span className="ml-2 text-gray-700">
+              <span className="text-xs sm:text-sm font-medium text-[#1A1D29]">
                 National ID Card / Passport
               </span>
             </label>
-            <label className="flex items-center">
+            <label className="inline-flex items-center gap-2 cursor-pointer">
               <input
                 type="radio"
                 name="documentType"
@@ -213,17 +222,20 @@ const DocumentUploadSection = ({
                     nidBack: null,
                   }));
                 }}
-                className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                className="w-4 h-4 text-[#3730E0] border-[#E4E6EE] focus:ring-[#3730E0]"
               />
-              <span className="ml-2 text-gray-700">Birth Certificate</span>
+              <span className="text-xs sm:text-sm font-medium text-[#1A1D29]">
+                Birth Certificate
+              </span>
             </label>
           </div>
         </div>
+
         {fileData.documentType === "nid" ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <ImageUploadField
               field="nidFront"
-              label="Upload NID/Passport Front Side"
+              label="Upload NID / Passport Front Side"
               icon={CreditCard}
               error={fieldErrors.nidFront}
               fileData={fileData}
@@ -235,7 +247,7 @@ const DocumentUploadSection = ({
             />
             <ImageUploadField
               field="nidBack"
-              label="Upload NID/Passport Back Side"
+              label="Upload NID / Passport Back Side"
               icon={CreditCard}
               error={fieldErrors.nidBack}
               fileData={fileData}
@@ -247,10 +259,10 @@ const DocumentUploadSection = ({
             />
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <ImageUploadField
               field="birthCertificate"
-              label="Upload Birth Certificate"
+              label="Upload Birth Certificate Copy"
               icon={CreditCard}
               error={fieldErrors.birthCertificate}
               fileData={fileData}
@@ -262,18 +274,12 @@ const DocumentUploadSection = ({
             />
           </div>
         )}
-        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <div className="flex items-start space-x-3">
-            <Shield className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-            <div>
-              <h4 className="text-sm font-semibold text-blue-800 mb-1">
-                Document Verification Requirements
-              </h4>
-              <ul className="text-xs text-blue-700 space-y-1">
-                <li>• Ensure all text and details are clearly visible</li>
-                <li>• Images should be well-lit and in focus</li>
-                <li>• Maximum file size: 5MB per image</li>
-              </ul>
+
+        <div className="mt-5 p-3.5 bg-[#EEEDFD]/50 border border-[#3730E0]/20 rounded-md">
+          <div className="flex items-start gap-2.5">
+            <CheckCircle2 className="w-4 h-4 text-[#3730E0] mt-0.5 flex-shrink-0" />
+            <div className="text-xs text-[#3730E0]">
+              <span className="font-bold">Verification guidelines:</span> Please ensure image is well-lit, not blurred, and all text including dates and registration numbers are clearly readable.
             </div>
           </div>
         </div>

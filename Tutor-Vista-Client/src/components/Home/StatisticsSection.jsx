@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { Users, UserCheck, Briefcase, Star } from "lucide-react";
+import { Users, UserCheck, Briefcase, Star, Sparkles } from "lucide-react";
+import { Card } from "../ui/Card";
 
 const StatisticsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,37 +13,50 @@ const StatisticsSection = () => {
 
   const sectionRef = useRef(null);
 
-  const finalValues = {
-    totalApplied: 780,
-    totalTutors: 40000,
-    liveTuitionJobs: 127,
-    tutorRating: 4.8,
-  };
-
-  // Animation variants for Framer Motion
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+  const stats = [
+    {
+      key: "totalTutors",
+      label: "Verified Tutors",
+      finalValue: 40000,
+      suffix: "+",
+      icon: UserCheck,
+      color: "text-[#3730E0]",
+      bg: "bg-[#EEEDFD]",
+      desc: "Vetted graduates & university mentors",
     },
-  };
-
-  const itemVariants = {
-    hidden: { y: 25, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-      },
+    {
+      key: "totalApplied",
+      label: "Matched Applications",
+      finalValue: 12500,
+      suffix: "+",
+      icon: Users,
+      color: "text-[#0EA5A0]",
+      bg: "bg-[#F0FDFA]",
+      desc: "Successful student placements",
     },
-  };
+    {
+      key: "liveTuitionJobs",
+      label: "Active Tuition Posts",
+      finalValue: 350,
+      suffix: "+",
+      icon: Briefcase,
+      color: "text-[#3730E0]",
+      bg: "bg-[#EEEDFD]",
+      desc: "New postings added daily",
+    },
+    {
+      key: "tutorRating",
+      label: "Average Rating",
+      finalValue: 4.9,
+      isRating: true,
+      suffix: " / 5.0",
+      icon: Star,
+      color: "text-[#F5A524]",
+      bg: "bg-[#FFFBEB]",
+      desc: "Based on 8,000+ guardian reviews",
+    },
+  ];
 
-  // Intersection Observer to trigger animation when section is visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,7 +64,7 @@ const StatisticsSection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -61,156 +74,80 @@ const StatisticsSection = () => {
     return () => observer.disconnect();
   }, [isVisible]);
 
-  // Counter animation effect
   useEffect(() => {
     if (!isVisible) return;
 
-    const duration = 2000; // 2 seconds
-    const steps = 60; // 60 steps for smooth animation
+    const duration = 1800;
+    const steps = 40;
     const stepTime = duration / steps;
+    let step = 0;
 
-    const intervals = {};
+    const interval = setInterval(() => {
+      step++;
+      const progress = step / steps;
 
-    // Animate each counter
-    Object.keys(finalValues).forEach((key) => {
-      const finalValue = finalValues[key];
-      const increment = finalValue / steps;
-      let currentStep = 0;
+      setCounters({
+        totalTutors: Math.floor(progress * 40000),
+        totalApplied: Math.floor(progress * 12500),
+        liveTuitionJobs: Math.floor(progress * 350),
+        tutorRating: (progress * 4.9).toFixed(1),
+      });
 
-      intervals[key] = setInterval(() => {
-        currentStep++;
-        const newValue =
-          key === "tutorRating"
-            ? Math.min(currentStep * increment, finalValue).toFixed(1)
-            : Math.floor(Math.min(currentStep * increment, finalValue));
+      if (step >= steps) {
+        clearInterval(interval);
+        setCounters({
+          totalTutors: 40000,
+          totalApplied: 12500,
+          liveTuitionJobs: 350,
+          tutorRating: "4.9",
+        });
+      }
+    }, stepTime);
 
-        setCounters((prev) => ({
-          ...prev,
-          [key]: newValue,
-        }));
-
-        if (currentStep >= steps) {
-          clearInterval(intervals[key]);
-          // Set final exact value
-          setCounters((prev) => ({
-            ...prev,
-            [key]: key === "tutorRating" ? finalValue.toFixed(1) : finalValue,
-          }));
-        }
-      }, stepTime);
-    });
-
-    // Cleanup intervals
-    return () => {
-      Object.values(intervals).forEach((interval) => clearInterval(interval));
-    };
+    return () => clearInterval(interval);
   }, [isVisible]);
 
-  const formatNumber = (num, isRating = false) => {
-    if (isRating) return num;
-    return num.toLocaleString() + "+";
-  };
-
   return (
-    <section className="py-14 bg-gray-50 relative" ref={sectionRef}>
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 font-dmsans">
-        {/* Statistics Grid */}
-        <motion.div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          {/* Total Applied */}
-          <motion.div
-            className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 xl:p-10 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 text-center relative pt-16 sm:pt-18 lg:pt-16"
-            variants={itemVariants}
-          >
-            {/* Icon - Half inside, half outside */}
-            <div className="absolute -top-6 sm:-top-8 left-1/2 transform -translate-x-1/2">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                <Users className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-white" />
-              </div>
-            </div>
-            <div className="mb-2 sm:mb-4">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-blue-600 mb-1 sm:mb-2 font-mono tracking-tight">
-                {formatNumber(counters.totalApplied)}
-              </h3>
-              <p className="text-gray-700 text-xs sm:text-sm lg:text-base xl:text-lg font-semibold">
-                Total Applied
-              </p>
-            </div>
-          </motion.div>
+    <section
+      ref={sectionRef}
+      className="py-16 sm:py-20 bg-white border-b border-[#E4E6EE] relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((item) => {
+            const Icon = item.icon;
+            const displayValue = item.isRating
+              ? counters[item.key]
+              : Number(counters[item.key]).toLocaleString();
 
-          {/* Total Tutors */}
-          <motion.div
-            className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 xl:p-10 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 text-center relative pt-16 sm:pt-18 lg:pt-16"
-            variants={itemVariants}
-          >
-            {/* Icon - Half inside, half outside */}
-            <div className="absolute -top-6 sm:-top-8 left-1/2 transform -translate-x-1/2">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
-                <UserCheck className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-white" />
-              </div>
-            </div>
-            <div className="mb-2 sm:mb-4">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-blue-600 mb-1 sm:mb-2 font-mono tracking-tight">
-                {formatNumber(counters.totalTutors)}
-              </h3>
-              <p className="text-gray-700 text-xs sm:text-sm lg:text-base xl:text-lg font-semibold">
-                Total Tutors
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Live Tuition Jobs */}
-          <motion.div
-            className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 xl:p-10 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 text-center relative pt-16 sm:pt-18 lg:pt-16"
-            variants={itemVariants}
-          >
-            {/* Icon - Half inside, half outside */}
-            <div className="absolute -top-6 sm:-top-8 left-1/2 transform -translate-x-1/2">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-purple-500 rounded-full flex items-center justify-center shadow-lg">
-                <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-white" />
-              </div>
-            </div>
-            <div className="mb-2 sm:mb-4">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-blue-600 mb-1 sm:mb-2 font-mono tracking-tight">
-                {formatNumber(counters.liveTuitionJobs)}
-              </h3>
-              <p className="text-gray-700 text-xs sm:text-sm lg:text-base xl:text-lg font-semibold">
-                Live Tuition Jobs
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Tutor Rating */}
-          <motion.div
-            className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 xl:p-10 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 text-center relative pt-16 sm:pt-18 lg:pt-16"
-            variants={itemVariants}
-          >
-            {/* Icon - Half inside, half outside */}
-            <div className="absolute -top-6 sm:-top-8 left-1/2 transform -translate-x-1/2">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-yellow-500 rounded-full flex items-center justify-center shadow-lg">
-                <Star className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-white fill-current" />
-              </div>
-            </div>
-            <div className="mb-2 sm:mb-4">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-blue-600 mb-1 sm:mb-2 font-mono tracking-tight">
-                {counters.tutorRating}
-              </h3>
-              <p className="text-gray-700 text-xs sm:text-sm lg:text-base xl:text-lg font-semibold">
-                Tutor Rating
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Optional: Add a subtle background pattern */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute top-10 left-10 w-20 h-20 bg-blue-500 rounded-full"></div>
-          <div className="absolute bottom-10 right-10 w-16 h-16 bg-green-500 rounded-full"></div>
-          <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-purple-500 rounded-full"></div>
+            return (
+              <Card
+                key={item.key}
+                hoverable
+                className="p-6 text-center bg-[#F7F8FB] border-[#E4E6EE] flex flex-col items-center justify-between"
+              >
+                <div
+                  className={`w-12 h-12 rounded-md ${item.bg} ${item.color} flex items-center justify-center mb-4 shadow-2xs`}
+                >
+                  <Icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-3xl sm:text-4xl font-extrabold text-[#1A1D29] tracking-tight mb-1">
+                    {displayValue}
+                    <span className="text-[#3730E0] text-2xl font-bold">
+                      {item.suffix}
+                    </span>
+                  </h3>
+                  <h4 className="text-sm font-bold text-[#1A1D29] mb-1">
+                    {item.label}
+                  </h4>
+                  <p className="text-xs text-[#5B5F73] max-w-[200px] leading-normal">
+                    {item.desc}
+                  </p>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

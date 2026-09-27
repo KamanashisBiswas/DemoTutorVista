@@ -1,45 +1,49 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
   RotateCcw,
-  Settings,
+  SlidersHorizontal,
   MapPin,
   GraduationCap,
   BookOpen,
   User,
+  Search,
 } from "lucide-react";
+import { Card } from "../ui/Card";
+import { Button } from "../ui/Button";
 
-const FilterDropdown = ({
+const FilterSelect = ({
   value,
   onChange,
-  options,
+  options = [],
   placeholder = "Select",
   disabled = false,
   icon: Icon,
 }) => (
   <div className="relative w-full">
+    {Icon && (
+      <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5B5F73] pointer-events-none" />
+    )}
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
-      className={`w-full px-4 py-3 pl-12 text-sm border border-gray-300 rounded-xl appearance-none bg-white transition-all duration-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none ${
+      className={`w-full h-10 text-xs sm:text-sm border rounded-md appearance-none bg-white transition-all duration-150 pr-8 text-[#1A1D29] ${
+        Icon ? "pl-9" : "pl-3"
+      } ${
         disabled
-          ? "bg-gray-100 cursor-not-allowed text-gray-500"
-          : "hover:border-gray-400 hover:shadow-sm"
+          ? "bg-[#F7F8FB] border-[#E4E6EE] text-[#5B5F73] cursor-not-allowed opacity-60"
+          : "border-[#E4E6EE] hover:border-[#CBD5E1] focus:outline-none focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/20"
       }`}
     >
-      <option value="">{disabled ? "Select above first" : placeholder}</option>
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
+      <option value="">{disabled ? "Select prior option" : placeholder}</option>
+      {options.map((opt) => (
+        <option key={opt} value={opt}>
+          {opt}
         </option>
       ))}
     </select>
-    {Icon && (
-      <Icon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-    )}
-    <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5B5F73] pointer-events-none" />
   </div>
 );
 
@@ -50,252 +54,136 @@ const TutorFilterControls = ({
   totalTutors,
   filtersActive,
   clearAllFilters,
-  filterType,
-  handleFilterTypeChange,
-  filterOptions,
   locationFilter,
   handleLocationFilterChange,
-  divisions,
-  districts,
-  thanas,
-  areas,
+  divisions = [],
+  districts = [],
+  thanas = [],
+  areas = [],
   mediumFilter,
   handleMediumFilterChange,
-  availableMediums,
+  availableMediums = [],
   getValidLevelsForMedium,
   subjectFilter,
   setSubjectFilter,
-  availableSubjects,
+  availableSubjects = [],
   genderFilter,
   setGenderFilter,
-  availableGenders,
+  availableGenders = [],
 }) => {
   return (
-    <motion.div
-      className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-    >
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-        <button
-          onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-          className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
-            showAdvancedFilters
-              ? "bg-blue-500 text-white shadow-lg"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-          }`}
-        >
-          <Settings className="w-4 h-4" />
-          <span>Advanced Filters</span>
-          <ChevronDown
-            className={`w-4 h-4 transition-transform duration-200 ${
-              showAdvancedFilters ? "rotate-180" : ""
-            }`}
-          />
-        </button>
+    <Card className="bg-white border-[#E4E6EE] p-5 mb-8 shadow-sm">
+      {/* Top Filter Bar: Filter Toggle & Counter */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#E4E6EE]">
+        <div className="flex items-center gap-3">
+          <Button
+            variant={showAdvancedFilters ? "primary" : "secondary"}
+            size="sm"
+            onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+            iconLeft={SlidersHorizontal}
+            iconRight={ChevronDown}
+          >
+            <span>{showAdvancedFilters ? "Hide Filters" : "Filter Tutors"}</span>
+          </Button>
 
-        <div className="flex items-center gap-4">
-          <div className="text-sm text-gray-600">
-            {tutorsCount} of {totalTutors} tutors
-            {filtersActive && (
-              <>
-                {" "}
-                •{" "}
-                <span className="text-blue-600 font-medium">
-                  Filters Active
-                </span>
-              </>
-            )}
-          </div>
           {filtersActive && (
-            <button
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={clearAllFilters}
-              className="flex items-center space-x-2 px-4 py-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-all duration-200"
+              iconLeft={RotateCcw}
+              className="text-[#DC2626] hover:bg-[#FEF2F2]"
             >
-              <RotateCcw className="w-4 h-4" />
-              <span className="text-sm font-medium">Reset All</span>
-            </button>
+              Reset Filters
+            </Button>
           )}
+        </div>
+
+        <div className="text-xs text-[#5B5F73]">
+          Showing <span className="font-bold text-[#1A1D29]">{tutorsCount}</span> of{" "}
+          <span className="font-bold text-[#1A1D29]">{totalTutors}</span> verified tutors
         </div>
       </div>
 
-      <AnimatePresence>
-        {showAdvancedFilters && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mt-6 pt-6 border-t border-gray-200"
-          >
-            <div className="space-y-6">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
-                  Filter Category
-                </label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {filterOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      onClick={() => handleFilterTypeChange(option.value)}
-                      className={`flex items-center space-x-3 px-4 py-3 rounded-xl border transition-all duration-200 ${
-                        filterType === option.value
-                          ? "bg-blue-50 border-blue-500 text-blue-700"
-                          : "bg-white border-gray-300 text-gray-700 hover:border-gray-400 hover:shadow-sm"
-                      }`}
-                    >
-                      <option.icon className="w-4 h-4" />
-                      <span className="text-sm font-medium">
-                        {option.label}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <AnimatePresence mode="wait">
-                {filterType === "location" && (
-                  <motion.div
-                    key="location"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.2 }}
-                    className="bg-blue-50 rounded-xl p-6 space-y-4"
-                  >
-                    <h3 className="text-lg font-semibold text-blue-900 mb-4">
-                      Filter by Location
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                      <FilterDropdown
-                        value={locationFilter.division}
-                        onChange={(value) =>
-                          handleLocationFilterChange("division", value)
-                        }
-                        options={divisions}
-                        placeholder="Select Division"
-                        icon={MapPin}
-                      />
-                      <FilterDropdown
-                        value={locationFilter.district}
-                        onChange={(value) =>
-                          handleLocationFilterChange("district", value)
-                        }
-                        options={districts}
-                        placeholder="Select District"
-                        disabled={!locationFilter.division}
-                        icon={MapPin}
-                      />
-                      <FilterDropdown
-                        value={locationFilter.thana}
-                        onChange={(value) =>
-                          handleLocationFilterChange("thana", value)
-                        }
-                        options={thanas}
-                        placeholder="Select Thana"
-                        disabled={!locationFilter.district}
-                        icon={MapPin}
-                      />
-                      <FilterDropdown
-                        value={locationFilter.area}
-                        onChange={(value) =>
-                          handleLocationFilterChange("area", value)
-                        }
-                        options={areas}
-                        placeholder="Select Area"
-                        disabled={!locationFilter.thana}
-                        icon={MapPin}
-                      />
-                    </div>
-                  </motion.div>
-                )}
-
-                {filterType === "medium" && (
-                  <motion.div
-                    key="medium"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.2 }}
-                    className="bg-green-50 rounded-xl p-6 space-y-4"
-                  >
-                    <h3 className="text-lg font-semibold text-green-900 mb-4">
-                      Filter by Medium
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <FilterDropdown
-                        value={mediumFilter.medium}
-                        onChange={(value) =>
-                          handleMediumFilterChange("medium", value)
-                        }
-                        options={availableMediums}
-                        placeholder="Select Medium"
-                        icon={GraduationCap}
-                      />
-                      <FilterDropdown
-                        value={mediumFilter.level}
-                        onChange={(value) =>
-                          handleMediumFilterChange("level", value)
-                        }
-                        options={getValidLevelsForMedium(mediumFilter.medium)}
-                        placeholder="Select Level"
-                        disabled={!mediumFilter.medium}
-                        icon={GraduationCap}
-                      />
-                    </div>
-                  </motion.div>
-                )}
-
-                {filterType === "subject" && (
-                  <motion.div
-                    key="subject"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.2 }}
-                    className="bg-purple-50 rounded-xl p-6 space-y-4"
-                  >
-                    <h3 className="text-lg font-semibold text-purple-900 mb-4">
-                      Filter by Subject
-                    </h3>
-                    <FilterDropdown
-                      value={subjectFilter}
-                      onChange={setSubjectFilter}
-                      options={availableSubjects}
-                      placeholder="Select Subject"
-                      icon={BookOpen}
-                    />
-                  </motion.div>
-                )}
-
-                {filterType === "gender" && (
-                  <motion.div
-                    key="gender"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.2 }}
-                    className="bg-pink-50 rounded-xl p-6 space-y-4"
-                  >
-                    <h3 className="text-lg font-semibold text-pink-900 mb-4">
-                      Filter by Gender
-                    </h3>
-                    <FilterDropdown
-                      value={genderFilter}
-                      onChange={setGenderFilter}
-                      options={availableGenders}
-                      placeholder="Select Gender"
-                      icon={User}
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+      {/* Advanced Filter Controls Drawer */}
+      {showAdvancedFilters && (
+        <div className="pt-5 space-y-4 animate-slide-up">
+          {/* Location Filters Row */}
+          <div>
+            <span className="block text-xs font-bold text-[#1A1D29] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-[#3730E0]" />
+              <span>Location Hierarchy</span>
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <FilterSelect
+                value={locationFilter.division}
+                onChange={(val) => handleLocationFilterChange("division", val)}
+                options={divisions}
+                placeholder="Division"
+              />
+              <FilterSelect
+                value={locationFilter.district}
+                onChange={(val) => handleLocationFilterChange("district", val)}
+                options={districts}
+                placeholder="District"
+                disabled={!locationFilter.division}
+              />
+              <FilterSelect
+                value={locationFilter.thana}
+                onChange={(val) => handleLocationFilterChange("thana", val)}
+                options={thanas}
+                placeholder="Thana / Upazila"
+                disabled={!locationFilter.district}
+              />
+              <FilterSelect
+                value={locationFilter.area}
+                onChange={(val) => handleLocationFilterChange("area", val)}
+                options={areas}
+                placeholder="Specific Area"
+                disabled={!locationFilter.thana}
+              />
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+          </div>
+
+          {/* Academic Criteria Row */}
+          <div className="pt-2">
+            <span className="block text-xs font-bold text-[#1A1D29] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <GraduationCap className="w-3.5 h-3.5 text-[#3730E0]" />
+              <span>Teaching Preferences</span>
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <FilterSelect
+                value={mediumFilter.medium}
+                onChange={(val) => handleMediumFilterChange("medium", val)}
+                options={Array.from(availableMediums)}
+                placeholder="Medium"
+                icon={BookOpen}
+              />
+              <FilterSelect
+                value={mediumFilter.level}
+                onChange={(val) => handleMediumFilterChange("level", val)}
+                options={getValidLevelsForMedium ? getValidLevelsForMedium(mediumFilter.medium) : []}
+                placeholder="Class / Grade"
+                disabled={!mediumFilter.medium}
+              />
+              <FilterSelect
+                value={subjectFilter}
+                onChange={(val) => setSubjectFilter(val)}
+                options={Array.from(availableSubjects)}
+                placeholder="Subject"
+              />
+              <FilterSelect
+                value={genderFilter}
+                onChange={(val) => setGenderFilter(val)}
+                options={Array.from(availableGenders)}
+                placeholder="Tutor Gender"
+                icon={User}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </Card>
   );
 };
 

@@ -8,19 +8,20 @@ const TuitionDetailsForm = ({
   fieldRefs,
 }) => {
   return (
-    <div className="mb-8">
-      <div className="flex items-center space-x-3 mb-6">
-        <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
-          <Clock className="w-4 h-4 text-white" />
+    <div className="mb-8 pb-8 border-b border-[#E4E6EE]">
+      <div className="flex items-center space-x-3 mb-5">
+        <div className="w-8 h-8 bg-[#EEEDFD] text-[#3730E0] rounded-sm flex items-center justify-center">
+          <Clock className="w-4 h-4" />
         </div>
-        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">
-          Time & Offer
-        </h2>
+        <h3 className="text-base sm:text-lg font-bold text-[#1A1D29]">
+          Schedule & Remuneration
+        </h3>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Salary you offer <span className="text-red-500">*</span>
+          <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
+            Salary You Offer <span className="text-[#DC2626]">*</span>
           </label>
           <input
             ref={fieldRefs.salary}
@@ -28,17 +29,18 @@ const TuitionDetailsForm = ({
             placeholder="e.g., 5000 BDT"
             value={formData.salary}
             onChange={(e) => handleInputChange("salary", e.target.value)}
-            className={`w-full px-4 py-3 border ${
-              fieldErrors.salary ? "border-red-500" : "border-gray-300"
-            } rounded-lg transition-all duration-200 hover:border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200`}
+            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm border ${
+              fieldErrors.salary ? "border-[#DC2626]" : "border-[#E4E6EE]"
+            } rounded-sm transition-all duration-150 text-[#1A1D29] placeholder-[#5B5F73]/50 focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15`}
           />
           {fieldErrors.salary && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.salary}</p>
+            <p className="mt-1 text-xs text-[#DC2626]">{fieldErrors.salary}</p>
           )}
         </div>
+
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Days <span className="text-red-500">*</span>
+          <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
+            Days per Week <span className="text-[#DC2626]">*</span>
           </label>
           <input
             ref={fieldRefs.days}
@@ -46,17 +48,18 @@ const TuitionDetailsForm = ({
             placeholder="e.g., 3 days/week"
             value={formData.days}
             onChange={(e) => handleInputChange("days", e.target.value)}
-            className={`w-full px-4 py-3 border ${
-              fieldErrors.days ? "border-red-500" : "border-gray-300"
-            } rounded-lg transition-all duration-200 hover:border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200`}
+            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm border ${
+              fieldErrors.days ? "border-[#DC2626]" : "border-[#E4E6EE]"
+            } rounded-sm transition-all duration-150 text-[#1A1D29] placeholder-[#5B5F73]/50 focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15`}
           />
           {fieldErrors.days && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.days}</p>
+            <p className="mt-1 text-xs text-[#DC2626]">{fieldErrors.days}</p>
           )}
         </div>
+
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Time <span className="text-red-500">*</span>
+          <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
+            Preferred Time <span className="text-[#DC2626]">*</span>
           </label>
           <input
             ref={fieldRefs.time}
@@ -64,30 +67,31 @@ const TuitionDetailsForm = ({
             placeholder="e.g., 6:00 PM - 8:00 PM"
             value={formData.time}
             onChange={(e) => handleInputChange("time", e.target.value)}
-            className={`w-full px-4 py-3 border ${
-              fieldErrors.time ? "border-red-500" : "border-gray-300"
-            } rounded-lg transition-all duration-200 hover:border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200`}
+            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm border ${
+              fieldErrors.time ? "border-[#DC2626]" : "border-[#E4E6EE]"
+            } rounded-sm transition-all duration-150 text-[#1A1D29] placeholder-[#5B5F73]/50 focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15`}
           />
           {fieldErrors.time && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.time}</p>
+            <p className="mt-1 text-xs text-[#DC2626]">{fieldErrors.time}</p>
           )}
         </div>
       </div>
+
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Special Requirements
+        <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
+          Special Requirements (Optional)
         </label>
         <textarea
-          rows={4}
-          placeholder="Any specific requirements..."
+          rows={3}
+          placeholder="Any specific instructions, topics to focus on, or teacher preferences..."
           value={formData.requirement}
           onChange={(e) => handleInputChange("requirement", e.target.value)}
-          className={`w-full px-4 py-3 border ${
-            fieldErrors.requirement ? "border-red-500" : "border-gray-300"
-          } rounded-lg transition-all duration-200 hover:border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 resize-vertical`}
+          className={`w-full px-3.5 py-2.5 text-xs sm:text-sm border ${
+            fieldErrors.requirement ? "border-[#DC2626]" : "border-[#E4E6EE]"
+          } rounded-sm transition-all duration-150 text-[#1A1D29] placeholder-[#5B5F73]/50 focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 resize-vertical`}
         />
         {fieldErrors.requirement && (
-          <p className="mt-1 text-sm text-red-600">{fieldErrors.requirement}</p>
+          <p className="mt-1 text-xs text-[#DC2626]">{fieldErrors.requirement}</p>
         )}
       </div>
     </div>

@@ -6,17 +6,19 @@ import FloatingCallButton from "./components/Common/FloatingCallButton";
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-[#F7F8FB] text-[#1A1D29] font-sans antialiased">
       <Header />
-      <Outlet />
+      <main className="flex-1">
+        <Outlet />
+      </main>
       <Footer />
       <BackToTopButton />
       <FloatingCallButton
-        phoneNumber="01329-266008"
+        phoneNumber="01700-000000"
         position="bottom-left"
-        showAfterScroll
+        showAfterScroll={300}
       />
-    </>
+    </div>
   );
 }
 

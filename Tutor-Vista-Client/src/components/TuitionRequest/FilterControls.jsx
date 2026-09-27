@@ -4,7 +4,7 @@ import {
   MapPin,
   ChevronDown,
   RotateCcw,
-  Settings,
+  SlidersHorizontal,
   GraduationCap,
   BookOpen,
   User,
@@ -24,27 +24,27 @@ const FilterDropdown = ({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
-      className={`w-full px-4 py-3 pl-12 text-sm border border-gray-300 rounded-xl appearance-none bg-white transition-all duration-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none ${
+      className={`w-full px-3.5 py-2.5 pl-10 text-xs sm:text-sm border border-[#E4E6EE] rounded-sm appearance-none bg-white text-[#1A1D29] transition-all duration-150 focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 focus:outline-none ${
         disabled
-          ? "bg-gray-100 cursor-not-allowed text-gray-500"
-          : "hover:border-gray-400 hover:shadow-sm"
+          ? "bg-[#F7F8FB] cursor-not-allowed text-[#5B5F73]/60"
+          : "hover:border-[#CBD5E1] hover:shadow-xs cursor-pointer"
       }`}
     >
       <option value="">{disabled ? "Select above first" : placeholder}</option>
       {options.map((option) => {
-        const value = typeof option === "object" ? option.value : option;
-        const label = typeof option === "object" ? option.label : option;
+        const val = typeof option === "object" ? option.value : option;
+        const lbl = typeof option === "object" ? option.label : option;
         return (
-          <option key={value} value={value}>
-            {label}
+          <option key={val} value={val}>
+            {lbl}
           </option>
         );
       })}
     </select>
     {Icon && (
-      <Icon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
+      <Icon className="absolute left-3.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#5B5F73] pointer-events-none" />
     )}
-    <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+    <ChevronDown className="absolute right-3.5 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#5B5F73] pointer-events-none" />
   </div>
 );
 
@@ -77,47 +77,51 @@ const FilterControls = ({
 }) => {
   return (
     <motion.div
-      className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8"
-      initial={{ opacity: 0, y: 20 }}
+      className="bg-white rounded-md shadow-card border border-[#E4E6EE] p-5 mb-8"
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 0.4, delay: 0.1 }}
     >
       {/* Header row */}
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+      <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
         <button
+          type="button"
           onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-          className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-sm text-xs sm:text-sm font-semibold transition-all duration-150 ${
             showAdvancedFilters
-              ? "bg-blue-500 text-white shadow-lg"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              ? "bg-[#3730E0] text-white shadow-xs"
+              : "bg-[#F7F8FB] text-[#1A1D29] border border-[#E4E6EE] hover:bg-[#EEEDFD] hover:text-[#3730E0]"
           }`}
         >
-          <Settings className="w-4 h-4" />
+          <SlidersHorizontal className="w-4 h-4" />
           <span>Advanced Filters</span>
           <ChevronDown
-            className={`w-4 h-4 transition-transform duration-200 ${
+            className={`w-3.5 h-3.5 transition-transform duration-200 ${
               showAdvancedFilters ? "rotate-180" : ""
             }`}
           />
         </button>
 
-        <div className="flex items-center gap-4">
-          <div className="text-sm text-gray-600">
-            {filtersActive && (
-              <span className="text-blue-600 font-medium">Filters Active</span>
-            )}
-          </div>
+        <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+          {filtersActive && (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#EEEDFD] text-[#3730E0]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3730E0] animate-pulse"></span>
+              Filters Active
+            </span>
+          )}
+
           <button
+            type="button"
             onClick={clearAllFilters}
             disabled={!filtersActive}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-semibold transition-all duration-150 ${
               filtersActive
-                ? "text-red-600 hover:text-red-700 hover:bg-red-50"
-                : "text-gray-400 bg-gray-100 cursor-not-allowed"
+                ? "text-[#DC2626] bg-[#FEF2F2] hover:bg-[#FEE2E2] cursor-pointer"
+                : "text-[#5B5F73]/50 bg-gray-100 cursor-not-allowed"
             }`}
           >
-            <RotateCcw className="w-4 h-4" />
-            <span className="text-sm font-medium">Reset All</span>
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Reset All</span>
           </button>
         </div>
       </div>
@@ -129,13 +133,13 @@ const FilterControls = ({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mt-6 pt-6 border-t border-gray-200"
+            transition={{ duration: 0.25 }}
+            className="mt-5 pt-5 border-t border-[#E4E6EE]"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Location Filters */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                   Division
                 </label>
                 <FilterDropdown
@@ -149,7 +153,7 @@ const FilterControls = ({
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                   District
                 </label>
                 <FilterDropdown
@@ -164,7 +168,7 @@ const FilterControls = ({
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                   Thana
                 </label>
                 <FilterDropdown
@@ -179,7 +183,7 @@ const FilterControls = ({
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                   Area
                 </label>
                 <FilterDropdown
@@ -196,7 +200,7 @@ const FilterControls = ({
 
               {/* Medium & Level Filters */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                   Medium
                 </label>
                 <FilterDropdown
@@ -210,7 +214,7 @@ const FilterControls = ({
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                   Level
                 </label>
                 <FilterDropdown
@@ -225,7 +229,7 @@ const FilterControls = ({
 
               {/* Subject Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                   Subject
                 </label>
                 <FilterDropdown
@@ -239,7 +243,7 @@ const FilterControls = ({
 
               {/* Gender Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                   Tutor Gender
                 </label>
                 <FilterDropdown
@@ -254,7 +258,7 @@ const FilterControls = ({
               {/* Curriculum Filter */}
               {mediumFilter.medium === "English Medium" && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
                     Curriculum
                   </label>
                   <FilterDropdown
@@ -266,22 +270,6 @@ const FilterControls = ({
                   />
                 </div>
               )}
-            </div>
-
-            {/* Mobile-friendly reset inside panel */}
-            <div className="mt-4 sm:hidden flex justify-end">
-              <button
-                onClick={clearAllFilters}
-                disabled={!filtersActive}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                  filtersActive
-                    ? "text-red-600 hover:text-red-700 hover:bg-red-50"
-                    : "text-gray-400 bg-gray-100 cursor-not-allowed"
-                }`}
-              >
-                <RotateCcw className="w-4 h-4" />
-                <span className="text-sm font-medium">Reset All</span>
-              </button>
             </div>
           </motion.div>
         )}

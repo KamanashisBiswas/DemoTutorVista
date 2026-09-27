@@ -1,63 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone } from "lucide-react";
-
-// Animation presets - with reduced intensity
-const ANIMATIONS = {
-  button: {
-    hover: { scale: 1.03, boxShadow: "0 10px 25px rgba(34, 197, 94, 0.3)" }, // Softer shadow and scale
-    tap: { scale: 0.97 },
-    float: {
-      y: [0, -3, 0], // Smaller float effect
-      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-    },
-  },
-  icon: {
-    rotate: [0, 8, -8, 0], // Less rotation
-    transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
-  },
-  container: {
-    initial: { opacity: 0, x: -100, scale: 0 },
-    animate: { opacity: 1, x: 0, scale: 1 },
-    exit: { opacity: 0, x: -100, scale: 0 },
-    transition: { type: "spring", stiffness: 260, damping: 15 },
-  },
-};
-
-// Component for smaller wave effects
-const WaveEffects = () => (
-  <div className="absolute inset-0 rounded-full">
-    <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-15"></div>
-    <div className="absolute inset-0 rounded-full bg-green-400 animate-pulse opacity-20"></div>
-
-    {[0, 0.5].map(
-      (
-        delay,
-        index // Reduced to two waves
-      ) => (
-        <motion.div
-          key={index}
-          className={`absolute inset-0 rounded-full border border-green-400 opacity-40`}
-          animate={{
-            scale: [1, 1.6, 1.9], // Smaller scale
-            opacity: [0.5, 0.3, 0], // More transparent
-          }}
-          transition={{
-            duration: 1.8, // Faster duration
-            repeat: Infinity,
-            ease: "easeOut",
-            delay,
-          }}
-        />
-      )
-    )}
-  </div>
-);
+import { PhoneCall } from "lucide-react";
 
 const FloatingCallButton = ({
   onClick,
-  label = "Call Now",
-  phoneNumber = "01329-266008",
+  label = "Direct Helpline",
+  phoneNumber = "01700-000000",
   position = "bottom-left",
   showAfterScroll = 300,
 }) => {
@@ -65,11 +13,9 @@ const FloatingCallButton = ({
 
   const positionClasses =
     {
-      "bottom-left": "bottom-5 left-5", // Slightly adjusted position
-      "bottom-right": "bottom-5 right-5",
-      "mid-left": "top-1/2 -translate-y-1/2 left-5",
-      "mid-right": "top-1/2 -translate-y-1/2 right-5",
-    }[position] || "bottom-5 left-5";
+      "bottom-left": "bottom-6 left-6",
+      "bottom-right": "bottom-6 right-6",
+    }[position] || "bottom-6 left-6";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,7 +23,7 @@ const FloatingCallButton = ({
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check on initial load
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [showAfterScroll]);
 
@@ -90,28 +36,24 @@ const FloatingCallButton = ({
       {show && (
         <motion.div
           className={`fixed ${positionClasses} z-50`}
-          {...ANIMATIONS.container}
+          initial={{ opacity: 0, y: 30, scale: 0.85 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 30, scale: 0.85 }}
+          transition={{ duration: 0.25 }}
         >
-          <WaveEffects />
-
-          <motion.button
+          <button
             onClick={onClick || handleCall}
-            className="relative bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-full shadow-lg flex items-center gap-2 transition-all duration-300 hover:shadow-xl" // Smaller padding and gap
+            className="group relative bg-[#0EA5A0] hover:bg-[#0D9488] text-white px-4 py-2.5 rounded-full shadow-md hover:shadow-lg flex items-center gap-2.5 transition-all duration-200 active:scale-95 border border-white/20"
             aria-label={label}
-            whileHover={ANIMATIONS.button.hover}
-            whileTap={ANIMATIONS.button.tap}
-            animate={ANIMATIONS.button.float}
           >
-            <motion.div animate={ANIMATIONS.icon}>
-              <Phone className="w-4 h-4" /> {/* Smaller icon */}
-            </motion.div>
-            <div className="text-left">
-              <div className="font-semibold text-xs">{label}</div>{" "}
-              {/* Smaller font */}
-              <div className="text-[10px] opacity-90">{phoneNumber}</div>{" "}
-              {/* Smaller font */}
+            <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+              <PhoneCall className="w-3.5 h-3.5 text-white" />
             </div>
-          </motion.button>
+            <div className="text-left">
+              <div className="font-semibold text-xs leading-tight">{label}</div>
+              <div className="text-[11px] font-medium text-white/90">{phoneNumber}</div>
+            </div>
+          </button>
         </motion.div>
       )}
     </AnimatePresence>

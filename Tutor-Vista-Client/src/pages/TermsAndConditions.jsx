@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
-  CheckCircle,
+  CheckCircle2,
   Phone,
   CreditCard,
   FileText,
   AlertTriangle,
+  ShieldCheck,
+  Building,
 } from "lucide-react";
 import termsData from "../assets/data/terms.json";
 
@@ -13,272 +16,197 @@ const TermsAndConditions = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading from JSON file
-    setTimeout(() => {
+    window.scrollTo(0, 0);
+    const timer = setTimeout(() => {
       setData(termsData);
       setLoading(false);
-    }, 500);
+    }, 300);
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
-      <div
-        className="flex items-center justify-center"
-        style={{ height: "100vh", backgroundColor: "#f8fafc" }}
-      >
+      <div className="min-h-screen bg-[#F7F8FB] flex items-center justify-center p-4">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg">Loading Terms & Conditions...</p>
+          <div className="w-12 h-12 border-4 border-[#3730E0] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-[#5B5F73] text-sm font-medium">Loading Terms & Conditions...</p>
         </div>
       </div>
     );
   }
 
-  // Add safety check for data and terms
   if (!data || !data.terms) {
     return (
-      <div
-        className="flex items-center justify-center"
-        style={{ height: "100vh", backgroundColor: "#f8fafc" }}
-      >
-        <div className="text-center animate-pulse">
-          <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Error loading terms and conditions
+      <div className="min-h-screen bg-[#F7F8FB] flex items-center justify-center p-4">
+        <div className="text-center bg-white p-8 rounded-2xl border border-[#E4E6EE] shadow-card max-w-md w-full">
+          <AlertTriangle className="w-12 h-12 text-[#DC2626] mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-[#1A1D29] mb-2">
+            Failed to Load Terms
           </h2>
-          <p className="text-gray-600 text-lg">Please try again later.</p>
+          <p className="text-sm text-[#5B5F73]">
+            Unable to load the terms and conditions at this moment. Please refresh the page.
+          </p>
         </div>
       </div>
     );
   }
 
   return (
-    <div
-      style={{
-        backgroundColor: "#f8fafc",
-        padding: "2rem 1rem",
-        "@media (min-width: 768px)": { padding: "3rem 2rem" },
-        "@media (min-width: 1024px)": { padding: "4rem 3rem" },
-      }}
-    >
-      <div
-        style={{
-          margin: "0 auto",
-          width: "100%",
-          "@media (min-width: 640px)": { width: "90%" },
-          "@media (min-width: 768px)": { width: "85%" },
-          "@media (min-width: 1024px)": { width: "80%" },
-          "@media (min-width: 1280px)": { width: "75%" },
-        }}
-      >
-        {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl p-8 mb-8 text-white transform hover:scale-[1.02] transition-all duration-300 animate-fade-in">
-          <div className="text-center">
-            <FileText className="w-16 h-16 mx-auto mb-4 animate-bounce" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-slide-down">
-              {data?.title || "Terms and Conditions"}
-            </h1>
-            <p className="text-xl opacity-90 animate-slide-up">
-              {data?.description || ""}
-            </p>
+    <div className="bg-[#F7F8FB] min-h-screen text-[#1A1D29] pb-16">
+      {/* Header Section */}
+      <section className="relative bg-[#3730E0] text-white py-14 sm:py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-inner">
+            <FileText className="w-8 h-8 text-white" />
           </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+            {data.title || "Terms and Conditions"}
+          </h1>
+          <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
+            {data.description || "By applying to be a tutor with Tutor Vista, you agree to the following terms:"}
+          </p>
         </div>
+      </section>
 
-        {/* Terms List */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 transform hover:shadow-2xl transition-all duration-300 animate-fade-in-up">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <CheckCircle className="w-8 h-8 text-green-500 mr-3" />
-            Terms & Conditions
-          </h2>
-          <div className="space-y-6">
-            {data.terms?.map((term, index) => (
+      {/* Main Content Container */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10 space-y-8">
+        {/* Terms List Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="bg-white rounded-2xl border border-[#E4E6EE] shadow-card p-6 sm:p-10"
+        >
+          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#E4E6EE]">
+            <div className="w-10 h-10 rounded-xl bg-[#3730E0]/10 flex items-center justify-center text-[#3730E0]">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-[#1A1D29]">
+                Tutor Guidelines & Rules
+              </h2>
+              <p className="text-xs sm:text-sm text-[#5B5F73]">
+                Please review all conditions thoroughly before accepting tuition placements.
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {data.terms.map((term) => (
               <div
                 key={term.id}
-                className="flex items-start p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-all duration-300 transform hover:scale-[1.02] animate-slide-in-right"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="flex items-start gap-4 p-4 rounded-xl border border-[#E4E6EE] hover:border-[#3730E0]/30 hover:bg-[#F7F8FB] transition-all"
               >
-                <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1 shadow-lg">
+                <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#3730E0] text-white flex items-center justify-center text-sm font-bold shadow-sm">
                   {term.id}
                 </span>
-                <p className="text-gray-700 leading-relaxed text-lg">
+                <p className="text-[#5B5F73] text-sm sm:text-base leading-relaxed pt-0.5">
                   {term.text}
                 </p>
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Payment Information */}
+        {/* Payment & Important Rules Card */}
         {data.paymentInfo && (
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 transform hover:shadow-2xl transition-all duration-300 animate-fade-in-up">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-              <CreditCard className="w-8 h-8 text-blue-600 mr-3" />
-              {data.paymentInfo.title}
-            </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="bg-white rounded-2xl border border-[#E4E6EE] shadow-card p-6 sm:p-10"
+          >
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#E4E6EE]">
+              <div className="w-10 h-10 rounded-xl bg-[#0EA5A0]/10 flex items-center justify-center text-[#0EA5A0]">
+                <CreditCard className="w-5 h-5" />
+              </div>
+              <h2 className="text-xl font-bold text-[#1A1D29]">
+                {data.paymentInfo.title || "Payment & Policy Information"}
+              </h2>
+            </div>
 
-            {/* Contact Numbers */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-              <div className="flex items-center p-4 bg-blue-50 rounded-xl hover:bg-blue-100 transition-all duration-300 transform hover:scale-105">
-                <Phone className="w-6 h-6 text-blue-600 mr-4" />
+            {/* Contact & Payment Info Pills */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div className="flex items-center gap-4 p-4 bg-[#F7F8FB] rounded-xl border border-[#E4E6EE]">
+                <div className="w-10 h-10 rounded-lg bg-[#3730E0]/10 flex items-center justify-center text-[#3730E0] flex-shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
                 <div>
-                  <p className="text-sm text-gray-600">For Queries</p>
-                  <p className="text-lg font-semibold text-gray-900">
+                  <p className="text-xs text-[#5B5F73] font-medium">For Queries & Support</p>
+                  <p className="text-base font-bold text-[#1A1D29]">
                     {data.paymentInfo.contactNumber}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center p-4 bg-green-50 rounded-xl hover:bg-green-100 transition-all duration-300 transform hover:scale-105">
-                <CreditCard className="w-6 h-6 text-green-600 mr-4" />
+
+              <div className="flex items-center gap-4 p-4 bg-[#F7F8FB] rounded-xl border border-[#E4E6EE]">
+                <div className="w-10 h-10 rounded-lg bg-[#16A34A]/10 flex items-center justify-center text-[#16A34A] flex-shrink-0">
+                  <CreditCard className="w-5 h-5" />
+                </div>
                 <div>
-                  <p className="text-sm text-gray-600">Bkash/Nogod</p>
-                  <p className="text-lg font-semibold text-gray-900">
+                  <p className="text-xs text-[#5B5F73] font-medium">bKash / Nagad</p>
+                  <p className="text-base font-bold text-[#1A1D29]">
                     {data.paymentInfo.bkashNogod}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Payment Rules */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Important Rules:
-              </h3>
-              {data.paymentInfo.rules?.map((rule, index) => (
-                <div
-                  key={index}
-                  className="flex items-start p-4 bg-red-50 rounded-xl border-l-4 border-red-500 hover:bg-red-100 transition-all duration-300 animate-slide-in-left"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700 leading-relaxed">{rule}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+            {/* Rules list */}
+            {data.paymentInfo.rules && (
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#5B5F73]">
+                  Mandatory Policies:
+                </h3>
+                {data.paymentInfo.rules.map((rule, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-start gap-3 p-4 bg-amber-50/60 rounded-xl border border-amber-200/80 text-amber-900"
+                  >
+                    <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm sm:text-base leading-relaxed">{rule}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </motion.div>
         )}
 
-        {/* Conclusion */}
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 mb-8 border border-green-200 transform hover:scale-[1.02] transition-all duration-300 animate-fade-in-up">
-          <div className="text-center">
-            <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4 animate-pulse" />
-            <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-              {data?.conclusion || ""}
-            </p>
-            <div className="inline-flex items-center px-6 py-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-              <CheckCircle className="w-6 h-6 text-green-600 mr-2" />
-              <span className="text-gray-900 font-semibold text-lg">
-                Do you agree to these terms and conditions?
-              </span>
+        {/* Conclusion Card */}
+        {data.conclusion && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="bg-white rounded-2xl border border-[#E4E6EE] shadow-card p-6 sm:p-8 text-center"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-[#16A34A]/10 text-[#16A34A] flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 className="w-6 h-6" />
             </div>
-          </div>
-        </div>
+            <p className="text-sm sm:text-base text-[#5B5F73] leading-relaxed max-w-2xl mx-auto mb-6">
+              {data.conclusion}
+            </p>
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#F7F8FB] border border-[#E4E6EE] rounded-full text-xs sm:text-sm font-semibold text-[#1A1D29]">
+              <CheckCircle2 className="w-4 h-4 text-[#16A34A]" />
+              Accepted upon application confirmation
+            </div>
+          </motion.div>
+        )}
 
-        {/* Footer */}
-        <div className="text-center p-8 bg-white rounded-2xl shadow-xl border-t-4 border-blue-600 animate-fade-in">
-          <div className="mb-4">
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
-            <p className="text-gray-700 font-medium mb-2 text-lg">
-              By using our services, you agree to these terms and conditions.
-            </p>
-          </div>
-          <div className="text-center">
-            <p className="text-gray-600 mb-2">Regards,</p>
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-              {data?.organization || "Tutor Vista"}
-            </div>
+        {/* Footer Card */}
+        <div className="text-center p-6 bg-white rounded-2xl border border-[#E4E6EE] shadow-sm">
+          <p className="text-xs sm:text-sm text-[#5B5F73] mb-2">
+            By using our services, you confirm agreement to the terms outlined above.
+          </p>
+          <div className="flex items-center justify-center gap-1.5 text-sm font-bold text-[#3730E0]">
+            <Building className="w-4 h-4" />
+            <span>{data.organization || "TutorVista"}</span>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slide-down {
-          from {
-            opacity: 0;
-            transform: translateY(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slide-in-right {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes slide-in-left {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.6s ease-out;
-        }
-
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out;
-        }
-
-        .animate-slide-down {
-          animation: slide-down 0.8s ease-out;
-        }
-
-        .animate-slide-up {
-          animation: slide-up 0.8s ease-out 0.2s both;
-        }
-
-        .animate-slide-in-right {
-          animation: slide-in-right 0.6s ease-out;
-        }
-
-        .animate-slide-in-left {
-          animation: slide-in-left 0.6s ease-out;
-        }
-      `}</style>
     </div>
   );
 };

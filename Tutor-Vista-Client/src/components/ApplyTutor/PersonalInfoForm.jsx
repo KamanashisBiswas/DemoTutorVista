@@ -14,9 +14,9 @@ const MemoizedInput = memo(
     inputRef,
   }) => {
     return (
-      <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
-          {label} {required && <span className="text-red-500">*</span>}
+      <div className="space-y-1.5">
+        <label className="block text-xs font-semibold text-[#1A1D29]">
+          {label} {required && <span className="text-[#DC2626]">*</span>}
         </label>
         <input
           ref={inputRef}
@@ -24,15 +24,15 @@ const MemoizedInput = memo(
           value={value || ""}
           onChange={onChange}
           placeholder={placeholder}
-          className={`w-full px-4 py-3 border ${
-            error ? "border-red-500" : "border-gray-200"
-          } rounded-lg transition-all duration-200 hover:border-gray-300 ${
+          className={`w-full px-3.5 py-2.5 text-xs sm:text-sm border ${
+            error ? "border-[#DC2626]" : "border-[#E4E6EE]"
+          } rounded-sm transition-all duration-150 text-[#1A1D29] placeholder-[#5B5F73]/50 ${
             error
-              ? "focus:border-red-500 focus:ring-2 focus:ring-red-200"
-              : "focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+              ? "focus:border-[#DC2626] focus:ring-2 focus:ring-[#DC2626]/15"
+              : "focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15"
           }`}
         />
-        {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+        {error && <p className="mt-1 text-xs text-[#DC2626]">{error}</p>}
       </div>
     );
   }
@@ -51,9 +51,9 @@ const SelectField = ({
   selectRef,
 }) => {
   return (
-    <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700">
-        {label} {required && <span className="text-red-500">*</span>}
+    <div className="space-y-1.5">
+      <label className="block text-xs font-semibold text-[#1A1D29]">
+        {label} {required && <span className="text-[#DC2626]">*</span>}
       </label>
       <div className="relative">
         <select
@@ -61,13 +61,13 @@ const SelectField = ({
           value={value || ""}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
-          className={`w-full px-4 py-3 border ${
-            error ? "border-red-500" : "border-gray-200"
-          } rounded-lg transition-all duration-200 hover:border-gray-300 ${
+          className={`w-full px-3.5 py-2.5 text-xs sm:text-sm border ${
+            error ? "border-[#DC2626]" : "border-[#E4E6EE]"
+          } rounded-sm transition-all duration-150 text-[#1A1D29] ${
             error
-              ? "focus:border-red-500 focus:ring-2 focus:ring-red-200"
-              : "focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-          } appearance-none bg-white disabled:bg-gray-100 disabled:cursor-not-allowed`}
+              ? "focus:border-[#DC2626] focus:ring-2 focus:ring-[#DC2626]/15"
+              : "focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15"
+          } appearance-none bg-white disabled:bg-[#F7F8FB] disabled:text-[#5B5F73]/60 disabled:cursor-not-allowed`}
         >
           {placeholder && (
             <option value="" disabled>
@@ -80,11 +80,11 @@ const SelectField = ({
             </option>
           ))}
         </select>
-        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#5B5F73]">
           <ChevronDown className="w-4 h-4" />
         </div>
       </div>
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-1 text-xs text-[#DC2626]">{error}</p>}
     </div>
   );
 };
@@ -103,53 +103,54 @@ const PersonalInfoForm = ({
 }) => {
   return (
     <>
-      <div className="mb-8 sm:mb-12">
-        <div className="flex items-center space-x-3 mb-6">
-          <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
-            <User className="w-4 h-4 text-white" />
+      {/* Personal Info */}
+      <div className="mb-8 pb-8 border-b border-[#E4E6EE]">
+        <div className="flex items-center space-x-3 mb-5">
+          <div className="w-8 h-8 bg-[#EEEDFD] text-[#3730E0] rounded-sm flex items-center justify-center">
+            <User className="w-4 h-4" />
           </div>
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">
+          <h3 className="text-base sm:text-lg font-bold text-[#1A1D29]">
             Personal Information
-          </h2>
+          </h3>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <MemoizedInput
-            label="Name"
+            label="Full Name"
             value={personalInfo.name}
             onChange={(e) => handlePersonalInfoChange("name", e.target.value)}
-            placeholder="Enter Your name"
+            placeholder="e.g., Kamanashis Biswas"
             error={fieldErrors.name}
             inputRef={fieldRefs.name}
           />
           <MemoizedInput
-            label="Phone No."
+            label="Phone Number"
             value={personalInfo.phone}
             onChange={(e) => handlePersonalInfoChange("phone", e.target.value)}
-            placeholder="Phone"
+            placeholder="01700-000000"
             error={fieldErrors.phone}
             inputRef={fieldRefs.phone}
           />
           <div className="sm:col-span-2">
             <MemoizedInput
-              label="Email"
+              label="Email Address"
               type="email"
               value={personalInfo.email}
               onChange={(e) =>
                 handlePersonalInfoChange("email", e.target.value)
               }
-              placeholder="Email"
+              placeholder="e.g., tutor@example.com"
               error={fieldErrors.email}
               inputRef={fieldRefs.email}
             />
           </div>
         </div>
-        <div className="mt-6">
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            Gender <span className="text-red-500">*</span>
+        <div className="mt-5">
+          <label className="block text-xs font-semibold text-[#1A1D29] mb-2">
+            Gender <span className="text-[#DC2626]">*</span>
           </label>
-          <div className="flex space-x-6">
+          <div className="flex gap-4 sm:gap-6">
             {["Male", "Female", "Any"].map((gender) => (
-              <label key={gender} className="flex items-center">
+              <label key={gender} className="inline-flex items-center gap-2 cursor-pointer">
                 <input
                   type="radio"
                   name="gender"
@@ -158,29 +159,30 @@ const PersonalInfoForm = ({
                   onChange={(e) =>
                     handlePersonalInfoChange("gender", e.target.value)
                   }
-                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                  className="w-4 h-4 text-[#3730E0] border-[#E4E6EE] focus:ring-[#3730E0]"
                   required
                 />
-                <span className="ml-2 text-gray-700">{gender}</span>
+                <span className="text-xs sm:text-sm font-medium text-[#1A1D29]">{gender}</span>
               </label>
             ))}
           </div>
           {fieldErrors.gender && (
-            <p className="mt-1 text-sm text-red-600">{fieldErrors.gender}</p>
+            <p className="mt-1 text-xs text-[#DC2626]">{fieldErrors.gender}</p>
           )}
         </div>
       </div>
 
-      <div className="mb-8 sm:mb-12">
-        <div className="flex items-center space-x-3 mb-6">
-          <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
-            <MapPin className="w-4 h-4 text-white" />
+      {/* Address Info */}
+      <div className="mb-8 pb-8 border-b border-[#E4E6EE]">
+        <div className="flex items-center space-x-3 mb-5">
+          <div className="w-8 h-8 bg-[#EEEDFD] text-[#3730E0] rounded-sm flex items-center justify-center">
+            <MapPin className="w-4 h-4" />
           </div>
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">
-            Address
-          </h2>
+          <h3 className="text-base sm:text-lg font-bold text-[#1A1D29]">
+            Current Living Address
+          </h3>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <SelectField
             label="Division"
             value={addressInfo.division}
@@ -205,7 +207,7 @@ const PersonalInfoForm = ({
             value={addressInfo.thanas}
             onChange={(value) => handleAddressChange("thanas", value)}
             options={thanas}
-            placeholder="Select thanas"
+            placeholder="Select Thana"
             disabled={!addressInfo.district}
             error={fieldErrors.thanas}
             selectRef={fieldRefs.thanas}
