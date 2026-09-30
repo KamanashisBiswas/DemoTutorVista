@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import locationData from "../assets/data/address.json";
 
 import TutorPageHeader from "../components/Tutor/TutorPageHeader";
@@ -180,9 +180,9 @@ const TutorPage = () => {
       if (subjectFilter) params.preferredSubjects = subjectFilter;
       if (genderFilter) params.gender = genderFilter;
 
-      const response = await axios.get("/api/tutor/applications", { params });
-      if (response.data.success) {
-        const { applications, pagination } = response.data.data;
+      const response = await ApiService.getTutors(params);
+      if (response.success) {
+        const { applications, pagination } = response.data;
         setTutors(applications || []);
         setTotalTutors(pagination?.total || applications?.length || 0);
         setTotalPages(pagination?.pages || 1);

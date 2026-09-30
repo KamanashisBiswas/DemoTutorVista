@@ -8,7 +8,7 @@ import {
   Clock,
   Plus,
 } from "lucide-react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import locationData from "../assets/data/address.json";
 import { PREDEFINED_ZONES } from "../utils/zones";
@@ -426,7 +426,7 @@ const EditTutorRequestModal = ({ isOpen, onClose, onSuccess, request }) => {
     delete payload.educationalDetails;
 
     try {
-      await axios.put(`/api/request-tutor/${request._id}`, payload);
+      await ApiService.updateTutorRequest(request._id, payload);
       toast.success("Request updated successfully!");
       onSuccess();
       onClose();

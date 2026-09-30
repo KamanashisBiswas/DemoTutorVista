@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPinned } from "lucide-react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import locationData from "../assets/data/address.json";
 import TuitionRequestHeader from "../components/TuitionRequest/TuitionRequestHeader";
 import FilterControls from "../components/TuitionRequest/FilterControls";
@@ -294,9 +294,9 @@ const TuitionRequestPage = () => {
         ...(curriculumFilter && { curriculum: curriculumFilter }),
       };
 
-      const response = await axios.get("/api/request-tutor", { params });
-      if (response.data.success) {
-        const { data } = response.data;
+      const response = await ApiService.getTuitionRequests(params);
+      if (response.success) {
+        const { data } = response;
         setRequests(data.requests || []);
         setTotalPages(data.pagination?.pages ?? data.totalPages ?? 1);
         setTotalRequests(data.pagination?.total ?? data.totalRequests ?? 0);

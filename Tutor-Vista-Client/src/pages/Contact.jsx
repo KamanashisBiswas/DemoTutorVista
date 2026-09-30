@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import Button from "../components/Common/Button";
@@ -50,14 +50,14 @@ const Contact = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("/api/message", {
+      const res = await ApiService.sendMessage({
         name: formData.name,
         phoneNumber: formData.phoneNumber,
         message: formData.message,
         agreeTerms: formData.agreeToTerms,
       });
 
-      toast.success(res.data?.message || "Message submitted successfully!");
+      toast.success(res?.message || "Message submitted successfully!");
 
       setFormData({
         name: "",

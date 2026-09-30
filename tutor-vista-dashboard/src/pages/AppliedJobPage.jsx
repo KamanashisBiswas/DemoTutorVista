@@ -1,7 +1,7 @@
 // src/pages/AppliedJobPage.jsx
 import React, { useEffect, useState } from "react";
 import { Eye, Trash2, Search, Briefcase, User, Phone, CheckCircle2 } from "lucide-react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import DeleteConfirm from "../components/DeleteConfirm";
 import AppliedJobDetailsModal from "../components/AppliedJobDetailsModal";
 import { SkeletonTable } from "../components/ui/Skeleton";
@@ -28,8 +28,8 @@ const AppliedJobPage = () => {
   const fetchJobs = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("/api/applied-job");
-      setJobs(res.data.data || []);
+      const res = await ApiService.getAllAppliedJobs();
+      setJobs(res.data || []);
     } catch (err) {
       console.error("Failed to fetch jobs:", err);
     }
@@ -47,7 +47,7 @@ const AppliedJobPage = () => {
   const handleDelete = (id) => {
     DeleteConfirm().handleDelete({
       onDelete: async () => {
-        await axios.delete(`/api/applied-job/${id}`);
+        await ApiService.deleteAppliedJob(id);
         setJobs((prev) => prev.filter((j) => j._id !== id));
       },
       itemName: "Applied Job",

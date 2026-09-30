@@ -8,7 +8,7 @@ import {
   GraduationCap,
   Plus,
 } from "lucide-react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import locationData from "../assets/data/address.json";
 import { PREDEFINED_ZONES } from "../utils/zones";
@@ -495,8 +495,8 @@ const AddTutorRequestModal = ({ isOpen, onClose, onSuccess }) => {
     delete payload.educationalDetails; // Clean up
 
     try {
-      const res = await axios.post("/api/request-tutor", payload);
-      toast.success(res.data.message || "Request added successfully!");
+      const res = await ApiService.createTutorRequest(payload);
+      toast.success(res.message || "Request added successfully!");
       resetForm();
       onSuccess();
       onClose();

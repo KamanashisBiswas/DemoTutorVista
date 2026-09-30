@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import locationData from "../assets/data/address.json";
 import TermsModal from "../components/TermsModal";
@@ -425,15 +425,13 @@ const ApplyTutor = () => {
           formData.append("birthCertificate", fileData.birthCertificate);
       }
 
-      const response = await axios.post("/api/tutor/apply", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await ApiService.applyAsTutor(formData);
 
-      if (response.data.success) {
+      if (response.success) {
         toast.success("Application submitted successfully!");
         sessionStorage.removeItem(SESSION_STORAGE_KEY);
 
-        const appId = response.data.applicationId || `TV-TUTOR-${Date.now().toString().slice(-6)}`;
+        const appId = response.applicationId || response.data?.application?.id || `TV-TUTOR-${Date.now().toString().slice(-6)}`;
         setSubmissionId(appId);
         setSubmittedSuccess(true);
 

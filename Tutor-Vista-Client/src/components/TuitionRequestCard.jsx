@@ -13,7 +13,7 @@ import {
   Calendar,
 } from "lucide-react";
 import ApplyTutorModal from "./ApplyTutorModal";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import { Card } from "./ui/Card";
 import { Button } from "./ui/Button";
@@ -44,11 +44,11 @@ const TuitionRequestCard = ({ request }) => {
         expectedSalary: form.salary,
       };
 
-      const res = await axios.post("/api/applied-job", payload);
-      if (res.data.success) {
+      const res = await ApiService.applyForTuitionJob(payload);
+      if (res.success) {
         toast.success("Application submitted successfully!");
       } else {
-        toast.error(res.data.message || "Failed to submit application.");
+        toast.error(res.message || "Failed to submit application.");
       }
     } catch (err) {
       toast.error(

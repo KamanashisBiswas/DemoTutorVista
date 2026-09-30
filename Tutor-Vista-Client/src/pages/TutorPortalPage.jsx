@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTutorAuth } from "../context/TutorAuthContext";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import {
   GraduationCap,
   Briefcase,
@@ -53,16 +53,16 @@ const TutorPortalPage = () => {
     if (!currentTutor?._id) return;
     setLoadingJobs(true);
     try {
-      const res = await axios.get(`/api/applied-job/tutor/${currentTutor._id}`);
-      if (res.data?.success) {
-        setAppliedJobs(res.data.data || []);
+      const res = await ApiService.getAppliedJobsByTutorId(currentTutor._id);
+      if (res?.success) {
+        setAppliedJobs(res.data || []);
       }
     } catch {
       // Fallback: fetch all and filter client side if backend route is not ready
       try {
-        const allRes = await axios.get("/api/applied-job");
-        if (allRes.data?.data) {
-          const myJobs = allRes.data.data.filter(
+        const allRes = await ApiService.getAllAppliedJobs();
+        if (allRes?.data) {
+          const myJobs = allRes.data.filter(
             (j) =>
               j.tutorId?._id === currentTutor._id ||
               j.tutorId === currentTutor._id
@@ -81,11 +81,9 @@ const TutorPortalPage = () => {
     if (!currentTutor?.division) return;
     setLoadingMatches(true);
     try {
-      const res = await axios.get(
-        `/api/request-tutor/approved?division=${currentTutor.division}&limit=6`
-      );
-      if (res.data?.success) {
-        setMatchedJobs(res.data.data?.slice(0, 6) || []);
+      const res = await ApiService.getMatchedTuitionJobs(currentTutor.division, 6);
+      if (res?.success) {
+        setMatchedJobs(res.data?.requests?.slice(0, 6) || res.data?.slice(0, 6) || []);
       }
     } catch (err) {
       console.error("Failed to load matched jobs:", err);

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 
 const TutorAuthContext = createContext(null);
@@ -19,10 +19,10 @@ export const TutorAuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const cleanPhone = phone.trim();
-      const res = await axios.get(`/api/tutor/by-phone/${cleanPhone}`);
+      const res = await ApiService.getTutorByPhone(cleanPhone);
 
-      if (res.data?.success && res.data?.data) {
-        const tutorData = res.data.data;
+      if (res?.success && res?.data) {
+        const tutorData = res.data;
         setCurrentTutor(tutorData);
         localStorage.setItem("tutor_user", JSON.stringify(tutorData));
         toast.success(`Welcome back, ${tutorData.name}!`);
@@ -33,7 +33,7 @@ export const TutorAuthProvider = ({ children }) => {
       }
     } catch (err) {
       const msg =
-        err.response?.data?.message ||
+        err.message ||
         "No registered tutor account found with this phone number.";
       toast.error(msg);
       return { success: false, message: msg };
@@ -51,10 +51,10 @@ export const TutorAuthProvider = ({ children }) => {
   const refreshProfile = async () => {
     if (!currentTutor?.phone) return;
     try {
-      const res = await axios.get(`/api/tutor/by-phone/${currentTutor.phone}`);
-      if (res.data?.success && res.data?.data) {
-        setCurrentTutor(res.data.data);
-        localStorage.setItem("tutor_user", JSON.stringify(res.data.data));
+      const res = await ApiService.getTutorByPhone(currentTutor.phone);
+      if (res?.success && res?.data) {
+        setCurrentTutor(res.data);
+        localStorage.setItem("tutor_user", JSON.stringify(res.data));
       }
     } catch (err) {
       console.error("Failed to refresh tutor profile:", err);

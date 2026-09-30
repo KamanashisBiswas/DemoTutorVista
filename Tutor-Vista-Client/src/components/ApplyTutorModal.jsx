@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Check, Search, AlertCircle, ArrowRight } from "lucide-react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import { Modal } from "./ui/Modal";
 import { Button } from "./ui/Button";
@@ -33,16 +33,16 @@ const ApplyTutorModal = ({ isOpen, onClose, onSubmit, form, setForm }) => {
 
     setChecking(true);
     try {
-      const res = await axios.get(`/api/tutor/by-phone/${form.number}`);
-      if (res.data?.success && res.data?.data?._id) {
+      const res = await ApiService.getTutorByPhone(form.number);
+      if (res?.success && res?.data?._id) {
         setForm((prev) => ({
           ...prev,
-          name: res.data.data.name,
-          tutorId: res.data.data._id,
+          name: res.data.name,
+          tutorId: res.data._id,
         }));
         setIsChecked(true);
         setShowApplyTutor(false);
-        toast.success(`Verified: ${res.data.data.name}`);
+        toast.success(`Verified: ${res.data.name}`);
       } else {
         setForm((prev) => ({
           ...prev,

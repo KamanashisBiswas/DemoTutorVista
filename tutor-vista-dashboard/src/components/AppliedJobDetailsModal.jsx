@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 
 const AppliedJobDetailsModal = ({ open, onClose, applications }) => {
   const [sortOrder, setSortOrder] = useState("high-to-low");
@@ -284,7 +284,7 @@ const AppliedJobDetailsModal = ({ open, onClose, applications }) => {
                           onChange={async (e) => {
                             const newStatus = e.target.value;
                             try {
-                              await axios.patch(`/api/applied-job/${app._id}/status`, { status: newStatus });
+                              await ApiService.updateAppliedJobStatus(app._id, newStatus);
                               app.status = newStatus;
                               setSortOrder((prev) => (prev === "high-to-low" ? "high-to-low" : "low-to-high"));
                             } catch (err) {

@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import locationData from "../assets/data/address.json";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import Button from "../components/Common/Button";
 import RequestTutorHeader from "../components/RequestTutor/RequestTutorHeader";
@@ -368,10 +368,10 @@ const RequestTutorPage = () => {
     delete payload.educationalDetails;
 
     try {
-      const res = await axios.post("/api/request-tutor", payload);
-      toast.success(res.data.message || "Tuition request submitted successfully!");
+      const res = await ApiService.createTuitionRequest(payload);
+      toast.success(res.message || "Tuition request submitted successfully!");
 
-      const reqId = res.data.requestId || `TV-REQ-${Date.now().toString().slice(-6)}`;
+      const reqId = res.requestId || res.data?.request?.id || `TV-REQ-${Date.now().toString().slice(-6)}`;
       setSubmissionId(reqId);
       setSubmittedSuccess(true);
 

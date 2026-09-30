@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, memo } from "react";
 import { X } from "lucide-react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 import locationData from "../assets/data/address.json";
@@ -845,10 +845,8 @@ const EditTutorModal = ({ isOpen, tutor, onClose, onSuccess }) => {
     }
 
     try {
-      const res = await axios.put(`/api/tutor/${tutor._id}/edit`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      toast.success(res.data.message || "Tutor updated successfully!");
+      const res = await ApiService.editTutor(tutor._id, formData);
+      toast.success(res.message || "Tutor updated successfully!");
       onSuccess();
       onClose();
     } catch (error) {

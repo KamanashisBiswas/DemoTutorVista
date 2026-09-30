@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import axios from "../lib/axios";
+import ApiService from "../services/api";
 import { toast } from "react-toastify";
 import locationData from "../assets/data/address.json";
 import { X } from "lucide-react";
@@ -614,10 +614,8 @@ const AddTutorModal = ({ isOpen, onClose, onSuccess }) => {
     formData.append("score", otherData.score);
 
     try {
-      const res = await axios.post("/api/tutor/apply", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      toast.success(res.data.message || "Tutor added successfully!");
+      const res = await ApiService.applyTutor(formData);
+      toast.success(res.message || "Tutor added successfully!");
       onSuccess();
       onClose();
     } catch (error) {
