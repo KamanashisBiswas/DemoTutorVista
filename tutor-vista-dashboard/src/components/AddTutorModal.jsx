@@ -655,15 +655,15 @@ const AddTutorModal = ({ isOpen, onClose, onSuccess }) => {
 
   return (
     <>
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-        <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col">
-          <div className="p-4 border-b flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Add New Tutor</h2>
+      <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex justify-center items-center p-4">
+        <div className="bg-white rounded-2xl shadow-xl border border-[#E4E6EE] w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
+          <div className="p-5 border-b border-[#E4E6EE] bg-white flex justify-between items-center">
+            <h2 className="text-base font-bold text-[#1A1D29]">Add New Tutor</h2>
             <button
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-800"
+              className="p-1.5 text-[#5B5F73] hover:text-[#1A1D29] hover:bg-[#F7F8FB] rounded-lg transition-colors"
             >
-              <X size={24} />
+              <X size={20} />
             </button>
           </div>
           <div className="p-6 overflow-y-auto">
@@ -746,19 +746,19 @@ const AddTutorModal = ({ isOpen, onClose, onSuccess }) => {
               )}
             </form>
           </div>
-          <div className="p-4 border-t flex justify-end space-x-4">
+          <div className="p-5 border-t border-[#E4E6EE] bg-white flex justify-end gap-3">
             <button
               onClick={onClose}
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300"
+              className="px-5 py-2.5 bg-white text-[#1A1D29] hover:bg-[#F7F8FB] border border-[#E4E6EE] rounded-lg text-xs font-semibold shadow-xs transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={handleSubmit}
               disabled={loading || !otherData.agreeTerms}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-blue-300"
+              className="px-5 py-2.5 bg-[#3730E0] text-white hover:bg-[#2D24C4] rounded-lg text-xs font-semibold shadow-xs disabled:bg-[#EEF2FF] disabled:text-[#94A3B8] disabled:border disabled:border-[#E0E7FF] transition-all"
             >
-              {loading ? "Submitting..." : "Submit"}
+              {loading ? "Submitting..." : "Submit Tutor"}
             </button>
           </div>
         </div>

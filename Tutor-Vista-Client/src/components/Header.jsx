@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sparkles, PhoneCall, GraduationCap, ChevronRight } from "lucide-react";
+import { Menu, X, Sparkles, PhoneCall, GraduationCap, ChevronRight, User } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../assets/Logo/Logo.svg";
 import Marquee from "react-fast-marquee";
 import { Button } from "./ui/Button";
+import { useTutorAuth } from "../context/TutorAuthContext";
 
 const Header = () => {
+  const { currentTutor, isLoggedIn } = useTutorAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -29,7 +31,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E4E6EE] shadow-xs">
       {/* Top Announcement Bar */}
       <div className="bg-[#3730E0] text-white py-1.5 px-4 text-xs font-medium">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2 shrink-0 pr-4">
             <span className="inline-flex items-center gap-1 bg-[#2D24C4] px-2 py-0.5 rounded-full text-[11px] font-semibold text-[#F5A524]">
               <Sparkles className="h-3 w-3" />
@@ -62,7 +64,7 @@ const Header = () => {
       </div>
 
       {/* Main Navbar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2.5 shrink-0 py-2">
@@ -93,7 +95,21 @@ const Header = () => {
           </nav>
 
           {/* Right Header CTAs */}
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-2.5">
+            {isLoggedIn ? (
+              <Link to="/tutor-portal">
+                <Button variant="secondary" size="md" iconLeft={GraduationCap} className="text-xs font-semibold">
+                  <span>{currentTutor?.name?.split(" ")[0] || "Tutor Portal"}</span>
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/tutor-login">
+                <Button variant="ghost" size="md" iconLeft={User} className="text-xs font-semibold text-[#5B5F73] hover:text-[#3730E0]">
+                  <span>Tutor Portal</span>
+                </Button>
+              </Link>
+            )}
+
             <Link to="/request-tutor">
               <Button variant="primary" size="md" iconRight={ChevronRight}>
                 Request a Tutor
@@ -166,6 +182,19 @@ const Header = () => {
 
             {/* Mobile Drawer Bottom Actions */}
             <div className="pt-6 border-t border-[#E4E6EE] space-y-2.5">
+              {isLoggedIn ? (
+                <Link to="/tutor-portal" className="block w-full">
+                  <Button variant="secondary" size="md" fullWidth iconLeft={GraduationCap}>
+                    My Tutor Portal ({currentTutor?.name?.split(" ")[0]})
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/tutor-login" className="block w-full">
+                  <Button variant="outline" size="md" fullWidth iconLeft={User}>
+                    Tutor Portal Login
+                  </Button>
+                </Link>
+              )}
               <Link to="/request-tutor" className="block w-full">
                 <Button variant="primary" size="md" fullWidth>
                   Request a Tutor

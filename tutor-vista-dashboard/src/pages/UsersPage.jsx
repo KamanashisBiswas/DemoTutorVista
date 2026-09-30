@@ -9,9 +9,18 @@ import {
   Mail,
   Calendar,
   Crown,
+  ShieldCheck,
+  CheckCircle2,
+  Clock,
+  UserCheck,
 } from "lucide-react";
 import ApiService from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import Badge from "../components/ui/Badge";
+import EmptyState from "../components/ui/EmptyState";
+import { SkeletonTable } from "../components/ui/Skeleton";
+import Modal from "../components/ui/Modal";
+import Button from "../components/ui/Button";
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -68,292 +77,291 @@ const UsersPage = () => {
     );
   });
 
-  const getRoleBadge = (role) => {
-    return role === "admin" ? (
-      <span className="px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 flex items-center">
-        <Crown className="w-3 h-3 mr-1" />
-        Admin
-      </span>
-    ) : (
-      <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 flex items-center">
-        <User className="w-3 h-3 mr-1" />
-        User
-      </span>
-    );
-  };
+  const adminCount = users.filter((u) => u.role === "admin").length;
+  const userCount = users.filter((u) => u.role === "user").length;
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <div className="space-y-6">
+        <div className="bg-white rounded-xl border border-[#E4E6EE] p-6 shadow-xs">
+          <SkeletonTable rows={6} cols={6} />
+        </div>
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 md:mb-0">
-            User Management
-          </h3>
-          <div className="flex items-center space-x-2">
-            <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">
-              {users.filter((u) => u.role === "admin").length} Admins
+      {/* Header & Stats */}
+      <div className="bg-white rounded-xl border border-[#E4E6EE] p-6 shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <h1 className="text-xl font-bold text-[#1A1D29]">User Management</h1>
+            <p className="text-xs text-[#5B5F73] mt-1">
+              Manage administrative staff and registered platform users
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE]">
+              <Crown className="w-3.5 h-3.5" />
+              {adminCount} Admins
             </span>
-            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-              {users.filter((u) => u.role === "user").length} Users
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE]">
+              <User className="w-3.5 h-3.5" />
+              {userCount} Users
             </span>
           </div>
         </div>
 
-        {/* Search Only */}
+        {/* Search */}
         <div className="flex flex-col md:flex-row mb-6">
-          <div className="flex-1">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search by name or email..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
+          <div className="relative flex-1">
+            <Search className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-[#5B5F73] w-4 h-4 pointer-events-none" />
+            <input
+              type="text"
+              placeholder="Search users by name or email address..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 text-sm bg-[#F7F8FB] border border-[#E4E6EE] rounded-lg text-[#1A1D29] placeholder-[#5B5F73] focus:outline-none focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 transition-all"
+            />
           </div>
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto">
+        <div className="overflow-x-auto border border-[#E4E6EE] rounded-xl">
+          <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-50">
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  User
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Email
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Role
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Joined
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
+              <tr className="bg-[#F7F8FB] border-b border-[#E4E6EE] text-[11px] font-semibold text-[#5B5F73] uppercase tracking-wider">
+                <th className="px-5 py-3.5">User</th>
+                <th className="px-5 py-3.5">Email</th>
+                <th className="px-5 py-3.5">Role</th>
+                <th className="px-5 py-3.5">Status</th>
+                <th className="px-5 py-3.5">Joined</th>
+                <th className="px-5 py-3.5 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {filteredUsers.map((user) => (
-                <tr key={user._id} className="hover:bg-gray-50">
-                  <td className="px-4 py-4 whitespace-nowrap">
-                    <div className="flex items-center">
-                      <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold ${
-                          user.role === "admin"
-                            ? "bg-gradient-to-r from-purple-500 to-pink-500"
-                            : "bg-gradient-to-r from-blue-500 to-teal-500"
-                        }`}
-                      >
-                        {user.name?.charAt(0)}
-                      </div>
-                      <div className="ml-3">
-                        <div className="text-sm font-medium text-gray-900">
-                          {user.name}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          ID: {user._id.substring(0, 8)}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900 flex items-center">
-                      <Mail className="w-4 h-4 mr-1" />
-                      {user.email}
-                    </div>
-                    {user.isEmailVerified && (
-                      <div className="text-xs text-green-600">✓ Verified</div>
-                    )}
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap">
-                    {getRoleBadge(user.role)}
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap">
-                    <div className="flex flex-col">
-                      <span
-                        className={`text-xs px-2 py-1 rounded-full ${
-                          user.lastLogin
-                            ? "bg-green-100 text-green-800"
-                            : "bg-gray-100 text-gray-800"
-                        }`}
-                      >
-                        {user.lastLogin ? "Active" : "Never logged in"}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {new Date(user.createdAt).toLocaleDateString()}
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
-                    <div className="flex space-x-2">
-                      <button
-                        onClick={() => handleView(user)}
-                        className="text-blue-600 hover:text-blue-900 p-1 rounded"
-                        title="View Details"
-                      >
-                        <Eye className="w-4 h-4" />
-                      </button>
-                      {/* Only show delete button if current user is admin */}
-                      {/* {currentUser?.role === "admin" && (
-                        <button
-                          onClick={() => handleDelete(user._id)}
-                          className="text-red-600 hover:text-red-900 p-1 rounded"
-                          title="Delete User"
+            <tbody className="divide-y divide-[#E4E6EE] bg-white text-sm">
+              {filteredUsers.length > 0 ? (
+                filteredUsers.map((u) => (
+                  <tr key={u._id} className="hover:bg-[#F7F8FB]/75 transition-colors">
+                    <td className="px-5 py-4 whitespace-nowrap">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-xs ${
+                            u.role === "admin"
+                              ? "bg-gradient-to-tr from-[#3730E0] to-[#7C3AED]"
+                              : "bg-gradient-to-tr from-[#0EA5A0] to-[#0284C7]"
+                          }`}
                         >
-                          <Trash2 className="w-4 h-4" />
+                          {u.name?.charAt(0)?.toUpperCase() || "U"}
+                        </div>
+                        <div>
+                          <div className="font-semibold text-[#1A1D29] hover:text-[#3730E0] transition-colors">
+                            {u.name || "Unnamed User"}
+                          </div>
+                          <div className="text-xs text-[#5B5F73] font-mono">
+                            ID: {u._id?.substring(0, 8)}...
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td className="px-5 py-4 whitespace-nowrap">
+                      <div className="flex items-center gap-1.5 text-sm text-[#1A1D29]">
+                        <Mail className="w-4 h-4 text-[#5B5F73]" />
+                        <span>{u.email}</span>
+                      </div>
+                      {u.isEmailVerified && (
+                        <div className="text-[11px] text-[#16A34A] font-medium flex items-center gap-1 mt-0.5">
+                          <CheckCircle2 className="w-3 h-3" />
+                          Verified
+                        </div>
+                      )}
+                    </td>
+
+                    <td className="px-5 py-4 whitespace-nowrap">
+                      {u.role === "admin" ? (
+                        <Badge variant="primary" dot size="sm">
+                          Admin
+                        </Badge>
+                      ) : (
+                        <Badge variant="neutral" dot size="sm">
+                          User
+                        </Badge>
+                      )}
+                    </td>
+
+                    <td className="px-5 py-4 whitespace-nowrap">
+                      {u.lastLogin ? (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#DCFCE7] text-[#15803D]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span>
+                          Active
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#F1F5F9] text-[#64748B]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#94A3B8]"></span>
+                          Inactive
+                        </span>
+                      )}
+                    </td>
+
+                    <td className="px-5 py-4 whitespace-nowrap text-xs text-[#5B5F73]">
+                      {new Date(u.createdAt).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </td>
+
+                    <td className="px-5 py-4 whitespace-nowrap text-right">
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button
+                          onClick={() => handleView(u)}
+                          className="p-1.5 text-[#5B5F73] hover:text-[#3730E0] hover:bg-[#EEF2FF] rounded-lg transition-colors"
+                          title="View User Details"
+                        >
+                          <Eye className="w-4 h-4" />
                         </button>
-                      )} */}
-                    </div>
+                        {currentUser?.role === "admin" && currentUser._id !== u._id && (
+                          <button
+                            onClick={() => handleDelete(u._id)}
+                            className="p-1.5 text-[#5B5F73] hover:text-[#DC2626] hover:bg-[#FEF2F2] rounded-lg transition-colors"
+                            title="Delete User"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={6} className="py-12">
+                    <EmptyState
+                      title="No users found"
+                      description={
+                        searchTerm
+                          ? `No user matched your search "${searchTerm}".`
+                          : "No users currently registered."
+                      }
+                      icon={<UserCheck className="w-8 h-8 text-[#5B5F73]" />}
+                    />
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
-
-          {filteredUsers.length === 0 && (
-            <div className="text-center py-8 text-gray-500">
-              No users found.
-            </div>
-          )}
         </div>
       </div>
 
-      {/* Modal */}
+      {/* User Details Modal */}
       {showModal && selectedUser && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-hidden">
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-800">
-                User Details
-              </h3>
-              <button
-                onClick={closeModal}
-                className="text-gray-400 hover:text-gray-600 p-1 rounded"
+        <Modal
+          isOpen={showModal}
+          onClose={closeModal}
+          title="User Account Details"
+          size="lg"
+        >
+          <div className="space-y-6">
+            {/* Header Card */}
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-[#F7F8FB] border border-[#E4E6EE]">
+              <div
+                className={`w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-xs ${
+                  selectedUser.role === "admin"
+                    ? "bg-gradient-to-tr from-[#3730E0] to-[#7C3AED]"
+                    : "bg-gradient-to-tr from-[#0EA5A0] to-[#0284C7]"
+                }`}
               >
-                <X className="w-6 h-6" />
-              </button>
+                {selectedUser.name?.charAt(0)?.toUpperCase() || "U"}
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg font-bold text-[#1A1D29]">
+                    {selectedUser.name}
+                  </h3>
+                  {selectedUser.role === "admin" ? (
+                    <Badge variant="primary" size="sm">
+                      Admin
+                    </Badge>
+                  ) : (
+                    <Badge variant="neutral" size="sm">
+                      User
+                    </Badge>
+                  )}
+                </div>
+                <p className="text-xs text-[#5B5F73] font-mono mt-0.5">
+                  ID: {selectedUser._id}
+                </p>
+              </div>
             </div>
 
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-              <div className="space-y-6">
-                {/* Profile Information */}
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
-                    <User className="w-5 h-5 mr-2" />
-                    Profile Information
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">
-                        Name
-                      </label>
-                      <p className="text-gray-800">{selectedUser.name}</p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">
-                        Email
-                      </label>
-                      <p className="text-gray-800 flex items-center">
-                        <Mail className="w-4 h-4 mr-1" />
-                        {selectedUser.email}
-                        {selectedUser.isEmailVerified && (
-                          <span className="ml-2 text-green-600 text-xs">
-                            ✓ Verified
-                          </span>
-                        )}
-                      </p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">
-                        Role
-                      </label>
-                      <div className="mt-1">
-                        {getRoleBadge(selectedUser.role)}
-                      </div>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">
-                        User ID
-                      </label>
-                      <p className="text-gray-800 font-mono text-sm">
-                        {selectedUser._id}
-                      </p>
-                    </div>
-                  </div>
+            {/* Profile Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl border border-[#E4E6EE] bg-white">
+                <span className="text-xs font-medium text-[#5B5F73] block mb-1">
+                  Email Address
+                </span>
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-[#3730E0]" />
+                  <span className="text-sm font-semibold text-[#1A1D29]">
+                    {selectedUser.email}
+                  </span>
                 </div>
+                {selectedUser.isEmailVerified && (
+                  <span className="text-[11px] text-[#16A34A] font-medium flex items-center gap-1 mt-1">
+                    <CheckCircle2 className="w-3 h-3" />
+                    Verified Email
+                  </span>
+                )}
+              </div>
 
-                {/* Account Activity */}
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
-                    <Calendar className="w-5 h-5 mr-2" />
-                    Account Activity
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">
-                        Joined
-                      </label>
-                      <p className="text-gray-800">
-                        {new Date(selectedUser.createdAt).toLocaleString()}
-                      </p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">
-                        Last Updated
-                      </label>
-                      <p className="text-gray-800">
-                        {new Date(selectedUser.updatedAt).toLocaleString()}
-                      </p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">
-                        Last Login
-                      </label>
-                      <p className="text-gray-800">
-                        {selectedUser.lastLogin
-                          ? new Date(selectedUser.lastLogin).toLocaleString()
-                          : "Never logged in"}
-                      </p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">
-                        Account Status
-                      </label>
-                      <p
-                        className={`text-sm ${
-                          selectedUser.lastLogin
-                            ? "text-green-600"
-                            : "text-gray-600"
-                        }`}
-                      >
-                        {selectedUser.lastLogin
-                          ? "Active User"
-                          : "Inactive User"}
-                      </p>
-                    </div>
-                  </div>
+              <div className="p-4 rounded-xl border border-[#E4E6EE] bg-white">
+                <span className="text-xs font-medium text-[#5B5F73] block mb-1">
+                  Access Level
+                </span>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-[#3730E0]" />
+                  <span className="text-sm font-semibold text-[#1A1D29] capitalize">
+                    {selectedUser.role} Access
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl border border-[#E4E6EE] bg-white">
+                <span className="text-xs font-medium text-[#5B5F73] block mb-1">
+                  Registration Date
+                </span>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-[#3730E0]" />
+                  <span className="text-sm font-medium text-[#1A1D29]">
+                    {new Date(selectedUser.createdAt).toLocaleString()}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl border border-[#E4E6EE] bg-white">
+                <span className="text-xs font-medium text-[#5B5F73] block mb-1">
+                  Last Activity
+                </span>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-[#3730E0]" />
+                  <span className="text-sm font-medium text-[#1A1D29]">
+                    {selectedUser.lastLogin
+                      ? new Date(selectedUser.lastLogin).toLocaleString()
+                      : "Never logged in"}
+                  </span>
                 </div>
               </div>
             </div>
+
+            <div className="flex justify-end pt-4 border-t border-[#E4E6EE]">
+              <Button variant="secondary" onClick={closeModal}>
+                Close
+              </Button>
+            </div>
           </div>
-        </div>
+        </Modal>
       )}
     </div>
   );

@@ -229,7 +229,7 @@ const TutorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F7F8FB] py-10 sm:py-14">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <TutorPageHeader totalTutors={totalTutors} />
 
         {/* Division Selector Tabs */}

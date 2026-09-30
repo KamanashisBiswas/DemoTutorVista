@@ -840,7 +840,7 @@ const TutorsPage = () => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] p-6">
         <TutorsPageHeader
           user={user}
           onAddTutor={() => setShowAddModal(true)}

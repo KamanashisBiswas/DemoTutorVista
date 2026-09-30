@@ -8,13 +8,15 @@ import {
   User,
   ArrowRight,
   Users,
+  Laptop,
+  CheckCircle2,
+  Calendar,
 } from "lucide-react";
 import ApplyTutorModal from "./ApplyTutorModal";
 import axios from "../lib/axios";
 import { toast } from "react-toastify";
 import { Card } from "./ui/Card";
 import { Button } from "./ui/Button";
-import { Badge } from "./ui/Badge";
 import { SkeletonCard } from "./ui/Skeleton";
 
 const TuitionRequestCard = ({ request }) => {
@@ -26,7 +28,13 @@ const TuitionRequestCard = ({ request }) => {
     tutorId: "",
   });
 
-  const handleApplyClick = () => setShowModal(true);
+  const handleApplyClick = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setShowModal(true);
+  };
   const handleModalClose = () => setShowModal(false);
   const handleModalSubmit = async (form) => {
     try {
@@ -38,13 +46,13 @@ const TuitionRequestCard = ({ request }) => {
 
       const res = await axios.post("/api/applied-job", payload);
       if (res.data.success) {
-        toast.success("Applied successfully!");
+        toast.success("Application submitted successfully!");
       } else {
-        toast.error(res.data.message || "Failed to apply.");
+        toast.error(res.data.message || "Failed to submit application.");
       }
     } catch (err) {
       toast.error(
-        err.response?.data?.message || "Failed to apply for this job."
+        err.response?.data?.message || "Failed to apply for this tuition job."
       );
     }
     setShowModal(false);
@@ -54,7 +62,7 @@ const TuitionRequestCard = ({ request }) => {
     return <SkeletonCard />;
   }
 
-  const locationParts = [request.adminDivision, request.adminArea].filter(
+  const locationParts = [request.adminDivision || request.division, request.adminArea || request.area].filter(
     Boolean
   );
 
@@ -68,20 +76,29 @@ const TuitionRequestCard = ({ request }) => {
     ...(request.multipleStudent && request.medium2 ? [request.medium2] : []),
   ];
 
+  const formattedDate = request.createdAt
+    ? new Date(request.createdAt).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+      })
+    : "Recently";
+
+  const tuitionTitle = `Tuition for ${request.grade || request.class || "Student"}`;
+
   return (
     <Card
       hoverable
-      className="bg-white border-[#E4E6EE] p-5 flex flex-col justify-between h-full transition-all duration-200"
+      className="bg-white border-[#E4E6EE] p-5 flex flex-col justify-between h-full transition-all duration-200 hover:shadow-card hover:border-[#3730E0]/30"
     >
       <div>
-        {/* Card Top: Class, Medium, Multiple Student tag */}
+        {/* Card Top: Class Badge, Mediums, and Status */}
         <div className="flex items-start justify-between gap-2 mb-3">
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="px-2.5 py-1 rounded-sm text-xs font-bold bg-[#EEEDFD] text-[#3730E0] border border-[#DDD9FC]">
+            <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-[#EEEDFD] text-[#3730E0] border border-[#DDD9FC]">
               {request.grade || request.class || "Tuition Job"}
             </span>
             {request.multipleStudent && (
-              <span className="px-2 py-0.5 rounded-sm text-[11px] font-semibold bg-[#F0FDFA] text-[#0EA5A0] border border-[#CCFBF1] flex items-center gap-1">
+              <span className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-[#F0FDFA] text-[#0EA5A0] border border-[#CCFBF1] flex items-center gap-1">
                 <Users className="w-3 h-3" />
                 <span>2 Students</span>
               </span>
@@ -89,33 +106,42 @@ const TuitionRequestCard = ({ request }) => {
             {allMediums.map((med, idx) => (
               <span
                 key={idx}
-                className="px-2 py-0.5 rounded-sm text-[11px] font-medium bg-[#F7F8FB] text-[#5B5F73] border border-[#E4E6EE]"
+                className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-[#F7F8FB] text-[#5B5F73] border border-[#E4E6EE]"
               >
                 {med}
               </span>
             ))}
           </div>
 
-          <span className="text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0">
-            Open
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[11px] font-semibold text-[#16A34A] bg-[#DCFCE7] px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] animate-pulse" />
+              Open
+            </span>
+          </div>
         </div>
 
-        {/* Student / Institution Info */}
-        <div className="mb-4">
+        {/* Title & Institution / Class Info */}
+        <div className="mb-3">
           <h4 className="text-base font-bold text-[#1A1D29] tracking-tight line-clamp-1">
-            {request.studentName || "Student"}
+            {tuitionTitle}
           </h4>
-          {request.institution && (
-            <p className="text-xs text-[#5B5F73] flex items-center gap-1 mt-0.5 line-clamp-1">
-              <GraduationCap className="w-3.5 h-3.5 text-[#3730E0] shrink-0" />
-              <span>{request.institution}</span>
-            </p>
-          )}
+          <div className="flex items-center gap-2 mt-1 text-xs text-[#5B5F73]">
+            {request.institution && (
+              <span className="flex items-center gap-1 line-clamp-1">
+                <GraduationCap className="w-3.5 h-3.5 text-[#3730E0] shrink-0" />
+                <span className="truncate">{request.institution}</span>
+              </span>
+            )}
+            <span className="text-[11px] text-[#5B5F73]/70 flex items-center gap-1">
+              <Calendar className="w-3 h-3" />
+              {formattedDate}
+            </span>
+          </div>
         </div>
 
         {/* Subjects Tags */}
-        <div className="mb-4">
+        <div className="mb-3.5">
           <div className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-[#5B5F73] mb-1.5">
             <BookOpen className="w-3.5 h-3.5 text-[#3730E0]" />
             <span>Subjects</span>
@@ -124,13 +150,13 @@ const TuitionRequestCard = ({ request }) => {
             {allSubjects.slice(0, 5).map((subj, idx) => (
               <span
                 key={idx}
-                className="px-2 py-0.5 rounded-sm text-xs bg-[#F7F8FB] text-[#1A1D29] border border-[#E4E6EE] font-medium"
+                className="px-2 py-0.5 rounded-md text-xs bg-[#F7F8FB] text-[#1A1D29] border border-[#E4E6EE] font-medium"
               >
                 {subj}
               </span>
             ))}
             {allSubjects.length > 5 && (
-              <span className="px-1.5 py-0.5 rounded-sm text-[11px] text-[#5B5F73] font-medium">
+              <span className="px-1.5 py-0.5 rounded-md text-[11px] text-[#5B5F73] font-medium">
                 +{allSubjects.length - 5} more
               </span>
             )}
@@ -159,11 +185,11 @@ const TuitionRequestCard = ({ request }) => {
           </div>
           <div className="space-y-0.5">
             <span className="text-[11px] text-[#5B5F73] flex items-center gap-1 font-medium">
-              <User className="w-3 h-3 text-[#3730E0]" />
-              Preferred Tutor
+              <Laptop className="w-3 h-3 text-[#0EA5A0]" />
+              Teaching Mode
             </span>
             <p className="font-semibold text-[#1A1D29] truncate">
-              {request.gender || "Any Gender"}
+              Home Tutoring
             </p>
           </div>
           <div className="space-y-0.5">
@@ -179,10 +205,10 @@ const TuitionRequestCard = ({ request }) => {
       </div>
 
       {/* Salary & CTA Button */}
-      <div className="flex items-center justify-between gap-3 pt-2">
+      <div className="flex items-center justify-between gap-3 pt-1">
         <div>
-          <span className="block text-[11px] text-[#5B5F73] font-medium">
-            Offered Salary
+          <span className="block text-[10px] text-[#5B5F73] uppercase font-medium">
+            Offered Remuneration
           </span>
           <span className="text-base sm:text-lg font-extrabold text-[#1A1D29]">
             ৳{request.salary}
@@ -195,6 +221,7 @@ const TuitionRequestCard = ({ request }) => {
           size="sm"
           onClick={handleApplyClick}
           iconRight={ArrowRight}
+          className="text-xs font-semibold px-4"
         >
           Apply Now
         </Button>

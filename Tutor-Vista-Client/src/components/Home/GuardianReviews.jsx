@@ -131,7 +131,7 @@ const GuardianReviews = () => {
 
   return (
     <section className="py-16 sm:py-20 bg-[#F7F8FB] border-b border-[#E4E6EE] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <CommonSectionHeading
           badge="TESTIMONIALS"
           title="Loved by Guardians &"

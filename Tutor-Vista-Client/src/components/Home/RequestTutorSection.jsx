@@ -68,7 +68,7 @@ const RequestTutorSection = () => {
 
   return (
     <section className="py-16 sm:py-20 bg-white border-b border-[#E4E6EE]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <CommonSectionHeading
           badge="LATEST OPPORTUNITIES"
           title="Active Tuition"

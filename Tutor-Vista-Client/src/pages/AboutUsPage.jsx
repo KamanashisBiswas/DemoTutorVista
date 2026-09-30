@@ -61,7 +61,7 @@ const AboutUsPage = () => {
 
       {/* Vision & Mission Section */}
       <section className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {/* Vision */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="order-2 lg:order-1 bg-white p-6 sm:p-10 rounded-lg shadow-card border border-[#E4E6EE]">
@@ -124,7 +124,7 @@ const AboutUsPage = () => {
 
       {/* Why Choose Us */}
       <section className="py-12 sm:py-16 bg-white border-t border-[#E4E6EE]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#EEEDFD] text-[#3730E0] mb-3">

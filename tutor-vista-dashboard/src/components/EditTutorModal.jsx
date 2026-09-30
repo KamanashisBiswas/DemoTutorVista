@@ -862,10 +862,10 @@ const EditTutorModal = ({ isOpen, tutor, onClose, onSuccess }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-800">Edit Tutor</h3>
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-xl border border-[#E4E6EE] w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b border-[#E4E6EE] bg-white">
+          <h3 className="text-base font-bold text-[#1A1D29]">Edit Tutor Information</h3>
           <button
             onClick={() => {
               if (isEdited()) {
@@ -962,7 +962,7 @@ const EditTutorModal = ({ isOpen, tutor, onClose, onSuccess }) => {
             )}
           </form>
         </div>
-        <div className="flex justify-end space-x-3 p-6 border-t border-gray-200">
+        <div className="flex justify-end space-x-3 p-5 border-t border-[#E4E6EE] bg-white">
           <button
             type="button"
             onClick={() => {
@@ -978,7 +978,7 @@ const EditTutorModal = ({ isOpen, tutor, onClose, onSuccess }) => {
                 onClose();
               }
             }}
-            className="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition"
+            className="px-5 py-2.5 bg-white text-[#1A1D29] hover:bg-[#F7F8FB] border border-[#E4E6EE] rounded-lg text-xs font-semibold shadow-xs transition-colors"
           >
             {isEdited() ? "Reset" : "Cancel"}
           </button>
@@ -987,15 +987,15 @@ const EditTutorModal = ({ isOpen, tutor, onClose, onSuccess }) => {
             form="edit-tutor-form"
             disabled={loading || !isEdited()}
             onClick={handleSubmit}
-            className={`px-6 py-2 rounded-lg transition-all duration-200 flex items-center justify-center ${
+            className={`px-5 py-2.5 rounded-lg text-xs font-semibold shadow-xs transition-all duration-200 flex items-center justify-center ${
               loading || !isEdited()
-                ? "bg-blue-300 text-blue-700 cursor-not-allowed"
-                : "bg-blue-600 text-white hover:bg-blue-700"
+                ? "bg-[#EEF2FF] text-[#94A3B8] border border-[#E0E7FF] cursor-not-allowed"
+                : "bg-[#3730E0] text-white hover:bg-[#2D24C4]"
             }`}
           >
             {loading && (
               <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -1015,7 +1015,7 @@ const EditTutorModal = ({ isOpen, tutor, onClose, onSuccess }) => {
                 />
               </svg>
             )}
-            <span className="text-sm font-semibold">
+            <span>
               {loading ? "Updating..." : "Update Tutor"}
             </span>
           </button>

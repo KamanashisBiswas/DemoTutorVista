@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, ShieldCheck, CheckCircle2, Phone, CreditCard } from "lucide-react";
 import Button from "./Common/Button";
 import termsData from "../assets/data/terms.json";
@@ -45,7 +46,7 @@ const TermsModal = ({ isOpen, onClose, onAccept }) => {
     );
   }
 
-  return (
+  const modalContent = (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-3 sm:p-4 font-sans">
       {/* Modal Panel */}
       <div className="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col border border-[#E4E6EE]">
@@ -174,6 +175,10 @@ const TermsModal = ({ isOpen, onClose, onAccept }) => {
       </div>
     </div>
   );
+
+  return typeof document !== "undefined"
+    ? createPortal(modalContent, document.body)
+    : null;
 };
 
 export default TermsModal;

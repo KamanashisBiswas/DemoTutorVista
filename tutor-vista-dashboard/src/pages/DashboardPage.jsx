@@ -1,17 +1,26 @@
 // src/pages/DashboardPage.jsx
 import React, { useState, useEffect } from "react";
 import {
-  User,
-  MessageCircle,
+  Users,
   GraduationCap,
-  Bell,
+  ClipboardList,
+  Mail,
+  ArrowRight,
   TrendingUp,
   Clock,
-  CheckCircle,
+  CheckCircle2,
+  Sparkles,
+  ShieldCheck,
+  PlusCircle,
+  Search,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ApiService from "../services/api";
 import MaintenanceWarningModal from "../components/MaintenanceWarningModal";
+import { Card } from "../components/ui/Card";
+import { Button } from "../components/ui/Button";
+import { Badge } from "../components/ui/Badge";
+import { SkeletonCard } from "../components/ui/Skeleton";
 
 const API_URL = "https://website-management-backend.vercel.app/api/websites";
 const WEBSITE_ID = "tutorvista-001";
@@ -45,7 +54,6 @@ const DashboardPage = () => {
     fetch(`${API_URL}/public/${WEBSITE_ID}`)
       .then((res) => res.json())
       .then((data) => {
-        // যদি backend থেকে showWarning: false আসে, তাহলে dismiss flag sessionStorage থেকে মুছে ফেলো
         if (!data.data?.showWarning) {
           sessionStorage.removeItem(`maintenance_dismissed_${WEBSITE_ID}`);
         }
@@ -62,7 +70,6 @@ const DashboardPage = () => {
 
   const handleModalClose = () => {
     setShowModal(false);
-    // Mark as dismissed in sessionStorage
     sessionStorage.setItem(`maintenance_dismissed_${WEBSITE_ID}`, "1");
   };
 
@@ -79,49 +86,16 @@ const DashboardPage = () => {
     try {
       const [tutorRequestsData, tutorsData, messagesData, usersData] =
         await Promise.all([
-          ApiService.getTutorRequestStats().catch((err) => {
-            console.log("TutorRequestStats error:", err);
-            return { data: null, stats: {} };
-          }),
-          ApiService.getTutorStats().catch((err) => {
-            console.log("TutorStats error:", err);
-            return { data: null, stats: {} };
-          }),
-          ApiService.getMessageStats().catch((err) => {
-            console.log("MessageStats error:", err);
-            return { data: null, stats: {} };
-          }),
-          ApiService.getAllUsers().catch((err) => {
-            console.log("Users error:", err);
-            return { data: null, users: [] };
-          }),
+          ApiService.getTutorRequestStats().catch(() => ({ data: null, stats: {} })),
+          ApiService.getTutorStats().catch(() => ({ data: null, stats: {} })),
+          ApiService.getMessageStats().catch(() => ({ data: null, stats: {} })),
+          ApiService.getAllUsers().catch(() => ({ data: null, users: [] })),
         ]);
 
       const [recentRequests, recentTutors, recentMessages] = await Promise.all([
-        ApiService.getTutorRequests({ limit: 5 }).catch((err) => {
-          console.log("Recent requests error:", err);
-          return { data: null, requests: [] };
-        }),
-        ApiService.getTutorApplications({ limit: 5 }).catch((err) => {
-          console.log("Recent tutors error:", err);
-          return { data: null, applications: [] };
-        }),
-        ApiService.getMessages({ limit: 5 }).catch((err) => {
-          console.log("Recent messages error:", err);
-          return { data: null, messages: [] };
-        }),
-      ]);
-
-      const [allRequests, allTutors, allMessages] = await Promise.all([
-        ApiService.getTutorRequests().catch(() => ({
-          data: null,
-          requests: [],
-        })),
-        ApiService.getTutorApplications().catch(() => ({
-          data: null,
-          applications: [],
-        })),
-        ApiService.getMessages().catch(() => ({ data: null, messages: [] })),
+        ApiService.getTutorRequests({ limit: 5 }).catch(() => ({ data: null, requests: [] })),
+        ApiService.getTutorApplications({ limit: 5 }).catch(() => ({ data: null, applications: [] })),
+        ApiService.getMessages({ limit: 5 }).catch(() => ({ data: null, messages: [] })),
       ]);
 
       const calculatedStats = {
@@ -130,22 +104,16 @@ const DashboardPage = () => {
           usersData?.users?.length ||
           (Array.isArray(usersData?.data) ? usersData.data.length : 0) ||
           0,
-
         tutorRequests:
           tutorRequestsData?.data?.stats?.total ||
           tutorRequestsData?.stats?.total ||
           0,
-
         tutors: tutorsData?.data?.stats?.total || tutorsData?.stats?.total || 0,
-
         messages:
           messagesData?.stats?.total ||
           messagesData?.data?.total ||
-          allMessages?.data?.messages?.length ||
-          allMessages?.messages?.length ||
-          (Array.isArray(allMessages?.data) ? allMessages.data.length : 0) ||
+          (Array.isArray(recentMessages?.data?.messages) ? recentMessages.data.messages.length : 0) ||
           0,
-
         pendingRequests:
           tutorRequestsData?.data?.stats?.pending ||
           tutorRequestsData?.stats?.pending ||
@@ -177,44 +145,58 @@ const DashboardPage = () => {
     }
   };
 
-  // Card route mapping
-  const cardRoutes = ["/tutors", "/tutor-requests", "/users", "/messages"];
-
-  const statsData = [
+  const statCards = [
     {
-      title: "Total Tutors",
-      value: stats.tutors.toString(),
-      color: "bg-purple-500",
+      title: "Active Tutors",
+      value: stats.tutors,
+      subtitle: "Verified educators in roster",
       icon: GraduationCap,
+      color: "text-[#3730E0]",
+      bg: "bg-[#EEEDFD]",
       route: "/tutors",
     },
     {
-      title: "Tutor Requests",
-      value: stats.tutorRequests.toString(),
-      color: "bg-green-500",
-      icon: MessageCircle,
+      title: "Tuition Requests",
+      value: stats.tutorRequests,
+      subtitle: `${stats.pendingRequests} pending assignment`,
+      icon: ClipboardList,
+      color: "text-[#0EA5A0]",
+      bg: "bg-[#F0FDFA]",
       route: "/tutor-requests",
+      badge: stats.pendingRequests > 0 ? `${stats.pendingRequests} Pending` : null,
     },
     {
-      title: "Total Users",
-      value: stats.users.toString(),
-      color: "bg-blue-500",
-      icon: User,
+      title: "Total Registered Users",
+      value: stats.users,
+      subtitle: "Platform accounts active",
+      icon: Users,
+      color: "text-[#16A34A]",
+      bg: "bg-[#DCFCE7]",
       route: "/users",
     },
     {
-      title: "Messages",
-      value: stats.messages.toString(),
-      color: "bg-orange-500",
-      icon: Bell,
+      title: "Inbox Inquiries",
+      value: stats.messages,
+      subtitle: "Direct user messages",
+      icon: Mail,
+      color: "text-[#F5A524]",
+      bg: "bg-[#FFFBEB]",
       route: "/messages",
     },
   ];
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <SkeletonCard key={i} className="h-32" />
+          ))}
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <SkeletonCard className="h-72" />
+          <SkeletonCard className="h-72" />
+        </div>
       </div>
     );
   }
@@ -227,134 +209,198 @@ const DashboardPage = () => {
         website={website}
       />
 
-      {/* Main Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {statsData.map((stat, index) => {
-          const Icon = stat.icon;
+      {/* Welcome Hero Banner */}
+      <div className="bg-white rounded-2xl border border-[#E4E6EE] p-6 sm:p-8 shadow-xs relative overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="relative z-10 max-w-xl">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEEDFD] text-[#3730E0] text-xs font-bold mb-3 border border-[#DDD9FC]">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>TutorVista Management Portal</span>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-extrabold text-[#1A1D29] tracking-tight">
+            Administrative Control Center
+          </h2>
+          <p className="text-xs sm:text-sm text-[#5B5F73] mt-1 leading-relaxed">
+            Monitor real-time tutor verification, dispatch tuition matches, and govern platform inquiries from one unified dashboard.
+          </p>
+        </div>
+
+        <div className="relative z-10 flex flex-wrap gap-2.5">
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => navigate("/tutor-requests")}
+            iconLeft={ClipboardList}
+          >
+            Review Requests
+          </Button>
+          <Button
+            variant="primary"
+            size="sm"
+            onClick={() => navigate("/tutors")}
+            iconLeft={GraduationCap}
+          >
+            Manage Tutors
+          </Button>
+        </div>
+      </div>
+
+      {/* KPI Stat Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {statCards.map((card, idx) => {
+          const Icon = card.icon;
           return (
             <div
-              key={index}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-all duration-200 cursor-pointer"
-              onClick={() => navigate(stat.route)}
-              tabIndex={0}
-              role="button"
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") navigate(stat.route);
-              }}
+              key={idx}
+              onClick={() => navigate(card.route)}
+              className="bg-white rounded-2xl border border-[#E4E6EE] p-5 shadow-xs hover:shadow-card hover:border-[#3730E0]/30 transition-all cursor-pointer group flex flex-col justify-between"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">
-                    {stat.title}
-                  </p>
-                  <div className="flex items-center mt-2">
-                    <p className="text-3xl font-bold text-gray-800">
-                      {stat.value}
-                    </p>
+                  <span className="text-xs font-semibold text-[#5B5F73]">
+                    {card.title}
+                  </span>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#1A1D29] mt-1.5 tracking-tight group-hover:text-[#3730E0] transition-colors">
+                    {card.value}
                   </div>
                 </div>
-                <div className={`${stat.color} p-3 rounded-lg`}>
-                  <Icon className="w-6 h-6 text-white" />
+                <div className={`w-11 h-11 rounded-xl ${card.bg} ${card.color} flex items-center justify-center shrink-0 shadow-2xs`}>
+                  <Icon className="w-5 h-5" />
                 </div>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-[#E4E6EE] flex items-center justify-between text-xs">
+                <span className="text-[#5B5F73] truncate">{card.subtitle}</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#5B5F73] group-hover:text-[#3730E0] group-hover:translate-x-0.5 transition-all" />
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Recent Activity */}
+      {/* Operational Highlights / Activity Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Recent Tutor Requests */}
-        <div
-          className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 cursor-pointer"
-          onClick={() => navigate("/tutor-requests")}
-          tabIndex={0}
-          role="button"
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") navigate("/tutor-requests");
-          }}
-        >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">
-              Recent Tutor Requests
-            </h3>
-            <TrendingUp className="w-5 h-5 text-blue-500" />
-          </div>
-          <div className="space-y-3">
-            {recentData.requests.slice(0, 5).map((request, index) => (
-              <div
-                key={request.id || index}
-                className="flex items-center p-3 bg-gray-50 rounded-lg"
-              >
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-semibold mr-3">
-                  {(request.studentName || request.name || "N")?.charAt(0)}
+        {/* Recent Tuition Requests */}
+        <div className="bg-white rounded-2xl border border-[#E4E6EE] shadow-xs p-6 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between pb-4 border-b border-[#E4E6EE] mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-[#0EA5A0]/10 text-[#0EA5A0] flex items-center justify-center">
+                  <ClipboardList className="w-4 h-4" />
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">
-                    {request.studentName || request.name || "Unknown"}
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    {request.subjects?.slice(0, 2).join(", ") ||
-                      request.subject ||
-                      "No subjects listed"}
-                  </p>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-[#1A1D29]">
+                    Recent Tuition Requests
+                  </h3>
+                  <p className="text-[11px] text-[#5B5F73]">Latest student tuition applications</p>
                 </div>
               </div>
-            ))}
-            {recentData.requests.length === 0 && (
-              <p className="text-gray-500 text-center py-4">
-                No recent requests
-              </p>
-            )}
+              <Link
+                to="/tutor-requests"
+                className="text-xs font-bold text-[#3730E0] hover:underline flex items-center gap-1"
+              >
+                <span>View All</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+
+            <div className="space-y-3">
+              {recentData.requests.slice(0, 5).map((req, i) => (
+                <div
+                  key={req._id || i}
+                  onClick={() => navigate("/tutor-requests")}
+                  className="flex items-center justify-between p-3 rounded-xl bg-[#F7F8FB] border border-[#E4E6EE] hover:border-[#3730E0]/30 hover:bg-white transition-all cursor-pointer"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-[#3730E0]/10 text-[#3730E0] flex items-center justify-center font-bold text-xs shrink-0">
+                      {(req.studentName || "S").charAt(0).toUpperCase()}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-[#1A1D29] truncate">
+                        {req.studentName || "Student Request"}
+                      </p>
+                      <p className="text-[11px] text-[#5B5F73] truncate">
+                        {req.grade || req.class || "General"} • {req.district || req.area || "Location N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="text-[11px] font-semibold text-[#3730E0] bg-[#EEEDFD] px-2.5 py-1 rounded-md shrink-0">
+                    ৳{req.salary || "N/A"}
+                  </span>
+                </div>
+              ))}
+
+              {recentData.requests.length === 0 && (
+                <div className="text-center py-8 text-xs text-[#5B5F73]">
+                  No recent tuition requests found.
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Recent Messages */}
-        <div
-          className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 cursor-pointer"
-          onClick={() => navigate("/messages")}
-          tabIndex={0}
-          role="button"
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") navigate("/messages");
-          }}
-        >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">
-              Recent Messages
-            </h3>
-            <MessageCircle className="w-5 h-5 text-green-500" />
-          </div>
-          <div className="space-y-3">
-            {recentData.messages.slice(0, 5).map((message, index) => (
-              <div
-                key={message.id || index}
-                className="flex items-center p-3 bg-gray-50 rounded-lg"
-              >
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-semibold mr-3">
-                  {(message.name || "N")?.charAt(0)}
+        {/* Recent Inquiries & Messages */}
+        <div className="bg-white rounded-2xl border border-[#E4E6EE] shadow-xs p-6 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between pb-4 border-b border-[#E4E6EE] mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-[#F5A524]/10 text-[#F5A524] flex items-center justify-center">
+                  <Mail className="w-4 h-4" />
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">
-                    {message.name || "Unknown"}
-                  </p>
-                  <p className="text-xs text-gray-500 truncate">
-                    {message.message?.substring(0, 50) || "No message content"}
-                    ...
-                  </p>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-[#1A1D29]">
+                    Recent Inquiries
+                  </h3>
+                  <p className="text-[11px] text-[#5B5F73]">Contact form submissions</p>
                 </div>
-                <span className="text-xs text-gray-400">
-                  {message.createdAt
-                    ? new Date(message.createdAt).toLocaleDateString()
-                    : "Today"}
-                </span>
               </div>
-            ))}
-            {recentData.messages.length === 0 && (
-              <p className="text-gray-500 text-center py-4">
-                No recent messages
-              </p>
-            )}
+              <Link
+                to="/messages"
+                className="text-xs font-bold text-[#3730E0] hover:underline flex items-center gap-1"
+              >
+                <span>Go to Inbox</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+
+            <div className="space-y-3">
+              {recentData.messages.slice(0, 5).map((msg, i) => (
+                <div
+                  key={msg._id || i}
+                  onClick={() => navigate("/messages")}
+                  className="flex items-center justify-between p-3 rounded-xl bg-[#F7F8FB] border border-[#E4E6EE] hover:border-[#3730E0]/30 hover:bg-white transition-all cursor-pointer"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-[#16A34A]/10 text-[#16A34A] flex items-center justify-center font-bold text-xs shrink-0">
+                      {(msg.name || "U").charAt(0).toUpperCase()}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-[#1A1D29] truncate">
+                        {msg.name || "Anonymous"}
+                      </p>
+                      <p className="text-[11px] text-[#5B5F73] truncate">
+                        {msg.message || "No content"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="text-[10px] text-[#5B5F73] shrink-0">
+                    {msg.createdAt
+                      ? new Date(msg.createdAt).toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "short",
+                        })
+                      : "Recently"}
+                  </span>
+                </div>
+              ))}
+
+              {recentData.messages.length === 0 && (
+                <div className="text-center py-8 text-xs text-[#5B5F73]">
+                  No recent messages in inbox.
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

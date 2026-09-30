@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { AlertTriangle } from "lucide-react";
 
 const DeleteConfirm = () => {
   const handleDelete = ({
@@ -16,12 +17,17 @@ const DeleteConfirm = () => {
       const [isDeleting, setIsDeleting] = useState(false);
 
       return (
-        <div className="flex flex-col items-center justify-center p-6">
-          <div className="text-xl font-bold text-red-600 mb-2">
-            Delete Confirmation
+        <div className="flex flex-col items-center justify-center p-5 text-center">
+          <div className="w-12 h-12 rounded-full bg-[#FEF2F2] border border-[#FEE2E2] flex items-center justify-center text-[#DC2626] mb-3">
+            <AlertTriangle className="w-6 h-6" />
           </div>
-          <div className="text-base text-gray-800 mb-4">{message}</div>
-          <div className="flex justify-center gap-4">
+          <div className="text-base font-bold text-[#1A1D29] mb-1.5">
+            Confirm Deletion
+          </div>
+          <div className="text-xs text-[#5B5F73] mb-5 leading-relaxed max-w-xs">
+            {message} This action cannot be undone.
+          </div>
+          <div className="flex justify-center items-center gap-2.5 w-full">
             <button
               onClick={async () => {
                 setIsDeleting(true);
@@ -43,24 +49,24 @@ const DeleteConfirm = () => {
                 }
               }}
               disabled={isDeleting}
-              className={`px-6 py-2 rounded-lg font-semibold transition flex items-center gap-2 ${
+              className={`flex-1 py-2 px-4 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1.5 shadow-xs ${
                 isDeleting
-                  ? "bg-red-400 text-white cursor-not-allowed"
-                  : "bg-red-600 text-white hover:bg-red-700"
+                  ? "bg-[#FCA5A5] text-white cursor-not-allowed"
+                  : "bg-[#DC2626] text-white hover:bg-[#B91C1C]"
               }`}
             >
               {isDeleting && (
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-white border-t-transparent"></div>
               )}
-              {isDeleting ? "Deleting..." : "Yes, Delete"}
+              {isDeleting ? "Deleting..." : "Delete"}
             </button>
             <button
               onClick={() => toast.dismiss(toastId)}
               disabled={isDeleting}
-              className={`px-6 py-2 rounded-lg font-semibold transition ${
+              className={`flex-1 py-2 px-4 rounded-lg text-xs font-semibold transition-all border border-[#E4E6EE] shadow-xs ${
                 isDeleting
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                  ? "bg-[#F7F8FB] text-[#94A3B8] cursor-not-allowed"
+                  : "bg-white text-[#1A1D29] hover:bg-[#F7F8FB]"
               }`}
             >
               Cancel
@@ -76,7 +82,7 @@ const DeleteConfirm = () => {
       draggable: false,
       closeButton: false,
       position: "top-center",
-      style: { minWidth: 350, minHeight: 200 },
+      style: { minWidth: 320, borderRadius: 16, padding: 0 },
     });
   };
 

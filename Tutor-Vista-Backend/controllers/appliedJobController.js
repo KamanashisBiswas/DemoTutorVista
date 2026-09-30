@@ -76,10 +76,40 @@ const getAppliedJobById = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, data: job });
 });
 
+// Get Applied Jobs by Tutor ID
+const getAppliedJobsByTutorId = asyncHandler(async (req, res) => {
+  const { tutorId } = req.params;
+  const jobs = await AppliedJob.find({ tutorId })
+    .populate("requestTutorId")
+    .sort({ createdAt: -1 });
+
+  res.status(200).json({ success: true, data: jobs });
+});
+
+// Update Applied Job Status
+const updateAppliedJobStatus = asyncHandler(async (req, res) => {
+  const { status } = req.body;
+  const appliedJob = await AppliedJob.findByIdAndUpdate(
+    req.params.id,
+    { status },
+    { new: true }
+  ).populate("requestTutorId tutorId");
+
+  if (!appliedJob) {
+    return res
+      .status(404)
+      .json({ success: false, message: "Applied job not found" });
+  }
+
+  res.status(200).json({ success: true, data: appliedJob });
+});
+
 module.exports = {
   addAppliedJob,
   editAppliedJob,
   deleteAppliedJob,
   getAllAppliedJobs,
   getAppliedJobById,
+  getAppliedJobsByTutorId,
+  updateAppliedJobStatus,
 };

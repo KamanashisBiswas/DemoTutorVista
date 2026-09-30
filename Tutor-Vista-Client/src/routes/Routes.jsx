@@ -10,6 +10,9 @@ import TermsAndConditions from "../pages/TermsAndConditions";
 import TutorPage from "../pages/TutorPage";
 import TuitionRequestPage from "../pages/TuitionRequestPage"; // Add this import
 import CEOMessagesPage from "../pages/CEOMessagesPage";
+import NotFoundPage from "../pages/NotFoundPage";
+import TutorLoginPage from "../pages/TutorLoginPage";
+import TutorPortalPage from "../pages/TutorPortalPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: "/apply-tutor",
         element: <ApplyTutor />,
+      },
+      {
+        path: "/tutor-login",
+        element: <TutorLoginPage />,
+      },
+      {
+        path: "/tutor-portal",
+        element: <TutorPortalPage />,
       },
       {
         path: "/contact",
@@ -55,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/founder-message",
         element: <CEOMessagesPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },

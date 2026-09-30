@@ -1,36 +1,7 @@
+// src/components/TutorsPageHeader.jsx
 import React from "react";
-import { Plus, FileDown, FileText, Sheet } from "lucide-react";
-
-const ActionButton = ({
-  onClick,
-  disabled,
-  isDownloading,
-  icon: Icon,
-  text,
-  colorClass,
-}) => (
-  <button
-    onClick={onClick}
-    disabled={disabled}
-    className={`w-full sm:w-auto sm:min-w-[170px] flex items-center justify-center space-x-2 ${colorClass} text-white px-4 py-2 rounded-lg transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed relative`}
-  >
-    {isDownloading && (
-      <div className="absolute inset-0 flex justify-center items-center">
-        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-      </div>
-    )}
-    <div
-      className={
-        isDownloading
-          ? "invisible flex items-center space-x-2"
-          : "flex items-center space-x-2"
-      }
-    >
-      <Icon className="w-4 h-4" />
-      <span>{text}</span>
-    </div>
-  </button>
-);
+import { Plus, FileDown, FileText, Sheet, GraduationCap } from "lucide-react";
+import { Button } from "./ui/Button";
 
 const TutorsPageHeader = ({
   user,
@@ -41,43 +12,62 @@ const TutorsPageHeader = ({
   isDownloading,
 }) => {
   return (
-    <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4 md:mb-0">
-        Tutor List
-      </h3>
-      <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-        <ActionButton
+    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+      <div>
+        <div className="flex items-center gap-2">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-[#1A1D29] tracking-tight">
+            Tutors Directory & Pipeline
+          </h2>
+          <span className="text-[11px] font-bold text-[#3730E0] bg-[#EEEDFD] px-2.5 py-0.5 rounded-full border border-[#DDD9FC]">
+            Verified Pool
+          </span>
+        </div>
+        <p className="text-xs sm:text-sm text-[#5B5F73] mt-0.5">
+          Manage teacher onboarding, verify academic credentials, and export records.
+        </p>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={onDownloadPdf}
           disabled={isDownloading.pdf}
-          isDownloading={isDownloading.pdf}
-          icon={FileDown}
-          text="Download All PDF"
-          colorClass="bg-green-600 hover:bg-green-700"
-        />
-        <ActionButton
+          loading={isDownloading.pdf}
+          iconLeft={FileDown}
+        >
+          Export PDF
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={onDownloadDocx}
           disabled={isDownloading.docx}
-          isDownloading={isDownloading.docx}
-          icon={FileText}
-          text="Download All DOCX"
-          colorClass="bg-blue-600 hover:bg-blue-700"
-        />
-        <ActionButton
+          loading={isDownloading.docx}
+          iconLeft={FileText}
+        >
+          Export DOCX
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={onDownloadSheet}
           disabled={isDownloading.sheet}
-          isDownloading={isDownloading.sheet}
-          icon={Sheet}
-          text="Download All Sheet"
-          colorClass="bg-teal-600 hover:bg-teal-700"
-        />
+          loading={isDownloading.sheet}
+          iconLeft={Sheet}
+        >
+          Export Excel
+        </Button>
+
         {user?.role !== "user" && (
-          <button
+          <Button
+            variant="primary"
+            size="sm"
             onClick={onAddTutor}
-            className="w-full sm:w-auto sm:min-w-[170px] flex items-center justify-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 font-medium"
+            iconLeft={Plus}
           >
-            <Plus className="w-4 h-4" />
-            <span>Add Tutor</span>
-          </button>
+            Add New Tutor
+          </Button>
         )}
       </div>
     </div>

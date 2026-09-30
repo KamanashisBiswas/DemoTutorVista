@@ -1,23 +1,32 @@
+// src/pages/MessagesPage.jsx
 import React, { useEffect, useState } from "react";
-import { Trash2, Phone, User, Calendar } from "lucide-react";
+import { Trash2, Phone, User, Calendar, Mail, Search, MessageSquare } from "lucide-react";
 import ApiService from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import DeleteConfirm from "../components/DeleteConfirm";
+import { EmptyState } from "../components/ui/EmptyState";
+import { SkeletonCard } from "../components/ui/Skeleton";
+import { Pagination } from "../components/ui/Pagination";
+import { Badge } from "../components/ui/Badge";
 
 const MessagesPage = () => {
   const { user } = useAuth();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // Add pagination states
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5);
+  const itemsPerPage = 6;
 
   useEffect(() => {
     fetchMessages();
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
   const fetchMessages = async () => {
+    setLoading(true);
     try {
       const res = await ApiService.getMessages();
       setMessages(res.data?.messages || []);
@@ -29,12 +38,6 @@ const MessagesPage = () => {
     }
   };
 
-  // Calculate pagination
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentMessages = messages.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(messages.length / itemsPerPage);
-
   const deleteConfirm = DeleteConfirm({});
 
   const handleDelete = (id, senderName) => {
@@ -45,261 +48,143 @@ const MessagesPage = () => {
       },
       itemName: senderName,
       itemType: "message",
-      customMessage: `Are you sure you want to delete the message from ${senderName}?`,
+      customMessage: `Are you sure you want to permanently delete the inquiry from ${senderName}?`,
     });
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
+  const filteredMessages = messages.filter(
+    (msg) =>
+      msg.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      msg.phoneNumber?.includes(searchTerm) ||
+      msg.message?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentMessages = filteredMessages.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredMessages.length / itemsPerPage);
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">Messages</h2>
-        <p className="text-gray-600">Contact messages from website visitors</p>
+      {/* Header & Search */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#1A1D29] tracking-tight">
+              Inquiries & Messages
+            </h2>
+            <span className="text-[11px] font-bold text-[#F5A524] bg-[#FFFBEB] px-2.5 py-0.5 rounded-full border border-[#FDE68A]">
+              {messages.length} Total
+            </span>
+          </div>
+          <p className="text-xs sm:text-sm text-[#5B5F73] mt-0.5">
+            Incoming guardian, tutor, and visitor inquiries submitted through the contact form.
+          </p>
+        </div>
+
+        <div className="relative w-full sm:w-72">
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#5B5F73]">
+            <Search className="w-4 h-4" />
+          </div>
+          <input
+            type="text"
+            className="w-full pl-10 pr-4 py-2 bg-white border border-[#E4E6EE] rounded-xl text-xs sm:text-sm text-[#1A1D29] placeholder:text-[#5B5F73]/60 focus:outline-none focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 transition-all shadow-xs"
+            placeholder="Search messages or phone..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
       </div>
 
-      {/* Messages List */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-        {messages.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="text-gray-500 text-lg mb-2">No messages found</div>
-            <p className="text-gray-400">
-              Messages from contact form will appear here
-            </p>
-          </div>
-        ) : (
-          <div className="divide-y divide-gray-200">
-            {currentMessages.map((msg) => (
-              <div
-                key={msg._id}
-                className="p-6 hover:bg-gray-50 transition-colors duration-200"
-              >
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    {/* Header with name and time */}
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center space-x-2">
-                        <User className="w-5 h-5 text-blue-500" />
-                        <span className="font-semibold text-gray-900">
-                          {msg.name}
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-4">
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Calendar className="w-4 h-4 mr-1" />
-                          {new Date(msg.createdAt).toLocaleString()}
-                        </div>
-                        {/* Delete button - only show for admin */}
-                        {user?.role === "admin" && (
-                          <button
-                            onClick={() => handleDelete(msg._id, msg.name)}
-                            className="text-red-600 hover:text-red-900 p-2 rounded-lg hover:bg-red-50 transition-colors duration-200"
-                            title="Delete Message"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Phone number */}
-                    <div className="flex items-center space-x-2 mb-3">
-                      <Phone className="w-4 h-4 text-green-500" />
-                      <span className="text-sm font-medium text-gray-700">
-                        {msg.phoneNumber}
+      {/* Messages Feed */}
+      {loading ? (
+        <div className="space-y-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <SkeletonCard key={i} className="h-32" />
+          ))}
+        </div>
+      ) : filteredMessages.length === 0 ? (
+        <EmptyState
+          icon={Mail}
+          title="No Messages in Inbox"
+          description={
+            searchTerm
+              ? `No messages found matching "${searchTerm}". Try a different term.`
+              : "When visitors submit messages through the website contact form, they will appear here."
+          }
+          actionLabel={searchTerm ? "Clear Search" : undefined}
+          onAction={() => setSearchTerm("")}
+        />
+      ) : (
+        <div className="space-y-4">
+          {currentMessages.map((msg) => (
+            <div
+              key={msg._id}
+              className="bg-white rounded-2xl border border-[#E4E6EE] p-5 shadow-xs hover:border-[#3730E0]/30 hover:shadow-card transition-all"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E4E6EE]">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-[#EEEDFD] text-[#3730E0] flex items-center justify-center font-bold text-xs shrink-0">
+                    {(msg.name || "U").charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#1A1D29]">
+                      {msg.name || "Anonymous Visitor"}
+                    </h4>
+                    <div className="flex items-center gap-2 text-xs text-[#5B5F73] mt-0.5">
+                      <span className="flex items-center gap-1 font-semibold text-[#1A1D29]">
+                        <Phone className="w-3 h-3 text-[#16A34A]" />
+                        {msg.phoneNumber || "No phone"}
                       </span>
-                    </div>
-
-                    {/* Message content */}
-                    <div className="bg-gray-50 rounded-lg p-4">
-                      <p className="text-gray-800 leading-relaxed">
-                        {msg.message}
-                      </p>
                     </div>
                   </div>
                 </div>
+
+                <div className="flex items-center justify-between sm:justify-end gap-3 text-xs text-[#5B5F73]">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5 text-[#3730E0]" />
+                    {msg.createdAt
+                      ? new Date(msg.createdAt).toLocaleString("en-GB", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })
+                      : "Recent"}
+                  </span>
+
+                  {user?.role === "admin" && (
+                    <button
+                      onClick={() => handleDelete(msg._id, msg.name)}
+                      className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#DC2626] hover:bg-red-50 transition-colors"
+                      title="Delete Message"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
               </div>
-            ))}
-          </div>
-        )}
-      </div>
 
-      {/* Beautiful Pagination Component */}
-      {totalPages > 1 && (
-        <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200 rounded-b-xl">
-          {/* Mobile Pagination */}
-          <div className="flex justify-between flex-1 sm:hidden">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className={`relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
-                currentPage === 1
-                  ? "text-gray-400 bg-gray-100 border-gray-200 cursor-not-allowed"
-                  : "text-gray-700 bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md"
-              }`}
-            >
-              <svg
-                className="w-4 h-4 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Previous
-            </button>
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={currentPage === totalPages}
-              className={`relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
-                currentPage === totalPages
-                  ? "text-gray-400 bg-gray-100 border-gray-200 cursor-not-allowed"
-                  : "text-gray-700 bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md"
-              }`}
-            >
-              Next
-              <svg
-                className="w-4 h-4 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Desktop Pagination */}
-          <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-            {/* Results Info */}
-            <div className="flex items-center space-x-2">
-              <div className="bg-blue-50 px-3 py-1 rounded-full">
-                <p className="text-sm font-medium text-blue-700">
-                  Showing{" "}
-                  <span className="font-bold">{indexOfFirstItem + 1}</span> to{" "}
-                  <span className="font-bold">
-                    {Math.min(indexOfLastItem, messages.length)}
-                  </span>{" "}
-                  of <span className="font-bold">{messages.length}</span>{" "}
-                  results
-                </p>
+              {/* Message Content Bubble */}
+              <div className="mt-3.5 p-3.5 rounded-xl bg-[#F7F8FB] border border-[#E4E6EE] text-xs sm:text-sm text-[#1A1D29] leading-relaxed">
+                {msg.message || "No content provided."}
               </div>
             </div>
+          ))}
 
-            {/* Page Navigation */}
-            <div className="flex items-center space-x-2">
-              {/* Previous Button */}
-              <button
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}
-                className={`relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
-                  currentPage === 1
-                    ? "text-gray-400 bg-gray-100 border-gray-200 cursor-not-allowed"
-                    : "text-gray-700 bg-white border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 hover:shadow-md"
-                }`}
-              >
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-                Previous
-              </button>
-
-              {/* Page Numbers */}
-              <div className="flex items-center space-x-1">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (page) => {
-                    // Show first page, last page, current page, and pages around current page
-                    if (
-                      page === 1 ||
-                      page === totalPages ||
-                      (page >= currentPage - 1 && page <= currentPage + 1)
-                    ) {
-                      return (
-                        <button
-                          key={page}
-                          onClick={() => setCurrentPage(page)}
-                          className={`relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
-                            currentPage === page
-                              ? "z-10 bg-blue-600 border-blue-600 text-white shadow-lg"
-                              : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-700"
-                          }`}
-                        >
-                          {page}
-                        </button>
-                      );
-                    } else if (
-                      page === currentPage - 2 ||
-                      page === currentPage + 2
-                    ) {
-                      return (
-                        <span key={page} className="px-2 py-2 text-gray-400">
-                          ...
-                        </span>
-                      );
-                    }
-                    return null;
-                  }
-                )}
-              </div>
-
-              {/* Next Button */}
-              <button
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
-                disabled={currentPage === totalPages}
-                className={`relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
-                  currentPage === totalPages
-                    ? "text-gray-400 bg-gray-100 border-gray-200 cursor-not-allowed"
-                    : "text-gray-700 bg-white border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 hover:shadow-md"
-                }`}
-              >
-                Next
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
+          {totalPages > 1 && (
+            <div className="bg-white p-4 rounded-2xl border border-[#E4E6EE] flex items-center justify-between">
+              <span className="text-xs text-[#5B5F73]">
+                Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredMessages.length)} of {filteredMessages.length} messages
+              </span>
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(p) => setCurrentPage(p)}
+              />
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>

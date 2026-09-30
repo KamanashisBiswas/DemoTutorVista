@@ -8,11 +8,17 @@ import {
   Search,
   X,
   HelpCircle,
-  CheckCircle,
+  CheckCircle2,
   XCircle,
+  Check,
 } from "lucide-react";
 import ApiService from "../services/api";
 import DeleteConfirm from "../components/DeleteConfirm";
+import { Button } from "../components/ui/Button";
+import { Badge } from "../components/ui/Badge";
+import { Modal } from "../components/ui/Modal";
+import { EmptyState } from "../components/ui/EmptyState";
+import { SkeletonTable } from "../components/ui/Skeleton";
 
 const FAQsPage = () => {
   const [faqs, setFaqs] = useState([]);
@@ -36,7 +42,7 @@ const FAQsPage = () => {
   const fetchFAQs = async () => {
     try {
       const data = await ApiService.getAllFAQsAdmin();
-      setFaqs(data.data?.faqs || []);
+      setFaqs(data.data?.faqs || data.faqs || []);
     } catch (error) {
       console.error("Error fetching FAQs:", error);
     } finally {
@@ -80,9 +86,9 @@ const FAQsPage = () => {
         await ApiService.deleteFAQ(id);
         fetchFAQs();
       },
-      itemName: "FAQ",
+      itemName: "FAQ Item",
       itemType: "FAQ",
-      customMessage: "Are you sure you want to delete this FAQ?",
+      customMessage: "Are you sure you want to permanently delete this FAQ?",
     });
   };
 
@@ -124,395 +130,301 @@ const FAQsPage = () => {
       faq.question?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       faq.answer?.toLowerCase().includes(searchTerm.toLowerCase());
 
-    // Status filter logic
     let matchesStatus = true;
     if (activeFilter && inactiveFilter) {
-      // Both checked - show all
       matchesStatus = true;
     } else if (activeFilter) {
-      // Only active checked
       matchesStatus = faq.isActive;
     } else if (inactiveFilter) {
-      // Only inactive checked
       matchesStatus = !faq.isActive;
-    } else {
-      // None checked - show all
-      matchesStatus = true;
     }
 
     return matchesSearch && matchesStatus;
   });
 
-  const getStatusBadge = (isActive) => {
-    return isActive ? (
-      <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 inline-flex items-center">
-        <CheckCircle className="w-3 h-3 mr-1" />
-        Active
-      </span>
-    ) : (
-      <span className="px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 inline-flex items-center">
-        <XCircle className="w-3 h-3 mr-1" />
-        Inactive
-      </span>
-    );
-  };
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 md:mb-0">
-            FAQ Management
-          </h3>
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={handleAdd}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2"
-            >
-              <Plus className="w-5 h-5" />
-              <span>Add FAQ</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Filters */}
-        <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6 mb-6">
-          {/* Search Bar */}
-          <div className="flex-1">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search FAQs by question or answer..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white shadow-sm"
-              />
-            </div>
-          </div>
-
-          {/* Status Filter Checkboxes */}
-          <div className="flex items-center space-x-4">
-            <span className="text-sm font-medium text-gray-700">
-              Filter by Status:
+      {/* Header and Controls */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#1A1D29] tracking-tight">
+              FAQ & Knowledge Management
+            </h2>
+            <span className="text-[11px] font-bold text-[#3730E0] bg-[#EEEDFD] px-2.5 py-0.5 rounded-full border border-[#DDD9FC]">
+              {faqs.length} Total
             </span>
-            <div className="flex items-center space-x-4 bg-gray-50 rounded-lg p-3">
-              {/* Active Checkbox */}
-              <label className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={activeFilter}
-                  onChange={(e) => setActiveFilter(e.target.checked)}
-                  className="sr-only"
-                />
-                <div
-                  className={`flex items-center space-x-2 px-3 py-1.5 rounded-md transition-all duration-200 ${
-                    activeFilter
-                      ? "bg-green-100 text-green-700 border border-green-200"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
-                >
-                  <div
-                    className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-colors ${
-                      activeFilter
-                        ? "bg-green-500 border-green-500"
-                        : "border-gray-300 bg-white"
-                    }`}
-                  >
-                    {activeFilter && (
-                      <CheckCircle className="w-3 h-3 text-white" />
-                    )}
-                  </div>
-                  <CheckCircle
-                    className={`w-4 h-4 ${
-                      activeFilter ? "text-green-500" : "text-gray-400"
-                    }`}
-                  />
-                  <span className="text-sm font-medium">Active</span>
-                  <span className="text-xs bg-white px-2 py-0.5 rounded-full">
-                    {faqs.filter((f) => f.isActive).length}
-                  </span>
-                </div>
-              </label>
-
-              {/* Inactive Checkbox */}
-              <label className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={inactiveFilter}
-                  onChange={(e) => setInactiveFilter(e.target.checked)}
-                  className="sr-only"
-                />
-                <div
-                  className={`flex items-center space-x-2 px-3 py-1.5 rounded-md transition-all duration-200 ${
-                    inactiveFilter
-                      ? "bg-red-100 text-red-700 border border-red-200"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
-                >
-                  <div
-                    className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-colors ${
-                      inactiveFilter
-                        ? "bg-red-500 border-red-500"
-                        : "border-gray-300 bg-white"
-                    }`}
-                  >
-                    {inactiveFilter && (
-                      <XCircle className="w-3 h-3 text-white" />
-                    )}
-                  </div>
-                  <XCircle
-                    className={`w-4 h-4 ${
-                      inactiveFilter ? "text-red-500" : "text-gray-400"
-                    }`}
-                  />
-                  <span className="text-sm font-medium">Inactive</span>
-                  <span className="text-xs bg-white px-2 py-0.5 rounded-full">
-                    {faqs.filter((f) => !f.isActive).length}
-                  </span>
-                </div>
-              </label>
-            </div>
           </div>
+          <p className="text-xs sm:text-sm text-[#5B5F73] mt-0.5">
+            Manage frequently asked questions displayed on the public landing page.
+          </p>
         </div>
 
-        {/* Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Question
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Answer Preview
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Created
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {filteredFaqs.map((faq) => (
-                <tr key={faq._id} className="hover:bg-gray-50">
-                  <td className="px-4 py-4">
-                    <div className="flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <div className="text-sm font-medium text-gray-900 max-w-xs">
-                        {faq.question?.substring(0, 100)}
-                        {faq.question?.length > 100 && "..."}
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-4 py-4 max-w-sm">
-                    <div className="text-sm text-gray-600">
-                      {faq.answer?.substring(0, 150)}
-                      {faq.answer?.length > 150 && "..."}
-                    </div>
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap">
-                    {getStatusBadge(faq.isActive)}
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {new Date(faq.createdAt).toLocaleDateString()}
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
-                    <div className="flex space-x-2">
-                      <button
-                        onClick={() => handleView(faq)}
-                        className="text-blue-600 hover:text-blue-900 p-1 rounded"
-                        title="View FAQ"
-                      >
-                        <Eye className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => handleEdit(faq)}
-                        className="text-green-600 hover:text-green-900 p-1 rounded"
-                        title="Edit FAQ"
-                      >
-                        <Edit className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(faq._id)}
-                        className="text-red-600 hover:text-red-900 p-1 rounded"
-                        title="Delete FAQ"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={handleAdd}
+          iconLeft={Plus}
+        >
+          Add New FAQ
+        </Button>
+      </div>
 
-          {filteredFaqs.length === 0 && (
-            <div className="text-center py-8 text-gray-500">No FAQs found.</div>
-          )}
+      {/* Filter and Search Bar */}
+      <div className="bg-white rounded-2xl border border-[#E4E6EE] p-4 sm:p-5 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <div className="relative flex-1 max-w-md">
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#5B5F73]">
+            <Search className="w-4 h-4" />
+          </div>
+          <input
+            type="text"
+            className="w-full pl-10 pr-4 py-2 bg-[#F7F8FB] border border-[#E4E6EE] rounded-xl text-xs sm:text-sm text-[#1A1D29] placeholder:text-[#5B5F73]/60 focus:bg-white focus:outline-none focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 transition-all"
+            placeholder="Search FAQs by question or answer..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+        {/* Status Pill Filters */}
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-semibold text-[#5B5F73]">Status:</span>
+          <button
+            type="button"
+            onClick={() => setActiveFilter(!activeFilter)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+              activeFilter
+                ? "bg-[#DCFCE7] text-[#16A34A] border-[#BBF7D0]"
+                : "bg-[#F7F8FB] text-[#5B5F73] border-[#E4E6EE] hover:bg-white"
+            }`}
+          >
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            <span>Active</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setInactiveFilter(!inactiveFilter)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+              inactiveFilter
+                ? "bg-red-50 text-[#DC2626] border-red-200"
+                : "bg-[#F7F8FB] text-[#5B5F73] border-[#E4E6EE] hover:bg-white"
+            }`}
+          >
+            <XCircle className="w-3.5 h-3.5" />
+            <span>Inactive</span>
+          </button>
         </div>
       </div>
 
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl max-h-[90vh] overflow-hidden">
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-800">
-                {modalType === "view"
-                  ? "View FAQ"
-                  : modalType === "edit"
-                  ? "Edit FAQ"
-                  : "Add FAQ"}
-              </h3>
-              <button
-                onClick={closeModal}
-                className="text-gray-400 hover:text-gray-600 p-1 rounded"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-              {modalType === "view" && selectedFaq ? (
-                <div className="space-y-6">
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
-                      <HelpCircle className="w-5 h-5 mr-2" />
-                      Question
-                    </h4>
-                    <p className="text-gray-800">{selectedFaq.question}</p>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-3">Answer</h4>
-                    <p className="text-gray-800 whitespace-pre-wrap">
-                      {selectedFaq.answer}
-                    </p>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-3">
-                      FAQ Information
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-sm font-medium text-gray-600">
-                          Status
-                        </label>
-                        <div className="mt-1">
-                          {getStatusBadge(selectedFaq.isActive)}
-                        </div>
+      {/* FAQs Table */}
+      {loading ? (
+        <SkeletonTable rows={5} cols={4} />
+      ) : filteredFaqs.length === 0 ? (
+        <EmptyState
+          icon={HelpCircle}
+          title="No FAQs Found"
+          description={
+            searchTerm
+              ? `No FAQ entries matched "${searchTerm}". Try a different search.`
+              : "No FAQs currently created in the knowledge base."
+          }
+          actionLabel="Add First FAQ"
+          onAction={handleAdd}
+        />
+      ) : (
+        <div className="bg-white rounded-2xl border border-[#E4E6EE] shadow-xs overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead className="bg-[#F7F8FB] border-b border-[#E4E6EE] text-[11px] font-bold uppercase tracking-wider text-[#5B5F73]">
+                <tr>
+                  <th className="py-3.5 px-4">Question</th>
+                  <th className="py-3.5 px-4">Answer Preview</th>
+                  <th className="py-3.5 px-4">Status</th>
+                  <th className="py-3.5 px-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#E4E6EE] text-xs sm:text-sm text-[#1A1D29]">
+                {filteredFaqs.map((faq) => (
+                  <tr
+                    key={faq._id}
+                    className="hover:bg-[#F7F8FB]/60 transition-colors group"
+                  >
+                    <td className="py-3.5 px-4 max-w-sm">
+                      <div className="flex items-start gap-2.5">
+                        <HelpCircle className="w-4 h-4 text-[#3730E0] shrink-0 mt-0.5" />
+                        <span className="font-bold text-[#1A1D29]">
+                          {faq.question}
+                        </span>
                       </div>
-                      <div>
-                        <label className="text-sm font-medium text-gray-600">
-                          Created
-                        </label>
-                        <p className="text-gray-800">
-                          {new Date(selectedFaq.createdAt).toLocaleDateString()}
-                        </p>
+                    </td>
+                    <td className="py-3.5 px-4 max-w-md">
+                      <p className="text-xs text-[#5B5F73] line-clamp-2">
+                        {faq.answer}
+                      </p>
+                    </td>
+                    <td className="py-3.5 px-4 whitespace-nowrap">
+                      {faq.isActive ? (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#DCFCE7] text-[#16A34A]">
+                          <CheckCircle2 className="w-3 h-3" />
+                          <span>Active</span>
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-[#5B5F73]">
+                          <XCircle className="w-3 h-3" />
+                          <span>Hidden</span>
+                        </span>
+                      )}
+                    </td>
+                    <td className="py-3.5 px-4 text-right whitespace-nowrap">
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button
+                          onClick={() => handleView(faq)}
+                          className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#3730E0] hover:bg-[#EEEDFD] transition-colors"
+                          title="View FAQ"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleEdit(faq)}
+                          className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#16A34A] hover:bg-green-50 transition-colors"
+                          title="Edit FAQ"
+                        >
+                          <Edit className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(faq._id)}
+                          className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#DC2626] hover:bg-red-50 transition-colors"
+                          title="Delete FAQ"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                       </div>
-                      <div>
-                        <label className="text-sm font-medium text-gray-600">
-                          Last Updated
-                        </label>
-                        <p className="text-gray-800">
-                          {new Date(selectedFaq.updatedAt).toLocaleDateString()}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* View Mode Cancel Button */}
-                  <div className="flex justify-end pt-4 border-t">
-                    <button
-                      onClick={closeModal}
-                      className="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition"
-                    >
-                      <span>Close</span>
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Question *
-                    </label>
-                    <textarea
-                      name="question"
-                      value={formData.question}
-                      onChange={handleInputChange}
-                      required
-                      rows={3}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                      placeholder="Enter the FAQ question..."
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Answer *
-                    </label>
-                    <textarea
-                      name="answer"
-                      value={formData.answer}
-                      onChange={handleInputChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                      placeholder="Enter the FAQ answer..."
-                    />
-                  </div>
-
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="isActive"
-                      checked={formData.isActive}
-                      onChange={handleInputChange}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    />
-                    <label className="ml-2 block text-sm text-gray-700">
-                      Active (visible to public)
-                    </label>
-                  </div>
-
-                  {/* Form Mode Cancel Button */}
-                  <div className="flex justify-end space-x-4 pt-4 border-t">
-                    <button
-                      type="button"
-                      onClick={closeModal}
-                      className="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
-                    >
-                      {modalType === "add" ? "Create FAQ" : "Update FAQ"}
-                    </button>
-                  </div>
-                </form>
-              )}
-            </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
+      )}
+
+      {/* Add / Edit / View Modal */}
+      {showModal && (
+        <Modal
+          isOpen={showModal}
+          onClose={closeModal}
+          title={
+            modalType === "view"
+              ? "FAQ Entry Details"
+              : modalType === "edit"
+              ? "Edit FAQ Entry"
+              : "Create New FAQ Entry"
+          }
+          subtitle="Customer facing question and answer"
+          maxWidth="max-w-xl"
+        >
+          {modalType === "view" && selectedFaq ? (
+            <div className="space-y-4">
+              <div className="p-4 bg-[#F7F8FB] border border-[#E4E6EE] rounded-xl space-y-1">
+                <span className="text-[11px] font-bold uppercase text-[#3730E0]">
+                  Question
+                </span>
+                <p className="text-sm font-bold text-[#1A1D29]">
+                  {selectedFaq.question}
+                </p>
+              </div>
+
+              <div className="p-4 bg-white border border-[#E4E6EE] rounded-xl space-y-1">
+                <span className="text-[11px] font-bold uppercase text-[#5B5F73]">
+                  Answer
+                </span>
+                <p className="text-xs sm:text-sm text-[#1A1D29] leading-relaxed whitespace-pre-wrap">
+                  {selectedFaq.answer}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-[#E4E6EE]">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-[#5B5F73]">Status:</span>
+                  {selectedFaq.isActive ? (
+                    <Badge variant="success" size="sm">Active</Badge>
+                  ) : (
+                    <Badge variant="neutral" size="sm">Inactive</Badge>
+                  )}
+                </div>
+                <Button variant="secondary" size="sm" onClick={closeModal}>
+                  Close
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
+                  Question <span className="text-[#DC2626]">*</span>
+                </label>
+                <textarea
+                  name="question"
+                  value={formData.question}
+                  onChange={handleInputChange}
+                  required
+                  rows={2}
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#E4E6EE] rounded-xl text-xs sm:text-sm text-[#1A1D29] focus:outline-none focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 resize-none"
+                  placeholder="e.g. How does TutorVista verify tutor credentials?"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#1A1D29] mb-1.5">
+                  Answer <span className="text-[#DC2626]">*</span>
+                </label>
+                <textarea
+                  name="answer"
+                  value={formData.answer}
+                  onChange={handleInputChange}
+                  required
+                  rows={5}
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#E4E6EE] rounded-xl text-xs sm:text-sm text-[#1A1D29] focus:outline-none focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 resize-none"
+                  placeholder="Provide a clear, helpful response for website visitors..."
+                />
+              </div>
+
+              <div className="flex items-center gap-2 pt-1">
+                <input
+                  type="checkbox"
+                  id="faqIsActiveCheckbox"
+                  name="isActive"
+                  checked={formData.isActive}
+                  onChange={handleInputChange}
+                  className="w-4 h-4 rounded text-[#3730E0] focus:ring-[#3730E0]"
+                />
+                <label
+                  htmlFor="faqIsActiveCheckbox"
+                  className="text-xs sm:text-sm font-medium text-[#1A1D29] cursor-pointer"
+                >
+                  Active (Visible on public FAQ section)
+                </label>
+              </div>
+
+              <div className="pt-4 border-t border-[#E4E6EE] flex items-center justify-end gap-2.5">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="sm"
+                >
+                  {modalType === "add" ? "Create FAQ" : "Save Changes"}
+                </Button>
+              </div>
+            </form>
+          )}
+        </Modal>
       )}
     </div>
   );

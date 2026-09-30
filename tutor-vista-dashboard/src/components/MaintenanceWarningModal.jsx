@@ -66,28 +66,28 @@ const MaintenanceWarningModal = ({ open, onClose, website }) => {
     (website.maintenanceFee || 0);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-300">
-      <div className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl bg-white overflow-hidden border border-red-100 animate-[fadeInUp_0.4s_ease]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 transition-opacity duration-300">
+      <div className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl bg-white overflow-hidden border border-[#E4E6EE] animate-[fadeInUp_0.4s_ease]">
         {/* Header */}
-        <div className="relative flex items-center gap-4 px-8 py-6 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-300">
-          <span className="flex items-center justify-center rounded-full bg-white/80 shadow p-2 animate-pulse">
-            <WarningIcon className="w-12 h-12" />
+        <div className="relative flex items-center gap-4 px-8 py-5 bg-[#FEF2F2] border-b border-[#FEE2E2]">
+          <span className="flex items-center justify-center rounded-xl bg-white shadow-xs p-2">
+            <WarningIcon className="w-10 h-10" />
           </span>
           <div>
-            <h2 className="text-2xl font-bold text-red-700 drop-shadow-sm tracking-wide">
-              Maintenance Fee Due!
+            <h2 className="text-xl font-bold text-[#DC2626] tracking-tight">
+              Maintenance Fee Due
             </h2>
-            <p className="text-sm text-red-900/80 font-medium">
-              Action required for your website
+            <p className="text-xs text-[#991B1B] font-medium">
+              Action required for your application and server hosting
             </p>
           </div>
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full hover:bg-red-100 transition"
+            className="absolute top-4 right-4 p-1.5 rounded-lg text-[#5B5F73] hover:text-[#1A1D29] hover:bg-white/80 transition"
             aria-label="Close"
             type="button"
           >
-            <CloseIcon className="w-7 h-7" />
+            <CloseIcon className="w-5 h-5" />
           </button>
         </div>
 
@@ -203,7 +203,7 @@ const MaintenanceWarningModal = ({ open, onClose, website }) => {
           </div>
           <div className="mt-8">
             <button
-              className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-0.5"
+              className="w-full py-3 bg-[#3730E0] hover:bg-[#2D24C4] text-white font-bold rounded-xl shadow-xs transition-all duration-200"
               onClick={onClose}
             >
               বুঝেছি

@@ -123,7 +123,7 @@ const Contact = () => {
 
       {/* Main Content Section */}
       <section className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Column: Form */}
             <div className="lg:col-span-7 bg-white rounded-lg shadow-card border border-[#E4E6EE] p-6 sm:p-8">
@@ -206,7 +206,7 @@ const Contact = () => {
                     className="ml-2.5 text-xs text-[#5B5F73] cursor-pointer"
                   >
                     I agree to the{" "}
-                    <a href="/terms-and-condition" className="text-[#3730E0] underline font-medium">
+                    <a href="/terms-and-conditions" className="text-[#3730E0] underline font-medium">
                       Terms of Service
                     </a>{" "}
                     and{" "}
@@ -314,7 +314,7 @@ const Contact = () => {
 
       {/* Office Locations Section */}
       <section className="py-12 sm:py-16 bg-white border-t border-[#E4E6EE]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h3 className="text-xl sm:text-2xl font-bold text-[#1A1D29]">
               Our Office <span className="text-[#3730E0]">Locations</span>

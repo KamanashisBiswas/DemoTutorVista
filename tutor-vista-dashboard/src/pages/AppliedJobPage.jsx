@@ -1,8 +1,13 @@
+// src/pages/AppliedJobPage.jsx
 import React, { useEffect, useState } from "react";
-import { Eye, Trash2, Search } from "lucide-react";
+import { Eye, Trash2, Search, Briefcase, User, Phone, CheckCircle2 } from "lucide-react";
 import axios from "../lib/axios";
 import DeleteConfirm from "../components/DeleteConfirm";
 import AppliedJobDetailsModal from "../components/AppliedJobDetailsModal";
+import { SkeletonTable } from "../components/ui/Skeleton";
+import { EmptyState } from "../components/ui/EmptyState";
+import { Pagination } from "../components/ui/Pagination";
+import { Badge } from "../components/ui/Badge";
 
 const AppliedJobPage = () => {
   const [jobs, setJobs] = useState([]);
@@ -10,6 +15,7 @@ const AppliedJobPage = () => {
   const [selectedApplications, setSelectedApplications] = useState([]);
   const [showDetails, setShowDetails] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetchJobs();
@@ -31,11 +37,10 @@ const AppliedJobPage = () => {
   };
 
   const handleView = (clickedJob) => {
-    // jobs তালিকা থেকে একই requestTutorId সহ সকল অ্যাপ্লিকেশন ফিল্টার করুন
     const relatedApplications = jobs.filter(
       (j) => j.requestTutorId?._id === clickedJob.requestTutorId?._id
     );
-    setSelectedApplications(relatedApplications); // নতুন স্টেটে অ্যারে সেট করুন
+    setSelectedApplications(relatedApplications);
     setShowDetails(true);
   };
 
@@ -47,16 +52,14 @@ const AppliedJobPage = () => {
       },
       itemName: "Applied Job",
       itemType: "applied job",
-      customMessage: "Are you sure you want to delete this applied job?",
+      customMessage: "Are you sure you want to remove this job application?",
     });
   };
 
-  // Sort jobs by createdAt DESCENDING (newest first)
   const sortedJobs = [...jobs].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
 
-  // Filter after sorting
   const filteredJobs = sortedJobs.filter(
     (job) =>
       job.requestTutorId?.studentName
@@ -65,7 +68,6 @@ const AppliedJobPage = () => {
       job.tutorId?.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -74,191 +76,163 @@ const AppliedJobPage = () => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-lg font-semibold text-gray-800">
-            All Applied Jobs
-          </h2>
-          <div className="relative w-full max-w-xs">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
-            </div>
-            <input
-              type="text"
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition"
-              placeholder="Search by student or tutor name..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+      {/* Header and Search Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#1A1D29] tracking-tight">
+              Tutor Job Applications
+            </h2>
+            <span className="text-[11px] font-bold text-[#3730E0] bg-[#EEEDFD] px-2.5 py-0.5 rounded-full border border-[#DDD9FC]">
+              {jobs.length} Applied
+            </span>
           </div>
+          <p className="text-xs sm:text-sm text-[#5B5F73] mt-0.5">
+            Monitor educator submissions for open tuition positions.
+          </p>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Student Name
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Student Phone
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Tutor Name
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Expected Salary
-                </th>
-                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {loading ? (
+        <div className="relative w-full sm:w-72">
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#5B5F73]">
+            <Search className="w-4 h-4" />
+          </div>
+          <input
+            type="text"
+            className="w-full pl-10 pr-4 py-2 bg-white border border-[#E4E6EE] rounded-xl text-xs sm:text-sm text-[#1A1D29] placeholder:text-[#5B5F73]/60 focus:outline-none focus:border-[#3730E0] focus:ring-2 focus:ring-[#3730E0]/15 transition-all shadow-xs"
+            placeholder="Search by student or tutor..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Main Table */}
+      {loading ? (
+        <SkeletonTable rows={6} cols={5} />
+      ) : filteredJobs.length === 0 ? (
+        <EmptyState
+          icon={Briefcase}
+          title="No Job Applications Found"
+          description={
+            searchTerm
+              ? `No applications matched "${searchTerm}". Try searching with another name.`
+              : "No tutors have applied to tuition jobs yet."
+          }
+          actionLabel={searchTerm ? "Clear Search" : undefined}
+          onAction={() => setSearchTerm("")}
+        />
+      ) : (
+        <div className="bg-white rounded-2xl border border-[#E4E6EE] shadow-xs overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead className="bg-[#F7F8FB] border-b border-[#E4E6EE] text-[11px] font-bold uppercase tracking-wider text-[#5B5F73]">
                 <tr>
-                  <td colSpan={5} className="text-center py-8">
-                    Loading...
-                  </td>
+                  <th className="py-3.5 px-4">Tuition / Student</th>
+                  <th className="py-3.5 px-4">Student Contact</th>
+                  <th className="py-3.5 px-4">Applicant Tutor</th>
+                  <th className="py-3.5 px-4">Expected Salary</th>
+                  <th className="py-3.5 px-4 text-right">Actions</th>
                 </tr>
-              ) : filteredJobs.length === 0 ? (
-                <tr>
-                  <td colSpan={5} className="text-center py-8">
-                    No applied jobs found.
-                  </td>
-                </tr>
-              ) : (
-                currentJobs.map((job) => (
-                  <tr key={job._id} className="hover:bg-gray-50 transition">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {job.requestTutorId?.studentName || "-"}
+              </thead>
+              <tbody className="divide-y divide-[#E4E6EE] text-xs sm:text-sm text-[#1A1D29]">
+                {currentJobs.map((job) => (
+                  <tr
+                    key={job._id}
+                    className="hover:bg-[#F7F8FB]/60 transition-colors group"
+                  >
+                    {/* Student Column */}
+                    <td className="py-3.5 px-4">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-[#EEEDFD] text-[#3730E0] flex items-center justify-center font-bold text-xs shrink-0">
+                          {(job.requestTutorId?.studentName || "S").charAt(0).toUpperCase()}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-bold text-[#1A1D29] truncate">
+                            {job.requestTutorId?.studentName || "Student Request"}
+                          </p>
+                          <p className="text-[11px] text-[#5B5F73]">
+                            {job.requestTutorId?.grade || job.requestTutorId?.class || "General"}
+                          </p>
+                        </div>
+                      </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {job.requestTutorId?.phoneNo || "-"}
+
+                    {/* Student Phone */}
+                    <td className="py-3.5 px-4">
+                      <p className="font-semibold text-[#1A1D29]">
+                        {job.requestTutorId?.phoneNo || "N/A"}
+                      </p>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {job.tutorId?.name || "-"}
+
+                    {/* Tutor Column */}
+                    <td className="py-3.5 px-4">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-[#0EA5A0]/10 text-[#0EA5A0] flex items-center justify-center font-bold text-xs shrink-0">
+                          {(job.tutorId?.name || "T").charAt(0).toUpperCase()}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-bold text-[#1A1D29] truncate">
+                            {job.tutorId?.name || "Applicant Tutor"}
+                          </p>
+                          <p className="text-[11px] text-[#5B5F73]">
+                            {job.tutorId?.phone || "Phone N/A"}
+                          </p>
+                        </div>
+                      </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {job.expectedSalary || "-"} BDT
+
+                    {/* Expected Salary */}
+                    <td className="py-3.5 px-4">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-[#F0FDFA] text-[#0EA5A0] border border-[#CCFBF1]">
+                        ৳{job.expectedSalary || "Negotiable"} /mo
+                      </span>
                     </td>
-                    <td className="px-6 py-4 text-center whitespace-nowrap">
-                      <div className="flex items-center justify-center gap-2">
+
+                    {/* Actions */}
+                    <td className="py-3.5 px-4 text-right whitespace-nowrap">
+                      <div className="flex items-center justify-end gap-1.5">
                         <button
-                          className="text-blue-600 hover:text-blue-800"
-                          title="View"
                           onClick={() => handleView(job)}
+                          className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#3730E0] hover:bg-[#EEEDFD] transition-colors"
+                          title="View Application Details"
                         >
-                          <Eye size={18} />
+                          <Eye className="w-4 h-4" />
                         </button>
                         <button
-                          className="text-red-600 hover:text-red-800"
-                          title="Delete"
                           onClick={() => handleDelete(job._id)}
+                          className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#DC2626] hover:bg-red-50 transition-colors"
+                          title="Delete Application"
                         >
-                          <Trash2 size={18} />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-        <AppliedJobDetailsModal
-          open={showDetails}
-          onClose={() => setShowDetails(false)}
-          applications={selectedApplications}
-        />
-
-        {totalPages > 1 && (
-          <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200 rounded-b-xl">
-            {/* Desktop Pagination */}
-            <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-              <div className="flex items-center space-x-2">
-                <div className="bg-blue-50 px-3 py-1 rounded-full">
-                  <p className="text-sm font-medium text-blue-700">
-                    Showing{" "}
-                    <span className="font-bold">{indexOfFirstItem + 1}</span> to{" "}
-                    <span className="font-bold">
-                      {Math.min(indexOfLastItem, filteredJobs.length)}
-                    </span>{" "}
-                    of <span className="font-bold">{filteredJobs.length}</span>{" "}
-                    results
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={() =>
-                    setCurrentPage((prev) => Math.max(prev - 1, 1))
-                  }
-                  disabled={currentPage === 1}
-                  className={`relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
-                    currentPage === 1
-                      ? "text-gray-400 bg-gray-100 border-gray-200 cursor-not-allowed"
-                      : "text-gray-700 bg-white border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 hover:shadow-md"
-                  }`}
-                >
-                  Previous
-                </button>
-
-                <div className="flex items-center space-x-1">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (page) => {
-                      if (
-                        page === 1 ||
-                        page === totalPages ||
-                        (page >= currentPage - 1 && page <= currentPage + 1)
-                      ) {
-                        return (
-                          <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={`relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
-                              currentPage === page
-                                ? "z-10 bg-blue-600 border-blue-600 text-white shadow-lg"
-                                : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-700"
-                            }`}
-                          >
-                            {page}
-                          </button>
-                        );
-                      } else if (
-                        page === currentPage - 2 ||
-                        page === currentPage + 2
-                      ) {
-                        return (
-                          <span key={page} className="px-2 py-2 text-gray-400">
-                            ...
-                          </span>
-                        );
-                      }
-                      return null;
-                    }
-                  )}
-                </div>
-
-                <button
-                  onClick={() =>
-                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                  }
-                  disabled={currentPage === totalPages}
-                  className={`relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${
-                    currentPage === totalPages
-                      ? "text-gray-400 bg-gray-100 border-gray-200 cursor-not-allowed"
-                      : "text-gray-700 bg-white border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 hover:shadow-md"
-                  }`}
-                >
-                  Next
-                </button>
-              </div>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
-        )}
-      </div>
+
+          {totalPages > 1 && (
+            <div className="p-4 border-t border-[#E4E6EE] flex items-center justify-between">
+              <span className="text-xs text-[#5B5F73]">
+                Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredJobs.length)} of {filteredJobs.length} applications
+              </span>
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(p) => setCurrentPage(p)}
+              />
+            </div>
+          )}
+        </div>
+      )}
+
+      <AppliedJobDetailsModal
+        open={showDetails}
+        onClose={() => setShowDetails(false)}
+        applications={selectedApplications}
+      />
     </div>
   );
 };

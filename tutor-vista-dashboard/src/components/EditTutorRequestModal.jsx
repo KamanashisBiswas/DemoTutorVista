@@ -504,10 +504,10 @@ const EditTutorRequestModal = ({ isOpen, onClose, onSuccess, request }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-800">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-xl border border-[#E4E6EE] w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b border-[#E4E6EE] bg-white">
+          <h3 className="text-base font-bold text-[#1A1D29]">
             Edit Tutor Request
           </h3>
           <button
@@ -1101,11 +1101,11 @@ const EditTutorRequestModal = ({ isOpen, onClose, onSuccess, request }) => {
           </div>
         </form>
 
-        <div className="flex justify-end space-x-3 p-6 border-t border-gray-200">
+        <div className="flex justify-end space-x-3 p-5 border-t border-[#E4E6EE] bg-white">
           <button
             type="button"
             onClick={onClose}
-            className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition"
+            className="px-5 py-2.5 bg-white text-[#1A1D29] hover:bg-[#F7F8FB] border border-[#E4E6EE] rounded-lg text-xs font-semibold shadow-xs transition-colors"
           >
             Cancel
           </button>
@@ -1113,10 +1113,10 @@ const EditTutorRequestModal = ({ isOpen, onClose, onSuccess, request }) => {
             type="button"
             onClick={handleSubmit}
             disabled={loading || !isEdited}
-            className={`w-40 px-4 py-2 font-semibold rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all ${
+            className={`px-5 py-2.5 rounded-lg text-xs font-semibold shadow-xs transition-all duration-200 flex items-center justify-center ${
               loading || !isEdited
-                ? "bg-blue-300 text-blue-700 cursor-not-allowed"
-                : "bg-blue-600 text-white hover:bg-blue-700"
+                ? "bg-[#EEF2FF] text-[#94A3B8] border border-[#E0E7FF] cursor-not-allowed"
+                : "bg-[#3730E0] text-white hover:bg-[#2D24C4]"
             }`}
           >
             {loading ? "Updating..." : "Update Request"}

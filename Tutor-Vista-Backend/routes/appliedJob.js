@@ -7,6 +7,8 @@ const {
   deleteAppliedJob,
   getAllAppliedJobs,
   getAppliedJobById,
+  getAppliedJobsByTutorId,
+  updateAppliedJobStatus,
 } = require("../controllers/appliedJobController");
 
 const {
@@ -33,6 +35,12 @@ router.delete("/:id", validateAppliedJobId, handleValidation, deleteAppliedJob);
 
 // Get All Applied Jobs
 router.get("/", getAllAppliedJobs);
+
+// Get Applied Jobs for specific Tutor
+router.get("/tutor/:tutorId", getAppliedJobsByTutorId);
+
+// Update Status of Applied Job
+router.patch("/:id/status", updateAppliedJobStatus);
 
 // Get Applied Job by ID
 router.get("/:id", validateAppliedJobId, handleValidation, getAppliedJobById);

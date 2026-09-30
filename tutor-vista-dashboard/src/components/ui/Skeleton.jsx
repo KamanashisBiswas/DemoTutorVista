@@ -78,4 +78,25 @@ export const SkeletonTableRows = ({ rows = 5, cols = 5 }) => {
   );
 };
 
+export const SkeletonTable = ({ rows = 5, cols = 5, className = "" }) => {
+  return (
+    <div className={`w-full overflow-hidden border border-[#E4E6EE] rounded-xl bg-white ${className}`}>
+      <table className="w-full border-collapse">
+        <thead>
+          <tr className="bg-[#F7F8FB] border-b border-[#E4E6EE]">
+            {Array.from({ length: cols }).map((_, cIdx) => (
+              <th key={cIdx} className="py-3 px-4">
+                <Skeleton variant="text" className="h-3.5 w-24" />
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <SkeletonTableRows rows={rows} cols={cols} />
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
 export default Skeleton;

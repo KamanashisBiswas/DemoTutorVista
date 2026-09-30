@@ -122,7 +122,7 @@ const TutorDetailsModal = ({
       tutor.experience
         ? `💼 EXPERIENCE\n---------------------------------\n${tutor.experience}\n`
         : "",
-      "---------------------------------\nFor more information, please visit our website:\nhttps://www.tutorvistabd.com\n\nThank you for choosing Tutor Vista!",
+      "---------------------------------\nFor more information, please visit our website:\nhttps://www.tutorvista.com\n\nThank you for choosing TutorVista!",
     ]
       .filter(Boolean)
       .join("\n");
@@ -141,31 +141,39 @@ const TutorDetailsModal = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
-        {/* Modal header - শুধু Download buttons */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-800">Tutor Details</h3>
-          <div className="flex items-center space-x-3">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-xl border border-[#E4E6EE] w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+        {/* Modal header */}
+        <div className="flex items-center justify-between p-5 border-b border-[#E4E6EE] bg-white">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] text-[#3730E0] flex items-center justify-center">
+              <User className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-[#1A1D29]">Tutor Profile Details</h3>
+              <p className="text-xs text-[#5B5F73]">Tutor ID: {tutor._id}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
             <button
               onClick={onDownloadPdf}
-              className="bg-green-600 text-white px-3 py-1.5 rounded-lg hover:bg-green-700 transition-colors duration-200 flex items-center space-x-2"
+              className="bg-[#16A34A] text-white px-3 py-1.5 rounded-lg hover:bg-[#15803D] transition-colors text-xs font-semibold flex items-center gap-1.5 shadow-xs"
             >
-              <FileDown className="w-4 h-4" />
-              <span>Download PDF</span>
+              <FileDown className="w-3.5 h-3.5" />
+              <span>PDF</span>
             </button>
             <button
               onClick={onDownloadDocx}
-              className="bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2"
+              className="bg-[#3730E0] text-white px-3 py-1.5 rounded-lg hover:bg-[#2D24C4] transition-colors text-xs font-semibold flex items-center gap-1.5 shadow-xs"
             >
-              <FileText className="w-4 h-4" />
-              <span>Download DOCX</span>
+              <FileText className="w-3.5 h-3.5" />
+              <span>DOCX</span>
             </button>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 p-1 rounded"
+              className="p-1.5 text-[#5B5F73] hover:text-[#1A1D29] hover:bg-[#F7F8FB] rounded-lg transition-colors ml-1"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -882,10 +890,10 @@ const TutorDetailsModal = ({
             </div>
 
             {/* Footer with Close button only */}
-            <div className="flex justify-end pt-4 px-6 pb-6 border-t">
+            <div className="flex justify-end pt-4 px-6 pb-6 border-t border-[#E4E6EE]">
               <button
                 onClick={onClose}
-                className="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition"
+                className="px-5 py-2 bg-white text-[#1A1D29] hover:bg-[#F7F8FB] border border-[#E4E6EE] rounded-lg text-xs font-semibold transition-colors shadow-xs"
               >
                 <span>Close</span>
               </button>

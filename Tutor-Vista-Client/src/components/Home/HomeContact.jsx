@@ -25,7 +25,7 @@ const HomeContact = () => {
 
   return (
     <section className="bg-white py-16 sm:py-20 border-y border-[#E4E6EE] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Side: Educational Image Showcase */}
           <div className="lg:col-span-5 relative flex justify-center">

@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="bg-[#1A1D29] text-white border-t border-[#E4E6EE]/10">
       {/* Top Value Proposition Banner */}
       <div className="border-b border-white/10 bg-[#3730E0]/15 py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
             <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Ready to find the perfect tutor for your child?
@@ -36,7 +36,7 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
@@ -103,6 +103,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/tutor-login" className="hover:text-[#F5A524] transition-colors">
+                  Tutor Portal & Applications
+                </Link>
+              </li>
+              <li>
                 <Link to="/terms-and-conditions" className="hover:text-[#F5A524] transition-colors">
                   Terms & Conditions
                 </Link>
@@ -140,7 +145,7 @@ const Footer = () => {
 
       {/* Bottom Copyright & Disclaimer */}
       <div className="border-t border-white/10 py-6 px-4 bg-black/30">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#E4E6EE]/60">
+        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#E4E6EE]/60">
           <p>
             &copy; {new Date().getFullYear()} TutorVista. All rights reserved. Empowering Education in Bangladesh.
           </p>

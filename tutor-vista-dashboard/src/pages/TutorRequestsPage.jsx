@@ -1001,97 +1001,97 @@ const TutorRequestsPage = () => {
   return (
     <div className="space-y-6">
       {/* Stats Cards Section */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
         {/* Total Requests Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 px-4 py-3 flex items-center justify-between h-16">
+        <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] px-3.5 py-3 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Total Requests</span>
-            <span className="text-xl font-extrabold text-gray-900 block mt-0.5 leading-none">{stats.total}</span>
+            <span className="text-[10px] font-bold text-[#5B5F73] uppercase tracking-wider block">Total</span>
+            <span className="text-lg font-bold text-[#1A1D29] block mt-0.5 leading-none">{stats.total}</span>
           </div>
-          <div className="bg-blue-50 text-blue-500 p-1.5 rounded-lg shrink-0">
-            <Users className="w-4 h-4" />
+          <div className="bg-[#EEF2FF] text-[#3730E0] p-1.5 rounded-lg shrink-0">
+            <Users className="w-3.5 h-3.5" />
           </div>
         </div>
 
         {/* Active Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 px-4 py-3 flex items-center justify-between h-16">
+        <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] px-3.5 py-3 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Active</span>
-            <span className="text-xl font-extrabold text-gray-900 block mt-0.5 leading-none">{stats.active}</span>
+            <span className="text-[10px] font-bold text-[#5B5F73] uppercase tracking-wider block">Active</span>
+            <span className="text-lg font-bold text-[#16A34A] block mt-0.5 leading-none">{stats.active}</span>
           </div>
-          <div className="bg-green-50 text-green-500 p-1.5 rounded-lg shrink-0">
-            <CheckCircle className="w-4 h-4" />
+          <div className="bg-[#DCFCE7] text-[#16A34A] p-1.5 rounded-lg shrink-0">
+            <CheckCircle className="w-3.5 h-3.5" />
           </div>
         </div>
 
         {/* Pending Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 px-4 py-3 flex items-center justify-between h-16">
+        <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] px-3.5 py-3 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Pending</span>
-            <span className="text-xl font-extrabold text-gray-900 block mt-0.5 leading-none">{stats.pending}</span>
+            <span className="text-[10px] font-bold text-[#5B5F73] uppercase tracking-wider block">Pending</span>
+            <span className="text-lg font-bold text-[#F5A524] block mt-0.5 leading-none">{stats.pending}</span>
           </div>
-          <div className="bg-amber-50 text-amber-500 p-1.5 rounded-lg shrink-0">
-            <Clock className="w-4 h-4" />
+          <div className="bg-[#FEF3C7] text-[#D97706] p-1.5 rounded-lg shrink-0">
+            <Clock className="w-3.5 h-3.5" />
           </div>
         </div>
 
         {/* Referred Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 px-4 py-3 flex items-center justify-between h-16">
+        <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] px-3.5 py-3 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Referred</span>
-            <span className="text-xl font-extrabold text-gray-900 block mt-0.5 leading-none">{stats.referred}</span>
+            <span className="text-[10px] font-bold text-[#5B5F73] uppercase tracking-wider block">Referred</span>
+            <span className="text-lg font-bold text-[#0EA5A0] block mt-0.5 leading-none">{stats.referred}</span>
           </div>
-          <div className="bg-emerald-50 text-emerald-500 p-1.5 rounded-lg shrink-0">
-            <UserCheck className="w-4 h-4" />
+          <div className="bg-[#E6FFFA] text-[#0EA5A0] p-1.5 rounded-lg shrink-0">
+            <UserCheck className="w-3.5 h-3.5" />
           </div>
         </div>
 
         {/* Confirmed Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 px-4 py-3 flex items-center justify-between h-16">
+        <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] px-3.5 py-3 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Confirmed</span>
-            <span className="text-xl font-extrabold text-gray-900 block mt-0.5 leading-none">{stats.confirmed}</span>
+            <span className="text-[10px] font-bold text-[#5B5F73] uppercase tracking-wider block">Confirmed</span>
+            <span className="text-lg font-bold text-[#7C3AED] block mt-0.5 leading-none">{stats.confirmed}</span>
           </div>
-          <div className="bg-purple-50 text-purple-500 p-1.5 rounded-lg shrink-0">
-            <CheckCircle className="w-4 h-4" strokeWidth={2.5} />
+          <div className="bg-[#F5F3FF] text-[#7C3AED] p-1.5 rounded-lg shrink-0">
+            <CheckCircle className="w-3.5 h-3.5" strokeWidth={2.5} />
           </div>
         </div>
 
         {/* Demo Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 px-4 py-3 flex items-center justify-between h-16">
+        <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] px-3.5 py-3 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Demo</span>
-            <span className="text-xl font-extrabold text-gray-900 block mt-0.5 leading-none">{stats.demo}</span>
+            <span className="text-[10px] font-bold text-[#5B5F73] uppercase tracking-wider block">Demo</span>
+            <span className="text-lg font-bold text-[#D97706] block mt-0.5 leading-none">{stats.demo}</span>
           </div>
-          <div className="bg-yellow-50 text-yellow-600 p-1.5 rounded-lg shrink-0">
-            <Play className="w-4 h-4 fill-yellow-600" />
+          <div className="bg-[#FEF3C7] text-[#D97706] p-1.5 rounded-lg shrink-0">
+            <Play className="w-3.5 h-3.5 fill-[#D97706]" />
           </div>
         </div>
 
         {/* Problem Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 px-4 py-3 flex items-center justify-between h-16">
+        <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] px-3.5 py-3 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Problem</span>
-            <span className="text-xl font-extrabold text-gray-900 block mt-0.5 leading-none">{stats.problem}</span>
+            <span className="text-[10px] font-bold text-[#5B5F73] uppercase tracking-wider block">Problem</span>
+            <span className="text-lg font-bold text-[#EA580C] block mt-0.5 leading-none">{stats.problem}</span>
           </div>
-          <div className="bg-orange-50 text-orange-500 p-1.5 rounded-lg shrink-0">
-            <AlertTriangle className="w-4 h-4" />
+          <div className="bg-[#FFF7ED] text-[#EA580C] p-1.5 rounded-lg shrink-0">
+            <AlertTriangle className="w-3.5 h-3.5" />
           </div>
         </div>
 
         {/* Cancelled Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 px-4 py-3 flex items-center justify-between h-16">
+        <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] px-3.5 py-3 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Cancelled</span>
-            <span className="text-xl font-extrabold text-gray-900 block mt-0.5 leading-none">{stats.cancelled}</span>
+            <span className="text-[10px] font-bold text-[#5B5F73] uppercase tracking-wider block">Cancelled</span>
+            <span className="text-lg font-bold text-[#DC2626] block mt-0.5 leading-none">{stats.cancelled}</span>
           </div>
-          <div className="bg-red-50 text-red-500 p-1.5 rounded-lg shrink-0">
-            <XCircle className="w-4 h-4" />
+          <div className="bg-[#FEF2F2] text-[#DC2626] p-1.5 rounded-lg shrink-0">
+            <XCircle className="w-3.5 h-3.5" />
           </div>
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-xl shadow-xs border border-[#E4E6EE] p-6">
         <TutorRequestHeader
           user={user}
           onAddRequest={handleAddRequest}
@@ -1126,21 +1126,21 @@ const TutorRequestsPage = () => {
             onClick={downloadBanners}
             disabled={requests.length === 0 || loading || isDownloading.banner}
             title={requests.length === 0 ? "No tutor requests available to download." : "Download tuition banners"}
-            className={`flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg font-semibold border transition duration-200 text-sm w-full sm:w-auto ${
+            className={`flex items-center justify-center space-x-2 px-3.5 py-2 rounded-lg font-semibold border transition-all text-xs w-full sm:w-auto shadow-xs ${
               requests.length === 0 || loading || isDownloading.banner
-                ? "bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed"
-                : "bg-pink-600 border-pink-600 text-white hover:bg-pink-700 disabled:opacity-50"
+                ? "bg-[#F7F8FB] border-[#E4E6EE] text-[#94A3B8] cursor-not-allowed"
+                : "bg-[#0EA5A0] border-[#0EA5A0] text-white hover:bg-[#0D9488]"
             }`}
           >
             {isDownloading.banner ? (
               <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                <span>Downloading...</span>
+                <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-white border-t-transparent mr-2"></div>
+                <span>Downloading Banners...</span>
               </>
             ) : (
               <>
-                <ImageIcon className="w-4 h-4 mr-2" />
-                <span>Download Banner</span>
+                <ImageIcon className="w-3.5 h-3.5 mr-1.5" />
+                <span>Generate Tuition Banners</span>
               </>
             )}
           </button>

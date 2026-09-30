@@ -16,6 +16,11 @@ const appliedJobSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    status: {
+      type: String,
+      enum: ["pending", "shortlisted", "selected", "rejected"],
+      default: "pending",
+    },
   },
   { timestamps: true }
 );

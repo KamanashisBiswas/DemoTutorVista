@@ -1,6 +1,9 @@
+// src/components/TutorRequestTable.jsx
 import React from "react";
-import { Eye, Edit, Trash2, Copy, Users } from "lucide-react";
+import { Eye, Edit, Trash2, Copy, Users, ClipboardList } from "lucide-react";
 import { StatusBadge } from "../utils/statusHelper";
+import { EmptyState } from "./ui/EmptyState";
+import { SkeletonTable } from "./ui/Skeleton";
 
 const formatUpdatedDate = (dateString) => {
   if (!dateString) return { date: "N/A", time: "" };
@@ -16,12 +19,12 @@ const formatUpdatedDate = (dateString) => {
   const minutes = String(date.getMinutes()).padStart(2, "0");
   const ampm = hours >= 12 ? "PM" : "AM";
   hours = hours % 12;
-  hours = hours ? hours : 12; // 0 should be 12
+  hours = hours ? hours : 12;
   const formattedHours = String(hours).padStart(2, "0");
 
   return {
     date: `${day} ${month} ${year}`,
-    time: `${formattedHours}:${minutes} ${ampm}`
+    time: `${formattedHours}:${minutes} ${ampm}`,
   };
 };
 
@@ -36,170 +39,179 @@ const TutorRequestTable = ({
   onClearFilters,
 }) => {
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
-    );
+    return <SkeletonTable rows={8} cols={7} />;
   }
 
   if (requests.length === 0) {
     return (
-      <div className="text-center py-12 bg-white rounded-xl border border-gray-200 p-8 flex flex-col items-center justify-center col-span-full">
-        <p className="text-gray-500 mb-4 font-medium">No tutor requests found.</p>
-        <button
-          onClick={onClearFilters}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold text-sm"
-        >
-          Clear Filters
-        </button>
-      </div>
+      <EmptyState
+        icon={ClipboardList}
+        title="No Tuition Requests Found"
+        description="We couldn't find any tuition requests matching your active filter criteria. Try adjusting or resetting your search filters."
+        actionLabel={onClearFilters ? "Reset Filters" : undefined}
+        onAction={onClearFilters}
+      />
     );
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Student
-            </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Contact
-            </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Class & Medium
-            </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Subjects
-            </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Location
-            </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Status
-            </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Updated Date
-            </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Comment
-            </th>
-            <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {requests.map((request) => (
-            <tr key={request._id} className="hover:bg-gray-50">
-              <td className="px-4 py-4 whitespace-nowrap">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 h-10 w-10 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center font-bold text-lg mr-3">
-                    {request.studentName?.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900">
-                      {request.studentName}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {request.gender}
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">{request.phoneNo}</div>
-                {request.guardianPhone && (
-                  <div className="text-xs text-gray-500">
-                    {request.guardianPhone}
-                  </div>
-                )}
-              </td>
-              <td className="px-4 py-4">
-                <div className="text-sm text-gray-900 font-semibold">
-                  {request.grade || request.class || "N/A"} ({request.medium || "N/A"})
-                </div>
-                {request.multipleStudent && request.grade2 && (
-                  <div className="text-sm text-gray-500 mt-1 flex items-center gap-1 font-medium">
-                    <Users className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                    <span>{request.grade2} ({request.medium2 || "N/A"})</span>
-                  </div>
-                )}
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                {request.subjects?.slice(0, 2).join(", ")}
-                {request.subjects?.length > 2 &&
-                  ` +${request.subjects.length - 2} more`}
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">{request.area}</div>
-                <div className="text-sm text-gray-500">{request.district}</div>
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap">
-                <StatusBadge status={request.status} isActive={request.isActive} />
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
-                {(() => {
-                  const { date, time } = formatUpdatedDate(request.updatedAt);
-                  return (
-                    <div className="flex flex-col">
-                      <span className="text-gray-900">{date}</span>
-                      <span className="text-xs text-gray-400 font-normal mt-0.5">{time}</span>
-                    </div>
-                  );
-                })()}
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-500 max-w-[200px] truncate" title={request.comment || ""}>
-                {request.comment && request.comment.trim() !== "" ? (
-                  request.comment.length > 40 ? `${request.comment.slice(0, 40)}...` : request.comment
-                ) : (
-                  "-"
-                )}
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
-                <div className="flex space-x-2">
-                  <button
-                    onClick={() => onCopy && onCopy(request)}
-                    className="text-indigo-600 hover:text-indigo-900 p-1 rounded"
-                    title="Copy (With Contact Number)"
-                  >
-                    <Copy className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => onView(request)}
-                    className="text-blue-600 hover:text-blue-900 p-1 rounded"
-                    title="View Details"
-                  >
-                    <Eye className="w-4 h-4" />
-                  </button>
-                  {user?.role !== "user" && (
-                    <>
-                      <button
-                        onClick={() => onEdit(request)}
-                        className="text-green-600 hover:text-green-900 p-1 rounded"
-                        title="Edit"
-                      >
-                        <Edit className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() =>
-                          onDelete(request._id, request.studentName)
-                        }
-                        className="text-red-600 hover:text-red-900 p-1 rounded"
-                        title="Delete"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </>
-                  )}
-                </div>
-              </td>
+    <div className="bg-white rounded-2xl border border-[#E4E6EE] shadow-xs overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse">
+          <thead className="bg-[#F7F8FB] border-b border-[#E4E6EE] text-[11px] font-bold uppercase tracking-wider text-[#5B5F73]">
+            <tr>
+              <th className="py-3.5 px-4">Student</th>
+              <th className="py-3.5 px-4">Contact</th>
+              <th className="py-3.5 px-4">Class & Medium</th>
+              <th className="py-3.5 px-4">Subjects</th>
+              <th className="py-3.5 px-4">Location</th>
+              <th className="py-3.5 px-4">Status</th>
+              <th className="py-3.5 px-4">Last Updated</th>
+              <th className="py-3.5 px-4 text-right">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-[#E4E6EE] text-xs sm:text-sm text-[#1A1D29]">
+            {requests.map((request) => {
+              const { date, time } = formatUpdatedDate(request.updatedAt);
+
+              return (
+                <tr
+                  key={request._id}
+                  className="hover:bg-[#F7F8FB]/60 transition-colors group"
+                >
+                  {/* Student */}
+                  <td className="py-3.5 px-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-xl bg-[#EEEDFD] text-[#3730E0] flex items-center justify-center font-bold text-xs shrink-0 border border-[#DDD9FC]">
+                        {request.studentName?.charAt(0).toUpperCase() || "S"}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-bold text-[#1A1D29] truncate max-w-[150px]">
+                          {request.studentName}
+                        </p>
+                        <p className="text-[11px] text-[#5B5F73]">
+                          {request.gender || "Gender N/A"}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+
+                  {/* Contact */}
+                  <td className="py-3.5 px-4">
+                    <p className="font-semibold text-[#1A1D29]">
+                      {request.phoneNo || "N/A"}
+                    </p>
+                    {request.guardianPhone && (
+                      <p className="text-[11px] text-[#5B5F73]">
+                        G: {request.guardianPhone}
+                      </p>
+                    )}
+                  </td>
+
+                  {/* Class & Medium */}
+                  <td className="py-3.5 px-4">
+                    <p className="font-bold text-[#1A1D29]">
+                      {request.grade || request.class || "N/A"}
+                    </p>
+                    <p className="text-[11px] text-[#5B5F73]">
+                      {request.medium || "Medium N/A"}
+                    </p>
+                    {request.multipleStudent && request.grade2 && (
+                      <span className="inline-flex items-center gap-1 mt-1 text-[10px] font-semibold text-[#0EA5A0] bg-[#F0FDFA] px-1.5 py-0.5 rounded border border-[#CCFBF1]">
+                        <Users className="w-3 h-3" />
+                        <span>2nd: {request.grade2}</span>
+                      </span>
+                    )}
+                  </td>
+
+                  {/* Subjects */}
+                  <td className="py-3.5 px-4 max-w-[160px]">
+                    <div className="flex flex-wrap gap-1">
+                      {(request.subjects || []).slice(0, 2).map((sub, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#F7F8FB] border border-[#E4E6EE] text-[#1A1D29]"
+                        >
+                          {sub}
+                        </span>
+                      ))}
+                      {(request.subjects || []).length > 2 && (
+                        <span className="text-[10px] font-semibold text-[#5B5F73] self-center">
+                          +{request.subjects.length - 2}
+                        </span>
+                      )}
+                    </div>
+                  </td>
+
+                  {/* Location */}
+                  <td className="py-3.5 px-4">
+                    <p className="font-medium text-[#1A1D29] truncate max-w-[140px]">
+                      {request.area || "Area N/A"}
+                    </p>
+                    <p className="text-[11px] text-[#5B5F73]">
+                      {request.district || request.division || "Bangladesh"}
+                    </p>
+                  </td>
+
+                  {/* Status */}
+                  <td className="py-3.5 px-4 whitespace-nowrap">
+                    <StatusBadge
+                      status={request.status}
+                      isActive={request.isActive}
+                    />
+                  </td>
+
+                  {/* Last Updated */}
+                  <td className="py-3.5 px-4 whitespace-nowrap text-xs">
+                    <p className="font-medium text-[#1A1D29]">{date}</p>
+                    <p className="text-[10px] text-[#5B5F73]">{time}</p>
+                  </td>
+
+                  {/* Actions */}
+                  <td className="py-3.5 px-4 text-right whitespace-nowrap">
+                    <div className="flex items-center justify-end gap-1.5">
+                      <button
+                        onClick={() => onCopy && onCopy(request)}
+                        className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#3730E0] hover:bg-[#EEEDFD] transition-colors"
+                        title="Copy Request Summary"
+                      >
+                        <Copy className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => onView(request)}
+                        className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#0EA5A0] hover:bg-[#F0FDFA] transition-colors"
+                        title="View Full Details"
+                      >
+                        <Eye className="w-4 h-4" />
+                      </button>
+                      {user?.role !== "user" && (
+                        <>
+                          <button
+                            onClick={() => onEdit(request)}
+                            className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#16A34A] hover:bg-green-50 transition-colors"
+                            title="Edit Request"
+                          >
+                            <Edit className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() =>
+                              onDelete(request._id, request.studentName)
+                            }
+                            className="p-1.5 rounded-lg text-[#5B5F73] hover:text-[#DC2626] hover:bg-red-50 transition-colors"
+                            title="Delete Request"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

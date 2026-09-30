@@ -1,7 +1,9 @@
 // src/services/api.js
-const BASE_URL = "http://localhost:3000/api"; // Backend server URL updated local
-// const BASE_URL = "https://tutor-vista-backend.vercel.app/api"; // Backend server URL updated live
-// const BASE_URL = "https://tutor-vista-backend-phi.vercel.app/api"; // Backend server URL updated live
+const BASE_URL = import.meta.env.VITE_API_URL
+  ? (import.meta.env.VITE_API_URL.endsWith("/api")
+      ? import.meta.env.VITE_API_URL
+      : `${import.meta.env.VITE_API_URL}/api`)
+  : "http://localhost:3000/api";
 
 class ApiService {
   constructor() {

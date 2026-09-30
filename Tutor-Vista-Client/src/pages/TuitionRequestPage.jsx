@@ -334,7 +334,7 @@ const TuitionRequestPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F7F8FB] text-[#1A1D29]">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans">
         <TuitionRequestHeader />
 
         {/* Tabs for Dhaka, Chattogram, Khulna, and Sylhet */}

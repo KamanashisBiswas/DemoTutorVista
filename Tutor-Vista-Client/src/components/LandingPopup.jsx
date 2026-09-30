@@ -1,4 +1,5 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import { X, Sparkles, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/Button";
@@ -6,7 +7,7 @@ import { Button } from "./ui/Button";
 const LandingPopup = ({ isOpen, onClose, imageSrc }) => {
   if (!isOpen) return null;
 
-  return (
+  const content = (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50 p-4">
       <div className="relative w-full max-w-xl mx-auto bg-white rounded-lg shadow-2xl border border-[#E4E6EE] overflow-hidden animate-slide-up">
         {/* Close Button */}
@@ -47,6 +48,10 @@ const LandingPopup = ({ isOpen, onClose, imageSrc }) => {
       </div>
     </div>
   );
+
+  return typeof document !== "undefined"
+    ? createPortal(content, document.body)
+    : null;
 };
 
 export default LandingPopup;

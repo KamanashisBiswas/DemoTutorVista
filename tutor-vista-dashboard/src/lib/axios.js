@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "https://tutor-vista-backend.vercel.app",
-  // baseURL: "https://tutor-vista-backend-phi.vercel.app",
-  baseURL: "http://localhost:3000",
+  // baseURL: "http://localhost:3000",
+  baseURL: "https://demo.vercel.com",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

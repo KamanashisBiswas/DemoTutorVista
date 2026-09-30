@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Banner from "../components/Home/Banner";
 import TutorCategoryCards from "../components/Home/TutorCategoryCards";
 import HomeContact from "../components/Home/HomeContact";
-import TuitionTypeSection from "../components/Home/TuitionTypeSection ";
+import TuitionTypeSection from "../components/Home/TuitionTypeSection";
 import FAQComponent from "../components/Home/FAQComponent";
 // import AvailableTuitionSection from "../components/Home/AvailableTuitionSection";
 import StatisticsSection from "../components/Home/StatisticsSection";
