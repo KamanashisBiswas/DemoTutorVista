@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, MapPin, GraduationCap } from "lucide-react";
-import axios from "../../lib/axios";
+import ApiService from "../../services/api";
 import CommonSectionHeading from "../Common/CommonSectionHeading";
 import TutorCard from "../TutorCard";
 import TutorDetailsModal from "../TutorDetailsModal";
@@ -40,20 +40,18 @@ const AvailableTutorsSection = () => {
       const divisions = DIVISION_ALIASES[activeTab] || [activeTab];
       const responses = await Promise.all(
         divisions.map((division) =>
-          axios.get("/api/tutor/applications", {
-            params: {
-              limit: TUTORS_PER_DIVISION,
-              page: 1,
-              division,
-            },
+          ApiService.getTutors({
+            limit: TUTORS_PER_DIVISION,
+            page: 1,
+            division,
           })
         )
       );
 
       const tutorsMap = new Map();
-      responses.forEach((response) => {
-        if (response.data?.success) {
-          response.data.data.applications.forEach((tutor) => {
+      responses.forEach((res) => {
+        if (res?.success && res.data?.applications) {
+          res.data.applications.forEach((tutor) => {
             tutorsMap.set(tutor._id, tutor);
           });
         }

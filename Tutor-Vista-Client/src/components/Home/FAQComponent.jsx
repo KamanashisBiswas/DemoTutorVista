@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown, HelpCircle, MessageSquare, PhoneCall, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import axios from "../../lib/axios";
+import ApiService from "../../services/api";
 import CommonSectionHeading from "../Common/CommonSectionHeading";
 import { Button } from "../ui/Button";
 import { Skeleton } from "../ui/Skeleton";
@@ -43,9 +43,9 @@ const FAQComponent = () => {
     const fetchFAQs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("/api/faq", { timeout: 8000 });
-        if (response.data && response.data.success && response.data.data?.faqs?.length > 0) {
-          setFaqs(response.data.data.faqs);
+        const res = await ApiService.getFaqs();
+        if (res && res.success && res.data?.faqs?.length > 0) {
+          setFaqs(res.data.faqs);
         } else {
           setFaqs(defaultFaqs);
         }

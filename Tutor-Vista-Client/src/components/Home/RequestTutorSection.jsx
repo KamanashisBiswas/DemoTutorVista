@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, MapPin, Briefcase } from "lucide-react";
-import axios from "../../lib/axios";
+import ApiService from "../../services/api";
 import CommonSectionHeading from "../Common/CommonSectionHeading";
 import TuitionRequestCard from "../TuitionRequestCard";
 import { Button } from "../ui/Button";
@@ -30,16 +30,14 @@ const RequestTutorSection = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.get("/api/request-tutor", {
-        params: {
-          limit: CARDS_PER_DIVISION,
-          page: 1,
-          isActive: true,
-          division: activeTab,
-        },
+      const res = await ApiService.getTuitionRequests({
+        limit: CARDS_PER_DIVISION,
+        page: 1,
+        isActive: true,
+        division: activeTab,
       });
-      if (response.data.success) {
-        setAllRequests(response.data.data.requests || []);
+      if (res?.success) {
+        setAllRequests(res.data?.requests || []);
       } else {
         setAllRequests([]);
       }

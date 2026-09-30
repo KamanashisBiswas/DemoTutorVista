@@ -97,6 +97,11 @@ class ApiService {
       body: payload,
     });
   }
+
+  // FAQs
+  async getFaqs() {
+    return await this.request("/api/faq");
+  }
 }
 
 export default new ApiService();

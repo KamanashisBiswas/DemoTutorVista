@@ -1,20 +1,17 @@
 import axios from "axios";
 
-// Determine the centralized API base URL
-const getBaseURL = () => {
-  const envUrl = import.meta.env.VITE_API_URL;
-  if (envUrl && typeof envUrl === "string" && envUrl.trim() !== "") {
-    const clean = envUrl.trim().replace(/\/+$/, "");
-    return clean.endsWith("/api") ? clean : `${clean}/api`;
-  }
-  // Default to localhost:3000 in dev, or deployed backend in production
-  return import.meta.env.DEV
-    ? "http://localhost:3000/api"
-    : "https://tutor-vista-backend-phi.vercel.app/api";
-};
+// =========================================================================
+// 🌐 API BASE URL (Local / Live Server Toggle)
+// যেটি ব্যবহার করতে চান সেটির কমেন্ট আনকমেন্ট করুন (No .env needed):
+// =========================================================================
+// const BASE_URL = "http://localhost:3000/api"; // 💻 Local Server
+const BASE_URL = "https://tutor-vista-backend-phi.vercel.app/api"; // 🚀 Live Server
+// =========================================================================
+
+const getBaseURL = () => BASE_URL;
 
 const API = axios.create({
-  baseURL: getBaseURL(),
+  baseURL: BASE_URL,
   timeout: 60000,
 });
 
