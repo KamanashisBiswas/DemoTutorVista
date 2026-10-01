@@ -95,21 +95,12 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Right Side: Phone Pill */}
-        <div className="flex items-center gap-3">
-          <a
-            href="tel:+8809612888777"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#EEF2FF] text-on-surface font-semibold text-[13.5px] hover:bg-[#E0E7FF] transition-colors shadow-2xs"
-          >
-            <span className="material-symbols-outlined text-secondary text-[18px]">call</span>
-            <span>+880 9612 888 777</span>
-          </a>
-
-          {/* Mobile Menu Hamburger */}
+        {/* Mobile Menu Hamburger */}
+        <div className="xl:hidden flex items-center">
           <button
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="xl:hidden p-2 rounded-lg text-on-surface hover:bg-surface-container transition cursor-pointer"
+            className="p-2 rounded-lg text-on-surface hover:bg-surface-container transition cursor-pointer"
             aria-label="Toggle Navigation"
           >
             <span className="material-symbols-outlined text-[24px]">
