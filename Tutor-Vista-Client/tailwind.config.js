@@ -12,6 +12,17 @@ export default {
       },
     },
     extend: {
+      spacing: {
+        "space-xl": "2.5rem",
+        "space-lg": "1.5rem",
+        "gutter": "1.5rem",
+        "space-md": "1rem",
+        "margin-mobile": "1rem",
+        "space-sm": "0.5rem",
+        "space-xs": "0.25rem",
+        "margin": "2rem",
+        "gutter-mobile": "1rem",
+      },
       colors: {
         // Google Stitch Theme Tokens
         "surface-container-highest": "#dae2fd",
