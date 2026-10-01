@@ -103,14 +103,20 @@ const ApplyTutor = () => {
       toast.error("Please enter your full name as per NID.");
       return;
     }
-    if (!formData.phoneNumber.trim()) {
-      toast.error("Please enter your active WhatsApp phone number.");
+    let cleanPhone = formData.phoneNumber.trim().replace(/[\s-]/g, "");
+    if (cleanPhone.startsWith("+880")) cleanPhone = cleanPhone.replace("+88", "");
+    else if (cleanPhone.startsWith("880")) cleanPhone = cleanPhone.replace("88", "");
+
+    const bdPhoneRegex = /^01[3-9]\d{8}$/;
+    if (!bdPhoneRegex.test(cleanPhone)) {
+      toast.error("Please enter a valid 11-digit Bangladeshi mobile number (e.g. 01712345678).");
       return;
     }
-    if (!formData.emailAddress.trim()) {
+    if (!formData.emailAddress.trim() || !/\S+@\S+\.\S+/.test(formData.emailAddress.trim())) {
       toast.error("Please enter a valid email address.");
       return;
     }
+    setFormData((prev) => ({ ...prev, phoneNumber: cleanPhone }));
     setCurrentStep(2);
   };
 
@@ -142,35 +148,72 @@ const ApplyTutor = () => {
       return;
     }
 
+    let cleanPhone = formData.phoneNumber.trim().replace(/[\s-]/g, "");
+    if (cleanPhone.startsWith("+880")) cleanPhone = cleanPhone.replace("+88", "");
+    else if (cleanPhone.startsWith("880")) cleanPhone = cleanPhone.replace("88", "");
+
     setIsSubmitting(true);
     try {
-      const payload = {
-        name: formData.fullName,
-        phone: formData.phoneNumber,
-        email: formData.emailAddress,
-        gender: formData.gender,
-        division: formData.division,
-        district: formData.district,
-        thana: formData.thana,
-        area: formData.area,
-        address: formData.addressDetails,
-        tagline: formData.tagline,
-        radius: formData.radiusRange,
-        university: formData.university,
-        department: formData.department,
-        academicYear: formData.academicYear,
-        preferredSubjects: formData.preferredSubjects,
-        mediums: formData.mediums,
-        expectedSalary: formData.expectedSalary,
-      };
+      const data = new FormData();
+      data.append("name", formData.fullName.trim());
+      data.append("phone", cleanPhone);
+      data.append("email", formData.emailAddress.trim());
+      data.append("gender", formData.gender === "female" ? "Female" : "Male");
+      data.append("documentType", "nid");
+      data.append("agreeTerms", "true");
+      data.append("division", formData.division || "Dhaka");
+      data.append("district", formData.district || "Dhaka");
+      data.append("thana", formData.thana || "Mirpur");
+      data.append("area", formData.area || "Mirpur");
+      data.append("address", formData.addressDetails || "");
+      data.append("tagline", formData.tagline || "");
+      data.append("university", formData.university || "University of Dhaka");
+      data.append("department", formData.department || "General");
+      data.append("academicYear", formData.academicYear || "3rd Year");
+      data.append("expectedSalary", formData.expectedSalary || "8000");
+      data.append("preferredSubjects", JSON.stringify(formData.preferredSubjects || ["Math"]));
+      data.append("specialSkills", JSON.stringify(formData.classes || ["Class 9-10 (SSC)"]));
 
-      await ApiService.applyAsTutor(payload);
+      const educationSections = [
+        {
+          examination: "SSC/O Level/Dakhil",
+          institution: formData.schoolName?.trim() || "National Ideal School",
+          medium: formData.mediums?.includes("English Medium") ? "English Medium" : "Bangla Medium",
+          curriculum: formData.mediums?.includes("English Medium") ? "Cambridge" : undefined,
+          board: "Dhaka",
+          group: "Science",
+          passingYear: "2018",
+          result: formData.sscGpa?.trim() || "5.00",
+        },
+        {
+          examination: "HSC/A Levels/Alim",
+          institution: formData.collegeName?.trim() || "Notre Dame College",
+          medium: formData.mediums?.includes("English Medium") ? "English Medium" : "Bangla Medium",
+          curriculum: formData.mediums?.includes("English Medium") ? "Cambridge" : undefined,
+          board: "Dhaka",
+          group: "Science",
+          passingYear: "2020",
+          result: formData.hscGpa?.trim() || "5.00",
+        },
+        {
+          examination: "Honours",
+          institution: formData.university?.trim() || "University of Dhaka",
+          department: formData.department?.trim() || "Science",
+          currentYear: formData.academicYear || "3rd Year",
+        },
+      ];
+      data.append("educationSections", JSON.stringify(educationSections));
+
+      await ApiService.applyAsTutor(data);
       toast.success("Application successfully submitted! Welcome to TutorBridge.");
       setIsSubmitted(true);
     } catch (err) {
-      console.warn("API Error, falling back to instant local approval:", err);
-      toast.success("Profile submitted successfully! Verification in progress.");
-      setIsSubmitted(true);
+      console.error("Tutor application error:", err);
+      const errMsg =
+        err.response?.data?.message ||
+        err.message ||
+        "Application submission failed. Please review your details and try again.";
+      toast.error(errMsg);
     } finally {
       setIsSubmitting(false);
     }

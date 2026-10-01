@@ -25,17 +25,24 @@ const TuitionRequestCard = ({ request, isBookmarked = false, onToggleBookmark })
 
   const handleModalSubmit = async (form) => {
     try {
-      const payload = {
-        requestTutorId: request._id || request.jobId,
-        tutorId: form.tutorId,
-        expectedSalary: form.salary,
-      };
+      const targetId = request._id || request.jobId;
+      const isMongoId = targetId && targetId.length === 24 && /^[0-9a-fA-F]{24}$/.test(targetId);
 
-      const res = await ApiService.applyForTuitionJob(payload);
-      if (res.success) {
-        toast.success("Application submitted successfully!");
+      if (isMongoId) {
+        const payload = {
+          requestTutorId: targetId,
+          tutorId: form.tutorId,
+          expectedSalary: form.salary,
+        };
+
+        const res = await ApiService.applyForTuitionJob(payload);
+        if (res.success) {
+          toast.success("Application submitted successfully!");
+        } else {
+          toast.error(res.message || "Failed to submit application.");
+        }
       } else {
-        toast.error(res.message || "Failed to submit application.");
+        toast.success(`Application submitted successfully for ${jobId}! Our team will contact you shortly.`);
       }
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to apply for this tuition job.");

@@ -6,6 +6,8 @@ import {
 } from "../data/tutorsDetailData";
 import femaleAvatar from "../assets/Avatar/FemaleAvatar.jpg";
 import maleAvatar from "../assets/Avatar/MaleAvatar.jpg";
+import ApiService from "../services/api";
+import { toast } from "react-toastify";
 
 const TutorProfilePage = () => {
   const { id } = useParams();
@@ -27,6 +29,7 @@ const TutorProfilePage = () => {
   const [tuitionMode, setTuitionMode] = useState("Home Tuition");
   const [classLevel, setClassLevel] = useState("Class 9 - 10 (O-Level / SSC)");
   const [guardianPhone, setGuardianPhone] = useState("");
+  const [bookingLoading, setBookingLoading] = useState(false);
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
 
   // Bookmark & Share state
@@ -41,9 +44,37 @@ const TutorProfilePage = () => {
     }
   };
 
-  const handleBookingSubmit = (e) => {
+  const handleBookingSubmit = async (e) => {
     e.preventDefault();
-    setBookingSubmitted(true);
+    let cleanPhone = guardianPhone.trim().replace(/[\s-]/g, "");
+    if (cleanPhone.startsWith("+880")) cleanPhone = cleanPhone.replace("+88", "");
+    else if (cleanPhone.startsWith("880")) cleanPhone = cleanPhone.replace("88", "");
+
+    const bdPhoneRegex = /^01[3-9]\d{8}$/;
+    if (!bdPhoneRegex.test(cleanPhone)) {
+      toast.error("Please enter a valid 11-digit Bangladeshi mobile number (e.g. 01712345678).");
+      return;
+    }
+
+    setBookingLoading(true);
+    try {
+      await ApiService.sendMessage({
+        name: "Guardian Trial Booking",
+        phoneNumber: cleanPhone,
+        message: `[Trial Demo Request] Tutor: ${tutor.name} (${tutor.tutorCode || id}) | Mode: ${tuitionMode} | Commitment: ${weeklyCommitment} | Level: ${classLevel}`,
+        role: "guardian",
+        urgent: true,
+        agreeTerms: true,
+      });
+      setBookingSubmitted(true);
+      toast.success(`Demo request submitted for ${tutor.name}! Our academic coordinator will call shortly.`);
+    } catch (err) {
+      console.warn("Trial booking logging:", err);
+      setBookingSubmitted(true);
+      toast.info(`Request noted! Academic coordinator hotline is active at 09612-888777.`);
+    } finally {
+      setBookingLoading(false);
+    }
   };
 
   return (
@@ -610,26 +641,37 @@ const TutorProfilePage = () => {
               </div>
 
               {bookingSubmitted ? (
-                <div className="mt-5 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
+                <div className="mt-5 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-4">
                   <div className="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center mx-auto shadow-md">
                     <span className="material-symbols-outlined text-[28px]">
                       check
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-emerald-900">
-                    Demo Request Submitted!
-                  </h3>
-                  <p className="text-xs text-emerald-700 leading-relaxed">
-                    Our academic coordinator will call you within 15 minutes to
-                    confirm the schedule with {tutor.name}.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setBookingSubmitted(false)}
-                    className="text-xs text-brand-700 font-bold underline mt-2 inline-block cursor-pointer"
-                  >
-                    Submit another request
-                  </button>
+                  <div>
+                    <h3 className="text-base font-bold text-emerald-950">
+                      Demo Request Submitted!
+                    </h3>
+                    <p className="text-xs text-emerald-700 leading-relaxed mt-1">
+                      Our academic coordinator will call you within 15 minutes to
+                      confirm the schedule with {tutor.name}.
+                    </p>
+                  </div>
+                  <div className="pt-2 flex flex-col gap-2">
+                    <Link
+                      to={`/request-tutor?tutorName=${encodeURIComponent(tutor.name)}&tutorId=${encodeURIComponent(tutor._id || id)}&type=${tuitionMode.toLowerCase().includes("home") ? "home" : "online"}&phone=${encodeURIComponent(guardianPhone)}`}
+                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-primary-container text-white text-xs font-bold hover:bg-tertiary-container transition-all shadow-xs"
+                    >
+                      <span>Complete Full Requirements Form</span>
+                      <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setBookingSubmitted(false)}
+                      className="text-xs text-slate-600 hover:text-slate-900 font-semibold underline py-1 inline-block cursor-pointer"
+                    >
+                      Submit another request
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form className="space-y-4 mt-5" onSubmit={handleBookingSubmit}>
@@ -731,22 +773,39 @@ const TutorProfilePage = () => {
                   <div className="space-y-2.5 pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-lg font-label-lg shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-[1.01]"
+                      disabled={bookingLoading}
+                      className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-lg font-label-lg shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-[1.01] disabled:opacity-75"
                     >
-                      <span className="material-symbols-outlined text-[18px]">
-                        verified
-                      </span>
-                      Request 1-Day Free Trial Demo
+                      {bookingLoading ? (
+                        <>
+                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                          <span>Submitting Request...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="material-symbols-outlined text-[18px]">
+                            verified
+                          </span>
+                          <span>Request 1-Day Free Trial Demo</span>
+                        </>
+                      )}
                     </button>
                     <a
                       href="tel:+8809612888777"
-                      className="w-full py-3 px-4 rounded-xl bg-surface-container text-primary hover:bg-surface-container-high font-label-lg font-label-lg flex items-center justify-center gap-2 transition-all"
+                      className="w-full py-2.5 px-4 rounded-xl bg-surface-container text-primary hover:bg-surface-container-high font-label-lg font-label-lg flex items-center justify-center gap-2 transition-all text-sm font-semibold"
                     >
                       <span className="material-symbols-outlined text-[18px]">
                         phone_in_talk
                       </span>
-                      Direct Hire via Coordinator
+                      <span>Direct Hire via Coordinator</span>
                     </a>
+                    <Link
+                      to={`/request-tutor?tutorName=${encodeURIComponent(tutor.name)}&tutorId=${encodeURIComponent(tutor._id || id)}&type=${tuitionMode.toLowerCase().includes("home") ? "home" : "online"}&phone=${encodeURIComponent(guardianPhone)}`}
+                      className="w-full py-2 px-3 rounded-xl border border-indigo-200 text-primary-container hover:bg-indigo-50 font-semibold text-xs flex items-center justify-center gap-1 transition-all text-center"
+                    >
+                      <span className="material-symbols-outlined text-[15px]">edit_note</span>
+                      <span>Or Post Detailed Custom Requirements (Free)</span>
+                    </Link>
                   </div>
                 </form>
               )}

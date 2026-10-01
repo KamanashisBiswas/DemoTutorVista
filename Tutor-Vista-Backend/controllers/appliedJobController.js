@@ -25,6 +25,18 @@ const addAppliedJob = asyncHandler(async (req, res) => {
     .populate("requestTutorId")
     .populate("tutorId");
 
+  // Send automated confirmation SMS to tutor (non-blocking)
+  if (populatedJob?.tutorId?.phone) {
+    const jobCode = String(requestTutorId).slice(-6).toUpperCase();
+    const { sendSMS } = require("../utils/smsService");
+    sendSMS({
+      phone: populatedJob.tutorId.phone,
+      message: `Dear Tutor, your application for Tuition Job #${jobCode} has been submitted at TutorBridge. Our team will contact you once shortlisted. Helpline: 09612-888777`,
+    }).catch((err) => {
+      console.error("[BulkSMS] Job application SMS error:", err.message);
+    });
+  }
+
   res.status(201).json({ success: true, data: populatedJob });
 });
 

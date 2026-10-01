@@ -1,5 +1,6 @@
 const RequestTutor = require("../models/RequestTutor");
 const asyncHandler = require("../utils/asyncHandler");
+const { sendParentRequestConfirmation } = require("../utils/smsService");
 
 // @desc    Create a new tutor request
 // @route   POST /api/request-tutor
@@ -30,6 +31,15 @@ const createRequest = asyncHandler(async (req, res) => {
     isAssignTutor: false,
     assignedTutor: null,
     isActive: false,
+  });
+
+  // Send automated confirmation SMS to guardian (non-blocking)
+  sendParentRequestConfirmation({
+    phoneNo: requestTutor.phoneNo,
+    studentName: requestTutor.studentName,
+    requestId: requestTutor._id,
+  }).catch((err) => {
+    console.error("[BulkSMS] Parent confirmation SMS error:", err.message);
   });
 
   res.status(201).json({

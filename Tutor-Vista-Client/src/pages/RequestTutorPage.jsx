@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import locationData from "../assets/data/address.json";
 import ApiService from "../services/api";
 import { toast } from "react-toastify";
@@ -80,6 +80,9 @@ const RequestTutorPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const [searchParams] = useSearchParams();
+  const [preferredTutorInfo, setPreferredTutorInfo] = useState(null);
+
   const [currentStep, setCurrentStep] = useState(1);
   const [submittedSuccess, setSubmittedSuccess] = useState(false);
   const [submissionId, setSubmissionId] = useState("");
@@ -149,6 +152,77 @@ const RequestTutorPage = () => {
     const selectedThana = selectedDist?.thanas.find((t) => t.name_en === formData.thana);
     return selectedThana ? selectedThana.areas.map((a) => a.name_en) : [];
   }, [formData.division, formData.district, formData.thana]);
+
+  // Parse Search Parameters from URL (e.g., ?type=home|online|group, ?tutorName=..., ?tutorId=...)
+  useEffect(() => {
+    const typeParam = searchParams.get("type");
+    const tutorNameParam = searchParams.get("tutorName");
+    const tutorIdParam = searchParams.get("tutorId");
+    const phoneParam = searchParams.get("phone");
+    const classParam = searchParams.get("class") || searchParams.get("grade");
+    const divisionParam = searchParams.get("division");
+
+    setFormData((prev) => {
+      const updated = { ...prev };
+
+      // Tuition Mode
+      if (typeParam) {
+        const lowerType = typeParam.toLowerCase();
+        if (lowerType === "home") {
+          updated.tuitionType = "Home Tutoring (At Student's Place)";
+        } else if (lowerType === "online") {
+          updated.tuitionType = "Online Tutoring (Zoom/Meet)";
+        } else if (lowerType === "group" || lowerType === "batch" || lowerType === "student_goes") {
+          updated.tuitionType = "Student Goes to Tutor";
+        }
+      }
+
+      // Tutor Direct Request
+      if (tutorNameParam) {
+        setPreferredTutorInfo({
+          name: tutorNameParam,
+          id: tutorIdParam || "",
+        });
+        const note = `[DIRECT TUTOR PREFERENCE: ${tutorNameParam}${tutorIdParam ? ` (ID: ${tutorIdParam})` : ""}] Interested in scheduling 1-day free demo class with this verified tutor.`;
+        if (!updated.requirement || !updated.requirement.includes(tutorNameParam)) {
+          updated.requirement = updated.requirement ? `${note} ${updated.requirement}` : note;
+        }
+      }
+
+      // Phone
+      if (phoneParam && !updated.phoneNumber) {
+        updated.phoneNumber = phoneParam;
+      }
+
+      // Division
+      if (divisionParam) {
+        const found = divisions.find((d) => d.toLowerCase() === divisionParam.toLowerCase());
+        if (found) updated.division = found;
+      }
+
+      // Class
+      if (classParam) {
+        const lowerClass = classParam.toLowerCase();
+        if (lowerClass.includes("olevel") || lowerClass.includes("cambridge")) {
+          updated.medium = "english_medium";
+          updated.classGrade = "olevels";
+        } else if (lowerClass.includes("alevel")) {
+          updated.medium = "english_medium";
+          updated.classGrade = "alevels";
+        } else if (lowerClass.includes("hsc")) {
+          updated.medium = "bangla_medium";
+          updated.classGrade = "class_11_12";
+        } else if (lowerClass.includes("ssc") || lowerClass.includes("class9-10")) {
+          updated.medium = "bangla_medium";
+          updated.classGrade = "class_9_10";
+        } else if (lowerClass.includes("admission")) {
+          updated.classGrade = "uni_admission";
+        }
+      }
+
+      return updated;
+    });
+  }, [searchParams, divisions]);
 
   const handleInputChange = (field, value) => {
     setFieldErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -532,6 +606,37 @@ const RequestTutorPage = () => {
         {/* END: Full-Width Hero Section */}
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-12">
+          {/* Direct Tutor Request Notification Banner */}
+          {preferredTutorInfo && (
+            <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-indigo-50 via-purple-50 to-indigo-50 border border-indigo-200/90 shadow-xs flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <Sparkles className="w-5 h-5 text-amber-300" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                    <span>Direct Request for Tutor: {preferredTutorInfo.name}</span>
+                    {preferredTutorInfo.id && (
+                      <span className="px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-700 text-[11px] font-semibold">
+                        ID: {preferredTutorInfo.id}
+                      </span>
+                    )}
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-0.5">
+                    Your request will be routed directly to this tutor's academic coordinator for 1-day free trial demo class scheduling.
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setPreferredTutorInfo(null)}
+                className="text-xs text-slate-400 hover:text-slate-700 font-semibold cursor-pointer shrink-0"
+              >
+                ✕ Dismiss
+              </button>
+            </div>
+          )}
+
           {/* BEGIN: WizardProgressStepper */}
           <div
             className="w-full mb-10 bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/80 shadow-[0_4px_20px_-2px_rgba(79,70,229,0.08),0_2px_6px_-1px_rgba(0,0,0,0.04)]"
@@ -1677,7 +1782,7 @@ const RequestTutorPage = () => {
                         />
                         <span className="text-xs text-slate-600 leading-normal">
                           I agree to the{" "}
-                          <Link to="/terms" className="text-indigo-600 underline font-semibold">
+                          <Link to="/terms-and-conditions" className="text-indigo-600 underline font-semibold">
                             Terms of Service
                           </Link>{" "}
                           and understand that TutorBridge BD provides a 100% free matching service with a 1-day free trial demo class before any final hiring decision.

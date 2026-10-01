@@ -47,28 +47,52 @@ const Contact = () => {
       return;
     }
 
+    // Clean & validate Bangladeshi phone number (e.g. 017XXXXXXXX or +88017XXXXXXXX)
+    let cleanPhone = formData.phoneNumber.trim().replace(/[\s-]/g, "");
+    if (cleanPhone.startsWith("+880")) {
+      cleanPhone = cleanPhone.replace("+88", "");
+    } else if (cleanPhone.startsWith("880")) {
+      cleanPhone = cleanPhone.replace("88", "");
+    }
+
+    const bdPhoneRegex = /^01[3-9]\d{8}$/;
+    if (!bdPhoneRegex.test(cleanPhone)) {
+      toast.error("Please enter a valid 11-digit Bangladeshi mobile number (e.g. 01712345678).");
+      return;
+    }
+
     if (!formData.termsAgreed) {
       toast.warn("Please agree to the verified matching protocols and terms.");
       return;
     }
 
+    // Compose a meaningful message within 10 - 500 characters
+    const userMsg = formData.userMessage.trim() || "Academic inquiry for tutor matching.";
+    let composedMessage = `[${role.toUpperCase()}] ${formData.inquiryTopic ? `[${formData.inquiryTopic}] ` : ""}${formData.districtArea ? `[${formData.districtArea}] ` : ""}${userMsg}`;
+    if (composedMessage.length > 490) {
+      composedMessage = composedMessage.substring(0, 487) + "...";
+    }
+    if (composedMessage.length < 10) {
+      composedMessage = composedMessage + " (Academic Inquiry)";
+    }
+
     setLoading(true);
 
     try {
-      const generatedTicket = `TB-BD-${Math.floor(1000 + Math.random() * 9000)}`;
-      await ApiService.sendMessage({
-        name: formData.fullName,
-        phoneNumber: formData.phoneNumber.startsWith("+880") ? formData.phoneNumber : `+880${formData.phoneNumber.replace(/^0+/, "")}`,
-        email: formData.emailAddr,
-        message: `[Role: ${role.toUpperCase()}] [Topic: ${formData.inquiryTopic}] [Area: ${formData.districtArea}] [Urgent: ${formData.urgentMatch ? "YES" : "NO"}] ${formData.userMessage}`,
+      const response = await ApiService.sendMessage({
+        name: formData.fullName.trim(),
+        phoneNumber: cleanPhone,
+        email: formData.emailAddr.trim() || undefined,
+        message: composedMessage,
         role: role,
         urgent: formData.urgentMatch,
-        agreeTerms: formData.termsAgreed,
+        agreeTerms: true,
       });
 
-      setTicketId(generatedTicket);
+      const ticket = response?.data?.ticketId || `TB-BD-${Math.floor(1000 + Math.random() * 9000)}`;
+      setTicketId(ticket);
       setFormSubmitted(true);
-      toast.success("Inquiry sent successfully! Academic team will connect soon.");
+      toast.success("Inquiry sent successfully! Our academic coordinator will connect shortly.");
 
       setFormData({
         inquiryTopic: "",
@@ -86,15 +110,12 @@ const Contact = () => {
         alertEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
     } catch (error) {
-      console.warn("Contact API fallback:", error);
-      const generatedTicket = `TB-BD-${Math.floor(1000 + Math.random() * 9000)}`;
-      setTicketId(generatedTicket);
-      setFormSubmitted(true);
-      toast.success("Inquiry submitted! Our academic coordinator will call shortly.");
-      const alertEl = document.getElementById("formSuccessAlert");
-      if (alertEl) {
-        alertEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }
+      console.error("Contact API error:", error);
+      const errMsg =
+        error.response?.data?.message ||
+        error.message ||
+        "Failed to send inquiry. Please check your information and try again.";
+      toast.error(errMsg);
     } finally {
       setLoading(false);
     }

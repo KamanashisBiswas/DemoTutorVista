@@ -14,7 +14,7 @@ function App() {
       <Footer />
       <BackToTopButton />
       <FloatingCallButton
-        phoneNumber="01700-000000"
+        phoneNumber="09612-888777"
         position="bottom-left"
         showAfterScroll={300}
       />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import ApiService from "../services/api";
 import locationData from "../assets/data/address.json";
 
@@ -301,10 +301,126 @@ const TutorPage = () => {
   const [totalTutors, setTotalTutors] = useState(0);
   const tutorsPerPage = 12;
 
+  const [searchParams] = useSearchParams();
+
   const divisions = useMemo(
     () => (locationData?.divisions ? locationData.divisions.map((d) => d.division.name_en) : []),
     []
   );
+
+  // Synchronize state with URL Search Parameters (from Homepage Hero & Category cards)
+  useEffect(() => {
+    const districtParam = searchParams.get("district");
+    const divisionParam = searchParams.get("division") || searchParams.get("location");
+    const classParam = searchParams.get("class") || searchParams.get("grade") || searchParams.get("curriculum");
+    const subjectParam = searchParams.get("subject");
+    const genderParam = searchParams.get("gender") || searchParams.get("preference");
+    const qParam = searchParams.get("q") || searchParams.get("search");
+
+    const targetLoc = districtParam || divisionParam;
+    if (targetLoc) {
+      const lower = targetLoc.toLowerCase();
+      const cleanDistrict = districtParam ? districtParam.replace(/\s+Sadar$/i, "").trim() : "";
+      if (lower === "online") {
+        setActiveDivision("Online");
+      } else if (
+        lower.includes("dhaka") ||
+        lower.includes("gazipur") ||
+        lower.includes("narayanganj") ||
+        lower === "dhanmondi" ||
+        lower === "uttara" ||
+        lower === "gulshan" ||
+        lower === "mirpur"
+      ) {
+        setActiveDivision("Dhaka");
+        if (cleanDistrict) {
+          setLocationFilter((prev) => ({ ...prev, division: "Dhaka", district: cleanDistrict }));
+        } else if (lower !== "dhaka") {
+          const capitalized = lower.charAt(0).toUpperCase() + lower.slice(1);
+          setLocationFilter((prev) => ({ ...prev, division: "Dhaka", thana: capitalized }));
+        }
+      } else if (lower.includes("chattogram") || lower.includes("chittagong")) {
+        setActiveDivision("Chattogram");
+        if (cleanDistrict) {
+          setLocationFilter((prev) => ({ ...prev, division: "Chattogram", district: cleanDistrict }));
+        }
+      } else if (lower.includes("sylhet")) {
+        setActiveDivision("Sylhet");
+        if (cleanDistrict) {
+          setLocationFilter((prev) => ({ ...prev, division: "Sylhet", district: cleanDistrict }));
+        }
+      } else if (lower.includes("khulna")) {
+        setActiveDivision("Khulna");
+        if (cleanDistrict) {
+          setLocationFilter((prev) => ({ ...prev, division: "Khulna", district: cleanDistrict }));
+        }
+      } else {
+        const found = divisions.find((d) => d.toLowerCase() === lower);
+        if (found) setActiveDivision(found);
+      }
+    }
+
+    if (classParam) {
+      const lower = classParam.toLowerCase();
+      if (lower.includes("olevel") || lower.includes("o-level") || lower.includes("cambridge")) {
+        setMediumFilter({ medium: "English Medium", level: "Class 9-10 / O-Levels" });
+      } else if (lower.includes("alevel") || lower.includes("a-level")) {
+        setMediumFilter({ medium: "English Medium", level: "HSC / A-Levels" });
+      } else if (lower.includes("class9-10") || lower.includes("class-9-10") || lower.includes("ssc")) {
+        setMediumFilter((prev) => ({ ...prev, level: "Class 9-10 (SSC)" }));
+      } else if (lower.includes("hsc") || lower.includes("11-12")) {
+        setMediumFilter((prev) => ({ ...prev, level: "Class 11-12 (HSC)" }));
+      } else if (lower.includes("class1-5") || lower.includes("primary")) {
+        setMediumFilter((prev) => ({ ...prev, level: "Class 1-5 (Primary)" }));
+      } else if (lower.includes("class6-8") || lower.includes("junior")) {
+        setMediumFilter((prev) => ({ ...prev, level: "Class 6-8 (Junior)" }));
+      } else if (lower.includes("admission") || lower.includes("varsity")) {
+        setSearchQuery((prev) => prev || "Admission");
+      } else if (lower.includes("bangla")) {
+        setMediumFilter((prev) => ({ ...prev, medium: "Bangla Medium" }));
+      } else if (lower.includes("english")) {
+        setMediumFilter((prev) => ({ ...prev, medium: "English Medium" }));
+      }
+    }
+
+    if (subjectParam && subjectParam !== "all") {
+      const lower = subjectParam.toLowerCase();
+      if (lower.includes("math")) {
+        setSubjectFilter("Higher Mathematics");
+      } else if (lower.includes("phys")) {
+        setSubjectFilter("Physics & Math");
+      } else if (lower.includes("bio")) {
+        setSubjectFilter("Biology");
+      } else if (lower.includes("chem")) {
+        setSubjectFilter("Chemistry");
+      } else if (lower.includes("eng")) {
+        setSubjectFilter("English Language");
+      } else if (lower.includes("ict") || lower.includes("computer")) {
+        setSubjectFilter("ICT & Computer");
+      } else if (lower.includes("account") || lower.includes("commerce")) {
+        setSubjectFilter("Accounting & Commerce");
+      } else {
+        setSubjectFilter(subjectParam);
+      }
+    }
+
+    if (genderParam && genderParam !== "any") {
+      const lower = genderParam.toLowerCase();
+      if (lower.includes("female")) {
+        setGenderFilter("Female");
+      } else if (lower.includes("male")) {
+        setGenderFilter("Male");
+      } else if (lower.includes("buet") || lower.includes("du")) {
+        setSearchQuery((prev) => (prev ? `${prev} BUET` : "BUET"));
+      } else if (lower.includes("english")) {
+        setMediumFilter((prev) => ({ ...prev, medium: "English Medium" }));
+      }
+    }
+
+    if (qParam) {
+      setSearchQuery(qParam);
+    }
+  }, [searchParams, divisions]);
 
   const districts = useMemo(() => {
     if (!locationFilter.division || !locationData?.divisions) return [];
@@ -537,13 +653,18 @@ const TutorPage = () => {
       );
     }
     if (locationFilter.district) {
-      list = list.filter(
-        (t) =>
-          t.district?.toLowerCase() === locationFilter.district.toLowerCase() ||
+      const qDist = locationFilter.district.replace(/\s+Sadar$/i, "").trim().toLowerCase();
+      list = list.filter((t) => {
+        const tDist = (t.district || "").replace(/\s+Sadar$/i, "").trim().toLowerCase();
+        return (
+          tDist === qDist ||
+          tDist.includes(qDist) ||
+          qDist.includes(tDist) ||
           t.preferredLocations?.some((loc) =>
-            loc.toLowerCase().includes(locationFilter.district.toLowerCase())
+            loc.toLowerCase().includes(qDist)
           )
-      );
+        );
+      });
     }
     if (locationFilter.thana) {
       list = list.filter(

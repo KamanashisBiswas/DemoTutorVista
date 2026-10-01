@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import locationData from "../../assets/data/address.json";
 import nusratImg from "../../assets/Home/stitch/hero-nusrat.jpg";
 import tutorTanvir from "../../assets/Home/stitch/tutor-tanvir.jpg";
 import tutorSadia from "../../assets/Home/stitch/tutor-sadia.jpg";
@@ -10,10 +11,10 @@ import social3 from "../../assets/Home/stitch/social-3.jpg";
 const Banner = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("tutor"); // 'tutor' or 'jobs'
-  const [location, setLocation] = useState("dhanmondi");
-  const [grade, setGrade] = useState("class9-10");
-  const [subject, setSubject] = useState("all");
-  const [preference, setPreference] = useState("any");
+  const [location, setLocation] = useState("");
+  const [grade, setGrade] = useState("");
+  const [subject, setSubject] = useState("");
+  const [preference, setPreference] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -32,15 +33,19 @@ const Banner = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const params = new URLSearchParams();
-    if (location) params.set("division", location);
+    if (location) {
+      params.set("district", location);
+      params.set("location", location);
+    }
     if (grade) params.set("class", grade);
     if (subject) params.set("subject", subject);
     if (preference) params.set("gender", preference);
 
+    const queryString = params.toString();
     if (activeTab === "tutor") {
-      navigate(`/tutors?${params.toString()}`);
+      navigate(`/tutors${queryString ? `?${queryString}` : ""}`);
     } else {
-      navigate(`/tuition-jobs?${params.toString()}`);
+      navigate(`/tuition-jobs${queryString ? `?${queryString}` : ""}`);
     }
   };
 
@@ -143,7 +148,7 @@ const Banner = () => {
               {/* Search Inputs Grid */}
               <form onSubmit={handleSearch}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  {/* Field 1: Location */}
+                  {/* Field 1: Location / District */}
                   <div className="flex flex-col space-y-1.5 p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
                     <label className="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5">
                       <span className="material-symbols-outlined text-primary text-[16px]">
@@ -155,15 +160,21 @@ const Banner = () => {
                       <select
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
-                        className="w-full bg-transparent font-headline-sm text-headline-sm text-on-surface text-[14px] font-semibold focus:outline-none cursor-pointer appearance-none pr-6"
+                        className={`w-full bg-transparent font-headline-sm text-headline-sm ${
+                          location ? "text-on-surface font-semibold" : "text-slate-500 font-medium"
+                        } text-[14px] focus:outline-none cursor-pointer appearance-none pr-6`}
                       >
-                        <option value="dhanmondi">Dhanmondi, Dhaka</option>
-                        <option value="uttara">Uttara, Dhaka</option>
-                        <option value="gulshan">Gulshan &amp; Banani, Dhaka</option>
-                        <option value="mirpur">Mirpur (1-14), Dhaka</option>
-                        <option value="chattogram">GEC &amp; Agrabad, Chattogram</option>
-                        <option value="sylhet">Zindabazar, Sylhet</option>
-                        <option value="online">Online / Anywhere in BD</option>
+                        <option value="">Select District</option>
+                        {locationData?.divisions?.map((div) => (
+                          <optgroup key={div.division.name_en} label={`${div.division.name_en} Division`}>
+                            {div.districts?.map((dist) => (
+                              <option key={dist.name_en} value={dist.name_en}>
+                                {dist.name_en}
+                              </option>
+                            ))}
+                          </optgroup>
+                        ))}
+                        <option value="Online">Online / Anywhere in BD</option>
                       </select>
                       <span className="material-symbols-outlined absolute right-0 top-1 text-on-surface-variant text-[18px] pointer-events-none">
                         expand_more
@@ -171,7 +182,7 @@ const Banner = () => {
                     </div>
                   </div>
 
-                  {/* Field 2: Class & Medium */}
+                  {/* Field 2: Class & Curriculum */}
                   <div className="flex flex-col space-y-1.5 p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
                     <label className="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5">
                       <span className="material-symbols-outlined text-primary text-[16px]">
@@ -183,14 +194,17 @@ const Banner = () => {
                       <select
                         value={grade}
                         onChange={(e) => setGrade(e.target.value)}
-                        className="w-full bg-transparent font-headline-sm text-headline-sm text-on-surface text-[14px] font-semibold focus:outline-none cursor-pointer appearance-none pr-6"
+                        className={`w-full bg-transparent font-headline-sm text-headline-sm ${
+                          grade ? "text-on-surface font-semibold" : "text-slate-500 font-medium"
+                        } text-[14px] focus:outline-none cursor-pointer appearance-none pr-6`}
                       >
-                        <option value="class9-10">Class 9-10 (SSC)</option>
+                        <option value="">Select Class &amp; Curriculum</option>
+                        <option value="class9-10">Class 9–10 (SSC)</option>
                         <option value="hsc">HSC (Science / Commerce / Arts)</option>
                         <option value="olevel">O-Levels (Cambridge / Edexcel)</option>
                         <option value="alevel">A-Levels (Cambridge / Edexcel)</option>
-                        <option value="class1-5">Class 1-5 (Primary Foundation)</option>
-                        <option value="class6-8">Class 6-8 (Junior Secondary)</option>
+                        <option value="class1-5">Class 1–5 (Primary Foundation)</option>
+                        <option value="class6-8">Class 6–8 (Junior Secondary)</option>
                         <option value="admission">University Admission Prep</option>
                       </select>
                       <span className="material-symbols-outlined absolute right-0 top-1 text-on-surface-variant text-[18px] pointer-events-none">
@@ -211,8 +225,11 @@ const Banner = () => {
                       <select
                         value={subject}
                         onChange={(e) => setSubject(e.target.value)}
-                        className="w-full bg-transparent font-headline-sm text-headline-sm text-on-surface text-[14px] font-semibold focus:outline-none cursor-pointer appearance-none pr-6"
+                        className={`w-full bg-transparent font-headline-sm text-headline-sm ${
+                          subject ? "text-on-surface font-semibold" : "text-slate-500 font-medium"
+                        } text-[14px] focus:outline-none cursor-pointer appearance-none pr-6`}
                       >
+                        <option value="">Select Subject</option>
                         <option value="all">All Subjects (General)</option>
                         <option value="higher-math">Higher Mathematics</option>
                         <option value="physics">Physics &amp; Chemistry</option>
@@ -239,10 +256,14 @@ const Banner = () => {
                       <select
                         value={preference}
                         onChange={(e) => setPreference(e.target.value)}
-                        className="w-full bg-transparent font-headline-sm text-headline-sm text-on-surface text-[14px] font-semibold focus:outline-none cursor-pointer appearance-none pr-6"
+                        className={`w-full bg-transparent font-headline-sm text-headline-sm ${
+                          preference ? "text-on-surface font-semibold" : "text-slate-500 font-medium"
+                        } text-[14px] focus:outline-none cursor-pointer appearance-none pr-6`}
                       >
+                        <option value="">Select Tutor Preference</option>
                         <option value="any">Any Qualified Tutor</option>
                         <option value="female">Female Tutor Preferred</option>
+                        <option value="male">Male Tutor Preferred</option>
                         <option value="buet-du">BUET / DU / DMC Affiliated</option>
                         <option value="english-med">English Medium Background</option>
                         <option value="experienced">5+ Years Experienced</option>

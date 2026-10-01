@@ -73,6 +73,26 @@ const router = createBrowserRouter([
         element: <TuitionRequestPage />,
       },
       {
+        path: "/tuitions",
+        element: <TuitionRequestPage />,
+      },
+      {
+        path: "/hire-a-tutor",
+        element: <RequestTutorPage />,
+      },
+      {
+        path: "/register",
+        element: <ApplyTutor />,
+      },
+      {
+        path: "/dashboard",
+        element: <TutorPortalPage />,
+      },
+      {
+        path: "/terms",
+        element: <TermsAndConditions />,
+      },
+      {
         path: "/founder-message",
         element: <CEOMessagesPage />,
       },

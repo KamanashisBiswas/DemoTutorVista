@@ -19,6 +19,7 @@ const Footer = () => {
             <p className="font-body-md text-body-md text-on-surface-variant max-w-sm">
               Connecting ambitious students with vetted, top-tier tutors across Bangladesh. Better education, brighter future.
             </p>
+
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <span className="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold inline-flex items-center gap-1">
                 <span className="material-symbols-outlined text-[14px]">verified</span>
@@ -37,12 +38,18 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
               <li>
+                <Link to="/request-tutor" className="text-primary-container font-semibold hover:underline inline-flex items-center gap-1">
+                  <span>Request a Tutor</span>
+                  <span className="material-symbols-outlined text-[13px]">arrow_forward</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/tutors" className="hover:text-primary-container transition-colors">
                   Find Tutors
                 </Link>
               </li>
               <li>
-                <Link to="/tuitions" className="hover:text-primary-container transition-colors">
+                <Link to="/tuition-jobs" className="hover:text-primary-container transition-colors">
                   Tuition Jobs
                 </Link>
               </li>
@@ -52,13 +59,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-primary-container transition-colors">
-                  Tutor Safety &amp; Verification
-                </Link>
-              </li>
-              <li>
-                <Link to="/tuitions" className="hover:text-primary-container transition-colors">
-                  Tuition Fee Guide
+                <Link to="/contact" className="hover:text-primary-container transition-colors">
+                  Contact Support
                 </Link>
               </li>
             </ul>
@@ -71,28 +73,29 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
               <li>
-                <Link to="/register" className="hover:text-primary-container transition-colors">
+                <Link to="/tutor-portal" className="text-primary-container font-semibold hover:underline inline-flex items-center gap-1">
+                  <span className="material-symbols-outlined text-[15px]">account_circle</span>
+                  <span>Tutor Portal</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/apply-tutor" className="hover:text-primary-container transition-colors">
                   Join as Tutor
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard" className="hover:text-primary-container transition-colors">
-                  Tutor Dashboard
+                <Link to="/tuition-jobs" className="hover:text-primary-container transition-colors">
+                  Available Jobs
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-primary-container transition-colors">
-                  Success Stories
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-primary-container transition-colors">
-                  Code of Conduct
+                <Link to="/founder-message" className="hover:text-primary-container transition-colors">
+                  Founder's Message
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-primary-container transition-colors">
-                  Tutor FAQs
+                  Tutor FAQs &amp; Help
                 </Link>
               </li>
             </ul>
@@ -105,32 +108,32 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
               <li>
-                <Link to="/tuitions" className="hover:text-primary-container transition-colors">
+                <Link to="/tuition-jobs?medium=Bangla+Medium" className="hover:text-primary-container transition-colors">
                   Bangla Medium (All Classes)
                 </Link>
               </li>
               <li>
-                <Link to="/tuitions" className="hover:text-primary-container transition-colors">
+                <Link to="/tuition-jobs?medium=English+Medium" className="hover:text-primary-container transition-colors">
                   English Medium &amp; Version
                 </Link>
               </li>
               <li>
-                <Link to="/tuitions" className="hover:text-primary-container transition-colors">
+                <Link to="/tuition-jobs?level=HSC" className="hover:text-primary-container transition-colors">
                   HSC &amp; SSC Exam Batch
                 </Link>
               </li>
               <li>
-                <Link to="/tuitions" className="hover:text-primary-container transition-colors">
+                <Link to="/tuition-jobs?q=Cadet" className="hover:text-primary-container transition-colors">
                   Cadet College Prep
                 </Link>
               </li>
               <li>
-                <Link to="/tuitions" className="hover:text-primary-container transition-colors">
+                <Link to="/tuition-jobs?q=Admission" className="hover:text-primary-container transition-colors">
                   Varsity &amp; IBA Admission
                 </Link>
               </li>
               <li>
-                <Link to="/tuitions" className="hover:text-primary-container transition-colors">
+                <Link to="/tuition-jobs?subject=ICT" className="hover:text-primary-container transition-colors">
                   ICT &amp; Spoken English
                 </Link>
               </li>
@@ -142,10 +145,10 @@ const Footer = () => {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm text-on-surface-variant">
           <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm">
             <span>© 2026 TutorBridge BD. All rights reserved.</span>
-            <Link to="/about" className="hover:text-on-surface transition-colors">
+            <Link to="/privacy-policy" className="hover:text-primary-container transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/about" className="hover:text-on-surface transition-colors">
+            <Link to="/terms-and-conditions" className="hover:text-primary-container transition-colors">
               Terms of Service
             </Link>
             <span className="text-on-surface-variant/80">

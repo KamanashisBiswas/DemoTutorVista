@@ -15,18 +15,14 @@ export const TutorAuthProvider = ({ children }) => {
   });
   const [loading, setLoading] = useState(false);
 
-  const loginWithPhone = async (phone) => {
+  const checkTutorPhone = async (phone) => {
     setLoading(true);
     try {
-      const cleanPhone = phone.trim();
+      const cleanPhone = phone.trim().replace(/[\s-]/g, "");
       const res = await ApiService.getTutorByPhone(cleanPhone);
 
       if (res?.success && res?.data) {
-        const tutorData = res.data;
-        setCurrentTutor(tutorData);
-        localStorage.setItem("tutor_user", JSON.stringify(tutorData));
-        toast.success(`Welcome back, ${tutorData.name}!`);
-        return { success: true, tutor: tutorData };
+        return { success: true, tutor: res.data };
       } else {
         toast.error("No registered tutor account found with this phone number.");
         return { success: false, message: "Tutor not found" };
@@ -40,6 +36,49 @@ export const TutorAuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const verifyAndLogin = async (phone, pin) => {
+    setLoading(true);
+    try {
+      const cleanPhone = phone.trim().replace(/[\s-]/g, "");
+      const cleanPin = pin ? pin.trim() : "";
+
+      // Check PIN validity (Demo/Default PIN 1234, last 4 digits of phone, or saved custom PIN)
+      const lastFour = cleanPhone.slice(-4);
+      const savedPin = localStorage.getItem(`tutor_pin_${cleanPhone}`);
+      const isValidPin =
+        cleanPin === "1234" ||
+        cleanPin === lastFour ||
+        (savedPin && cleanPin === savedPin);
+
+      if (!isValidPin) {
+        toast.error("Invalid security PIN. Please enter your 4-digit PIN (Demo: 1234 or last 4 digits of phone).");
+        return { success: false, message: "Invalid PIN" };
+      }
+
+      const res = await ApiService.getTutorByPhone(cleanPhone);
+      if (res?.success && res?.data) {
+        const tutorData = res.data;
+        setCurrentTutor(tutorData);
+        localStorage.setItem("tutor_user", JSON.stringify(tutorData));
+        toast.success(`Welcome back, ${tutorData.name}!`);
+        return { success: true, tutor: tutorData };
+      } else {
+        toast.error("Account verification failed. Please try again.");
+        return { success: false, message: "Tutor not found" };
+      }
+    } catch (err) {
+      const msg = err.message || "Authentication error occurred.";
+      toast.error(msg);
+      return { success: false, message: msg };
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loginWithPhone = async (phone, pin = "1234") => {
+    return await verifyAndLogin(phone, pin);
   };
 
   const logout = () => {
@@ -67,6 +106,8 @@ export const TutorAuthProvider = ({ children }) => {
         currentTutor,
         isLoggedIn: !!currentTutor,
         loading,
+        checkTutorPhone,
+        verifyAndLogin,
         loginWithPhone,
         logout,
         refreshProfile,

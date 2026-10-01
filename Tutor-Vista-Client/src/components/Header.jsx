@@ -75,18 +75,18 @@ const Header = () => {
           </div>
         </Link>
 
-        {/* Desktop Nav Items (100% matched with reference image) */}
-        <nav className="hidden xl:flex items-center gap-4 lg:gap-5 2xl:gap-7">
+        {/* Desktop Nav Items */}
+        <nav className="hidden lg:flex items-center gap-2 lg:gap-3 xl:gap-5">
           {navItems.map((item) => (
             <NavLink
               key={item.name}
               to={item.path}
               end={item.path === "/"}
               className={({ isActive }) =>
-                `text-[14px] transition-all ${
+                `text-[14px] transition-all whitespace-nowrap ${
                   isActive
-                    ? "px-4 py-2 rounded-xl bg-[#EEF2FF] text-primary-container font-bold shadow-2xs"
-                    : "text-on-surface-variant hover:text-on-surface font-medium px-1 py-1"
+                    ? "px-3.5 py-2 rounded-xl bg-[#EEF2FF] text-primary-container font-bold shadow-2xs"
+                    : "text-on-surface-variant hover:text-on-surface font-medium px-2 py-1"
                 }`
               }
             >
@@ -96,7 +96,7 @@ const Header = () => {
         </nav>
 
         {/* Mobile Menu Hamburger */}
-        <div className="xl:hidden flex items-center">
+        <div className="lg:hidden flex items-center">
           <button
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -112,7 +112,7 @@ const Header = () => {
 
       {/* Mobile Drawer */}
       {isMenuOpen && (
-        <div className="xl:hidden border-t border-outline-variant/20 bg-surface-container-lowest px-6 py-4 space-y-2 shadow-lg">
+        <div className="lg:hidden border-t border-outline-variant/20 bg-surface-container-lowest px-6 py-4 space-y-2 shadow-lg">
           {navItems.map((item) => (
             <NavLink
               key={item.name}
@@ -131,6 +131,14 @@ const Header = () => {
             </NavLink>
           ))}
           <div className="pt-3 border-t border-outline-variant/20 flex flex-col gap-2">
+            <Link
+              to="/tutor-portal"
+              onClick={() => setIsMenuOpen(false)}
+              className="py-2.5 text-center font-semibold text-[14px] text-primary-container bg-indigo-50 border border-indigo-200 rounded-xl shadow-xs flex items-center justify-center gap-1.5"
+            >
+              <span className="material-symbols-outlined text-[18px]">account_circle</span>
+              <span>Tutor Portal Login</span>
+            </Link>
             <Link
               to="/request-tutor"
               onClick={() => setIsMenuOpen(false)}

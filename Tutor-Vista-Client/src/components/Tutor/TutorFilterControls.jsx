@@ -257,16 +257,34 @@ const TutorFilterControls = ({
                 {/* District Select */}
                 <div className="relative">
                   <select
-                    value={currentDistrict}
+                    value={
+                      currentDistrict
+                        ? currentDistrict.replace(/\s+Sadar$/i, "").trim()
+                        : ""
+                    }
                     onChange={(e) => handleLocationFilterChange("district", e.target.value)}
                     className="w-full appearance-none pl-3.5 pr-8 py-2.5 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:border-brand-700 focus:ring-2 focus:ring-brand-700/20 shadow-2xs cursor-pointer"
                   >
                     <option value="">Select District</option>
-                    <option value="Dhaka">Dhaka District</option>
-                    <option value="Gazipur">Gazipur</option>
-                    <option value="Narayanganj">Narayanganj</option>
-                    <option value="Chattogram">Chattogram</option>
-                    <option value="Sylhet">Sylhet</option>
+                    {districts && districts.length > 0 ? (
+                      districts.map((d) => {
+                        const cleanVal = d.replace(/\s+Sadar$/i, "").trim();
+                        return (
+                          <option key={d} value={cleanVal}>
+                            {d}
+                          </option>
+                        );
+                      })
+                    ) : (
+                      <>
+                        <option value="Dhaka">Dhaka District</option>
+                        <option value="Gazipur">Gazipur</option>
+                        <option value="Narayanganj">Narayanganj</option>
+                        <option value="Chattogram">Chattogram</option>
+                        <option value="Sylhet">Sylhet</option>
+                        <option value="Khulna">Khulna</option>
+                      </>
+                    )}
                   </select>
                   <svg
                     className="w-4 h-4 absolute right-2.5 top-3 text-slate-400 pointer-events-none"

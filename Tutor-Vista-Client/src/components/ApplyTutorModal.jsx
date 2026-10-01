@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Check, Search, AlertCircle, ArrowRight } from "lucide-react";
 import ApiService from "../services/api";
+import { useTutorAuth } from "../context/TutorAuthContext";
 import { toast } from "react-toastify";
 import { Modal } from "./ui/Modal";
 import { Button } from "./ui/Button";
 
 const ApplyTutorModal = ({ isOpen, onClose, onSubmit, form, setForm }) => {
   const navigate = useNavigate();
+  const { currentTutor } = useTutorAuth();
   const [showApplyTutor, setShowApplyTutor] = useState(false);
   const [checking, setChecking] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && currentTutor?.phone && (!form.number || form.number === currentTutor.phone)) {
+      setForm((prev) => ({
+        ...prev,
+        number: currentTutor.phone,
+        name: currentTutor.name,
+        tutorId: currentTutor._id,
+      }));
+      setIsChecked(true);
+    }
+  }, [isOpen, currentTutor]);
 
   if (!isOpen) return null;
 
@@ -31,12 +45,17 @@ const ApplyTutorModal = ({ isOpen, onClose, onSubmit, form, setForm }) => {
       return;
     }
 
+    let cleanNumber = form.number.trim().replace(/[\s-]/g, "");
+    if (cleanNumber.startsWith("+880")) cleanNumber = cleanNumber.replace("+88", "");
+    else if (cleanNumber.startsWith("880")) cleanNumber = cleanNumber.replace("88", "");
+
     setChecking(true);
     try {
-      const res = await ApiService.getTutorByPhone(form.number);
+      const res = await ApiService.getTutorByPhone(cleanNumber);
       if (res?.success && res?.data?._id) {
         setForm((prev) => ({
           ...prev,
+          number: cleanNumber,
           name: res.data.name,
           tutorId: res.data._id,
         }));

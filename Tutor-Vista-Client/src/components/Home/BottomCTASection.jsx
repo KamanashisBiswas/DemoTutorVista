@@ -22,7 +22,7 @@ const BottomCTASection = () => {
             </div>
             <div className="relative z-10">
               <Link
-                to="/hire-a-tutor"
+                to="/request-tutor"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-surface-container-lowest text-primary-container font-headline-sm text-headline-sm text-[15px] font-bold shadow-md hover:bg-surface-container transition-all"
               >
                 <span>Post Tuition Requirement (Free)</span>
@@ -47,7 +47,7 @@ const BottomCTASection = () => {
             </div>
             <div className="relative z-10">
               <Link
-                to="/tuitions"
+                to="/apply-tutor"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-secondary text-on-secondary font-headline-sm text-headline-sm text-[15px] font-bold shadow-md hover:bg-on-secondary-container transition-all"
               >
                 <span>Apply to Join as a Tutor</span>

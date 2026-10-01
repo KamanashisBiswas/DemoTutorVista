@@ -2,6 +2,7 @@ const Tutor = require("../models/Tutor");
 const asyncHandler = require("../utils/asyncHandler");
 const multer = require("multer");
 const { cloudinary } = require("../config/cloudinary");
+const { sendTutorApplicationConfirmation } = require("../utils/smsService");
 
 // Use memory storage for Vercel's read-only filesystem
 const upload = multer({
@@ -186,6 +187,16 @@ const applyAsTutor = asyncHandler(async (req, res) => {
     }
 
     const tutorApplication = await Tutor.create(tutorData);
+
+    // Send automated confirmation SMS to tutor (non-blocking)
+    if (tutorApplication && tutorApplication.phone) {
+      sendTutorApplicationConfirmation({
+        phone: tutorApplication.phone,
+        name: tutorApplication.name,
+      }).catch((err) => {
+        console.error("[BulkSMS] Tutor application SMS error:", err.message);
+      });
+    }
 
     res.status(201).json({
       success: true,
