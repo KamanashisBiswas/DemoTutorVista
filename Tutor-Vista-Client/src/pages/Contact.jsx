@@ -109,12 +109,12 @@ const Contact = () => {
 <section className="relative bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 border-b border-indigo-900/40 py-12 md:py-16 text-white overflow-hidden" data-purpose="hero-cover">
   <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.22),rgba(255,255,255,0))] pointer-events-none"></div>
   <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-40"></div>
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
       <div className="max-w-2xl">
         {/*  Breadcrumbs & Live status badge  */}
         <div className="flex items-center gap-2 mb-3 text-xs md:text-sm text-indigo-300">
-          <a href="#" className="hover:text-white transition-colors">Home</a>
+          <Link to="/" className="hover:text-white transition-colors">Home</Link>
           <span className="">/</span>
           <span className="text-white font-medium">Contact &amp; Support</span>
           <span className="ml-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
@@ -160,7 +160,7 @@ const Contact = () => {
 </section>
 {/*  Main Workstation & Form Section (Inspired by Workspace Reference)  */}
 <section className="w-full py-space-xl bg-surface">
-<div className="max-w-[1280px] mx-auto px-gutter">
+<div className="container mx-auto px-4 sm:px-6 lg:px-12">
 {/*  Reference-Aligned Team & Support Desk Banner  */}
 <div className="mb-space-xl bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm overflow-hidden relative">
 <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
@@ -548,7 +548,7 @@ const Contact = () => {
 </section>
 {/*  Physical Office Locations Section  */}
 <section className="w-full py-space-xl bg-surface-container-low">
-<div className="max-w-[1280px] mx-auto px-gutter">
+<div className="container mx-auto px-4 sm:px-6 lg:px-12">
 {/*  Section Header  */}
 <div className="max-w-2xl mb-space-xl">
 <div className="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-primary/10 text-primary font-label-sm font-bold mb-space-xs">
@@ -667,7 +667,7 @@ const Contact = () => {
 </section>
 {/*  Department-Specific Routing Directory (Compact 3-Card Grid)  */}
 <section className="w-full py-space-xl bg-surface">
-<div className="max-w-[1280px] mx-auto px-gutter">
+<div className="container mx-auto px-4 sm:px-6 lg:px-12">
 <div className="text-center max-w-xl mx-auto mb-space-xl">
 <h2 className="font-headline-lg text-headline-lg text-on-surface">Department Specific Assistance</h2>
 <p className="font-body-md text-body-md text-on-surface-variant mt-1">Direct your specific request straight to the corresponding division officers.</p>
@@ -735,7 +735,7 @@ const Contact = () => {
 </section>
 {/*  Pre-Footer Action Banner  */}
 <section className="w-full bg-primary-container text-on-primary py-space-xl">
-<div className="max-w-[1280px] mx-auto px-gutter">
+<div className="container mx-auto px-4 sm:px-6 lg:px-12">
 <div className="flex flex-col lg:flex-row items-center justify-between gap-space-lg">
 <div className="space-y-space-xs text-center lg:text-left">
 <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-on-primary-container/20 text-on-primary font-label-sm font-bold">

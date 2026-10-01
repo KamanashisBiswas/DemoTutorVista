@@ -66,7 +66,7 @@ const Header = () => {
           </div>
         </aside>
       )}
-      {location.pathname === "/contact" && (
+      {(location.pathname === "/contact" || location.pathname === "/founder-message") && (
         <div id="promotional-announcement-bar" className="w-full bg-[#1e1b4b] text-white border-b border-indigo-900/60 z-50 relative py-2 px-4 text-xs font-medium">
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2.5 overflow-hidden">
