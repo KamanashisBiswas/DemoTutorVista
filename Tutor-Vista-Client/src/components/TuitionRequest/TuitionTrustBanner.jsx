@@ -22,7 +22,7 @@ const TuitionTrustBanner = () => {
               Are you a passionate university student or teacher looking for tuition jobs?
             </h2>
 
-            <p className="text-sm sm:text-base text-indigo-100 max-w-2xl leading-relaxed font-sans">
+            <p className="text-sm sm:text-base text-indigo-100 leading-relaxed font-sans">
               Join over 24,000 top tutors from BUET, Dhaka University, Medical Colleges, BRAC, NSU, and IBA. Start teaching nearby students on your preferred schedule with zero advance fees.
             </p>
 

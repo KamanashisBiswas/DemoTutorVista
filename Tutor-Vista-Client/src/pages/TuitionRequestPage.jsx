@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
 import ApiService from "../services/api";
 import locationData from "../assets/data/address.json";
 
@@ -505,6 +506,77 @@ const TuitionRequestPage = () => {
 
   return (
     <div className="min-h-screen bg-[#faf8ff] text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+      {/* 0. Top Dark Gradient Hero Cover matching reference */}
+      <section className="relative bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 border-b border-indigo-900/40 py-12 md:py-16 text-white overflow-hidden" data-purpose="hero-cover">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.22),rgba(255,255,255,0))] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-40"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="flex-1">
+              {/* Breadcrumbs & Live status badge */}
+              <div className="flex items-center gap-2 mb-3 text-xs md:text-sm text-indigo-300">
+                <Link to="/" className="hover:text-white transition-colors">Home</Link>
+                <span>/</span>
+                <span className="text-white font-medium">Tuition Board</span>
+                <span className="ml-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> 42 New Requests Today
+                </span>
+              </div>
+              {/* Title */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+                Explore Verified <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-indigo-200">Tuition Jobs</span> &amp; Teach on Your Terms
+              </h1>
+              {/* Description */}
+              <p className="text-base sm:text-lg text-indigo-100/80 mb-6 leading-relaxed">
+                Browse verified home and online tuition opportunities from Dhaka, Chattogram, and all 8 divisions. 0% advance registration fee with guaranteed timely payments and direct parent connect.
+              </p>
+              {/* Feature Chips & CTAs */}
+              <div className="flex flex-wrap items-center gap-3">
+                <a href="#tuition-list" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-lg shadow-indigo-600/30 transition-all cursor-pointer">
+                  Browse All Jobs ↓
+                </a>
+                <span className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-indigo-200 backdrop-blur-sm">
+                  💰 ৳8k - ৳25k Avg. Monthly Pay
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-indigo-200 backdrop-blur-sm">
+                  ⚡ 0% Placement Scam Guarantee
+                </span>
+              </div>
+            </div>
+            {/* Right Side Live Match Dashboard Card */}
+            <div className="hidden lg:block w-80 lg:w-96 shrink-0">
+              <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-white/5 backdrop-blur-md p-5 shadow-2xl space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span className="text-xs font-semibold text-white tracking-wide uppercase">Live Matching Active</span>
+                  </div>
+                  <span className="text-xs text-indigo-300">Dhaka &amp; Nationwide</span>
+                </div>
+                <div className="space-y-2.5 text-xs text-indigo-100">
+                  <div className="flex justify-between items-center p-2 rounded-lg bg-white/5">
+                    <span>Bangla Medium (NCTB)</span>
+                    <span className="font-bold text-emerald-400">640+ Posts</span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 rounded-lg bg-white/5">
+                    <span>English Medium (Edexcel/Cam)</span>
+                    <span className="font-bold text-indigo-300">780+ Posts</span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 rounded-lg bg-white/5">
+                    <span>IBA, Medical &amp; Engineering</span>
+                    <span className="font-bold text-amber-300">420+ Posts</span>
+                  </div>
+                </div>
+                <div className="pt-1 flex items-center justify-between text-xs text-indigo-300">
+                  <span>🛡️ 100% Guardian Verified</span>
+                  <span className="text-emerald-400 font-medium">Instant SMS Alerts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 1. Top Context & Live Counter Strip with Division Pills */}
       <TuitionRequestHeader
         activeDivision={activeDivision}

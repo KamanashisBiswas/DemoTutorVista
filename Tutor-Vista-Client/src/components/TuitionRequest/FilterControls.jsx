@@ -110,12 +110,12 @@ const FilterControls = ({
   }
 
   return (
-    <section className="w-full container mx-auto px-4 sm:px-6 lg:px-12 pt-6 pb-6" data-purpose="tuition-filter-toolbar">
+    <section id="tuition-list" className="w-full container mx-auto px-4 sm:px-6 lg:px-12 pt-6 pb-6" data-purpose="tuition-filter-toolbar">
       <div className="bg-white rounded-2xl shadow-xs p-5 sm:p-6 flex flex-col gap-5 border border-slate-200/90">
         {/* Top Control Bar: Search Input, Hide Filters, Reset All, Counter */}
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-2 border-b border-slate-100">
           {/* Search Input Box */}
-          <div className="flex-1 relative flex items-center max-w-2xl">
+          <div className="flex-1 relative flex items-center">
             <svg
               className="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"
               fill="none"
