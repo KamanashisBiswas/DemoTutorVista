@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 48" fill="none">
+  <!-- Graduation Cap Icon -->
+  <g transform="translate(0, 4)">
+    <path d="M22 6L40 15L22 24L4 15L22 6Z" fill="#6366F1" />
+    <path d="M10 18.5V26C10 30.5 22 34 22 34C22 34 34 30.5 34 26V18.5L22 24.5L10 18.5Z" fill="#818CF8" />
+    <path d="M40 15V27C40 28.5 38.5 30 38.5 30" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="40" cy="15" r="1.5" fill="#FBBF24" />
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="48" y="32" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">
+    Tutor<tspan fill="#818CF8">Bridge</tspan>
+  </text>
+</svg>

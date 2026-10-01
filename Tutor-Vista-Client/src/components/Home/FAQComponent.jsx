@@ -1,155 +1,99 @@
-import React, { useState, useEffect } from "react";
-import { ChevronDown, HelpCircle, MessageSquare, PhoneCall, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import ApiService from "../../services/api";
-import CommonSectionHeading from "../Common/CommonSectionHeading";
-import { Button } from "../ui/Button";
-import { Skeleton } from "../ui/Skeleton";
+import React, { useState } from "react";
 
-const defaultFaqs = [
+const faqs = [
   {
-    _id: "def-1",
-    question: "How does TutorVista verify tutors?",
-    answer: "Every tutor undergoes a multi-step verification process: National ID (NID) / Birth Certificate check, verified university student ID / graduation certificates, academic transcript review, and a direct interview before being approved for guardian referrals.",
+    id: 1,
+    question: "Are there any charges or commissions for parents to find a tutor?",
+    answer:
+      "No, TutorBridge is 100% free for parents and guardians. You do not pay any registration, placement, or commission fee. You only pay the agreed monthly tuition fee directly for the tutor’s service.",
   },
   {
-    _id: "def-2",
-    question: "Is there any registration fee for Guardians or Students?",
-    answer: "No, registration and posting tuition requirements are completely free for guardians and students. We also provide a free demo class to ensure you are 100% satisfied with the teacher.",
+    id: 2,
+    question: "How does TutorBridge verify tutor backgrounds and identity?",
+    answer:
+      "Every tutor undergoes a rigorous 4-step verification: official National ID (NID) authentication, university student ID cross-check with academic institutions (e.g. BUET, DU, DMC, NSU, BRAC), academic transcript audits, and optional local address and police verification.",
   },
   {
-    _id: "def-3",
-    question: "What happens if we are not satisfied with the assigned tutor?",
-    answer: "If you feel the tutor's teaching methodology doesn't match your student's learning style after the demo class, our matching team will provide immediate replacement teacher profiles at zero extra charge.",
+    id: 3,
+    question: "Can we take a free demo class before finalizing?",
+    answer:
+      "Yes! We offer a complimentary 1-day demo session so the student and parents can evaluate the tutor’s teaching style, communication fluency, and subject proficiency before making any financial commitment.",
   },
   {
-    _id: "def-4",
-    question: "How can university students join as tutors?",
-    answer: "University students and graduates can apply online through our 'Apply as Tutor' portal by uploading their academic certificates and ID documents. Once verified, our team will notify you for matching tuitions in your preferred areas.",
+    id: 4,
+    question: "What happens if the matched tutor is not suitable?",
+    answer:
+      "Under our Free Replacement Guarantee, if you are not 100% satisfied with your matched tutor at any point during the first month, our coordinator will arrange an alternate top-rated tutor within 24 hours at no extra charge.",
   },
   {
-    _id: "def-5",
-    question: "Can I choose both Male and Female tutors for home or online classes?",
-    answer: "Yes, guardians can specify their exact gender preference, preferred days per week, class timings, and whether they need home tutoring or online classes.",
+    id: 5,
+    question: "What are the typical tuition fees across Dhaka and other cities?",
+    answer:
+      "Tuition fees vary depending on the class, medium, days per week, and tutor’s university background. Typically, Primary levels range from ৳ 4,000–6,000/mo, Secondary & SSC range from ৳ 6,000–9,000/mo, and HSC or O/A-Levels range from ৳ 8,000–15,000/mo.",
+  },
+  {
+    id: 6,
+    question: "How do university students register as tutors on TutorBridge?",
+    answer:
+      "Educators can click 'Join as Tutor', complete their profile with verified credentials (Varsity ID, NID, and SSC/HSC marksheets), pass an online subject competency test, and start applying to live tuition jobs immediately.",
   },
 ];
 
 const FAQComponent = () => {
-  const [openFAQ, setOpenFAQ] = useState(0);
-  const [faqs, setFaqs] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchFAQs = async () => {
-      try {
-        setLoading(true);
-        const res = await ApiService.getFaqs();
-        if (res && res.success && res.data?.faqs?.length > 0) {
-          setFaqs(res.data.faqs);
-        } else {
-          setFaqs(defaultFaqs);
-        }
-      } catch {
-        setFaqs(defaultFaqs);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFAQs();
-  }, []);
+  // First item open by default as in Stitch
+  const [openIndex, setOpenIndex] = useState(0);
 
   const toggleFAQ = (index) => {
-    setOpenFAQ(openFAQ === index ? -1 : index);
+    setOpenIndex(openIndex === index ? -1 : index);
   };
 
   return (
-    <section className="py-16 sm:py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <CommonSectionHeading
-          badge="HELP & FAQ"
-          title="Frequently Asked"
-          highlight="Questions"
-          subtitle="Everything you need to know about finding tutors, demo classes, and joining our teaching community."
-        />
+    <section className="w-full py-16 lg:py-20 bg-surface-container-low/50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14 space-y-3">
+            <span className="px-3.5 py-1 rounded-full bg-surface-container-highest text-primary-container font-label-sm text-label-sm font-bold tracking-wide">
+              Common Queries
+            </span>
+            <h2 className="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              Everything you need to know about matching, verification, and payments.
+            </p>
+          </div>
 
-        {/* FAQ Accordion */}
-        <div className="space-y-3">
-          {loading ? (
-            <div className="space-y-3">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="p-4 bg-[#F7F8FB] border border-[#E4E6EE] rounded-md"
-                >
-                  <Skeleton variant="text" className="h-5 w-3/4 mb-2" />
-                  <Skeleton variant="text" className="h-4 w-1/2" />
-                </div>
-              ))}
-            </div>
-          ) : (
-            faqs.map((faq, index) => {
-              const isOpen = openFAQ === index;
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openIndex === idx;
               return (
                 <div
-                  key={faq._id || index}
-                  className={`border rounded-md transition-all duration-150 overflow-hidden ${
-                    isOpen
-                      ? "border-[#3730E0] bg-[#EEEDFD]/15 shadow-xs"
-                      : "border-[#E4E6EE] bg-white hover:border-[#CBD5E1]"
-                  }`}
+                  key={faq.id}
+                  className="bg-surface-container-lowest rounded-2xl shadow-xs overflow-hidden border border-outline-variant/10 transition-all"
                 >
                   <button
-                    type="button"
-                    onClick={() => toggleFAQ(index)}
-                    className="w-full py-4 px-5 text-left flex items-center justify-between gap-4 focus:outline-none"
-                    aria-expanded={isOpen}
+                    onClick={() => toggleFAQ(idx)}
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm text-on-surface font-bold text-[16px] hover:text-primary-container transition-colors"
                   >
-                    <span className="text-sm sm:text-base font-bold text-[#1A1D29] tracking-tight">
-                      {faq.question}
-                    </span>
-                    <div
-                      className={`w-7 h-7 rounded-sm flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                        isOpen
-                          ? "bg-[#3730E0] text-white rotate-180"
-                          : "bg-[#F7F8FB] text-[#5B5F73]"
+                    <span>{faq.question}</span>
+                    <span
+                      className={`material-symbols-outlined text-[20px] transition-transform duration-200 ${
+                        isOpen ? "rotate-180 text-primary-container" : "text-on-surface-variant"
                       }`}
                     >
-                      <ChevronDown className="w-4 h-4" />
-                    </div>
+                      expand_more
+                    </span>
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#5B5F73] leading-relaxed border-t border-[#E4E6EE]/50">
-                      <p>{faq.answer}</p>
+                    <div className="px-6 pb-6 pt-1 text-on-surface-variant font-body-md text-body-md leading-relaxed animate-fadeIn">
+                      {faq.answer}
                     </div>
                   )}
                 </div>
               );
-            })
-          )}
-        </div>
-
-        {/* Bottom Support Banner */}
-        <div className="mt-12 p-6 rounded-md bg-[#F7F8FB] border border-[#E4E6EE] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-sm bg-[#EEEDFD] text-[#3730E0] flex items-center justify-center shrink-0">
-              <MessageSquare className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-sm font-bold text-[#1A1D29]">
-                Have a question not listed here?
-              </h4>
-              <p className="text-xs text-[#5B5F73]">
-                Our academic counseling team is available 7 days a week.
-              </p>
-            </div>
+            })}
           </div>
-          <Link to="/contact">
-            <Button variant="primary" size="sm" iconRight={ArrowRight}>
-              Contact Support
-            </Button>
-          </Link>
         </div>
       </div>
     </section>

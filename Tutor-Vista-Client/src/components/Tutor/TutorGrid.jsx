@@ -13,10 +13,11 @@ const TutorGrid = ({
   onDetailsClick,
   truncateText,
   onClearFilters,
+  viewMode = "grid",
 }) => {
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className={viewMode === "list" ? "grid grid-cols-1 md:grid-cols-2 gap-5" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"}>
         {Array.from({ length: 8 }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
@@ -24,7 +25,7 @@ const TutorGrid = ({
     );
   }
 
-  if (error) {
+  if (error && (!tutors || tutors.length === 0)) {
     return (
       <ErrorState
         title="Unable to load tutors"
@@ -34,7 +35,7 @@ const TutorGrid = ({
     );
   }
 
-  if (tutors.length === 0) {
+  if (!tutors || tutors.length === 0) {
     return (
       <EmptyState
         icon={GraduationCap}
@@ -47,10 +48,10 @@ const TutorGrid = ({
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className={viewMode === "list" ? "grid grid-cols-1 md:grid-cols-2 gap-5" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"}>
       {tutors.map((tutor) => (
         <TutorCard
-          key={tutor._id}
+          key={tutor._id || tutor.id}
           tutor={tutor}
           onDetailsClick={onDetailsClick}
           truncateText={truncateText}

@@ -1,136 +1,162 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Home, Laptop, Users, Check, ArrowRight } from "lucide-react";
-import CommonSectionHeading from "../Common/CommonSectionHeading";
-import { Card } from "../ui/Card";
-import { Button } from "../ui/Button";
-
-import homeTutoringImage from "../../assets/Home/Image/home-tutor.svg";
-import onlineTutoringImage from "../../assets/Home/Image/online-tutor.svg";
-import groupTutoringImage from "../../assets/Home/Image/group-tutor.svg";
 
 const TuitionTypeSection = () => {
-  const types = [
-    {
-      id: "home",
-      icon: Home,
-      title: "Home Tutoring",
-      badge: "Most Popular",
-      badgeColor: "bg-[#EEEDFD] text-[#3730E0] border-[#DDD9FC]",
-      image: homeTutoringImage,
-      desc: "One-on-one personalized learning at the comfort of your own home with dedicated attention.",
-      features: [
-        "In-person mentor supervision",
-        "Individual pace & customized lesson plans",
-        "Convenient schedule matching guardian needs",
-      ],
-      link: "/request-tutor?type=home",
-    },
-    {
-      id: "online",
-      icon: Laptop,
-      title: "Online Tutoring",
-      badge: "Flexible & Global",
-      badgeColor: "bg-[#F0FDFA] text-[#0EA5A0] border-[#CCFBF1]",
-      image: onlineTutoringImage,
-      desc: "Interactive live digital classes via Zoom / Google Meet with top national subject experts.",
-      features: [
-        "Access teachers from anywhere in Bangladesh",
-        "Digital screen sharing & session recordings",
-        "Economical with zero travel time",
-      ],
-      link: "/request-tutor?type=online",
-    },
-    {
-      id: "group",
-      icon: Users,
-      title: "Group Tutoring",
-      badge: "Collaborative",
-      badgeColor: "bg-[#FFFBEB] text-[#D97706] border-[#FDE68A]",
-      image: groupTutoringImage,
-      desc: "Small-batch collaborative sessions where peers learn together under expert guidance.",
-      features: [
-        "Cost-effective shared tuition fees",
-        "Healthy peer discussion & mock tests",
-        "Ideal for SSC / HSC syllabus batch coverage",
-      ],
-      link: "/request-tutor?type=group",
-    },
-  ];
-
   return (
-    <section className="py-16 sm:py-20 bg-[#F7F8FB]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <CommonSectionHeading
-          badge="LEARNING FORMATS"
-          title="Flexible Tuition Modes"
-          highlight="For Every Need"
-          subtitle="Whether you prefer face-to-face home tutoring or flexible interactive online classes, we provide verified educators tailored to your learning style."
-        />
+    <section className="w-full py-10 lg:py-14 bg-surface-container-low/40 border-b border-outline-variant/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Section Heading */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-2.5">
+          <span className="px-3.5 py-1 rounded-full bg-surface-container-highest text-primary-container font-label-sm text-label-sm font-bold tracking-wide inline-block">
+            Flexible Formats
+          </span>
+          <h2 className="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+            Choose the Ideal Tutoring Mode
+          </h2>
+          <p className="font-body-md text-body-md text-on-surface-variant">
+            Customized learning formats designed to fit your family’s routine and academic goals.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {types.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Card
-                key={item.id}
-                hoverable
-                className="bg-white border-[#E4E6EE] p-6 flex flex-col justify-between"
+        {/* 3 Modes Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {/* Mode 1: Home Tutoring */}
+          <div className="bg-surface-container-lowest rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative group border border-slate-100">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-2xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[26px]">home_pin</span>
+                </div>
+                <span className="px-3 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
+                  Most Popular
+                </span>
+              </div>
+              <h3 className="font-headline-md text-headline-md text-on-surface font-bold text-[20px]">
+                Home Tutoring
+              </h3>
+              <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Dedicated 1-on-1 personalized teaching in the comfort and safety of your residence.
+              </p>
+              <ul className="space-y-2.5 pt-2 font-body-sm text-body-sm text-on-surface">
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Personalized student attention &amp; pace</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Direct daily feedback to guardians</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Flexible 3, 4 or 5 days/week schedules</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Verified tutors nearby your area</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-6 mt-6 border-t border-outline-variant/20">
+              <Link
+                to="/request-tutor?type=home"
+                className="block w-full py-3 text-center rounded-xl bg-surface-container hover:bg-primary-container text-on-surface hover:text-on-primary font-label-lg text-label-lg font-bold transition-all"
               >
-                <div>
-                  {/* Card Header & Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-sm bg-[#EEEDFD] text-[#3730E0] flex items-center justify-center">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span
-                      className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border ${item.badgeColor}`}
-                    >
-                      {item.badge}
-                    </span>
-                  </div>
+                Request Home Tutor
+              </Link>
+            </div>
+          </div>
 
-                  {/* Illustration Container */}
-                  <div className="h-40 w-full flex items-center justify-center p-3 mb-4 bg-[#F7F8FB] rounded-md">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-
-                  {/* Title & Desc */}
-                  <h3 className="text-lg font-bold text-[#1A1D29] mb-2 tracking-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-[#5B5F73] leading-relaxed mb-4">
-                    {item.desc}
-                  </p>
-
-                  {/* Feature checklist */}
-                  <ul className="space-y-2 mb-6">
-                    {item.features.map((feat, fIdx) => (
-                      <li
-                        key={fIdx}
-                        className="flex items-start gap-2 text-xs text-[#1A1D29]"
-                      >
-                        <Check className="w-3.5 h-3.5 text-[#16A34A] shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+          {/* Mode 2: Online 1-on-1 */}
+          <div className="bg-surface-container-lowest rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative border-2 border-primary-container">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-2xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[26px]">laptop_mac</span>
                 </div>
+                <span className="px-3 py-1 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-bold">
+                  Nationwide Access
+                </span>
+              </div>
+              <h3 className="font-headline-md text-headline-md text-on-surface font-bold text-[20px]">
+                Online 1-on-1 Tutoring
+              </h3>
+              <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Connect with BUET, DU &amp; medical college toppers regardless of which city you reside in.
+              </p>
+              <ul className="space-y-2.5 pt-2 font-body-sm text-body-sm text-on-surface">
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Live digital tablet whiteboard sessions</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Full session recordings for revisions</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Zero travel hassle, weather safe</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Specialized syllabus &amp; exam modules</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-6 mt-6 border-t border-outline-variant/20">
+              <Link
+                to="/request-tutor?type=online"
+                className="block w-full py-3 text-center rounded-xl bg-primary-container hover:bg-tertiary-container text-on-primary font-label-lg text-label-lg font-bold shadow-md transition-all"
+              >
+                Request Online Tutor
+              </Link>
+            </div>
+          </div>
 
-                <div className="pt-4 border-t border-[#E4E6EE]">
-                  <Link to={item.link}>
-                    <Button variant="secondary" size="sm" fullWidth iconRight={ArrowRight}>
-                      Choose {item.title}
-                    </Button>
-                  </Link>
+          {/* Mode 3: Group Batch */}
+          <div className="bg-surface-container-lowest rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative group border border-slate-100">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-2xl bg-surface-container text-tertiary-container flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[26px]">groups</span>
                 </div>
-              </Card>
-            );
-          })}
+                <span className="px-3 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
+                  Cost-Effective
+                </span>
+              </div>
+              <h3 className="font-headline-md text-headline-md text-on-surface font-bold text-[20px]">
+                Group Tuition (Batch 3–5)
+              </h3>
+              <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Small batch collaborative learning with peers to build competitive spirit and discuss problem sets.
+              </p>
+              <ul className="space-y-2.5 pt-2 font-body-sm text-body-sm text-on-surface">
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>35% to 45% savings on tuition budget</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Weekly peer mock exams &amp; leaderboard</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Interactive group doubt-solving</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary text-[16px]">check</span>
+                  <span>Held at tutor facility or online</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-6 mt-6 border-t border-outline-variant/20">
+              <Link
+                to="/request-tutor?type=group"
+                className="block w-full py-3 text-center rounded-xl bg-surface-container hover:bg-primary-container text-on-surface hover:text-on-primary font-label-lg text-label-lg font-bold transition-all"
+              >
+                Explore Group Batches
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

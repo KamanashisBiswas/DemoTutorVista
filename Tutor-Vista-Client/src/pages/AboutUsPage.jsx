@@ -52,9 +52,9 @@ const AboutUsPage = () => {
       {/* Hero / Overview Section */}
       <section className="py-12 sm:py-16 bg-white border-b border-[#E4E6EE]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <CommonSectionHeading title="About" highlight="TutorVista" />
+          <CommonSectionHeading title="About" highlight="TutorBridge" />
           <p className="mt-6 text-sm sm:text-base lg:text-lg text-[#5B5F73] leading-relaxed text-justify sm:text-center">
-            At TutorVista, we are dedicated to transforming the educational experience by offering high-quality, responsible, and reliable private tutors. With over 100,000 verified tutors across Dhaka and Chattogram, we are fully licensed under the government, ensuring that our services are legitimate and trustworthy. Whether it is a young learner taking their first steps, a student preparing for board exams, or someone seeking specialized guidance in language, arts, or test prep, we ensure every student receives personalized mentorship.
+            At TutorBridge, we are dedicated to transforming the educational experience by offering high-quality, responsible, and reliable private tutors. With over 100,000 verified tutors across Dhaka and Chattogram, we are fully licensed under the government, ensuring that our services are legitimate and trustworthy. Whether it is a young learner taking their first steps, a student preparing for board exams, or someone seeking specialized guidance in language, arts, or test prep, we ensure every student receives personalized mentorship.
           </p>
         </div>
       </section>
@@ -129,7 +129,7 @@ const AboutUsPage = () => {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#EEEDFD] text-[#3730E0] mb-3">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>The TutorVista Advantage</span>
+                <span>The TutorBridge Advantage</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1A1D29] mb-4">
                 Why Guardians & Tutors <span className="text-[#3730E0]">Trust Us</span>
@@ -166,6 +166,121 @@ const AboutUsPage = () => {
                 alt="Why Choose Us"
                 className="w-full max-w-md rounded-lg shadow-card border border-[#E4E6EE] bg-white p-4"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Numbers Section */}
+      <section className="py-12 bg-[#F7F8FB] border-t border-[#E4E6EE]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            <div className="bg-white p-6 rounded-xl border border-[#E4E6EE] shadow-xs">
+              <div className="text-3xl sm:text-4xl font-extrabold text-[#3730E0]">5,000+</div>
+              <div className="text-xs sm:text-sm font-bold text-[#1A1D29] mt-1">Verified Tutors</div>
+              <div className="text-[11px] text-[#5B5F73] mt-0.5">DU, BUET, Medical &amp; Top Unis</div>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-[#E4E6EE] shadow-xs">
+              <div className="text-3xl sm:text-4xl font-extrabold text-[#0EA5A0]">12,000+</div>
+              <div className="text-xs sm:text-sm font-bold text-[#1A1D29] mt-1">Students Guided</div>
+              <div className="text-[11px] text-[#5B5F73] mt-0.5">Classes 1–12, O/A Levels &amp; Admission</div>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-[#E4E6EE] shadow-xs">
+              <div className="text-3xl sm:text-4xl font-extrabold text-[#F5A524]">98.6%</div>
+              <div className="text-xs sm:text-sm font-bold text-[#1A1D29] mt-1">Guardian Satisfaction</div>
+              <div className="text-[11px] text-[#5B5F73] mt-0.5">Backed by Free Demo Guarantee</div>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-[#E4E6EE] shadow-xs">
+              <div className="text-3xl sm:text-4xl font-extrabold text-[#16A34A]">64</div>
+              <div className="text-xs sm:text-sm font-bold text-[#1A1D29] mt-1">Districts Covered</div>
+              <div className="text-[11px] text-[#5B5F73] mt-0.5">Home Tutoring &amp; Live Digital Classes</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Educational Commitments */}
+      <section className="py-14 sm:py-16 bg-white border-t border-[#E4E6EE]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <span className="text-xs font-bold text-[#3730E0] uppercase tracking-wider bg-[#EEEDFD] px-3 py-1 rounded-full">
+              OUR CORE VALUES
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1A1D29] mt-3">
+              The Four Pillars That Guide Every Match
+            </h3>
+            <p className="text-xs sm:text-sm text-[#5B5F73] mt-2">
+              We operate with uncompromising standards to safeguard students and foster academic excellence.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="p-6 rounded-xl bg-[#F7F8FB] border border-[#E4E6EE] hover:border-[#3730E0]/30 transition-all">
+              <div className="w-10 h-10 rounded-lg bg-[#EEEDFD] text-[#3730E0] flex items-center justify-center mb-4">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h4 className="text-sm font-bold text-[#1A1D29] mb-1.5">Uncompromising Verification</h4>
+              <p className="text-xs text-[#5B5F73] leading-relaxed">
+                National ID, institutional student cards, and educational transcripts are strictly verified before onboarding.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-[#F7F8FB] border border-[#E4E6EE] hover:border-[#0EA5A0]/30 transition-all">
+              <div className="w-10 h-10 rounded-lg bg-[#F0FDFA] text-[#0EA5A0] flex items-center justify-center mb-4">
+                <CheckCircle2 className="w-5 h-5" />
+              </div>
+              <h4 className="text-sm font-bold text-[#1A1D29] mb-1.5">Free Demo Guarantee</h4>
+              <p className="text-xs text-[#5B5F73] leading-relaxed">
+                No financial commitment until guardians and students are 100% convinced of the teacher's methodology.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-[#F7F8FB] border border-[#E4E6EE] hover:border-[#F5A524]/30 transition-all">
+              <div className="w-10 h-10 rounded-lg bg-[#FFFBEB] text-[#D97706] flex items-center justify-center mb-4">
+                <Award className="w-5 h-5" />
+              </div>
+              <h4 className="text-sm font-bold text-[#1A1D29] mb-1.5">Curriculum Specialization</h4>
+              <p className="text-xs text-[#5B5F73] leading-relaxed">
+                Dedicated subject coaches for National Curriculum (Bangla &amp; English version), Cambridge, Edexcel, and Admissions.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-[#F7F8FB] border border-[#E4E6EE] hover:border-[#16A34A]/30 transition-all">
+              <div className="w-10 h-10 rounded-lg bg-[#F0FDF4] text-[#16A34A] flex items-center justify-center mb-4">
+                <Users className="w-5 h-5" />
+              </div>
+              <h4 className="text-sm font-bold text-[#1A1D29] mb-1.5">Continuous Counseling</h4>
+              <p className="text-xs text-[#5B5F73] leading-relaxed">
+                Our support coordinators stay in regular touch with families to ensure consistent progress and mutual satisfaction.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Dual Action Banner */}
+          <div className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-[#3730E0] to-[#2D24C4] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md text-center sm:text-left">
+            <div>
+              <h4 className="text-xl sm:text-2xl font-bold">Ready to Elevate Your Child’s Education?</h4>
+              <p className="text-xs sm:text-sm text-white/80 mt-1 max-w-lg">
+                Post your tuition request for free or browse verified tutors in your neighborhood today.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <a href="/request-tutor">
+                <button
+                  type="button"
+                  className="px-5 py-2.5 rounded-md bg-white text-[#3730E0] hover:bg-[#F7F8FB] text-xs sm:text-sm font-bold transition-all shadow-xs"
+                >
+                  Post Tuition Request
+                </button>
+              </a>
+              <a href="/apply-tutor">
+                <button
+                  type="button"
+                  className="px-5 py-2.5 rounded-md bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-semibold transition-all"
+                >
+                  Join as an Educator
+                </button>
+              </a>
             </div>
           </div>
         </div>

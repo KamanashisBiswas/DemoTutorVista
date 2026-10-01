@@ -1,191 +1,94 @@
-import React, { useState } from "react";
-import Marquee from "react-fast-marquee";
-import { Users, GraduationCap, Star } from "lucide-react";
-import CommonSectionHeading from "../Common/CommonSectionHeading";
-import ReviewCard from "../ReviewCard";
+import React from "react";
+import reviewMahmuda from "../../assets/Home/stitch/review-mahmuda.jpg";
+import reviewTanvir from "../../assets/Home/stitch/review-tanvir.jpg";
+import reviewSayedul from "../../assets/Home/stitch/review-sayedul.jpg";
 
-import AjrinKarim from "../../assets/Review/Guardian/Ajrin-Karim.jpg";
-import KamrunNahar from "../../assets/Review/Guardian/Kamrun-Nahar.jpg";
-import RipaSahaTropa from "../../assets/Review/Guardian/Ripa-Saha-Tropa.jpg";
-import AllenMehedi from "../../assets/Review/Guardian/Allen-Mehedi.jpg";
-import TariqulIslamFahim from "../../assets/Review/Guardian/Tariqul-Islam-Fahim.jpg";
-import NavidSheikh from "../../assets/Review/Guardian/Navid-Sheikh.jpg";
-import TaninIslamAkash from "../../assets/Review/Guardian/Tanin-Islam-Akash.jpg";
-
-import JubayelHossen from "../../assets/Review/Tutor/JubayelHossen.jpg";
-import TareqRahman from "../../assets/Review/Tutor/Tareq-Rahman.jpg";
-import ArmanAkib from "../../assets/Review/Tutor/Arman-Akib.jpg";
-import ChidratulMuntah from "../../assets/Review/Tutor/Chidratul-Muntah.jpg";
-import BilkisAkther from "../../assets/Review/Tutor/Bilkis-Akther.jpg";
-import Avatar from "../../assets/Review/Tutor/avarar.jpg";
+const reviews = [
+  {
+    id: 1,
+    quote:
+      '"Finding a reliable Physics tutor for my daughter in Dhanmondi was always stressful. TutorBridge matched us with a BUET tutor within 6 hours. Her confidence improved drastically and she scored GPA-5 in her SSC board exam!"',
+    name: "Mahmuda Akhter",
+    role: "Mother of SSC Candidate • Dhanmondi",
+    image: reviewMahmuda,
+    alt: "Portrait of a smiling Bangladeshi mother in elegant saree standing in cozy home living room",
+  },
+  {
+    id: 2,
+    quote:
+      '"As an English Medium student taking Cambridge O-Levels, generic tutors never understood the syllabus pacing. My TutorBridge mentor simplified complex mechanics and past papers. The online whiteboard recordings are a lifesaver."',
+    name: "Tanvir Rahman",
+    role: "O-Level Student • Uttara, Dhaka",
+    image: reviewTanvir,
+    alt: "Portrait of an energetic teenage South Asian boy student in school uniform smiling confidently outdoors",
+  },
+  {
+    id: 3,
+    quote:
+      '"The 4-step background check and NID verification gave our family complete peace of mind. We have two daughters and safety is our first priority. TutorBridge is by far the most professional tuition platform in Bangladesh."',
+    name: "Engr. Sayedul Islam",
+    role: "Guardian of 2 • GEC, Chattogram",
+    image: reviewSayedul,
+    alt: "Portrait of a dignified middle aged Bangladeshi professional engineer wearing glasses and formal shirt in modern office",
+  },
+];
 
 const GuardianReviews = () => {
-  const [activeCategory, setActiveCategory] = useState("guardian");
-
-  const guardianReviews = [
-    {
-      id: 1,
-      name: "Tanin Islam Akash",
-      address: "Dhaka",
-      review: "আপনাদের সার্ভিসে আমি সন্তুষ্ট। অত্যন্ত যত্নশীল ও নিয়মানুবর্তী টিউটর পেয়েছি। শুভ কামনা রইলো।",
-      rating: 5,
-      image: AjrinKarim,
-      relationship: "Parent",
-    },
-    {
-      id: 2,
-      name: "Kamrun Nahar",
-      address: "Dhanmondi, Dhaka",
-      review: "I found two dedicated teachers from TutorVista for my kids. Both are well-qualified and sincere.",
-      rating: 5,
-      image: KamrunNahar,
-      relationship: "Guardian",
-    },
-    {
-      id: 3,
-      name: "Ripa Saha Tropa",
-      address: "Uttara, Dhaka",
-      review: "অভিজ্ঞ টিউটর দেওয়ার জন্য অভিজ্ঞ টিউটর প্রভাইডারও যে প্রয়োজন এটার বাস্তব উদাহরণ টিউটর ভিসতা।",
-      rating: 5,
-      image: RipaSahaTropa,
-      relationship: "Mother",
-    },
-    {
-      id: 4,
-      name: "Allen Mehedi",
-      address: "Chattogram",
-      review: "Undoubtedly the most dependable tuition network in Chattogram providing top-tier teachers.",
-      rating: 5,
-      image: AllenMehedi,
-      relationship: "Parent",
-    },
-    {
-      id: 5,
-      name: "Tariqul Islam Fahim",
-      address: "Banani, Dhaka",
-      review: "Quick matching and genuine background checks. Found our physics teacher within 24 hours.",
-      rating: 5,
-      image: TariqulIslamFahim,
-      relationship: "Father",
-    },
-    {
-      id: 6,
-      name: "Navid Sheikh",
-      address: "Gulshan, Dhaka",
-      review: "As a busy professional, finding trustworthy home tutoring was challenging. TutorVista made it effortless.",
-      rating: 5,
-      image: NavidSheikh,
-      relationship: "Parent",
-    },
-  ];
-
-  const tutorReviews = [
-    {
-      id: 1,
-      name: "Jubayel Hossen",
-      address: "DU Student, Dhaka",
-      review: "TutorVista helped me find genuine tuitions near my university hall without any payment risks.",
-      rating: 5,
-      image: JubayelHossen,
-      relationship: "Math Tutor",
-    },
-    {
-      id: 2,
-      name: "Tareq Rahman",
-      address: "BUET, Dhaka",
-      review: "Respectful guardians and clear commission terms. Highly recommend to university students.",
-      rating: 5,
-      image: TareqRahman,
-      relationship: "Physics Tutor",
-    },
-    {
-      id: 3,
-      name: "Chidratul Muntah",
-      address: "Chattogram",
-      review: "Verified students and smooth coordination from the matching team. Very supportive platform.",
-      rating: 5,
-      image: ChidratulMuntah,
-      relationship: "English Tutor",
-    },
-    {
-      id: 4,
-      name: "Arman Akib",
-      address: "Sylhet",
-      review: "Professional communication and on-time tuition match alerts. Best media in the city.",
-      rating: 5,
-      image: ArmanAkib,
-      relationship: "Chemistry Tutor",
-    },
-    {
-      id: 5,
-      name: "Bilkis Akther",
-      address: "Mirpur, Dhaka",
-      review: "Female tutor security was my top priority. TutorVista connects only with genuine verified families.",
-      rating: 5,
-      image: BilkisAkther,
-      relationship: "Biology Tutor",
-    },
-  ];
-
-  const activeReviews = activeCategory === "guardian" ? guardianReviews : tutorReviews;
-
   return (
-    <section className="py-16 sm:py-20 bg-[#F7F8FB] border-b border-[#E4E6EE] overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <CommonSectionHeading
-          badge="TESTIMONIALS"
-          title="Loved by Guardians &"
-          highlight="Tutors Alike"
-          subtitle="Real feedback from families and educators who found academic matches through TutorVista."
-        />
-
-        {/* Category Switcher Tabs */}
-        <div className="flex items-center justify-center mb-10">
-          <div className="inline-flex items-center gap-1.5 p-1 bg-white border border-[#E4E6EE] rounded-full shadow-xs">
-            <button
-              type="button"
-              onClick={() => setActiveCategory("guardian")}
-              className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold transition-all duration-150 ${
-                activeCategory === "guardian"
-                  ? "bg-[#3730E0] text-white shadow-sm"
-                  : "text-[#5B5F73] hover:text-[#1A1D29] hover:bg-[#F7F8FB]"
-              }`}
-            >
-              <Users className="w-3.5 h-3.5" />
-              <span>Parents & Guardians</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveCategory("tutor")}
-              className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold transition-all duration-150 ${
-                activeCategory === "tutor"
-                  ? "bg-[#3730E0] text-white shadow-sm"
-                  : "text-[#5B5F73] hover:text-[#1A1D29] hover:bg-[#F7F8FB]"
-              }`}
-            >
-              <GraduationCap className="w-3.5 h-3.5" />
-              <span>Verified Tutors</span>
-            </button>
-          </div>
+    <section className="w-full py-16 lg:py-20 bg-surface">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="text-center max-w-2xl mx-auto mb-14 lg:mb-16 space-y-3">
+          <span className="px-3.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold tracking-wide">
+            Verified Stories
+          </span>
+          <h2 className="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">
+            Trusted by Parents Across Bangladesh
+          </h2>
+          <p className="font-body-md text-body-md text-on-surface-variant">
+            Real feedback from parents and students who achieved academic transformation through TutorBridge.
+          </p>
         </div>
 
-        {/* Carousel / Marquee */}
-        <div className="relative">
-          <Marquee
-            gradient={true}
-            gradientColor="#F7F8FB"
-            gradientWidth={40}
-            speed={35}
-            pauseOnHover={true}
-          >
-            {activeReviews.map((rev) => (
-              <ReviewCard
-                key={rev.id}
-                review={rev}
-                activeCategory={activeCategory}
-              />
-            ))}
-          </Marquee>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {reviews.map((rev) => (
+            <div
+              key={rev.id}
+              className="bg-surface-container-lowest rounded-2xl p-6 shadow-xs flex flex-col justify-between relative border border-outline-variant/10 hover:shadow-md transition-shadow"
+            >
+              <div>
+                <div className="flex items-center gap-1 text-amber-500 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span
+                      key={i}
+                      className="material-symbols-outlined text-[18px]"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                    >
+                      star
+                    </span>
+                  ))}
+                </div>
+                <p className="font-body-md text-body-md text-on-surface leading-relaxed italic">
+                  {rev.quote}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3 pt-6 mt-4 border-t border-outline-variant/20">
+                <img
+                  className="w-11 h-11 rounded-full object-cover"
+                  src={rev.image}
+                  alt={rev.alt}
+                />
+                <div>
+                  <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[14px]">
+                    {rev.name}
+                  </h4>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant text-[12px]">
+                    {rev.role}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -78,7 +78,7 @@ const PrivacyPolicyPage = () => {
             className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
-            Your privacy matters to us. Learn how TutorVista collects, uses, and protects your information across our platform.
+            Your privacy matters to us. Learn how TutorBridge collects, uses, and protects your information across our platform.
           </motion.p>
         </motion.div>
       </section>
@@ -129,10 +129,10 @@ const PrivacyPolicyPage = () => {
                 <p className="text-sm sm:text-base text-[#5B5F73] leading-relaxed">
                   For questions or full details regarding our privacy practices, please contact our Data Protection team at{" "}
                   <a
-                    href="mailto:support@tutorvista.com"
+                    href="mailto:support@tutorbridge.com"
                     className="text-[#3730E0] font-semibold hover:underline break-all"
                   >
-                    support@tutorvista.com
+                    support@tutorbridge.com
                   </a>
                   .
                 </p>
@@ -147,10 +147,10 @@ const PrivacyPolicyPage = () => {
               </h2>
               <div className="p-5 rounded-xl bg-[#0EA5A0]/5 border border-[#0EA5A0]/20 text-[#5B5F73] text-sm sm:text-base leading-relaxed space-y-2">
                 <p>
-                  By accessing and using TutorVista, you consent to our Privacy Policy and agree to its terms.
+                  By accessing and using TutorBridge, you consent to our Privacy Policy and agree to its terms.
                 </p>
                 <p>
-                  This policy applies solely to our online activities and visitors to our website regarding information shared or collected on TutorVista. It does not apply to offline information collection or non-platform channels.
+                  This policy applies solely to our online activities and visitors to our website regarding information shared or collected on TutorBridge. It does not apply to offline information collection or non-platform channels.
                 </p>
               </div>
             </motion.div>
@@ -209,7 +209,7 @@ const PrivacyPolicyPage = () => {
                 4. Log Files
               </h2>
               <p className="text-sm sm:text-base text-[#5B5F73] leading-relaxed">
-                TutorVista follows standard industry practices for logging visitor traffic. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamps, referring/exit pages, and click counts. These are not linked to personally identifiable information and are strictly analyzed for trend assessment, security audits, and site administration.
+                TutorBridge follows standard industry practices for logging visitor traffic. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamps, referring/exit pages, and click counts. These are not linked to personally identifiable information and are strictly analyzed for trend assessment, security audits, and site administration.
               </p>
             </motion.div>
 
@@ -221,7 +221,7 @@ const PrivacyPolicyPage = () => {
               </h2>
               <div className="space-y-4 text-sm sm:text-base text-[#5B5F73] leading-relaxed">
                 <p>
-                  Like most platforms, TutorVista uses cookies to remember user preferences and personalize pages based on device configuration.
+                  Like most platforms, TutorBridge uses cookies to remember user preferences and personalize pages based on device configuration.
                 </p>
                 <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-[#1A1D29] text-sm">
                   Google and other verified partners may serve informational ads using cookies (such as DART cookies). Visitors can opt out of third-party ad cookies by visiting the{" "}
@@ -280,7 +280,7 @@ const PrivacyPolicyPage = () => {
                 7. Child Protection
               </h2>
               <p className="text-sm sm:text-base text-[#5B5F73] leading-relaxed">
-                Safeguarding younger learners is paramount. TutorVista does not knowingly collect personally identifiable information from children under 13 without direct guardian supervision. If a parent or guardian believes their child has registered unmonitored information, contact us immediately to purge the record.
+                Safeguarding younger learners is paramount. TutorBridge does not knowingly collect personally identifiable information from children under 13 without direct guardian supervision. If a parent or guardian believes their child has registered unmonitored information, contact us immediately to purge the record.
               </p>
             </motion.div>
 
@@ -296,7 +296,7 @@ const PrivacyPolicyPage = () => {
                 Our support team is available to assist you with privacy inquiries or data requests.
               </p>
               <a
-                href="mailto:support@tutorvista.com"
+                href="mailto:support@tutorbridge.com"
                 className="inline-flex items-center gap-2 bg-white text-[#3730E0] hover:bg-gray-100 font-semibold px-6 py-3 rounded-xl transition-all shadow-sm text-sm sm:text-base"
               >
                 <Mail className="w-4 h-4" />

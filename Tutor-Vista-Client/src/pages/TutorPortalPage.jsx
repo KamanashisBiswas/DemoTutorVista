@@ -562,7 +562,7 @@ const TutorPortalPage = () => {
                   <span>Need Profile Updates?</span>
                 </div>
                 <p className="text-xs text-[#5B5F73] leading-relaxed">
-                  To update your phone number, educational certificates, or university credentials, contact TutorVista Support Helpline directly.
+                  To update your phone number, educational certificates, or university credentials, contact TutorBridge Support Helpline directly.
                 </p>
                 <Link to="/contact" className="block pt-1">
                   <Button variant="outline" size="sm" fullWidth className="text-xs">

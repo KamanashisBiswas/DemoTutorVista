@@ -6,7 +6,7 @@ import FloatingCallButton from "./components/Common/FloatingCallButton";
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7F8FB] text-[#1A1D29] font-sans antialiased">
+    <div className="min-h-screen flex flex-col bg-surface text-on-surface font-body-md antialiased">
       <Header />
       <main className="flex-1">
         <Outlet />

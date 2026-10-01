@@ -94,7 +94,7 @@ const Contact = () => {
       {/* Header Banner */}
       <section className="py-12 sm:py-16 bg-white border-b border-[#E4E6EE]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <CommonSectionHeading title="Contact" highlight="TutorVista" />
+          <CommonSectionHeading title="Contact" highlight="TutorBridge" />
           <p className="mt-3 text-sm sm:text-base text-[#5B5F73] max-w-2xl mx-auto">
             Have questions about finding a tutor or applying for tuition jobs? Reach out to our dedicated support helpline.
           </p>
@@ -257,7 +257,7 @@ const Contact = () => {
                     Email Us
                   </h4>
                   <p className="text-xs font-bold text-[#1A1D29] mt-1 truncate">
-                    support@tutorvista.com
+                    support@tutorbridge.com
                   </p>
                 </div>
               </div>
@@ -349,7 +349,7 @@ const Contact = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#3730E0] flex-shrink-0" />
-                  <span>support@tutorvista.com</span>
+                  <span>support@tutorbridge.com</span>
                 </div>
               </div>
             </div>
@@ -378,7 +378,7 @@ const Contact = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#3730E0] flex-shrink-0" />
-                  <span>support@tutorvista.com</span>
+                  <span>support@tutorbridge.com</span>
                 </div>
               </div>
             </div>

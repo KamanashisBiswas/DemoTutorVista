@@ -22,7 +22,7 @@ const LandingPopup = ({ isOpen, onClose, imageSrc }) => {
         {imageSrc ? (
           <img
             src={imageSrc}
-            alt="Welcome to TutorVista"
+            alt="Welcome to TutorBridge"
             className="w-full h-auto max-h-[75vh] object-cover"
           />
         ) : (
@@ -31,7 +31,7 @@ const LandingPopup = ({ isOpen, onClose, imageSrc }) => {
               <Sparkles className="w-6 h-6 text-[#F5A524]" />
             </div>
             <h3 className="text-xl font-bold text-[#1A1D29]">
-              Welcome to TutorVista
+              Welcome to TutorBridge
             </h3>
             <p className="text-sm text-[#5B5F73]">
               Find Bangladesh’s top home and online tutors or apply as an educator today.

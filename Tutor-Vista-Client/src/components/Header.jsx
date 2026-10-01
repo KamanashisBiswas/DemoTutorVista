@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sparkles, PhoneCall, GraduationCap, ChevronRight, User } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import Logo from "../assets/Logo/Logo.svg";
-import Marquee from "react-fast-marquee";
-import { Button } from "./ui/Button";
-import { useTutorAuth } from "../context/TutorAuthContext";
 
 const Header = () => {
-  const { currentTutor, isLoggedIn } = useTutorAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Close mobile drawer on route navigation
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
@@ -21,195 +14,107 @@ const Header = () => {
     { name: "Find Tutors", path: "/tutors" },
     { name: "Tuition Jobs", path: "/tuition-jobs" },
     { name: "Request Tutor", path: "/request-tutor" },
-    { name: "Apply as Tutor", path: "/apply-tutor" },
+    { name: "Apply Tutor", path: "/apply-tutor" },
     { name: "About Us", path: "/about" },
     { name: "Founder's Message", path: "/founder-message" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E4E6EE] shadow-xs">
-      {/* Top Announcement Bar */}
-      <div className="bg-[#3730E0] text-white py-1.5 px-4 text-xs font-medium">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2 shrink-0 pr-4">
-            <span className="inline-flex items-center gap-1 bg-[#2D24C4] px-2 py-0.5 rounded-full text-[11px] font-semibold text-[#F5A524]">
-              <Sparkles className="h-3 w-3" />
-              <span>OFFER</span>
+    <header className="sticky top-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] border-b border-outline-variant/15">
+      <div className="h-20 container mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between gap-4">
+        {/* Brand Logo & Subtitle */}
+        <Link to="/" className="flex items-center gap-2.5 shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-xs">
+            <span className="material-symbols-outlined text-[22px]">school</span>
+          </div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1.5">
+              <span className="font-bold text-[18px] text-on-surface tracking-tight leading-tight">
+                Tutor<span className="text-primary-container">Bridge</span>
+              </span>
+              <span className="px-1.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-bold text-[10.5px] tracking-wide leading-none">
+                BD
+              </span>
+            </div>
+            <span className="text-[11px] text-on-surface-variant font-medium leading-tight">
+              Premier Tuition Network
             </span>
           </div>
+        </Link>
 
-          <div className="flex-1 overflow-hidden">
-            <Marquee gradient={false} speed={45} pauseOnHover={true}>
-              <div className="flex items-center space-x-12 pr-12 text-xs">
-                <span>
-                  🎓 Verified & Expert Tutors available in Dhaka, Chittagong & all major divisions.
-                </span>
-                <span>
-                  ✨ Refer a qualified tutor or student and earn up to 10% referral bonus!
-                </span>
-                <span>
-                  📞 Free Guardian Consultation & Free Demo Class Guarantee!
-                </span>
-              </div>
-            </Marquee>
-          </div>
-
-          <div className="hidden lg:flex items-center gap-2 pl-4 border-l border-white/20 text-xs">
-            <PhoneCall className="w-3 h-3 text-[#F5A524]" />
-            <span className="text-white/90">Helpline:</span>
-            <span className="font-semibold text-white">01700-000000</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navbar */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2.5 shrink-0 py-2">
-            <img
-              src={Logo}
-              alt="TutorVista"
-              className="h-9 w-auto object-contain transition-transform duration-200 hover:scale-105"
-            />
-          </Link>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  `px-3 py-2 text-sm font-medium rounded-md transition-all duration-150 ${
-                    isActive
-                      ? "text-[#3730E0] bg-[#EEEDFD] font-semibold"
-                      : "text-[#1A1D29] hover:text-[#3730E0] hover:bg-[#F7F8FB]"
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
-          </nav>
-
-          {/* Right Header CTAs */}
-          <div className="hidden lg:flex items-center space-x-2.5">
-            {isLoggedIn ? (
-              <Link to="/tutor-portal">
-                <Button variant="secondary" size="md" iconLeft={GraduationCap} className="text-xs font-semibold">
-                  <span>{currentTutor?.name?.split(" ")[0] || "Tutor Portal"}</span>
-                </Button>
-              </Link>
-            ) : (
-              <Link to="/tutor-login">
-                <Button variant="ghost" size="md" iconLeft={User} className="text-xs font-semibold text-[#5B5F73] hover:text-[#3730E0]">
-                  <span>Tutor Portal</span>
-                </Button>
-              </Link>
-            )}
-
-            <Link to="/request-tutor">
-              <Button variant="primary" size="md" iconRight={ChevronRight}>
-                Request a Tutor
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Trigger */}
-          <div className="xl:hidden flex items-center space-x-2">
-            <Link to="/request-tutor" className="sm:inline-block hidden">
-              <Button variant="primary" size="sm">
-                Request Tutor
-              </Button>
-            </Link>
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-[#1A1D29] hover:text-[#3730E0] hover:bg-[#F7F8FB] focus:outline-none focus:ring-2 focus:ring-[#3730E0]/20 transition"
-              aria-label="Toggle Navigation Menu"
+        {/* Desktop Nav Items (100% matched with reference image) */}
+        <nav className="hidden xl:flex items-center gap-4 lg:gap-5 2xl:gap-7">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.path}
+              end={item.path === "/"}
+              className={({ isActive }) =>
+                `text-[14px] transition-all ${
+                  isActive
+                    ? "px-4 py-2 rounded-xl bg-[#EEF2FF] text-primary-container font-bold shadow-2xs"
+                    : "text-on-surface-variant hover:text-on-surface font-medium px-1 py-1"
+                }`
+              }
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6 text-[#DC2626]" />
-              ) : (
-                <Menu className="h-6 w-6 text-[#1A1D29]" />
-              )}
-            </button>
-          </div>
+              {item.name}
+            </NavLink>
+          ))}
+        </nav>
+
+        {/* Right Side: Phone Pill */}
+        <div className="flex items-center gap-3">
+          <a
+            href="tel:+8809612888777"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#EEF2FF] text-on-surface font-semibold text-[13.5px] hover:bg-[#E0E7FF] transition-colors shadow-2xs"
+          >
+            <span className="material-symbols-outlined text-secondary text-[18px]">call</span>
+            <span>+880 9612 888 777</span>
+          </a>
+
+          {/* Mobile Menu Hamburger */}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="xl:hidden p-2 rounded-lg text-on-surface hover:bg-surface-container transition cursor-pointer"
+            aria-label="Toggle Navigation"
+          >
+            <span className="material-symbols-outlined text-[24px]">
+              {isMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       {isMenuOpen && (
-        <div className="xl:hidden fixed inset-0 top-[102px] z-50 flex">
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
-            onClick={() => setIsMenuOpen(false)}
-          />
-
-          {/* Drawer content */}
-          <div className="relative w-4/5 max-w-sm bg-white h-full shadow-2xl flex flex-col justify-between p-6 overflow-y-auto animate-slide-up">
-            <div className="space-y-1">
-              <div className="pb-3 mb-3 border-b border-[#E4E6EE] flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#5B5F73]">
-                  Navigation Menu
-                </span>
-                <span className="text-xs text-[#0EA5A0] font-medium flex items-center gap-1">
-                  <GraduationCap className="w-3.5 h-3.5" />
-                  Verified Platform
-                </span>
-              </div>
-
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `flex items-center justify-between px-3.5 py-2.5 rounded-md text-sm font-medium transition-all ${
-                      isActive
-                        ? "text-[#3730E0] bg-[#EEEDFD] font-semibold"
-                        : "text-[#1A1D29] hover:text-[#3730E0] hover:bg-[#F7F8FB]"
-                    }`
-                  }
-                >
-                  <span>{item.name}</span>
-                  <ChevronRight className="w-4 h-4 text-[#5B5F73]/50" />
-                </NavLink>
-              ))}
-            </div>
-
-            {/* Mobile Drawer Bottom Actions */}
-            <div className="pt-6 border-t border-[#E4E6EE] space-y-2.5">
-              {isLoggedIn ? (
-                <Link to="/tutor-portal" className="block w-full">
-                  <Button variant="secondary" size="md" fullWidth iconLeft={GraduationCap}>
-                    My Tutor Portal ({currentTutor?.name?.split(" ")[0]})
-                  </Button>
-                </Link>
-              ) : (
-                <Link to="/tutor-login" className="block w-full">
-                  <Button variant="outline" size="md" fullWidth iconLeft={User}>
-                    Tutor Portal Login
-                  </Button>
-                </Link>
-              )}
-              <Link to="/request-tutor" className="block w-full">
-                <Button variant="primary" size="md" fullWidth>
-                  Request a Tutor
-                </Button>
-              </Link>
-              <Link to="/apply-tutor" className="block w-full">
-                <Button variant="secondary" size="md" fullWidth>
-                  Apply as a Tutor
-                </Button>
-              </Link>
-              <div className="p-3 bg-[#F7F8FB] rounded-md text-center mt-3">
-                <p className="text-xs text-[#5B5F73]">Need immediate assistance?</p>
-                <p className="text-xs font-bold text-[#3730E0] mt-0.5">📞 01700-000000</p>
-              </div>
-            </div>
+        <div className="xl:hidden border-t border-outline-variant/20 bg-surface-container-lowest px-6 py-4 space-y-2 shadow-lg">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.path}
+              end={item.path === "/"}
+              onClick={() => setIsMenuOpen(false)}
+              className={({ isActive }) =>
+                `block py-2 text-[15px] font-medium transition-colors ${
+                  isActive
+                    ? "text-primary-container font-bold pl-2 border-l-2 border-primary-container"
+                    : "text-on-surface hover:text-primary-container"
+                }`
+              }
+            >
+              {item.name}
+            </NavLink>
+          ))}
+          <div className="pt-3 border-t border-outline-variant/20 flex flex-col gap-2">
+            <Link
+              to="/request-tutor"
+              onClick={() => setIsMenuOpen(false)}
+              className="py-2.5 text-center font-semibold text-[14px] text-on-primary bg-primary-container rounded-xl shadow-xs"
+            >
+              Hire a Tutor Now
+            </Link>
           </div>
         </div>
       )}

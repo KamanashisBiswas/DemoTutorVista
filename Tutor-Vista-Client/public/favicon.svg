@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rounded Base Badge -->
+  <rect width="64" height="64" rx="16" fill="#3730E0" />
+  
+  <!-- Subtle Gradient Highlight -->
+  <path d="M0 16C0 7.16344 7.16344 0 16 0H32L0 44V16Z" fill="#FFFFFF" fill-opacity="0.12" />
+
+  <!-- Graduation Cap (Diamond Top) -->
+  <path d="M14 26L32 17L50 26L32 35L14 26Z" fill="#FFFFFF" />
+
+  <!-- Cap Cap Base (Neck / Lower Cup) -->
+  <path d="M21 29.5V36C21 40 32 42.5 32 42.5C32 42.5 43 40 43 36V29.5L32 35L21 29.5Z" fill="#0EA5A0" />
+
+  <!-- Bridge Arch Curve (The Bridge motif) -->
+  <path d="M12 50C20 44 44 44 52 50" stroke="#0EA5A0" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.9" />
+  <path d="M18 53C24 48.5 40 48.5 46 53" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.75" />
+
+  <!-- Excellence Star & Tassel -->
+  <circle cx="50" cy="18" r="3.5" fill="#F5A524" />
+  <path d="M50 26V35C50 36.5 48 37.5 48 37.5" stroke="#F5A524" stroke-width="2.5" stroke-linecap="round" />
+</svg>

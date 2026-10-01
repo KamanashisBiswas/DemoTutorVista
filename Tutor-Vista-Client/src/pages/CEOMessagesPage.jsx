@@ -11,9 +11,9 @@ const CEOMessagesPage = () => {
 
   const paragraphs = [
     "Education is more than just grades and exam results — it is the bridge between a student's hidden potential and their future aspirations. When a learner is paired with the right mentor, uncertainty transforms into genuine curiosity and lifelong confidence.",
-    "Every student learns at their own pace, and behind every parent's search for a tutor is a deep aspiration to provide their child with the highest standard of guidance. TutorVista was built to bridge this vital gap — combining modern technology with compassionate, verified mentorship.",
+    "Every student learns at their own pace, and behind every parent's search for a tutor is a deep aspiration to provide their child with the highest standard of guidance. TutorBridge was built to bridge this vital gap — combining modern technology with compassionate, verified mentorship.",
     "Having witnessed the challenges families and educators encounter across the conventional learning landscape, our goal has always been clear: create a seamless, transparent platform where top-tier academic guidance is accessible to every student, everywhere.",
-    "At TutorVista, we don't merely connect tutors with students. We thoroughly verify credentials, uphold rigorous teaching standards, and provide continuous support so that every session brings measurable academic growth and peace of mind.",
+    "At TutorBridge, we don't merely connect tutors with students. We thoroughly verify credentials, uphold rigorous teaching standards, and provide continuous support so that every session brings measurable academic growth and peace of mind.",
     "As we expand our reach across Bangladesh, our commitment remains steadfast — empowering young minds, honoring passionate educators, and building a trusted community dedicated to lifelong learning.",
   ];
 
@@ -71,7 +71,7 @@ const CEOMessagesPage = () => {
                     </span>
                     <span className="text-[#0EA5A0] font-medium flex items-center gap-1">
                       <Award className="w-3.5 h-3.5" />
-                      TutorVista
+                      TutorBridge
                     </span>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const CEOMessagesPage = () => {
                     </span>
                   </div>
                   <div className="text-xs font-semibold text-[#3730E0] bg-[#3730E0]/5 px-3 py-1.5 rounded-full border border-[#3730E0]/15">
-                    TutorVista Community
+                    TutorBridge Community
                   </div>
                 </div>
               </div>

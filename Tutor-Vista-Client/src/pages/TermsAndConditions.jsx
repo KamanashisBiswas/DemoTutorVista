@@ -64,7 +64,7 @@ const TermsAndConditions = () => {
             {data.title || "Terms and Conditions"}
           </h1>
           <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-            {data.description || "By applying to be a tutor with Tutor Vista, you agree to the following terms:"}
+            {data.description || "By applying to be a tutor with TutorBridge, you agree to the following terms:"}
           </p>
         </div>
       </section>
@@ -203,7 +203,7 @@ const TermsAndConditions = () => {
           </p>
           <div className="flex items-center justify-center gap-1.5 text-sm font-bold text-[#3730E0]">
             <Building className="w-4 h-4" />
-            <span>{data.organization || "TutorVista"}</span>
+            <span>{data.organization || "TutorBridge"}</span>
           </div>
         </div>
       </div>

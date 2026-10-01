@@ -33,7 +33,7 @@ const HomeContact = () => {
               <div className="relative z-10 rounded-lg overflow-hidden border border-[#E4E6EE] shadow-md bg-[#F7F8FB]">
                 <img
                   src={HomeAboutImg}
-                  alt="TutorVista Student Learning"
+                  alt="TutorBridge Student Learning"
                   className="w-full h-auto object-cover transform hover:scale-102 transition-transform duration-500"
                 />
               </div>
@@ -55,7 +55,7 @@ const HomeContact = () => {
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             <div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#F0FDFA] text-[#0EA5A0] border border-[#CCFBF1] mb-3">
-                ABOUT TUTORVISTA
+                ABOUT TUTORBRIDGE
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1A1D29] tracking-tight leading-tight">
                 Connecting <span className="text-[#3730E0]">Ambitious Students</span> with Expert, Vetted Tutors

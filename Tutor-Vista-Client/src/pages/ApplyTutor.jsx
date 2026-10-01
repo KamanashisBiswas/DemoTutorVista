@@ -630,7 +630,7 @@ const ApplyTutor = () => {
                 Application Submitted!
               </h2>
               <p className="text-sm text-[#5B5F73] max-w-md mx-auto">
-                Thank you for applying to become a verified tutor at TutorVista. Your profile is now registered for screening.
+                Thank you for applying to become a verified tutor at TutorBridge. Your profile is now registered for screening.
               </p>
             </div>
 

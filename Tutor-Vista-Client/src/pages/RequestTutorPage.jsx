@@ -419,7 +419,7 @@ const RequestTutorPage = () => {
                 Tuition Request Submitted!
               </h2>
               <p className="text-sm text-[#5B5F73] max-w-md mx-auto">
-                We have received your requirement. A dedicated TutorVista academic coordinator will contact you to match the best tutor.
+                We have received your requirement. A dedicated TutorBridge academic coordinator will contact you to match the best tutor.
               </p>
             </div>
 
