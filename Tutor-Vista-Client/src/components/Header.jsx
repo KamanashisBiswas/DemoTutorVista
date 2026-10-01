@@ -21,7 +21,52 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] border-b border-outline-variant/15">
+    <>
+      {location.pathname === "/request-tutor" && (
+        <aside
+          className="bg-slate-900 text-white text-xs py-2 px-4 border-b border-slate-800"
+          data-purpose="top-announcement-bar"
+        >
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex items-center gap-1.5 text-slate-300">
+                <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                  ></path>
+                </svg>
+                <span>Helpline:</span>
+                <strong className="text-white font-bold">+880 9612 888 777</strong>
+                <span className="text-slate-400">(9 AM - 10 PM)</span>
+              </span>
+              <span className="hidden md:inline text-slate-600">|</span>
+              <span className="hidden md:inline-flex items-center gap-1 text-emerald-400 font-medium">
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                  <path
+                    clipRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    fillRule="evenodd"
+                  ></path>
+                </svg>
+                <span>Govt. Reg. Verified EdTech Platform</span>
+              </span>
+            </div>
+            <div className="flex items-center gap-4 text-slate-300">
+              <Link to="/contact" className="hover:text-white transition-colors">
+                Parent Support
+              </Link>
+              <span className="text-slate-600">|</span>
+              <Link to="/apply-tutor" className="hover:text-white transition-colors text-amber-300 font-semibold">
+                Join as Tutor
+              </Link>
+            </div>
+          </div>
+        </aside>
+      )}
+      <header className="sticky top-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] border-b border-outline-variant/15">
       <div className="h-20 container mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between gap-4">
         {/* Brand Logo & Subtitle */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0">
@@ -119,6 +164,7 @@ const Header = () => {
         </div>
       )}
     </header>
+    </>
   );
 };
 
