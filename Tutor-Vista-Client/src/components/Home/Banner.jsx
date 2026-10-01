@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import nusratImg from "../../assets/Home/stitch/hero-nusrat.jpg";
+import tutorTanvir from "../../assets/Home/stitch/tutor-tanvir.jpg";
+import tutorSadia from "../../assets/Home/stitch/tutor-sadia.jpg";
 import social1 from "../../assets/Home/stitch/social-1.jpg";
 import social2 from "../../assets/Home/stitch/social-2.jpg";
 import social3 from "../../assets/Home/stitch/social-3.jpg";
@@ -12,6 +14,20 @@ const Banner = () => {
   const [grade, setGrade] = useState("class9-10");
   const [subject, setSubject] = useState("all");
   const [preference, setPreference] = useState("any");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 3);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const changeSlide = (delta) => {
+    setCurrentSlide((prev) => (prev + delta + 3) % 3);
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -274,159 +290,462 @@ const Banner = () => {
             </div>
           </div>
 
-          {/* Right Column: Interactive Featured Verified Tutor Hero Card & Social Proof */}
-          <div className="lg:col-span-5 relative flex flex-col items-center">
-            {/* Top Floating Micro Badge */}
-            <div className="w-full flex justify-end -mb-4 z-20 pr-4">
-              <div className="px-3.5 py-1.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm tracking-wide font-bold flex items-center gap-1.5 shadow-md animate-bounce">
+          {/* Right Column: Interactive Featured Verified Tutor Hero Carousel & Social Proof */}
+          <div
+            className="lg:col-span-5 relative flex flex-col items-center"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Top Carousel Navigation Header */}
+            <div className="w-full flex items-center justify-between mb-3 px-1 z-20">
+              <div className="px-3.5 py-1.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm tracking-wide font-bold flex items-center gap-1.5 shadow-md">
                 <span className="material-symbols-outlined text-[16px]">stars</span>
-                <span>Verified Top 1% Tutor</span>
+                <span>Spotlight Verified Tutors</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-label-sm text-label-sm font-bold text-on-surface-variant bg-surface-container-high px-2.5 py-1 rounded-full">
+                  {currentSlide + 1} of 3
+                </span>
+                <div className="flex items-center gap-1 bg-surface-container-lowest shadow-sm rounded-full p-0.5 border border-outline-variant/20">
+                  <button
+                    type="button"
+                    onClick={() => changeSlide(-1)}
+                    className="w-7 h-7 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors cursor-pointer"
+                    aria-label="Previous slide"
+                  >
+                    <span className="material-symbols-outlined text-[18px]">chevron_left</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => changeSlide(1)}
+                    className="w-7 h-7 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors cursor-pointer"
+                    aria-label="Next slide"
+                  >
+                    <span className="material-symbols-outlined text-[18px]">chevron_right</span>
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* Hero Profile Card */}
-            <div className="w-full bg-surface-container-lowest rounded-3xl p-6 shadow-2xl relative overflow-hidden border border-slate-100">
-              {/* Decorative Accent Gradient Bar */}
-              <div className="h-2 w-full bg-gradient-to-r from-primary-container via-secondary to-secondary-container absolute top-0 left-0" />
-              
-              <div className="flex items-start gap-4 pt-3">
-                <div className="relative shrink-0">
-                  <img
-                    src={nusratImg}
-                    alt="Nusrat Jahan"
-                    className="w-20 h-20 rounded-2xl object-cover shadow-md"
-                  />
-                  <span className="absolute -bottom-1.5 -right-1.5 bg-secondary text-on-secondary rounded-full p-1 shadow-sm flex items-center justify-center">
-                    <span className="material-symbols-outlined text-[14px]">verified</span>
-                  </span>
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold truncate">
-                      Nusrat Jahan
-                    </h3>
-                    <div className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm font-bold text-on-surface">
-                      <span
-                        className="material-symbols-outlined text-amber-500 text-[16px]"
-                        style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        star
+            {/* Slides Container */}
+            <div className="w-full relative min-h-[420px]">
+              {/* Slide 1: Nusrat Jahan */}
+              <div
+                className={`w-full flex flex-col items-center transition-opacity duration-300 ${
+                  currentSlide === 0 ? "block opacity-100" : "hidden opacity-0"
+                }`}
+              >
+                <div className="w-full bg-surface-container-lowest rounded-3xl p-6 shadow-2xl relative overflow-hidden border border-outline-variant/20">
+                  <div className="h-2 w-full bg-gradient-to-r from-primary-container via-secondary to-secondary-container absolute top-0 left-0" />
+                  <div className="flex items-start gap-4 pt-3">
+                    <div className="relative shrink-0">
+                      <img
+                        src={nusratImg}
+                        alt="Nusrat Jahan"
+                        className="w-20 h-20 rounded-2xl object-cover shadow-md"
+                      />
+                      <span className="absolute -bottom-1.5 -right-1.5 bg-secondary text-on-secondary rounded-full p-1 shadow-sm flex items-center justify-center">
+                        <span className="material-symbols-outlined text-[14px]">verified</span>
                       </span>
-                      <span>4.9</span>
-                      <span className="text-on-surface-variant font-normal">(128)</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold truncate">
+                          Nusrat Jahan
+                        </h3>
+                        <div className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm font-bold text-on-surface">
+                          <span
+                            className="material-symbols-outlined text-amber-500 text-[16px]"
+                            style={{ fontVariationSettings: "'FILL' 1" }}
+                          >
+                            star
+                          </span>
+                          <span>4.9</span>
+                          <span className="text-on-surface-variant font-normal">(128)</span>
+                        </div>
+                      </div>
+                      <p className="font-body-sm text-body-sm text-primary-container font-semibold mt-0.5">
+                        MS in Applied Mathematics
+                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+                          BRAC University
+                        </span>
+                        <span className="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold">
+                          <span className="material-symbols-outlined text-[13px]">check_circle</span>
+                          NID Checked
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <p className="font-body-sm text-body-sm text-primary-container font-semibold mt-0.5">
-                    MS in Applied Mathematics
-                  </p>
-
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
-                      BRAC University
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">
+                      Higher Mathematics
                     </span>
-                    <span className="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold">
-                      <span className="material-symbols-outlined text-[13px]">check_circle</span>
-                      NID Checked
+                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">
+                      Physics
+                    </span>
+                    <span className="px-2.5 py-1 rounded-lg bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md font-semibold">
+                      English &amp; Bangla Medium
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 mt-5 p-3 rounded-xl bg-surface-container-low text-center">
+                    <div>
+                      <p className="font-headline-sm text-headline-sm text-on-surface font-bold">5+ Yrs</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        Experience
+                      </p>
+                    </div>
+                    <div className="border-x border-outline-variant/30">
+                      <p className="font-headline-sm text-headline-sm text-on-surface font-bold">120+</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        Students Taught
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-headline-sm text-headline-sm text-secondary font-bold">98%</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        GPA-5 Success
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 pt-4 border-t border-outline-variant/20 flex items-center justify-between gap-3">
+                    <div>
+                      <span className="font-body-sm text-body-sm text-on-surface-variant block text-[12px]">
+                        Tutoring Fee
+                      </span>
+                      <span className="font-headline-sm text-headline-sm text-on-surface font-bold">
+                        ৳ 8,000{" "}
+                        <span className="font-body-sm text-body-sm text-on-surface-variant font-normal">
+                          / mo
+                        </span>
+                      </span>
+                    </div>
+                    <Link
+                      to="/request-tutor"
+                      className="px-4 py-2.5 rounded-xl bg-primary-container hover:bg-tertiary-container text-on-primary font-label-md text-label-md font-bold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <span>Request Free Demo</span>
+                      <span className="material-symbols-outlined text-[16px]">calendar_month</span>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Floating Proof Micro-card for Nusrat */}
+                <div className="w-11/12 -mt-4 bg-surface-container-lowest/95 backdrop-blur-md rounded-2xl p-3.5 shadow-xl flex items-center gap-3 z-10 border border-outline-variant/20">
+                  <div className="flex -space-x-3 overflow-hidden shrink-0">
+                    <img
+                      src={social1}
+                      alt="Student"
+                      className="inline-block h-9 w-9 rounded-full ring-2 ring-surface-container-lowest object-cover"
+                    />
+                    <img
+                      src={social2}
+                      alt="Student"
+                      className="inline-block h-9 w-9 rounded-full ring-2 ring-surface-container-lowest object-cover"
+                    />
+                    <img
+                      src={social3}
+                      alt="Guardian"
+                      className="inline-block h-9 w-9 rounded-full ring-2 ring-surface-container-lowest object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-headline-sm text-headline-sm text-on-surface font-bold text-[13px] leading-tight truncate">
+                      15,000+ Happy Guardians
+                    </p>
+                    <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px] truncate">
+                      Dhaka, Chattogram, Sylhet &amp; Rajshahi
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-end shrink-0">
+                    <span className="font-label-sm text-label-sm text-secondary font-bold whitespace-nowrap">
+                      10k+ Matches
+                    </span>
+                    <span className="font-label-sm text-label-sm text-on-surface-variant text-[10px] whitespace-nowrap">
+                      Verified Placements
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Tutor Subject Badges */}
-              <div className="mt-5 flex flex-wrap gap-2">
-                <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">
-                  Higher Mathematics
-                </span>
-                <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">
-                  Physics
-                </span>
-                <span className="px-2.5 py-1 rounded-lg bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md font-semibold">
-                  English &amp; Bangla Medium
-                </span>
-              </div>
+              {/* Slide 2: Tanvir Ahmed */}
+              <div
+                className={`w-full flex flex-col items-center transition-opacity duration-300 ${
+                  currentSlide === 1 ? "block opacity-100" : "hidden opacity-0"
+                }`}
+              >
+                <div className="w-full bg-surface-container-lowest rounded-3xl p-6 shadow-2xl relative overflow-hidden border border-outline-variant/20">
+                  <div className="h-2 w-full bg-gradient-to-r from-primary via-primary-container to-secondary absolute top-0 left-0" />
+                  <div className="flex items-start gap-4 pt-3">
+                    <div className="relative shrink-0">
+                      <img
+                        src={tutorTanvir}
+                        alt="Tanvir Ahmed"
+                        className="w-20 h-20 rounded-2xl object-cover shadow-md"
+                      />
+                      <span className="absolute -bottom-1.5 -right-1.5 bg-secondary text-on-secondary rounded-full p-1 shadow-sm flex items-center justify-center">
+                        <span className="material-symbols-outlined text-[14px]">verified</span>
+                      </span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold truncate">
+                          Tanvir Ahmed
+                        </h3>
+                        <div className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm font-bold text-on-surface">
+                          <span
+                            className="material-symbols-outlined text-amber-500 text-[16px]"
+                            style={{ fontVariationSettings: "'FILL' 1" }}
+                          >
+                            star
+                          </span>
+                          <span>5.0</span>
+                          <span className="text-on-surface-variant font-normal">(154)</span>
+                        </div>
+                      </div>
+                      <p className="font-body-sm text-body-sm text-primary-container font-semibold mt-0.5">
+                        B.Sc in EEE (BUET Topper)
+                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+                          BUET Campus
+                        </span>
+                        <span className="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold">
+                          <span className="material-symbols-outlined text-[13px]">check_circle</span>
+                          Varsity Audited
+                        </span>
+                      </div>
+                    </div>
+                  </div>
 
-              {/* Tutor Metrics Strip */}
-              <div className="grid grid-cols-3 gap-2 mt-5 p-3 rounded-xl bg-surface-container-low text-center">
-                <div>
-                  <p className="font-headline-sm text-headline-sm text-on-surface font-bold">5+ Yrs</p>
-                  <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
-                    Experience
-                  </p>
-                </div>
-                <div className="border-x border-outline-variant/30">
-                  <p className="font-headline-sm text-headline-sm text-on-surface font-bold">120+</p>
-                  <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
-                    Students Taught
-                  </p>
-                </div>
-                <div>
-                  <p className="font-headline-sm text-headline-sm text-secondary font-bold">98%</p>
-                  <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
-                    GPA-5 Success
-                  </p>
-                </div>
-              </div>
-
-              {/* Price & Action Trigger */}
-              <div className="mt-5 pt-4 border-t border-outline-variant/20 flex items-center justify-between gap-3">
-                <div>
-                  <span className="font-body-sm text-body-sm text-on-surface-variant block text-[12px]">
-                    Tutoring Fee
-                  </span>
-                  <span className="font-headline-sm text-headline-sm text-on-surface font-bold">
-                    ৳ 8,000{" "}
-                    <span className="font-body-sm text-body-sm text-on-surface-variant font-normal">
-                      / mo
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">
+                      Higher Math &amp; Physics
                     </span>
-                  </span>
+                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">
+                      HSC Board 2026
+                    </span>
+                    <span className="px-2.5 py-1 rounded-lg bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md font-semibold">
+                      BUET / Medical Track
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 mt-5 p-3 rounded-xl bg-surface-container-low text-center">
+                    <div>
+                      <p className="font-headline-sm text-headline-sm text-on-surface font-bold">4+ Yrs</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        Experience
+                      </p>
+                    </div>
+                    <div className="border-x border-outline-variant/30">
+                      <p className="font-headline-sm text-headline-sm text-on-surface font-bold">140+</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        Students Mentored
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-headline-sm text-headline-sm text-secondary font-bold">99.4%</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        Success Rate
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 pt-4 border-t border-outline-variant/20 flex items-center justify-between gap-3">
+                    <div>
+                      <span className="font-body-sm text-body-sm text-on-surface-variant block text-[12px]">
+                        Tutoring Fee
+                      </span>
+                      <span className="font-headline-sm text-headline-sm text-on-surface font-bold">
+                        ৳ 10,000{" "}
+                        <span className="font-body-sm text-body-sm text-on-surface-variant font-normal">
+                          / mo
+                        </span>
+                      </span>
+                    </div>
+                    <Link
+                      to="/request-tutor"
+                      className="px-4 py-2.5 rounded-xl bg-primary-container hover:bg-tertiary-container text-on-primary font-label-md text-label-md font-bold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <span>Book Trial Class</span>
+                      <span className="material-symbols-outlined text-[16px]">schedule</span>
+                    </Link>
+                  </div>
                 </div>
-                <Link
-                  to="/request-tutor"
-                  className="px-4 py-2.5 rounded-xl bg-primary-container hover:bg-tertiary-container text-on-primary font-label-md text-label-md font-bold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
-                >
-                  <span>Request Free Demo</span>
-                  <span className="material-symbols-outlined text-[16px]">calendar_month</span>
-                </Link>
+
+                {/* Floating Proof Micro-card for Tanvir */}
+                <div className="w-11/12 -mt-4 bg-surface-container-lowest/95 backdrop-blur-md rounded-2xl p-3.5 shadow-xl flex items-center gap-3 z-10 border border-outline-variant/20">
+                  <div className="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-[20px]">trending_up</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-headline-sm text-headline-sm text-on-surface font-bold text-[13px] leading-tight truncate">
+                      99.4% Student Grade Uplift
+                    </p>
+                    <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px] truncate">
+                      Top ranks in Notre Dame &amp; Holy Cross
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-end shrink-0">
+                    <span className="font-label-sm text-label-sm text-secondary font-bold whitespace-nowrap">
+                      A+ Board
+                    </span>
+                    <span className="font-label-sm text-label-sm text-on-surface-variant text-[10px] whitespace-nowrap">
+                      Guaranteed Prep
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Slide 3: Dr. Sadia Sharmin */}
+              <div
+                className={`w-full flex flex-col items-center transition-opacity duration-300 ${
+                  currentSlide === 2 ? "block opacity-100" : "hidden opacity-0"
+                }`}
+              >
+                <div className="w-full bg-surface-container-lowest rounded-3xl p-6 shadow-2xl relative overflow-hidden border border-outline-variant/20">
+                  <div className="h-2 w-full bg-gradient-to-r from-secondary to-secondary-container absolute top-0 left-0" />
+                  <div className="flex items-start gap-4 pt-3">
+                    <div className="relative shrink-0">
+                      <img
+                        src={tutorSadia}
+                        alt="Dr. Sadia Sharmin"
+                        className="w-20 h-20 rounded-2xl object-cover shadow-md"
+                      />
+                      <span className="absolute -bottom-1.5 -right-1.5 bg-secondary text-on-secondary rounded-full p-1 shadow-sm flex items-center justify-center">
+                        <span className="material-symbols-outlined text-[14px]">verified</span>
+                      </span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold truncate">
+                          Dr. Sadia Sharmin
+                        </h3>
+                        <div className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm font-bold text-on-surface">
+                          <span
+                            className="material-symbols-outlined text-amber-500 text-[16px]"
+                            style={{ fontVariationSettings: "'FILL' 1" }}
+                          >
+                            star
+                          </span>
+                          <span>4.9</span>
+                          <span className="text-on-surface-variant font-normal">(116)</span>
+                        </div>
+                      </div>
+                      <p className="font-body-sm text-body-sm text-primary-container font-semibold mt-0.5">
+                        MBBS Intern, Dhaka Medical College
+                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+                          DMC Dhaka
+                        </span>
+                        <span className="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold">
+                          <span className="material-symbols-outlined text-[13px]">check_circle</span>
+                          Verified Doctor
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">
+                      Biology &amp; Chemistry
+                    </span>
+                    <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md">
+                      Medical Admission Prep
+                    </span>
+                    <span className="px-2.5 py-1 rounded-lg bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md font-semibold">
+                      O/A Levels &amp; SSC
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 mt-5 p-3 rounded-xl bg-surface-container-low text-center">
+                    <div>
+                      <p className="font-headline-sm text-headline-sm text-on-surface font-bold">6+ Yrs</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        Experience
+                      </p>
+                    </div>
+                    <div className="border-x border-outline-variant/30">
+                      <p className="font-headline-sm text-headline-sm text-on-surface font-bold">95+</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        Medical Aspirants
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-headline-sm text-headline-sm text-secondary font-bold">96%</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px]">
+                        Govt Med Intake
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 pt-4 border-t border-outline-variant/20 flex items-center justify-between gap-3">
+                    <div>
+                      <span className="font-body-sm text-body-sm text-on-surface-variant block text-[12px]">
+                        Tutoring Fee
+                      </span>
+                      <span className="font-headline-sm text-headline-sm text-on-surface font-bold">
+                        ৳ 9,500{" "}
+                        <span className="font-body-sm text-body-sm text-on-surface-variant font-normal">
+                          / mo
+                        </span>
+                      </span>
+                    </div>
+                    <Link
+                      to="/request-tutor"
+                      className="px-4 py-2.5 rounded-xl bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-md text-label-md font-bold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <span>Instant Consultation</span>
+                      <span className="material-symbols-outlined text-[16px]">medical_services</span>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Floating Proof Micro-card for Sadia */}
+                <div className="w-11/12 -mt-4 bg-surface-container-lowest/95 backdrop-blur-md rounded-2xl p-3.5 shadow-xl flex items-center gap-3 z-10 border border-outline-variant/20">
+                  <div className="w-10 h-10 rounded-xl bg-surface-container text-primary-container flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-[20px]">verified_user</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-headline-sm text-headline-sm text-on-surface font-bold text-[13px] leading-tight truncate">
+                      4-Step Background Checked
+                    </p>
+                    <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px] truncate">
+                      National ID, Address &amp; Certificates Verified
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-end shrink-0">
+                    <span className="font-label-sm text-label-sm text-secondary font-bold whitespace-nowrap">
+                      100% Safe
+                    </span>
+                    <span className="font-label-sm text-label-sm text-on-surface-variant text-[10px] whitespace-nowrap">
+                      Home &amp; Online
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Student & Guardian Testimonial Floating Micro-Card */}
-            <div className="w-11/12 -mt-4 bg-surface-container-lowest/95 backdrop-blur-md rounded-2xl p-4 shadow-xl flex items-center gap-3 z-10 border border-outline-variant/20">
-              <div className="flex -space-x-3 overflow-hidden shrink-0">
-                <img
-                  src={social1}
-                  alt="Student"
-                  className="inline-block h-9 w-9 rounded-full ring-2 ring-surface-container-lowest object-cover"
+            {/* Bottom Carousel Pagination Indicators */}
+            <div className="flex items-center gap-2 mt-5 z-20">
+              {[0, 1, 2].map((idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`rounded-full transition-all duration-300 cursor-pointer ${
+                    currentSlide === idx
+                      ? "w-7 h-2 bg-primary-container"
+                      : "w-2 h-2 bg-outline-variant/40 hover:bg-outline-variant"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
                 />
-                <img
-                  src={social2}
-                  alt="Student"
-                  className="inline-block h-9 w-9 rounded-full ring-2 ring-surface-container-lowest object-cover"
-                />
-                <img
-                  src={social3}
-                  alt="Guardian"
-                  className="inline-block h-9 w-9 rounded-full ring-2 ring-surface-container-lowest object-cover"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="font-headline-sm text-headline-sm text-on-surface font-bold text-[13px] leading-tight truncate">
-                  15,000+ Happy Guardians
-                </p>
-                <p className="font-body-sm text-body-sm text-on-surface-variant text-[11px] truncate">
-                  Dhaka, Chattogram, Sylhet &amp; Rajshahi
-                </p>
-              </div>
-              <div className="flex flex-col items-end shrink-0">
-                <span className="font-label-sm text-label-sm text-secondary font-bold whitespace-nowrap">
-                  10k+ Matches
-                </span>
-                <span className="font-label-sm text-label-sm text-on-surface-variant text-[10px] whitespace-nowrap">
-                  Verified Placements
-                </span>
-              </div>
+              ))}
             </div>
 
           </div>

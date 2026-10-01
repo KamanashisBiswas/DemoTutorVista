@@ -28,8 +28,8 @@ const AvailableTutorsSection = () => {
   const [showTutorDetailsModal, setShowTutorDetailsModal] = useState(false);
 
   const handleDetailsClick = (tutor) => {
-    setSelectedTutor(tutor);
-    setShowTutorDetailsModal(true);
+    const tutorId = tutor._id || tutor.id || "tutor-2";
+    navigate(`/tutors/${tutorId}`);
   };
 
   const fetchTutors = async () => {

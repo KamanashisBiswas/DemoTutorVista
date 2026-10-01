@@ -5,20 +5,25 @@ import PopularCategoriesSection from "../components/Home/PopularCategoriesSectio
 import HowItWorksSection from "../components/Home/HowItWorksSection";
 import WhyTutorVistaSection from "../components/Home/WhyTutorVistaSection";
 import TuitionTypeSection from "../components/Home/TuitionTypeSection";
+import PromoCampaignBanner from "../components/Home/PromoCampaignBanner";
 import LatestTuitionJobsSection from "../components/Home/LatestTuitionJobsSection";
 import FeaturedTutorsSection from "../components/Home/FeaturedTutorsSection";
 import GuardianReviews from "../components/Home/GuardianReviews";
 import FAQComponent from "../components/Home/FAQComponent";
 import BottomCTASection from "../components/Home/BottomCTASection";
 import LandingPopup from "../components/LandingPopup";
-import popupImage from "../assets/Popup/landing.png";
 
 const HomePage = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const hasSeenPopup = sessionStorage.getItem("hasSeenPopup") || params.get("nopopup") === "1";
+    const dismissedDate = localStorage.getItem("tutorbridge_popup_dismissed_date");
+    const isDismissedToday = dismissedDate === new Date().toDateString();
+    const hasSeenPopup =
+      isDismissedToday ||
+      sessionStorage.getItem("hasSeenPopup") ||
+      params.get("nopopup") === "1";
     window.scrollTo(0, 0);
 
     if (!hasSeenPopup) {
@@ -32,7 +37,6 @@ const HomePage = () => {
       <LandingPopup
         isOpen={showPopup}
         onClose={() => setShowPopup(false)}
-        imageSrc={popupImage}
       />
 
       {/* 1. Hero Section: Left Value Proposition & Matching Search Engine, Right Top 1% Tutor & Social Proof */}
@@ -52,6 +56,9 @@ const HomePage = () => {
 
       {/* 6. Tuition Modes (Side-by-Side Comparison Cards) */}
       <TuitionTypeSection />
+
+      {/* 6.5 Promotional Campaign Banner (Live Countdown & Seasonal Offer) */}
+      <PromoCampaignBanner />
 
       {/* 7. Live Tuition Jobs Feed (4 Cards) */}
       <LatestTuitionJobsSection />

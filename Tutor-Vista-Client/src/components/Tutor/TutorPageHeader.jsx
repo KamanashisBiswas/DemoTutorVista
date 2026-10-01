@@ -48,7 +48,7 @@ const TutorPageHeader = ({ activeDivision = "All Bangladesh", onSelectDivision }
 
         {/* Hero Header & High Impact Copy */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
-          <div className="space-y-2 max-w-3xl">
+          <div className="space-y-2 flex-1">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-indigo-100 text-brand-700 text-xs font-bold tracking-wider uppercase">
               Bangladesh's Premier Tutor Marketplace
             </div>

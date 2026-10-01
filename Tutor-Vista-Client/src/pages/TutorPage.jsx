@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ApiService from "../services/api";
 import locationData from "../assets/data/address.json";
 
@@ -13,151 +13,260 @@ import TutorDetailsModal from "../components/TutorDetailsModal";
 const SAMPLE_TUTORS = [
   {
     _id: "tutor-1",
-    name: "Md. Atiqur Rahman",
-    institution: "Islamic Univ, Kushtia (M.Sc)",
-    degree: "Masters in Applied English",
-    rating: 4.9,
-    preferredSubjects: ["English", "Applied Linguistics"],
-    experience: "5+ Yrs Exp",
-    preferredLocations: ["Dhaka Sadar", "Dhanmondi"],
+    name: "Syeda Tasnim",
+    image: "/images/tutors/tutor-1.jpg",
+    institution: "BUET",
+    degree: "B.Sc in EEE",
+    rating: 4.95,
+    reviewsCount: 38,
+    preferredSubjects: ["Physics", "Higher Math", "ICT"],
+    schedule: "3-4 Days/wk",
+    studentsCount: "32+ Students",
+    preferredLocations: ["Dhanmondi", "Lalmatia", "Kalabagan"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Dhanmondi",
+    area: "Dhanmondi 15 / 27",
+    gender: "Female",
+    medium: "English Medium",
+    salaryText: "৳10,000 - ৳15,000/mo",
+    expectedSalary: "10,000 - 15,000",
   },
   {
     _id: "tutor-2",
     name: "Salman Muktadir",
-    institution: "North South University (NSU)",
-    degree: "BBA in Finance & Econ",
-    rating: 4.9,
-    preferredSubjects: ["English", "Physics", "Chemistry"],
-    experience: "4+ Yrs Exp",
+    image: "/images/tutors/tutor-2.jpg",
+    institution: "NSU",
+    degree: "BBA Finance",
+    rating: 4.90,
+    reviewsCount: 29,
+    preferredSubjects: ["English", "Math", "Economics"],
+    schedule: "3 Days/wk",
+    studentsCount: "20+ Students",
     preferredLocations: ["Bashundhara R/A", "Baridhara"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Bashundhara",
+    area: "Block C",
+    gender: "Male",
+    medium: "English Medium",
+    salaryText: "৳8,000 - ৳12,000/mo",
+    expectedSalary: "8,000 - 12,000",
   },
   {
     _id: "tutor-3",
     name: "Mysha Islam",
-    institution: "North South University",
-    degree: "B.Sc in Biochemistry & Biotech",
-    rating: 4.9,
-    preferredSubjects: ["Biology", "Chemistry", "General Science"],
-    experience: "3+ Yrs Exp",
-    preferredLocations: ["Uttara (Sectors 3 to 14)"],
+    image: "/images/tutors/tutor-3.jpg",
+    institution: "DU",
+    degree: "Biochemistry",
+    rating: 4.98,
+    reviewsCount: 54,
+    preferredSubjects: ["Biology", "Chemistry", "Science"],
+    schedule: "3-4 Days/wk",
+    studentsCount: "25+ Students",
+    preferredLocations: ["Uttara (Sectors 1 to 14)"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Uttara",
+    area: "Sector 4",
+    gender: "Female",
+    medium: "Bangla Medium",
+    salaryText: "৳9,000 - ৳14,000/mo",
+    expectedSalary: "9,000 - 14,000",
   },
   {
     _id: "tutor-4",
     name: "Shakibul Islam",
-    institution: "BUTEX (Textile Engineering)",
-    degree: "B.Sc in Textile Engg (Final)",
-    rating: 4.9,
-    preferredSubjects: ["Physics", "Math", "Chemistry"],
-    experience: "Experienced",
+    image: "/images/tutors/tutor-4.jpg",
+    institution: "BUTEX",
+    degree: "Textile Engg",
+    rating: 4.88,
+    reviewsCount: 21,
+    preferredSubjects: ["Physics", "Chemistry", "Math"],
+    schedule: "4 Days/wk",
+    studentsCount: "18+ Students",
     preferredLocations: ["Tejgaon", "Farmgate", "Mohakhali"],
     division: "Dhaka",
+    district: "Dhaka",
+    thana: "Tejgaon",
+    area: "Farmgate",
+    gender: "Male",
+    medium: "Bangla Medium",
+    salaryText: "Negotiable",
     expectedSalary: "Negotiable",
   },
   {
     _id: "tutor-5",
-    name: "Md Mahmudul Hasan Anik",
-    institution: "RUET (Mechanical Engineering)",
-    degree: "B.Sc Engg. Honours",
-    rating: 4.9,
-    preferredSubjects: ["Physics", "Higher Math", "ICT"],
-    experience: "Experienced",
-    preferredLocations: ["Mirpur (1, 2, 10, DOHS)"],
+    name: "Md. Mahfuzur Rahman",
+    image: "/images/tutors/tutor-5.jpg",
+    institution: "DMC",
+    degree: "MBBS 4th Year",
+    rating: 4.96,
+    reviewsCount: 42,
+    preferredSubjects: ["Biology", "Zoology", "Medical Admission"],
+    schedule: "3 Days/wk",
+    studentsCount: "28+ Students",
+    preferredLocations: ["Segunbagicha", "Shantinagar", "Motijheel"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Shantinagar",
+    area: "Baily Road",
+    gender: "Male",
+    medium: "Bangla Medium",
+    salaryText: "৳12,000 - ৳18,000/mo",
+    expectedSalary: "12,000 - 18,000",
   },
   {
     _id: "tutor-6",
-    name: "Khaled Hasan",
-    institution: "University of Dhaka",
-    degree: "Applied Physics & Electronics",
-    rating: 4.9,
-    preferredSubjects: ["Math", "Physics", "Chemistry"],
-    experience: "Experienced",
-    preferredLocations: ["Azimpur", "DU Campus", "Lalbagh"],
+    name: "Nusrat Farzana",
+    image: "/images/tutors/tutor-6.jpg",
+    institution: "BRACU",
+    degree: "Computer Science",
+    rating: 4.92,
+    reviewsCount: 31,
+    preferredSubjects: ["ICT", "Math", "English Version"],
+    schedule: "3-4 Days/wk",
+    studentsCount: "22+ Students",
+    preferredLocations: ["Mohakhali DOHS", "Gulshan 1 & 2"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Gulshan",
+    area: "Gulshan 2",
+    gender: "Female",
+    medium: "English Version (NCTB)",
+    salaryText: "৳8,500 - ৳13,000/mo",
+    expectedSalary: "8,500 - 13,000",
   },
   {
     _id: "tutor-7",
-    name: "Maksuda Ekram",
-    institution: "University of Asia Pacific (UAP)",
-    degree: "B.Pharm Honours",
-    rating: 4.9,
-    preferredSubjects: ["General Science (Grades 1-9)"],
-    experience: "Experienced",
-    preferredLocations: ["Green Road", "Panthapath"],
+    name: "Tanvir Hassan",
+    image: "/images/tutors/tutor-7.jpg",
+    institution: "RUET",
+    degree: "Mechanical Engg",
+    rating: 4.89,
+    reviewsCount: 26,
+    preferredSubjects: ["Higher Math", "Physics", "Science"],
+    schedule: "3-4 Days/wk",
+    studentsCount: "19+ Students",
+    preferredLocations: ["Mirpur 1, 2 & 10", "DOHS"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Mirpur",
+    area: "Mirpur 10",
+    gender: "Male",
+    medium: "Bangla Medium",
+    salaryText: "৳7,500 - ৳11,000/mo",
+    expectedSalary: "7,500 - 11,000",
   },
   {
     _id: "tutor-8",
-    name: "Md Fayyaz Ahmed",
-    institution: "Daffodil International School",
-    degree: "HSC & A Levels Specialist",
-    rating: 4.9,
-    preferredSubjects: ["Commerce", "Accounting", "Business Studies"],
-    experience: "Experienced",
-    preferredLocations: ["Gulshan 1 & 2", "Banani"],
+    name: "Anika Tabassum",
+    image: "/images/tutors/tutor-8.jpg",
+    institution: "JU",
+    degree: "English Literature",
+    rating: 4.97,
+    reviewsCount: 48,
+    preferredSubjects: ["English Language", "Literature", "IELTS"],
+    schedule: "3-4 Days/wk",
+    studentsCount: "35+ Students",
+    preferredLocations: ["Mohammadpur", "Shyamoli", "Dhanmondi"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Mohammadpur",
+    area: "Town Hall",
+    gender: "Female",
+    medium: "English Medium",
+    salaryText: "৳9,000 - ৳15,000/mo",
+    expectedSalary: "9,000 - 15,000",
   },
   {
     _id: "tutor-9",
-    name: "Muhammed Muhsi",
-    institution: "BRAC University (BracU)",
-    degree: "B.Sc in Computer Science (CSE)",
-    rating: 4.9,
-    preferredSubjects: ["Mathematics", "Computer Science"],
-    experience: "Experienced",
-    preferredLocations: ["Badda", "Merul", "Rampura"],
+    name: "Asif Mahmud",
+    image: "/images/tutors/tutor-9.jpg",
+    institution: "IUT",
+    degree: "Electrical & Electronic",
+    rating: 4.91,
+    reviewsCount: 34,
+    preferredSubjects: ["O/A Level Physics", "Pure Math", "Mechanics"],
+    schedule: "4 Days/wk",
+    studentsCount: "26+ Students",
+    preferredLocations: ["Banani", "Baridhara DOHS", "Uttara"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Banani",
+    area: "Banani Block E",
+    gender: "Male",
+    medium: "English Medium",
+    salaryText: "৳14,000 - ৳20,000/mo",
+    expectedSalary: "14,000 - 20,000",
   },
   {
     _id: "tutor-10",
-    name: "Wasima Tasnim",
-    institution: "Manarat Dhaka Intl School",
-    degree: "Cambridge O/A Levels Top Achiever",
-    rating: 4.9,
-    preferredSubjects: ["All Primary & Junior Curricula"],
-    experience: "Experienced",
-    preferredLocations: ["Gulshan", "Banani", "Baridhara"],
+    name: "Samia Rahman",
+    image: "/images/tutors/tutor-10.jpg",
+    institution: "DMC",
+    degree: "BDS Dental",
+    rating: 4.94,
+    reviewsCount: 36,
+    preferredSubjects: ["Chemistry", "Biology", "General Science"],
+    schedule: "3 Days/wk",
+    studentsCount: "21+ Students",
+    preferredLocations: ["Malibagh", "Baily Road", "Kakrail"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Shantinagar",
+    area: "Baily Road",
+    gender: "Female",
+    medium: "Bangla Medium",
+    salaryText: "৳8,000 - ৳12,000/mo",
+    expectedSalary: "8,000 - 12,000",
   },
   {
     _id: "tutor-11",
-    name: "Tarik Rahman",
-    institution: "DUET (Electrical Engineering)",
-    degree: "B.Sc in EEE",
-    rating: 4.9,
-    preferredSubjects: ["Mathematics", "Physics", "ICT"],
-    experience: "Experienced",
-    preferredLocations: ["Gazipur Sadar", "Uttara"],
+    name: "Kazi Fahim",
+    image: "/images/tutors/tutor-11.jpg",
+    institution: "DU",
+    degree: "Applied Statistics",
+    rating: 4.93,
+    reviewsCount: 27,
+    preferredSubjects: ["Statistics", "Higher Math", "Business Math"],
+    schedule: "3-4 Days/wk",
+    studentsCount: "23+ Students",
+    preferredLocations: ["Lalmatia", "Dhanmondi", "Panthapath"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Dhanmondi",
+    area: "Lalmatia",
+    gender: "Male",
+    medium: "Bangla Medium",
+    salaryText: "৳10,000 - ৳16,000/mo",
+    expectedSalary: "10,000 - 16,000",
   },
   {
     _id: "tutor-12",
-    name: "Mst. Nafisha Akter",
-    institution: "United International Univ (UIU)",
-    degree: "B.Sc in Software Engineering",
-    rating: 4.9,
-    preferredSubjects: ["English", "Science", "ICT"],
-    experience: "Experienced",
-    preferredLocations: ["Madani Avenue", "Natun Bazar"],
+    name: "Mehnaz Karim",
+    image: "/images/tutors/tutor-12.jpg",
+    institution: "NSU",
+    degree: "Microbiology",
+    rating: 4.87,
+    reviewsCount: 24,
+    preferredSubjects: ["EM Science", "Biology", "Chemistry"],
+    schedule: "3-4 Days/wk",
+    studentsCount: "17+ Students",
+    preferredLocations: ["Bashundhara R/A", "Kuril", "Nikunja"],
     division: "Dhaka",
-    expectedSalary: "Negotiable",
+    district: "Dhaka",
+    thana: "Bashundhara",
+    area: "Block C",
+    gender: "Female",
+    medium: "English Medium",
+    salaryText: "৳9,500 - ৳14,000/mo",
+    expectedSalary: "9,500 - 14,000",
   },
 ];
 
 const TutorPage = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -390,8 +499,8 @@ const TutorPage = () => {
   };
 
   const handleDetailsClick = (tutor) => {
-    setSelectedTutor(tutor);
-    setShowTutorDetailsModal(true);
+    const tutorId = tutor._id || tutor.id || "tutor-2";
+    navigate(`/tutors/${tutorId}`);
   };
 
   // Client-side filtering
@@ -513,6 +622,62 @@ const TutorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#faf8ff] text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+      {/* 0. Top Dark Gradient Hero Cover matching reference */}
+      <section className="relative bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 border-b border-indigo-900/40 py-12 md:py-16 text-white overflow-hidden" data-purpose="hero-cover">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.22),rgba(255,255,255,0))] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-40"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-3 text-xs md:text-sm text-indigo-300">
+                <Link to="/" className="hover:text-white transition-colors">Home</Link>
+                <span>/</span>
+                <span className="text-white font-medium">Browse Tutors</span>
+                <span className="ml-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> 15,480+ Verified Tutors
+                </span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+                Connect with Verified Tutors from <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-indigo-200">Top Universities</span>
+              </h1>
+              <p className="text-base sm:text-lg text-indigo-100/80 mb-6 leading-relaxed">
+                Discover premier educators from BUET, DU, Medical Colleges, and leading institutions across Bangladesh. Filter by subject, curriculum medium, and neighborhood.
+              </p>
+              <div className="flex flex-wrap gap-2.5 text-xs font-medium text-indigo-200">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                  🎓 Top Rated BUET/DU Scholars
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                  📚 English &amp; Bangla Medium
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                  ⚡ 100% Verified Credentials
+                </span>
+              </div>
+            </div>
+            <div className="hidden lg:block w-80 lg:w-96 shrink-0">
+              <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-white/5 backdrop-blur-md p-2 shadow-2xl">
+                <img
+                  src="/images/about/hero-mentors.jpg"
+                  alt="Bangladeshi University Mentors"
+                  className="w-full h-52 object-cover rounded-xl"
+                />
+                <div className="p-3 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-2 w-2 rounded-full bg-emerald-400"></span>
+                    <span className="font-medium text-white">4.9/5 Rating</span>
+                    <span className="text-indigo-200">(27k+ Reviews)</span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded bg-indigo-600/40 border border-indigo-400/30 text-indigo-200 font-semibold">
+                    100% Vetted
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 1. Hero Directory Header with Division Pills */}
       <TutorPageHeader
         activeDivision={activeDivision}
@@ -591,7 +756,7 @@ const TutorPage = () => {
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-3">
                 Can't find the exact subject or schedule you need?
               </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mb-6">
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
                 Don't spend hours searching through profiles. Tell us your curriculum, grade, and preferred area — our academic coordination team will handpick the top 3 verified educators for you within 24 hours.
               </p>
               {/* Trust Badges */}

@@ -118,7 +118,7 @@ const TutorFilterControls = ({
         {/* Top Controls Row */}
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-2 border-b border-slate-100">
           {/* Search Input */}
-          <div className="flex-1 relative flex items-center max-w-2xl">
+          <div className="flex-1 relative flex items-center">
             <svg
               className="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"
               fill="none"

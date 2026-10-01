@@ -8,6 +8,7 @@ import Contact from "../pages/Contact";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import TutorPage from "../pages/TutorPage";
+import TutorProfilePage from "../pages/TutorProfilePage";
 import TuitionRequestPage from "../pages/TuitionRequestPage"; // Add this import
 import CEOMessagesPage from "../pages/CEOMessagesPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -58,6 +59,14 @@ const router = createBrowserRouter([
       {
         path: "/tutors",
         element: <TutorPage />,
+      },
+      {
+        path: "/tutors/:id",
+        element: <TutorProfilePage />,
+      },
+      {
+        path: "/tutor/:id",
+        element: <TutorProfilePage />,
       },
       {
         path: "/tuition-jobs",

@@ -75,62 +75,104 @@ const WhyTutorVistaSection = () => {
               </p>
             </div>
 
-            <div className="space-y-3 pt-1">
+            <div className="space-y-4 pt-2">
+              {/* Trust Metric Chips Row */}
+              <div className="grid grid-cols-3 gap-2.5 pb-2">
+                <div className="p-3 rounded-xl bg-surface-container border border-outline-variant/30 text-center">
+                  <p className="font-headline-sm text-headline-sm text-primary-container font-extrabold text-[18px]">
+                    100%
+                  </p>
+                  <p className="text-[11px] text-on-surface-variant font-medium">NID Verified</p>
+                </div>
+                <div className="p-3 rounded-xl bg-surface-container border border-outline-variant/30 text-center">
+                  <p className="font-headline-sm text-headline-sm text-secondary font-extrabold text-[18px]">
+                    0% Fee
+                  </p>
+                  <p className="text-[11px] text-on-surface-variant font-medium">For Parents</p>
+                </div>
+                <div className="p-3 rounded-xl bg-surface-container border border-outline-variant/30 text-center">
+                  <p className="font-headline-sm text-headline-sm text-on-surface font-extrabold text-[18px]">
+                    24 Hrs
+                  </p>
+                  <p className="text-[11px] text-on-surface-variant font-medium">Replacement</p>
+                </div>
+              </div>
+
               {/* Pillar 1 */}
-              <div className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-surface-container-highest text-primary-container flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors border border-outline-variant/20">
+                <div className="w-10 h-10 rounded-lg bg-surface-container-highest text-primary-container flex items-center justify-center shrink-0 shadow-sm">
                   <span className="material-symbols-outlined text-[22px]">badge</span>
                 </div>
-                <div>
-                  <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[15px]">
-                    Strict 4-Step Verification
-                  </h4>
-                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[15px]">
+                      Strict 4-Step Verification
+                    </h4>
+                    <span className="px-2 py-0.5 rounded bg-secondary-container/20 text-secondary text-[10px] font-bold uppercase tracking-wide">
+                      Audit Passed
+                    </span>
+                  </div>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 text-[12px] leading-relaxed">
                     National ID (NID) check, active varsity registration verify, academic certificates check, and address verification for every single tutor.
                   </p>
                 </div>
               </div>
 
               {/* Pillar 2 */}
-              <div className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors border border-outline-variant/20">
+                <div className="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 shadow-sm">
                   <span className="material-symbols-outlined text-[22px]">shield</span>
                 </div>
-                <div>
-                  <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[15px]">
-                    Safe &amp; Transparent Process
-                  </h4>
-                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[15px]">
+                      Safe &amp; Transparent Process
+                    </h4>
+                    <span className="px-2 py-0.5 rounded bg-surface-container-high text-primary-container text-[10px] font-bold uppercase tracking-wide">
+                      Zero Agency Cut
+                    </span>
+                  </div>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 text-[12px] leading-relaxed">
                     Direct parent-tutor agreements, escrow payment security, and zero commission or placement charges taken from parents.
                   </p>
                 </div>
               </div>
 
               {/* Pillar 3 */}
-              <div className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-surface-container-highest text-primary-container flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors border border-outline-variant/20">
+                <div className="w-10 h-10 rounded-lg bg-surface-container-highest text-primary-container flex items-center justify-center shrink-0 shadow-sm">
                   <span className="material-symbols-outlined text-[22px]">devices</span>
                 </div>
-                <div>
-                  <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[15px]">
-                    Flexible Tuition Modes
-                  </h4>
-                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[15px]">
+                      Flexible Tuition Modes
+                    </h4>
+                    <span className="px-2 py-0.5 rounded bg-surface-container text-on-surface font-semibold text-[10px]">
+                      Home • Online • Batch
+                    </span>
+                  </div>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 text-[12px] leading-relaxed">
                     Choose in-home one-to-one tutoring, high-definition online classes with whiteboard collaboration, or small personalized peer batches.
                   </p>
                 </div>
               </div>
 
               {/* Pillar 4 */}
-              <div className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-surface-container text-secondary flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors border border-outline-variant/20">
+                <div className="w-10 h-10 rounded-lg bg-surface-container text-secondary flex items-center justify-center shrink-0 shadow-sm">
                   <span className="material-symbols-outlined text-[22px]">swap_horiz</span>
                 </div>
-                <div>
-                  <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[15px]">
-                    Dedicated Coordinator &amp; 24hr Replacement
-                  </h4>
-                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold text-[15px]">
+                      Dedicated Coordinator &amp; 24hr Replacement
+                    </h4>
+                    <span className="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wide">
+                      Guarantee
+                    </span>
+                  </div>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1 text-[12px] leading-relaxed">
                     Unhappy with teaching style or schedule adjustments? Get a qualified replacement within 24 hours at no extra fee.
                   </p>
                 </div>
